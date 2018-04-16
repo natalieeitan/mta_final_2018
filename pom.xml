@@ -9,7 +9,7 @@
   <name>finalproject-app Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
-    <tomcat.version>7.0.85</tomcat.version>
+    <tomcat.version>7.0.40</tomcat.version>
   </properties>
   <dependencies>
     <dependency>
