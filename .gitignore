@@ -13,3 +13,4 @@ README.txt
 *.war
 .idea/
 target/
+*/target/**
