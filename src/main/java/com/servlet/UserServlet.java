@@ -13,12 +13,12 @@ import java.io.IOException;
 		name = "user"
 )
 public class UserServlet extends HttpServlet {
-	DatabaseService dbService = new DatabaseService();
+	private DatabaseService dbService = new DatabaseService();
 
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String firstName = request.getParameter("userName");
+			throws IOException {
+		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String password = request.getParameter("userPass");
 		String email = request.getParameter("userEmail");
@@ -27,7 +27,7 @@ public class UserServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws IOException {
 
 	}
 }
