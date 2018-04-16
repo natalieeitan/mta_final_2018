@@ -23,7 +23,7 @@ public class UserServlet extends HttpServlet {
 		String password = request.getParameter("userPass");
 		String email = request.getParameter("userEmail");
 		dbService.addUser(new User(firstName,lastName,email,password));
-		response.sendRedirect("/client/hello.html");
+		response.sendRedirect("/client/html/hello.html");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
