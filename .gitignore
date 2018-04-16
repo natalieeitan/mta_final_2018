@@ -12,3 +12,4 @@ README.txt
 *.jar
 *.war
 .idea/
+target/
