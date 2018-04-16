@@ -14,7 +14,7 @@
   </servlet-mapping>
 
   <welcome-file-list>
-    <welcome-file>register.html</welcome-file>
+    <welcome-file>dashboard.html</welcome-file>
   </welcome-file-list>
 
 </web-app>

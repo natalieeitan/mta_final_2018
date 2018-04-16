@@ -1,0 +1,66 @@
+<html lang="he">
+<head>
+    <meta charset="utf-8" />
+    <title>דף ההרשמה לאתר</title>
+    <link rel="stylesheet" type="text/css" href="/client/mystyle.css">
+</head>
+<body dir="rtl">
+<div class="form-style-8">
+    <h2>הרשמה לאתר</h2>
+    <form action="servlet/com.servlet.UserServlet" method="post">
+        <ul class="errorMessages"></ul>
+        שם פרטי:<input type="text" name="firstName" required/><br/><br/>
+        <!--<div style="color: #FF0000;">${firstNameErrorMessage}</div>-->
+        שם משפחה:<input type="text" name="lastName" required/><br/><br/>
+        סיסמה:<input type="password" name="userPass" required/><br/><br/>
+        אימייל:<input type="text" name="userEmail" required/><br/><br/>
+        <br/><br/>
+        <input type="submit" value="הרשמה"/>
+    </form>
+</div>
+<script>
+    var createAllErrors = function() {
+        var form = $( this ),
+                errorList = $( "ul.errorMessages", form );
+
+        var showAllErrorMessages = function() {
+            errorList.empty();
+
+            // Find all invalid fields within the form.
+            var invalidFields = form.find( ":invalid" ).each( function( index, node ) {
+
+                // Find the field's corresponding label
+                var label = $( "label[for=" + node.id + "] "),
+                        // Opera incorrectly does not fill the validationMessage property.
+                        message = node.validationMessage || 'Invalid value.';
+
+                errorList
+                        .show()
+                        .append( "<li><span>" + label.html() + "</span> " + message + "</li>" );
+            });
+        };
+
+        // Support Safari
+        form.on( "submit", function( event ) {
+            if ( this.checkValidity && !this.checkValidity() ) {
+                $( this ).find( ":invalid" ).first().focus();
+                event.preventDefault();
+            }
+        });
+
+        $( "input[type=submit], button:not([type=button])", form )
+                .on( "click", showAllErrorMessages);
+
+        $( "input", form ).on( "keypress", function( event ) {
+            var type = $( this ).attr( "type" );
+            if ( /date|email|month|number|search|tel|text|time|url|week/.test ( type )
+                    && event.keyCode == 13 ) {
+                showAllErrorMessages();
+            }
+        });
+    };
+
+    $( "form" ).each( createAllErrors );
+</script>
+</body>
+</html>

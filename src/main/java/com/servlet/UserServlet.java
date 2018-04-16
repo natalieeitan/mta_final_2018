@@ -19,6 +19,12 @@ public class UserServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String firstName = request.getParameter("userName");
+		if(firstName==null || firstName=="")
+		{
+			request.setAttribute("firstNameErrorMessage", "first name can't be empty");
+			//request.getRequestDispatcher("/register.html").forward(request, response);
+			response.getWriter().println("<html><body>Welcome!!!</body></html>");
+		}
 		String lastName = request.getParameter("lastName");
 		String password = request.getParameter("userPass");
 		String email = request.getParameter("userEmail");
