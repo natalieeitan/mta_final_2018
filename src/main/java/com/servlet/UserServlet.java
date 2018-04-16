@@ -13,7 +13,7 @@ import java.io.IOException;
 		name = "user"
 )
 public class UserServlet extends HttpServlet {
-	private DatabaseService dbService = new DatabaseService();
+	DatabaseService dbService = new DatabaseService();
 
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -27,7 +27,7 @@ public class UserServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+			throws ServletException, IOException {
 
 	}
 }
