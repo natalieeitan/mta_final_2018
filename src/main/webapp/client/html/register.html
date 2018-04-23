@@ -7,8 +7,9 @@
 <body dir="rtl">
 <div class="form-style-8">
     <h2>הרשמה לאתר</h2>
-    <form action="servlet/com.servlet.UserServlet" method="post">
+    <form action="/user" method="post">
         <ul class="errorMessages"></ul>
+                <input name="action_signup" hidden>
         שם פרטי:<input type="text" name="firstName" required/><br/><br/>
         <!--<div style="color: #FF0000;">${firstNameErrorMessage}</div>-->
         שם משפחה:<input type="text" name="lastName" required/><br/><br/>

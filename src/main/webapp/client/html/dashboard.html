@@ -9,12 +9,22 @@
 <div class="flex-container">
     <header>
         <h1>חתונה</h1>
-        <button id="signUpBtn" class="w3-button w3-round-large">הרשמה לאתר</button>
+        <div style="float: left; width: 130px">
+            <button id="signUpBtn" class="w3-button w3-round-large">הרשמה לאתר</button>
+        </div>
+        <div style="float: right; width: 225px">
+            <button id="signInBtn" class="w3-button w3-round-large">כניסה לאתר</button>
+        </div>
     </header>
 </div>
 <script type="text/javascript">
     document.getElementById("signUpBtn").onclick = function () {
         location.href = "/client/html/register.html";
+    };
+</script>
+<script type="text/javascript">
+    document.getElementById("signInBtn").onclick = function () {
+        location.href = "/client/html/signIn.html";
     };
 </script>
 
