@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by natalieeitan on 09/04/2018.
+ * just for test
  */
 public class Couple extends User {
     private Iterable<SchedulingRange> schedulingRange;
