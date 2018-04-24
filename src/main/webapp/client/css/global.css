@@ -7,26 +7,62 @@
 }
 
 .flex-container > * {
-    padding: 15px;
     -webkit-flex: 1 100%;
     flex: 1 100%;
 }
 
+
 header {
-    color: #000 !important;
-    background-color: #fff !important;
+    color: black !important;
+    background-color: white !important;
     height: 100%;
-    font-family: "Inconsolata";
+    font-family: 'Alef', sans-serif;
+    font-size: large;
 }
 
 body {
-    min-height: 75%;
-    background-image: url("/client/html/dashboardBG.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 500px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    /*min-height: 75%;*/
+    /*background-image: url("/client/html/dashboardBG.jpg");*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*height: 500px;*/
+    /*background-attachment: fixed;*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    /*max-width: 400px;*/
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .btn {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 22px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    height:20%;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.container .btn:hover {
+    opacity: 1;
 }
