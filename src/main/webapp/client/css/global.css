@@ -12,4 +12,21 @@
     flex: 1 100%;
 }
 
-header {background: black;color:white;}
+header {
+    color: #000 !important;
+    background-color: #fff !important;
+    height: 100%;
+    font-family: "Inconsolata";
+}
+
+body {
+    min-height: 75%;
+    background-image: url("/client/html/dashboardBG.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

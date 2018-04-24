@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>ברוך הבא לאתר</title>
     <link rel="stylesheet" type="text/css" href="/client/css/global.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 </head>
 <body dir="rtl">
-<div class="flex-container">
+<div class="flex-container w3-padding w3-white">
     <header>
         <h1>חתונה</h1>
         <div style="float: left; width: 130px">
@@ -16,6 +18,8 @@
             <button id="signInBtn" class="w3-button w3-round-large">כניסה לאתר</button>
         </div>
     </header>
+</div>
+<div class="flex-container">
     <div style="float: left; width: 130px">
         <button id="supplierSignUp" class="w3-button w3-round-large">ספקים?</button>
     </div>
@@ -23,6 +27,8 @@
         <button id="coupleSignUp" class="w3-button w3-round-large">מתחתנים?</button>
     </div>
 </div>
+
+
 <script type="text/javascript">
     document.getElementById("signUpBtn").onclick = function () {
         location.href = "/client/html/register.html";
