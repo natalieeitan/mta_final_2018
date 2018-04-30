@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="he">
+<head dir="rtl">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/client/css/global.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <title>הרשמה מלאה</title>
+    <style>
+        #selectDate {
+            display: none;
+        }
+        #seasonsOptions {
+            display: none;
+        }
+        #daysOfWeek{
+            display: none;
+        }
+    </style>
+</head>
+<body dir="rtl">
+<div class="flex-container w3-padding w3-white">
+    <header>
+        <div style="float: left; width: 130px">
+            <button id="signUpBtn" class="w3-button w3-round-large">הרשמה לאתר</button>
+        </div>
+        <div style="float: right; width: 225px">
+            <button id="signInBtn" class="w3-button w3-round-large">כניסה לאתר</button>
+        </div>
+    </header>
+</div>
+<h1>יאללה מתחילים!</h1>
+<h2>מתי רוצים להתחתן?</h2>
+<button onclick="spontaneous()">ספונטניים וזורמים</button>
+<button onclick="datePicker()">חשבנו על תאריך ספציפי</button>
+<button onclick="seasonsButtons()">עונה מועדפת</button>
+<div id="selectDate">
+    <input type="date">
+</div>
+<div id="daysOfWeek">
+    <button>ראשון</button>
+    <button>שני</button>
+    <button>שלישי</button>
+    <button>רביעי</button>
+    <button>חמישי</button>
+    <button>שישי</button>
+</div>
+<div id="seasonsOptions">
+    <button value="Inset Border" style="border-style:inset;">
+        <img src="/client/html/summer.jpg" style="width:120px">
+    </button>
+    <button value="Inset Border" style="border-style:inset;">
+        <img src="/client/html/autumn.jpg" style="width:120px">
+    </button>
+    <button value="Inset Border" style="border-style:inset;">
+        <img src="/client/html/winter.jpeg" style="width:120px">
+    </button>
+    <button value="Inset Border" style="border-style:inset;">
+        <img src="/client/html/spring.jpg" style="width:120px">
+    </button>
+</div>
+<button id="nextButton">המשך</button>
+<script>
+    function spontaneous() {
+        var x = document.getElementById("selectDate");
+        x.style.display = "none";
+        x = document.getElementById("seasonsOptions");
+        x.style.display = "none";
+        x = document.getElementById("daysOfWeek");
+        x.style.display = "block";
+    }
+    function datePicker() {
+        var x = document.getElementById("selectDate");
+        x.style.display = "block";
+        x = document.getElementById("seasonsOptions");
+        x.style.display = "none";
+        x = document.getElementById("daysOfWeek");
+        x.style.display = "none";
+    }
+    function seasonsButtons() {
+        var x = document.getElementById("selectDate");
+        x.style.display = "none";
+        x = document.getElementById("daysOfWeek");
+        x.style.display = "none";
+        x = document.getElementById("seasonsOptions");
+        x.style.display = "block";
+    }
+</script>
+</body>
+</html>

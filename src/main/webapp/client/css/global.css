@@ -66,3 +66,12 @@ body {
 .container .btn:hover {
     opacity: 1;
 }
+
+.footer {
+    height: 100%;
+    color: black !important;
+    background-color: white !important;
+    font-family: 'Alef', sans-serif;
+    font-size: large;
+    position: fixed;
+}

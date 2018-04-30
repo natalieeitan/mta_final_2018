@@ -35,6 +35,14 @@
     </div>
 </div>
 
+<footer>
+    <div style="float: left; width: 130px">
+        <button id="contactUsBtn" class="w3-button w3-round-large">צור קשר</button>
+    </div>
+    <div style="float: right; width: 225px">
+        <button id="whoAreWeBtn" class="w3-button w3-round-large">מי אנחנו?</button>
+    </div>
+</footer>
 
 <script type="text/javascript">
     document.getElementById("signUpBtn").onclick = function () {
@@ -52,7 +60,12 @@
         location.href = "/client/html/register.html";
     };
 
+    document.getElementById("contactUsBtn").onclick = function () {
+        location.href = "/client/html/contactUs.html";
+    };
+    document.getElementById("whoAreWeBtn").onclick = function () {
+        location.href = "/client/html/whoAreWe.html";
+    };
 </script>
-
 </body>
 </html>

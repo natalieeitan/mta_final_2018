@@ -11,13 +11,13 @@ import java.util.List;
  * just for test
  */
 public class Couple extends User {
-    private Iterable<SchedulingRange> schedulingRange;
-    private Iterable<DayOfWeek> daysToMarry;
+    private SchedulingRange schedulingRange;
+    private DayOfWeek daysToMarry;
 
     private Date date; //specific Date
     private Season seasonToMarry; //season to marry
-    private Iterable<Area> area; //areas to marry
-    private Iterable<Style> styles;
+    private Area area; //areas to marry
+    private Style styles;
 
     private int numOfInvites;
     private PriceRange pricing;
@@ -32,5 +32,34 @@ public class Couple extends User {
     public void addSupplierIdToList(int id)
     {
         suppliersId.add(id);
+    }
+
+
+    public void setSchedulingRange(SchedulingRange schedulingRange) {
+        this.schedulingRange = schedulingRange;
+    }
+
+    public void setDaysToMarry(DayOfWeek daysToMarry) {
+        this.daysToMarry = daysToMarry;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setSeasonToMarry(Season seasonToMarry) {
+        this.seasonToMarry = seasonToMarry;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public void setStyles(Style styles) {
+        this.styles = styles;
+    }
+
+    public void setPricing(PriceRange pricing) {
+        this.pricing = pricing;
     }
 }
