@@ -2,66 +2,134 @@
 <html lang="he">
 <head dir="rtl">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="/client/css/global.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
     <title>הרשמה מלאה</title>
     <style>
         #selectDate {
             display: none;
         }
+
         #seasonsOptions {
             display: none;
         }
-        #daysOfWeek{
+
+        #daysOfWeek {
             display: none;
+        }
+
+        body, h1, h2 {
+            font-family: "Raleway", sans-serif
+        }
+
+        body, html {
+            height: 100%
+        }
+
+        p {
+            line-height: 2
+        }
+
+        .bgimg {
+            opacity: 0.8;
+            min-height: 100%;
+            background: url("wedding_couple.jpg") center;
+            background-size: cover;
+        }
+
+        @font-face {
+            font-family: sansation;
+            src: url(../fonts/ganclm_bold-webfont.woff);
+        }
+
+        .optionButton {
+            border: none;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        #outer {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+        }
+
+        .inner {
+            display: inline-block;
         }
     </style>
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <body dir="rtl">
 <div class="flex-container w3-padding w3-white">
-    <header>
+    <div>
         <div style="float: left; width: 130px">
             <button id="signUpBtn" class="w3-button w3-round-large">הרשמה לאתר</button>
         </div>
         <div style="float: right; width: 225px">
             <button id="signInBtn" class="w3-button w3-round-large">כניסה לאתר</button>
         </div>
-    </header>
+    </div>
 </div>
-<h1>יאללה מתחילים!</h1>
-<h2>מתי רוצים להתחתן?</h2>
-<button onclick="spontaneous()">ספונטניים וזורמים</button>
-<button onclick="datePicker()">חשבנו על תאריך ספציפי</button>
-<button onclick="seasonsButtons()">עונה מועדפת</button>
+<div class="w3-display-container w3-wide bgimg">
+</div>
+<h1 style="font-family: sansation; text-align: center;">יאללה מתחילים!</h1>
+<h2 style="font-family: sansation; text-align: center;">מתי רוצים להתחתן?</h2>
+<outer>
+    <button class="inner optionButton" onclick="spontaneous()">ספונטניים</button>
+    <button class="inner optionButton" onclick="datePicker()">תאריך ספציפי</button>
+    <button class="inner optionButton" onclick="seasonsButtons()">עונה מועדפת</button>
+</outer>
 <div id="selectDate">
     <input type="date">
 </div>
 <div id="daysOfWeek">
-    <button>ראשון</button>
-    <button>שני</button>
-    <button>שלישי</button>
-    <button>רביעי</button>
-    <button>חמישי</button>
-    <button>שישי</button>
+    <a href="#sunday" style="width:12.5%" class="w3-bar-item w3-button w3-hover-black">ראשון</a>
+    <a href="#monday" style="width:12.5%" class="w3-bar-item w3-button w3-hover-black">שני</a>
+    <a href="#tuesday" style="width:12.5%" class="w3-bar-item w3-button w3-hover-black">שלישי</a>
+    <a href="#wednesday" style="width:12.5%" class="w3-bar-item w3-button w3-hover-black">רביעי</a>
+    <a href="#thrusday" style="width:12.5%" class="w3-bar-item w3-button w3-hover-black">חמישי</a>
+    <a href="#friday" style="width:12.5%" class="w3-bar-item w3-button w3-hover-black">שישי</a>
 </div>
+
 <div id="seasonsOptions">
-    <button value="Inset Border" style="border-style:inset;">
-        <img src="/client/html/summer.jpg" style="width:120px">
-    </button>
-    <button value="Inset Border" style="border-style:inset;">
-        <img src="/client/html/autumn.jpg" style="width:120px">
-    </button>
-    <button value="Inset Border" style="border-style:inset;">
-        <img src="/client/html/winter.jpeg" style="width:120px">
-    </button>
-    <button value="Inset Border" style="border-style:inset;">
-        <img src="/client/html/spring.jpg" style="width:120px">
-    </button>
+    <div class="w3-quarter">
+        <img src="/client/html/summer.jpg" style="width:45%" class="w2-circle w3-hover-opacity">
+        <h3>קיץ</h3>
+    </div>
+    <div class="w3-quarter">
+        <img src="/client/html/autumn.jpg" style="width:45%" class="w2-circle w3-hover-opacity">
+        <h3>סתיו</h3>
+    </div>
+    <div class="w3-quarter">
+        <img src="/client/html/winter.jpeg"  style="width:45%" class="w2-circle w3-hover-opacity">
+        <h3>חורף</h3>
+    </div>
+    <div class="w3-quarter">
+        <img sr c="/client/html/spring.jpg" style="width:45%" class="w2-circle w3-hover-opacity">
+        <h3>אביב</h3>
+    </div>
 </div>
-<button id="nextButton">המשך</button>
+<footer>
+    <div style="float: left; width: 130px">
+        <button id="contactUsBtn" class="w3-button w3-round-large">צור קשר</button>
+    </div>
+    <div style="float: right; width: 225px">
+        <button id="whoAreWeBtn" class="w3-button w3-round-large">מי אנחנו?</button>
+    </div>
+</footer>
 <script>
     function spontaneous() {
         var x = document.getElementById("selectDate");
@@ -87,6 +155,13 @@
         x = document.getElementById("seasonsOptions");
         x.style.display = "block";
     }
+
+    document.getElementById("contactUsBtn").onclick = function () {
+        location.href = "/client/html/contactUs.html";
+    };
+    document.getElementById("whoAreWeBtn").onclick = function () {
+        location.href = "/client/html/whoAreWe.html";
+    };
 </script>
 </body>
 </html>
