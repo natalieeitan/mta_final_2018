@@ -3,8 +3,6 @@ package com.services;
 import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
 import com.utilities.SchedulingRange;
 
 import java.net.UnknownHostException;
@@ -43,5 +41,9 @@ public class DatabaseService {
 				.filter(x->x.getId()==id)
 				.findAny()
 				.orElse(null);
+	}
+
+	public void updateCouple(Couple couple) {
+	//todo
 	}
 }

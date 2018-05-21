@@ -11,7 +11,7 @@ import javax.xml.crypto.Data;
 public class CoupleService {
     DatabaseService dbService = new DatabaseService();
 
-    public void updateSchedulingRange(int id, SchedulingRange schedulingRange)
+    public void updateSchedulingRange(String id, SchedulingRange schedulingRange)
     {
         Couple couple = dbService.findCoupleById(id);
         couple.setSchedulingRange(schedulingRange);
