@@ -1,10 +1,12 @@
 package com.entities;
 
+import java.util.UUID;
+
 /**
  * Created by natalieeitan on 09/04/2018.
  */
 public class User {
-	protected int id;
+	protected String id;
 	protected String firstName;
 	protected String lastName;
 	protected String email;
@@ -16,9 +18,20 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
+		this.id = generateDb();
 	}
 
-	public int getId() {
+	public String generateDb()
+	{
+		String uniqueID = UUID.randomUUID().toString();
+		return uniqueID;
+	}
+	public String getId() {
 		return id;
+	}
+
+	public void setId(String id)
+	{
+		this.id = id;
 	}
 }

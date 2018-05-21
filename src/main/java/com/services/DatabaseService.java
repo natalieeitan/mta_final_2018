@@ -10,6 +10,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by natalieeitan on 15/04/2018.
@@ -21,8 +22,8 @@ public class DatabaseService {
 		return usersList;
 	}
 
-	public long addUser(User user) {
-		usersList.add(user);
+	public String addUser(User user) {
+        usersList.add(user);
 		return user.getId();
 	}
 
