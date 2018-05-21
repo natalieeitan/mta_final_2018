@@ -1,8 +1,14 @@
 package com.services;
 
+import com.entities.Couple;
 import com.entities.User;
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.utilities.SchedulingRange;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -18,5 +24,15 @@ public class DatabaseService {
 	public long addUser(User user) {
 		usersList.add(user);
 		return user.getId();
+	}
+
+
+	public Couple findCoupleById(int id) {
+		return null;
+	}
+
+	public void updateCouple(Couple couple) {
+		//db.findById()
+		//db.update(couple);
 	}
 }
