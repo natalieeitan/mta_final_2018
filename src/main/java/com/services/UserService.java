@@ -4,11 +4,9 @@ import com.entities.User;
 
 import java.util.List;
 
-/**
- * Created by natalieeitan on 09/04/2018.
- */
+
 public class UserService {
-//	List<User> usersList = EmployeeList.getInstance();
+//	List<User> usersList = EmployeeList.getCouplesList();
 
 //	public List<User> getAllEmployees() {
 //		return usersList;

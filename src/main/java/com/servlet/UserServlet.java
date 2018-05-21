@@ -20,7 +20,7 @@ public class UserServlet extends HttpServlet {
 			String lastName = request.getParameter("lastName");
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
-			dbService.addUser(new User(firstName, lastName, email, password));
+			dbService.addUser(new User(firstName, lastName, email, password),true);
 			response.sendRedirect("/client/html/onboarding-when.html");
 		}
 		else {
