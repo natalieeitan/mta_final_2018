@@ -3,13 +3,10 @@ package com.services;
 import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
-import com.utilities.SchedulingRange;
+import com.exceptions.EmailAlreadyExistException;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 public class DatabaseService {
 	private static final List<Supplier> suppliersList = new ArrayList();
@@ -23,7 +20,11 @@ public class DatabaseService {
 		return suppliersList;
 	}
 
-	public String addUser(User user, boolean isCouple) {
+	public String addUser(User user, boolean isCouple) throws EmailAlreadyExistException {
+		if(isEmailAlreadyExist(user.getEmail()))
+		{
+			throw new EmailAlreadyExistException("this email already exist on our system");
+		}
 		if(isCouple)
 		{
 			couplesList.add((Couple) user);
@@ -45,5 +46,21 @@ public class DatabaseService {
 
 	public void updateCouple(Couple couple) {
 	//todo
+	}
+
+	private boolean isEmailAlreadyExist(String email){
+		Couple searchByEmailOnCouples = getCouplesList().stream()
+				.filter(x->x.getEmail().equals(email))
+				.findAny()
+				.orElse(null);
+		Supplier searchByEmailOnSupplier = getSuppliersList().stream()
+				.filter(x->x.getEmail().equals(email))
+				.findAny()
+				.orElse(null);
+
+		if (searchByEmailOnCouples!=null||searchByEmailOnSupplier!=null)
+			return true;
+
+		return false;
 	}
 }

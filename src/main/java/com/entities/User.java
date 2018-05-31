@@ -27,11 +27,13 @@ public class User {
 		return uniqueID;
 	}
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(String id)
 	{
 		this.id = id;
 	}
+
+	public String getEmail(){ return this.email;}
 }

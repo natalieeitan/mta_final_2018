@@ -1,6 +1,7 @@
 package com.servlet;
 
 import com.entities.User;
+import com.exceptions.EmailAlreadyExistException;
 import com.services.DatabaseService;
 
 import javax.servlet.ServletException;
@@ -20,7 +21,11 @@ public class UserServlet extends HttpServlet {
 			String lastName = request.getParameter("lastName");
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
-			dbService.addUser(new User(firstName, lastName, email, password),true);
+			try {
+				dbService.addUser(new User(firstName, lastName, email, password),true);
+			} catch (EmailAlreadyExistException e) {
+				//todo- need to preset message to user about email exist
+			}
 			response.sendRedirect("/client/html/onboarding-when.html");
 		}
 		else {
