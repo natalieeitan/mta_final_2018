@@ -26,10 +26,23 @@ public class UserServlet extends HttpServlet {
 			} catch (EmailAlreadyExistException e) {
 				//todo- need to preset message to user about email exist
 			}
-			response.sendRedirect("/client/html/onboarding-when.html");
+			response.sendRedirect("/client/html/onboarding-couples.html");
 		}
+
+		if (request.getParameter("action_onboarding_suppliers")!=null) {
+			String vanueName = request.getParameter("vanueName");
+			String phone = request.getParameter("phone");
+			String maxCapacity = request.getParameter("maxCapacity");
+			String isGarden = request.getParameter("isGarden");
+			String area = request.getParameter("area");
+			String minPrice = request.getParameter("minPrice");
+			String style = request.getParameter("style");
+			dbService.updateSupplier();
+            ;response.sendRedirect("/client/html/supplier-dashboard.html");
+		}
+
 		else {
-			response.sendRedirect("/client/html/onboarding-when.html");
+			response.sendRedirect("/client/html/onboarding-couples.html");
 		}
 	}
 

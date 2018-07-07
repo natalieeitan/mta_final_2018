@@ -3,6 +3,7 @@ package com.entities;
 import com.utilities.Area;
 import com.utilities.Cities;
 import com.utilities.Style;
+
 // test
 public class Supplier extends User {
 
@@ -16,7 +17,7 @@ public class Supplier extends User {
     private int minPricePerPerson;
     private Style style;
 
-    public Supplier(String firstName, String lastName, String email, String password) {
-        super(firstName, lastName, email, password);
+    public Supplier(User user) {
+        super(user.firstName, user.lastName, user.email, user.password);
     }
 }

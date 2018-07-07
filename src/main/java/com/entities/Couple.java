@@ -24,10 +24,14 @@ public class Couple extends User {
 
     private ArrayList<Integer> suppliersId;
 
-	public Couple(String firstName, String lastName, String email, String password) {
-		super(firstName, lastName, email, password);
-        suppliersId = new ArrayList<>();
-	}
+//	public Couple(String firstName, String lastName, String email, String password) {
+//		super(firstName, lastName, email, password);
+//        suppliersId = new ArrayList<>();
+//	}
+
+    public Couple(User user) {
+        super(user.firstName, user.lastName, user.email, user.password);
+    }
 
     public void addSupplierIdToList(int id)
     {
