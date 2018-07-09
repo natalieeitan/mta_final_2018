@@ -2,7 +2,7 @@ package com.servlet;
 
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
-import com.services.DatabaseService;
+import com.services.ListsServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @WebServlet(name = "servlet.UserServlet", urlPatterns = {"/user"})
 public class UserServlet extends HttpServlet {
-	DatabaseService dbService = new DatabaseService();
+	ListsServiceImpl dbService = new ListsServiceImpl();
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {

@@ -4,7 +4,6 @@ import com.utilities.*;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by natalieeitan on 09/04/2018.
@@ -66,4 +65,7 @@ public class Couple extends User {
     public void setPricing(PriceRange pricing) {
         this.pricing = pricing;
     }
+
+    public Season getSeasonToMarry(){ return this.seasonToMarry; }
+    public DayOfWeek getDayOfWeek(){ return this.getDayOfWeek(); }
 }

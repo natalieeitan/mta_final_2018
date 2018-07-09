@@ -2,9 +2,6 @@ package com.entities;
 
 import java.util.UUID;
 
-/**
- * Created by natalieeitan on 09/04/2018.
- */
 public class User {
 	protected String id;
 	protected String firstName;
