@@ -45,8 +45,8 @@ public class UserServlet extends HttpServlet {
 			String area = request.getParameter("area");
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
-			dbService.updateSupplier();
-            ;response.sendRedirect("/client/html/supplier-dashboard.html");
+//			dbService.updateSupplier();
+            response.sendRedirect("/client/html/supplier-dashboard.html");
 		}
 
 		else {
