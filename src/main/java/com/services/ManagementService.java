@@ -19,9 +19,9 @@ public interface ManagementService {
 	String addUser(User user, boolean isCouple) throws EmailAlreadyExistException;
 
 	//statistics
-	long getCouplesNumberBySeason(Season season);
+	int getCouplesNumberBySeason(Season season);
 
-	long getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek);
+	int getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek);
 
 	Couple findCoupleById(String id);
 }

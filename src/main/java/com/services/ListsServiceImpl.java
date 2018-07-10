@@ -10,24 +10,38 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ListsServiceImpl implements ManagementService {
 	private static final List<Supplier> suppliersList = new ArrayList();
 	private static final List<Couple> couplesList = new ArrayList();
+	public ListsServiceImpl(){
+		Couple c = new Couple(new User("aa","bb", "adi@gmail.com","1234"));
+		c.setDaysToMarry(DayOfWeek.THURSDAY);
+		Couple c1 = new Couple(new User("cc","dd", "adi@gmail.com","1234"));
+		c1.setDaysToMarry(DayOfWeek.WEDNESDAY);
+		Couple c2 = new Couple(new User("ddd","ff", "adi@gmail.com","1234"));
+		c2.setDaysToMarry(DayOfWeek.THURSDAY);
+		couplesList.add(c);
+		couplesList.add(c1);
+		couplesList.add(c2);
+	}
 
 	//statistics
 	@Override
-	public long getCouplesNumberBySeason(Season season) {
+	public int getCouplesNumberBySeason(Season season) {
 		return getCouples().stream()
 				.filter(x -> x.getSeasonToMarry().equals(season))
-				.count();
+				.collect(Collectors.toList())
+				.size();
 	}
 
 	@Override
-	public long getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek) {
+	public int getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek) {
 		return getCouples().stream()
 				.filter(x -> x.getDayOfWeek().equals(dayOfWeek))
-				.count();
+				.collect(Collectors.toList())
+				.size();
 	}
 
 	@Override

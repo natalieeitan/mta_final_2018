@@ -32,12 +32,12 @@ public class DataBaseServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public long getCouplesNumberBySeason(Season season) {
+	public int getCouplesNumberBySeason(Season season) {
 		return 0;
 	}
 
 	@Override
-	public long getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek) {
+	public int getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek) {
 		return 0;
 	}
 

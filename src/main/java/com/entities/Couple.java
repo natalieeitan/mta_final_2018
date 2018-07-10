@@ -67,5 +67,5 @@ public class Couple extends User {
     }
 
     public Season getSeasonToMarry(){ return this.seasonToMarry; }
-    public DayOfWeek getDayOfWeek(){ return this.getDayOfWeek(); }
+    public DayOfWeek getDayOfWeek(){ return this.daysToMarry; }
 }
