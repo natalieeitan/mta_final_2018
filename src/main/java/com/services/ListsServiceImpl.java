@@ -4,7 +4,9 @@ import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
+import com.utilities.Area;
 import com.utilities.Season;
+import com.utilities.Style;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -53,6 +55,27 @@ public class ListsServiceImpl implements ManagementService {
 	}
 
 	@Override
+	public Supplier findSupplierById(String id) {
+		return getSuppliers().stream()
+				.filter(x -> x.getId()== id)
+				.findAny()
+				.orElse(null);	}
+
+	@Override
+	public void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area,
+			String minPricePerPerson, String style) {
+		Supplier supplier = findSupplierById(id);
+		int index = suppliersList.indexOf(supplier);
+		supplier.setVanueName(vanueName);
+		supplier.setPhone(phone);
+		supplier.setArea(Area.valueOf(area));
+		supplier.setStyle(Style.valueOf(style));
+		supplier.setGarden(Boolean.parseBoolean(isGarden));
+		supplier.setMaxCapacity(Integer.parseInt(maxCapacity));
+		suppliersList.set(index,supplier);
+	}
+
+	@Override
 	public List<Couple> getCouples() {
 		return couplesList;
 	}
@@ -80,14 +103,14 @@ public class ListsServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public String addUser(User user, boolean isCouple) throws EmailAlreadyExistException {
+	public String addUser(User user, boolean isSupplier) throws EmailAlreadyExistException {
 		if (isEmailAlreadyExist(user.getEmail())) {
 			throw new EmailAlreadyExistException("this email already exist on our system");
 		}
-		if (isCouple) {
-			couplesList.add(new Couple(user));
-		} else {
+		if (isSupplier) {
 			suppliersList.add(new Supplier(user));
+		} else {
+			couplesList.add(new Couple(user));
 		}
 		return user.getId();
 	}

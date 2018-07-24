@@ -27,7 +27,7 @@ public class DataBaseServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public String addUser(User user, boolean isCouple) throws EmailAlreadyExistException {
+	public String addUser(User user, boolean isSupplier) throws EmailAlreadyExistException {
 		return null;
 	}
 
@@ -44,5 +44,16 @@ public class DataBaseServiceImpl implements ManagementService {
 	@Override
 	public Couple findCoupleById(String id) {
 		return null;
+	}
+
+	@Override
+	public Supplier findSupplierById(String id) {
+		return null;
+	}
+
+	@Override
+	public void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area,
+			String minPricePerPerson, String style) {
+
 	}
 }

@@ -1,6 +1,6 @@
 <html lang="he">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>דף ההרשמה לאתר</title>
     <link rel="stylesheet" type="text/css" href="/client/css/register.css">
     <link rel="stylesheet" type="text/css" href="/client/css/global.css">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 </head>
-<body dir="rtl">
+<body dir="rtl" onload="getUrlParam('supplier')">
 <div class="flex-container w3-padding w3-white">
     <header>
         <div style="float: right; width: 225px">
@@ -21,7 +21,8 @@
     <h2>הרשמה לאתר</h2>
     <form action="/user" method="post">
         <ul class="errorMessages"></ul>
-                <input name="action_signup" hidden>
+        <input name="action_signup" hidden>
+        <input name="isSupplier" id="isSupplier" hidden>
         שם פרטי:<input type="text" name="firstName" required/><br/><br/>
         שם משפחה:<input type="text" name="lastName" required/><br/><br/>
         סיסמה:<input type="password" name="userPass" required/><br/><br/>
@@ -31,48 +32,58 @@
     </form>
 </div>
 <script>
-    var createAllErrors = function() {
-        var form = $( this ),
-                errorList = $( "ul.errorMessages", form );
+    var createAllErrors = function () {
+        var form = $(this),
+            errorList = $("ul.errorMessages", form);
 
-        var showAllErrorMessages = function() {
+        var showAllErrorMessages = function () {
             errorList.empty();
 
             // Find all invalid fields within the form.
-            var invalidFields = form.find( ":invalid" ).each( function( index, node ) {
+            var invalidFields = form.find(":invalid").each(function (index, node) {
 
                 // Find the field's corresponding label
-                var label = $( "label[for=" + node.id + "] "),
-                        // Opera incorrectly does not fill the validationMessage property.
-                        message = node.validationMessage || 'Invalid value.';
+                var label = $("label[for=" + node.id + "] "),
+                    // Opera incorrectly does not fill the validationMessage property.
+                    message = node.validationMessage || 'Invalid value.';
 
                 errorList
-                        .show()
-                        .append( "<li><span>" + label.html() + "</span> " + message + "</li>" );
+                    .show()
+                    .append("<li><span>" + label.html() + "</span> " + message + "</li>");
             });
         };
 
         // Support Safari
-        form.on( "submit", function( event ) {
-            if ( this.checkValidity && !this.checkValidity() ) {
-                $( this ).find( ":invalid" ).first().focus();
+        form.on("submit", function (event) {
+            if (this.checkValidity && !this.checkValidity()) {
+                $(this).find(":invalid").first().focus();
                 event.preventDefault();
             }
         });
 
-        $( "input[type=submit], button:not([type=button])", form )
-                .on( "click", showAllErrorMessages);
+        $("input[type=submit], button:not([type=button])", form)
+            .on("click", showAllErrorMessages);
 
-        $( "input", form ).on( "keypress", function( event ) {
-            var type = $( this ).attr( "type" );
-            if ( /date|email|month|number|search|tel|text|time|url|week/.test ( type )
-                    && event.keyCode == 13 ) {
+        $("input", form).on("keypress", function (event) {
+            var type = $(this).attr("type");
+            if (/date|email|month|number|search|tel|text|time|url|week/.test(type)
+                && event.keyCode == 13) {
                 showAllErrorMessages();
             }
         });
     };
-
-    $( "form" ).each( createAllErrors );
+    $("form").each(createAllErrors);
 </script>
+<script type="text/javascript">
+    function getUrlParam( name ) {
+        url = location.href;
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp( regexS );
+        var results = regex.exec( url );
+        document.getElementById("isSupplier").value = results[1];
+    }
+</script>
+
 </body>
 </html>

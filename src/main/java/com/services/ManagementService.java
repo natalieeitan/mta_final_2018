@@ -16,7 +16,7 @@ public interface ManagementService {
 
 	boolean isEmailAlreadyExist(String email);
 
-	String addUser(User user, boolean isCouple) throws EmailAlreadyExistException;
+	String addUser(User user, boolean isSupplier) throws EmailAlreadyExistException;
 
 	//statistics
 	int getCouplesNumberBySeason(Season season);
@@ -24,4 +24,8 @@ public interface ManagementService {
 	int getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek);
 
 	Couple findCoupleById(String id);
+
+	Supplier findSupplierById(String id);
+
+	void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area, String minPricePerPerson, String style);
 }
