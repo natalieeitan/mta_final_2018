@@ -15,7 +15,6 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
-		this.id = generateDb();
 	}
 
 	public String generateDb()

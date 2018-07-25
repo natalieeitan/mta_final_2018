@@ -18,6 +18,7 @@ public class Supplier extends User {
 
     public Supplier(User user) {
         super(user.firstName, user.lastName, user.email, user.password);
+        this.setId(super.generateDb());
     }
 
     public void setVanueName(String vanueName) {

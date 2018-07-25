@@ -1,7 +1,5 @@
 package com.servlet;
 
-import com.entities.User;
-import com.exceptions.EmailAlreadyExistException;
 import com.services.ListsServiceImpl;
 
 import javax.servlet.ServletException;
@@ -11,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "servlet.UserServlet", urlPatterns = {"/user"})
+@WebServlet(name = "servlet.StatisticsServlet", urlPatterns = {"/statistics"})
 public class StatisticsServlet extends HttpServlet {
 	ListsServiceImpl dbService = new ListsServiceImpl();
 

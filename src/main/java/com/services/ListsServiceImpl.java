@@ -4,9 +4,7 @@ import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
-import com.utilities.Area;
 import com.utilities.Season;
-import com.utilities.Style;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -17,16 +15,17 @@ import java.util.stream.Collectors;
 public class ListsServiceImpl implements ManagementService {
 	private static final List<Supplier> suppliersList = new ArrayList();
 	private static final List<Couple> couplesList = new ArrayList();
-	public ListsServiceImpl(){
-		Couple c = new Couple(new User("aa","bb", "adi@gmail.com","1234"));
-		c.setDaysToMarry(DayOfWeek.THURSDAY);
-		Couple c1 = new Couple(new User("cc","dd", "adi@gmail.com","1234"));
-		c1.setDaysToMarry(DayOfWeek.WEDNESDAY);
-		Couple c2 = new Couple(new User("ddd","ff", "adi@gmail.com","1234"));
-		c2.setDaysToMarry(DayOfWeek.THURSDAY);
-		couplesList.add(c);
-		couplesList.add(c1);
-		couplesList.add(c2);
+
+	public ListsServiceImpl() {
+		//		Couple c = new Couple(new User("aa","bb", "adi@gmail.com","1234"));
+		//		c.setDaysToMarry(DayOfWeek.THURSDAY);
+		//		Couple c1 = new Couple(new User("cc","dd", "adi@gmail.com","1234"));
+		//		c1.setDaysToMarry(DayOfWeek.WEDNESDAY);
+		//		Couple c2 = new Couple(new User("ddd","ff", "adi@gmail.com","1234"));
+		//		c2.setDaysToMarry(DayOfWeek.THURSDAY);
+		//		couplesList.add(c);
+		//		couplesList.add(c1);
+		//		couplesList.add(c2);
 	}
 
 	//statistics
@@ -57,9 +56,10 @@ public class ListsServiceImpl implements ManagementService {
 	@Override
 	public Supplier findSupplierById(String id) {
 		return getSuppliers().stream()
-				.filter(x -> x.getId()== id)
+				.filter(x -> Objects.equals(x.getId(), id))
 				.findAny()
-				.orElse(null);	}
+				.orElse(null);
+	}
 
 	@Override
 	public void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area,
@@ -68,11 +68,12 @@ public class ListsServiceImpl implements ManagementService {
 		int index = suppliersList.indexOf(supplier);
 		supplier.setVanueName(vanueName);
 		supplier.setPhone(phone);
-		supplier.setArea(Area.valueOf(area));
-		supplier.setStyle(Style.valueOf(style));
+		//todo - fix this , not getting correct enum - getting exception
+		// supplier.setArea(Area.valueOf(area));
+		// supplier.setStyle(Style.valueOf(style));
 		supplier.setGarden(Boolean.parseBoolean(isGarden));
 		supplier.setMaxCapacity(Integer.parseInt(maxCapacity));
-		suppliersList.set(index,supplier);
+		suppliersList.set(index, supplier);
 	}
 
 	@Override
@@ -108,10 +109,13 @@ public class ListsServiceImpl implements ManagementService {
 			throw new EmailAlreadyExistException("this email already exist on our system");
 		}
 		if (isSupplier) {
-			suppliersList.add(new Supplier(user));
+			Supplier newSupplier = new Supplier(user);
+			suppliersList.add(newSupplier);
+			return newSupplier.getId();
 		} else {
+			Couple newCouple = new Couple(user);
 			couplesList.add(new Couple(user));
+			return newCouple.getId();
 		}
-		return user.getId();
 	}
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>דף ההרשמה לאתר</title>
     <link rel="stylesheet" type="text/css" href="/client/css/register.css">
     <link rel="stylesheet" type="text/css" href="/client/css/global.css">
@@ -11,43 +11,43 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
 </head>
 <body onload="getUrlParam('id')">
-<div class="form-style-8">
-    <h2>הרשמה לאתר</h2>
-    <form action="/user" method="post">
-        <ul class="errorMessages"></ul>
-        <input name="action_onboarding_suppliers" hidden>
-        <input name="id" id="id" hidden>
-        שם האולם:<input type="text" name="vanueName" required/><br/><br/>
-        טלפון נוסף:<input type="number" name="phone" required/><br/><br/>
-        תפוסה מקסימלית:<input type="number" name="maxCapacity" required/><br/><br/>
-        האם גן:<input type="checkbox" name="isGarden" required/><br/><br/>
-        <select name="area">
-            <option value="north">צפון</option>
-            <option value="sharon">השרון</option>
-            <option value="south">דרום</option>
-            <option value="center">מרכז</option>
-        </select>        <br/><br/>
-        מחיר מנה מינימלי:<input type="number" name="minPrice" required/><br/><br/>
-        <select name="style">
-            <option value="village">כפרי</option>
-            <option value="sharon">השרון</option>
-            <option value="south">דרום</option>
-            <option value="center">מרכז</option>
-        </select>        <br/><br/>
-        <input type="submit" value="הרשמה"/>
-    </form>
-</div>
+    <div class="form-style-8">
+        <h2>הרשמה לאתר</h2>
+        <form action="/user" method="post">
+            <ul class="errorMessages"></ul>
+            <input name="action_onboarding_suppliers" hidden>
+            <input name="id" id="id" hidden>
+            שם האולם:<input type="text" name="vanueName" required/><br/><br/>
+            טלפון נוסף:<input type="number" name="phone" required/><br/><br/>
+            תפוסה מקסימלית:<input type="number" name="maxCapacity" required/><br/><br/>
+            האם גן:<input type="checkbox" name="isGarden" required/><br/><br/>
+            <select name="area">
+                <option value="north">צפון</option>
+                <option value="sharon">השרון</option>
+                <option value="south">דרום</option>
+                <option value="center">מרכז</option>
+            </select> <br/><br/>
+            מחיר מנה מינימלי:<input type="number" name="minPrice" required/><br/><br/>
+            <select name="style">
+                <option value="village">כפרי</option>
+                <option value="sharon">השרון</option>
+                <option value="south">דרום</option>
+                <option value="center">מרכז</option>
+            </select> <br/><br/>
+            <input type="submit" value="הרשמה"/>
+        </form>
+    </div>
 
-<script type="text/javascript">
-    function getUrlParam( name ) {
-        url = location.href;
-        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-        var regexS = "[\\?&]"+name+"=([^&#]*)";
-        var regex = new RegExp( regexS );
-        var results = regex.exec( url );
-        document.getElementById("id").value = results[1];
-    }
-</script>
+    <script type="text/javascript">
+        function getUrlParam(name) {
+            url = location.href;
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + name + "=([^&#]*)";
+            var regex = new RegExp(regexS);
+            var results = regex.exec(url);
+            document.getElementById("id").value = results[1];
+        }
+    </script>
 
 </body>
 </html>
