@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
+
 @WebServlet(name = "servlet.UserServlet", urlPatterns = {"/user"})
 public class UserServlet extends HttpServlet {
 	ListsServiceImpl dbService = new ListsServiceImpl();
@@ -56,6 +58,14 @@ public class UserServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		if(request.getParameter("action_signin")!=null){
+			Optional<User> res = dbService.getUserByPasswordAndEmail(request.getParameter("password"),request.getParameter("email"));
+			if(res.isPresent()){
+				response.sendRedirect("/client/html/notfound.html");
+			}
+			else{
+				response.sendRedirect("/client/html/found.html");
+			}
+		}
 	}
 }

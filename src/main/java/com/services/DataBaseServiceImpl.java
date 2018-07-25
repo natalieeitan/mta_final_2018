@@ -8,7 +8,7 @@ import com.utilities.Season;
 
 import java.time.DayOfWeek;
 import java.util.List;
-
+import java.util.Optional;
 
 public class DataBaseServiceImpl implements ManagementService {
 	@Override
@@ -18,6 +18,11 @@ public class DataBaseServiceImpl implements ManagementService {
 
 	@Override
 	public List<Supplier> getSuppliers() {
+		return null;
+	}
+
+	@Override
+	public List<User> getUsers() {
 		return null;
 	}
 
@@ -55,5 +60,10 @@ public class DataBaseServiceImpl implements ManagementService {
 	public void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area,
 			String minPricePerPerson, String style) {
 
+	}
+
+	@Override
+	public Optional<User> getUserByPasswordAndEmail(String password, String email) {
+		return null;
 	}
 }

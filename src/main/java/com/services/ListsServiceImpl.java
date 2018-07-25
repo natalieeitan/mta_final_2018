@@ -7,15 +7,13 @@ import com.exceptions.EmailAlreadyExistException;
 import com.utilities.Season;
 
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ListsServiceImpl implements ManagementService {
 	private static final List<Supplier> suppliersList = new ArrayList();
 	private static final List<Couple> couplesList = new ArrayList();
-
+	private static final List<User> usersList = new ArrayList<>();
 	public ListsServiceImpl() {
 		//		Couple c = new Couple(new User("aa","bb", "adi@gmail.com","1234"));
 		//		c.setDaysToMarry(DayOfWeek.THURSDAY);
@@ -77,6 +75,13 @@ public class ListsServiceImpl implements ManagementService {
 	}
 
 	@Override
+	public Optional<User> getUserByPasswordAndEmail(String password, String email) {
+		return getUsers().stream()
+				.filter(x -> email.equals(x.getEmail()))
+				.findFirst();
+	}
+
+	@Override
 	public List<Couple> getCouples() {
 		return couplesList;
 	}
@@ -84,6 +89,11 @@ public class ListsServiceImpl implements ManagementService {
 	@Override
 	public List<Supplier> getSuppliers() {
 		return suppliersList;
+	}
+
+	@Override
+	public List<User> getUsers() {
+		return usersList;
 	}
 
 	@Override
@@ -110,10 +120,14 @@ public class ListsServiceImpl implements ManagementService {
 		}
 		if (isSupplier) {
 			Supplier newSupplier = new Supplier(user);
+			user.setId(newSupplier.getId());
+			usersList.add(user);
 			suppliersList.add(newSupplier);
 			return newSupplier.getId();
 		} else {
 			Couple newCouple = new Couple(user);
+			user.setId(newCouple.getId());
+			usersList.add(user);
 			couplesList.add(new Couple(user));
 			return newCouple.getId();
 		}

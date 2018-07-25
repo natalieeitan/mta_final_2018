@@ -8,11 +8,14 @@ import com.utilities.Season;
 
 import java.time.DayOfWeek;
 import java.util.List;
+import java.util.Optional;
 
 public interface ManagementService {
 	List<Couple> getCouples();
 
 	List<Supplier> getSuppliers();
+
+	List<User> getUsers();
 
 	boolean isEmailAlreadyExist(String email);
 
@@ -28,4 +31,6 @@ public interface ManagementService {
 	Supplier findSupplierById(String id);
 
 	void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area, String minPricePerPerson, String style);
+
+	Optional<User> getUserByPasswordAndEmail(String password, String email);
 }
