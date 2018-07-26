@@ -3,7 +3,7 @@ package com.utilities;
 public enum Area {
     North("north"),
     Haifa("Haifa"),
-    Center("SpecificDate"),
+    Center("Center"),
     TelAviv("Tal-Aviv"),
     Jerusalem("Jerusalem"),
     Shfela("shfela"),

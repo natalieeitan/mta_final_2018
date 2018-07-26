@@ -12,11 +12,10 @@
 <body dir="rtl">
 <div class="flex-container w3-padding w3-white">
     <header>
-        <div style="float: left; width: 130px">
-            <button id="signUpBtn" class="w3-button w3-round-large">הרשמה לאתר</button>
-        </div>
+        <a href="/client/html/dashboard.html"><img src="/client/html/tmpLogo.PNG" width="190" height="82" alt="wedit" style="float: left; alignment: top; alignment: left"></a>
+        <!--</div>-->
         <div style="float: right; width: 225px">
-            <button id="signInBtn" class="w3-button w3-round-large">כניסה לאתר</button>
+            <button id="signInBtn" class="w3-button w3-center-align w3-round-large">כניסה לאתר</button>
         </div>
     </header>
 </div>
@@ -45,9 +44,9 @@
 </footer>
 
 <script type="text/javascript">
-    document.getElementById("signUpBtn").onclick = function () {
-        location.href = "/client/html/register.html";
-    };
+    // document.getElementById("signUpBtn").onclick = function () {
+    //     location.href = "/client/html/register.html";
+    // };
     document.getElementById("signInBtn").onclick = function () {
         location.href = "/client/html/signIn.html";
     };
@@ -57,7 +56,7 @@
     };
 
     document.getElementById("coupleSignUp").onclick = function () {
-        location.href = "/client/html/register.html?couple=true";
+        location.href = "/client/html/signIn.html?supplier=false";
     };
 
     document.getElementById("contactUsBtn").onclick = function () {

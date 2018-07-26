@@ -104,50 +104,190 @@
             </div>
         </div>
     </div>
-    <div class="w3-display-container w3-wide bgimg">
-    </div>
+    <!--<div class="w3-display-container w3-wide bgimg">-->
+    <!--</div>-->
     <h1 style="font-family: sansation; text-align: center;">יאללה מתחילים!</h1>
-    <h2 style="font-family: sansation; text-align: center;">מתי רוצים להתחתן?</h2>
-    <outer>
-        <button class="inner optionButton center" onclick="spontaneous()">ספונטניים</button>
-        <button class="inner optionButton center" onclick="datePicker()">תאריך ספציפי</button>
-        <button class="inner optionButton center" onclick="seasonsButtons()">עונה מועדפת</button>
-    </outer>
-    <div id="selectDate">
-        <input type="date">
+    <form id="form1_id" onload="func()">
+    <div id="filter">
+        <input class="formCheckbox required" type="checkbox" onclick="func()"/>1
+        <input class="formCheckbox required" type="checkbox" onclick="func()"/>2
+        <input class="formCheckbox required" type="checkbox" onclick="func()"/>3
+        <input id="submit" disabled value="4"/>
     </div>
-    <h1 id="favoriteDayOfWeek">בחרו יום מועדף בשבוע</h1>
-    <div id="daysOfWeek">
-        <a href="#sunday" style="width:12.5%" class="btn w3-bar-item w3-button w3-hover-black">ראשון</a>
-        <a href="#monday" style="width:12.5%" class="btn w3-bar-item w3-button w3-hover-black">שני</a>
-        <a href="#tuesday" style="width:12.5%" class="btn w3-bar-item w3-button w3-hover-black">שלישי</a>
-        <a href="#wednesday" style="width:12.5%" class="btn w3-bar-item w3-button w3-hover-black">רביעי</a>
-        <a href="#thrusday" style="width:12.5%" class="btn w3-bar-item w3-button w3-hover-black">חמישי</a>
-        <a href="#friday" style="width:12.5%" class="btn w3-bar-item w3-button w3-hover-black">שישי</a>
+    </form>
+    <script>
+        function func()
+        {
+            if ($('#form1_id input:checked').length) {
+                $('#submit').removeAttr(disabled);
+            }
+        }
+        $("input[type=checkbox]").onclick(func);
+    </script>
+
+    <div id="containerWhen" style="display: block">
+        <h2 style="font-family: sansation; text-align: center;">מתי רוצים להתחתן?</h2>
+        <outer>
+            <button class="inner optionButton center" onclick="spontaneous()">ספונטניים</button>
+            <button class="inner optionButton center" onclick="datePicker()">תאריך ספציפי</button>
+            <button class="inner optionButton center" onclick="seasonsButtons()">עונה מועדפת</button>
+        </outer>
+
+        <div id="selectDate">
+            <input type="date" onchange="WhenCanContinue()">
+        </div>
+        <form name="frmTest" id="frmTest">
+            <div id="daysOfWeek">
+                <h1 id="favoriteDayOfWeek">בחרו יום מועדף בשבוע</h1>
+                <input id="daySunday" type="checkbox" ref="#sunday" onchange="daysClick()">ראשון
+                <input id="dayMonday" type="checkbox" ref="#monday" onchange="daysClick()">שני
+                <input id="dayTuesday" type="checkbox" href="#tuesday" onchange="daysClick()"> שלישי
+                <input id="dayWednesday" type="checkbox" href="#wednesday" onchange="daysClick()"> רביעי
+                <input id="dayThrusday" type="checkbox" href="#thrusday" onchange="daysClick()"> חמישי
+                <input id="dayFriday" type="checkbox" href="#thrusday" onchange="daysClick()"> שישי
+            </div>
+        </form>
+        <div id="seasonsOptions">
+            <div class="w3-quarter">
+                <img src="/client/html/summer.jpg" style="width:45%" class="w2-circle w3-hover-opacity"
+                     onclick="WhenCanContinue()">
+                <h3>קיץ</h3>
+            </div>
+            <div class="w3-quarter">
+                <img src="/client/html/autumn.jpg" style="width:45%" class="w2-circle w3-hover-opacity"
+                     onclick="WhenCanContinue()">
+                <h3>סתיו</h3>
+            </div>
+            <div class="w3-quarter">
+                <img src="/client/html/winter.jpeg" style="width:45%" class="w2-circle w3-hover-opacity"
+                     onclick="WhenCanContinue()">
+                <h3>חורף</h3>
+            </div>
+            <div class="w3-quarter">
+                <img src="/client/html/spring.jpg" style="width:45%" class="w2-circle w3-hover-opacity"
+                     onclick="WhenCanContinue()">
+                <h3>אביב</h3>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <input id="whenNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToWhere()" value="המשך">
+        </div>
+        <script>
+            function daysClick() {
+                if ($("#frmTest input:checkbox:checked").length > 0)
+                {
+                    document.getElementById("whenNextBtn").disabled = false;
+                }
+            }
+                // if (
+                //     (document.getElementById("daySunday").checked) ||
+                //     (document.getElementById("dayMonday").checked) ||
+                //     (document.getElementById("dayTuesday").checked) ||
+                //     (document.getElementById("dayWednesday").checked) ||
+                //     (document.getElementById("dayThrusday").checked) ||
+                //     (document.getElementById("dayFriday").checked)
+                // )
+                //     document.getElementById("whenNextBtn").disabled = false;
+                // else
+                //     document.getElementById("whenNextBtn").disabled = true;
+            //}
+
+            // // Add active class to the current button (highlight it)
+            // var header = document.getElementById("favoriteDayOfWeek");
+            // var btns = header.getElementsByClassName("btn");
+            // for (var i = 0; i < btns.length; i++) {
+            //     btns[i].addEventListener("click", function () {
+            //         var current = document.getElementsByClassName("w3-hover-opacity");
+            //         current[0].className = current[0].className.replace(" w3-hover-opacity", "");
+            //         this.className += " w3-hover-opacity";
+            //     });
+            // }
+
+            function WhenCanContinue() {
+                canContinue("whenNextBtn");
+            }
+
+            function WhenNotContinue() {
+                notContinue("whenNextBtn");
+            }
+
+            function spontaneous() {
+                WhenNotContinue();
+                var x = document.getElementById("selectDate");
+                x.style.display = "none";
+                x = document.getElementById("seasonsOptions");
+                x.style.display = "none";
+                x = document.getElementById("daysOfWeek");
+                x.style.display = "block";
+                x = document.getElementById("favoriteDayOfWeek");
+                x.style.display = "block";
+            }
+
+            function datePicker() {
+                WhenNotContinue();
+                var x = document.getElementById("selectDate");
+                x.style.display = "block";
+                x = document.getElementById("seasonsOptions");
+                x.style.display = "none";
+                x = document.getElementById("daysOfWeek");
+                x.style.display = "none";
+                x = document.getElementById("favoriteDayOfWeek");
+                x.style.display = "none";
+            }
+
+            function seasonsButtons() {
+                WhenNotContinue();
+                var x = document.getElementById("selectDate");
+                x.style.display = "none";
+                x = document.getElementById("daysOfWeek");
+                x.style.display = "none";
+                x = document.getElementById("seasonsOptions");
+                x.style.display = "block";
+                x = document.getElementById("favoriteDayOfWeek");
+                x.style.display = "none";
+            }
+
+            function goToWhere() {
+                goToNext("containerWhen", "containerWhere");
+            }
+
+            document.getElementById("contactUsBtn").onclick = function () {
+                location.href = "/client/html/contactUs.html";
+            };
+            document.getElementById("whoAreWeBtn").onclick = function () {
+                location.href = "/client/html/whoAreWe.html";
+            };
+        </script>
     </div>
 
-    <div id="seasonsOptions">
-        <div class="w3-quarter">
-            <img src="/client/html/summer.jpg" style="width:45%" class="w2-circle w3-hover-opacity">
-            <h3>קיץ</h3>
-        </div>
-        <div class="w3-quarter">
-            <img src="/client/html/autumn.jpg" style="width:45%" class="w2-circle w3-hover-opacity">
-            <h3>סתיו</h3>
-        </div>
-        <div class="w3-quarter">
-            <img src="/client/html/winter.jpeg" style="width:45%" class="w2-circle w3-hover-opacity">
-            <h3>חורף</h3>
-        </div>
-        <div class="w3-quarter">
-            <img src="/client/html/spring.jpg" style="width:45%" class="w2-circle w3-hover-opacity">
-            <h3>אביב</h3>
-        </div>
+    <div id="containerWhere" style="display: none">
+        <h2 style="font-family: sansation; text-align: center;">איפה רוצים להתחתן?</h2>
+        <input type="checkbox" id="north" href="#north" style="width:12.5%" onclick="areaClick()">צפון</input>
+        <input type="checkbox" id="center" href="#center" style="width:12.5%" onclick="areaClick()">מרכז</input>
+        <input type="checkbox" id="Jerusalem" href="#Jerusalem" style="width:12.5%"
+               onclick="canContinue()">ירושלים</input>
+        <input type="checkbox" id="Sharon" href="#Sharon" style="width:12.5%" onclick="areaClick()">שרון</input>
+        <input type="checkbox" id="Shfela" href="#Shfela" style="width:12.5%" onclick="areaClick()">שפלה</a>
+        <input type="checkbox" id="South" href="#South" style="width:12.5%" onclick="areaClick()">דרום</input>
+        <br/>
+        <input id="whereNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToWhere()" value="המשך">
     </div>
-    <div class="w3-quarter">
-        <button id="nextBtn" disabled>המשך</button>
-    </div>
-    <footer>
+    <script>
+        function areaClick() {
+            if (
+                (document.getElementById("north").checked) ||
+                (document.getElementById("center").checked) ||
+                (document.getElementById("Jerusalem").checked) ||
+                (document.getElementById("Sharon").checked) ||
+                (document.getElementById("Shfela").checked) ||
+                (document.getElementById("South").checked)
+            )
+                document.getElementById("whereNextBtn").disabled = false;
+            else
+                document.getElementById("whereNextBtn").disabled = true;
+        }
+    </script>
+    <footer style="padding-top: 100px">
         <div style="float: left; width: 130px">
             <button id="contactUsBtn" class="w3-button w3-round-large">צור קשר</button>
         </div>
@@ -156,55 +296,18 @@
         </div>
     </footer>
     <script>
-        // Add active class to the current button (highlight it)
-        var header = document.getElementById("favoriteDayOfWeek");
-        var btns = header.getElementsByClassName("btn");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function() {
-                var current = document.getElementsByClassName("w3-hover-opacity");
-                current[0].className = current[0].className.replace(" w3-hover-opacity", "");
-                this.className += " w3-hover-opacity";
-            });
-        }
-    </script>
-    <script>
-        function spontaneous() {
-            var x = document.getElementById("selectDate");
-            x.style.display = "none";
-            x = document.getElementById("seasonsOptions");
-            x.style.display = "none";
-            x = document.getElementById("daysOfWeek");
-            x.style.display = "block";
-            x = document.getElementById("favoriteDayOfWeek");
-            x.style.display = "block";
-        }
-        function datePicker() {
-            var x = document.getElementById("selectDate");
-            x.style.display = "block";
-            x = document.getElementById("seasonsOptions");
-            x.style.display = "none";
-            x = document.getElementById("daysOfWeek");
-            x.style.display = "none";
-            x = document.getElementById("favoriteDayOfWeek");
-            x.style.display = "none";
-        }
-        function seasonsButtons() {
-            var x = document.getElementById("selectDate");
-            x.style.display = "none";
-            x = document.getElementById("daysOfWeek");
-            x.style.display = "none";
-            x = document.getElementById("seasonsOptions");
-            x.style.display = "block";
-            x = document.getElementById("favoriteDayOfWeek");
-            x.style.display = "none";
+        function canContinue(id) {
+            document.getElementById(id).disabled = false;
         }
 
-        document.getElementById("contactUsBtn").onclick = function () {
-            location.href = "/client/html/contactUs.html";
-        };
-        document.getElementById("whoAreWeBtn").onclick = function () {
-            location.href = "/client/html/whoAreWe.html";
-        };
+        function notContinue(id) {
+            document.getElementById(id).disabled = true;
+        }
+
+        function goToNext(idToEnable, idToDisable) {
+            document.getElementById(idToEnable).style.display = "none";
+            document.getElementById(idToDisable).style.display = "block";
+        }
     </script>
 </div>
 </body>

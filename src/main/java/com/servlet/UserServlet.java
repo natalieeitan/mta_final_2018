@@ -23,12 +23,13 @@ public class UserServlet extends HttpServlet {
 			String lastName = request.getParameter("lastName");
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
-			boolean isSupplier= request.getParameter("isSupplier") != null;
+			boolean isSupplier= Boolean.valueOf(request.getParameter("isSupplier"));
 			User newUser = new User(firstName, lastName, email, password);
 			String id = null;
 			try {
 				id = dbService.addUser(newUser,isSupplier);
 			} catch (EmailAlreadyExistException e) {
+				return;
 				//todo- need to preset message to user about email exist
 			}
 			if(isSupplier){

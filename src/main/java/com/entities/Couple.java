@@ -30,6 +30,7 @@ public class Couple extends User {
 
     public Couple(User user) {
         super(user.firstName, user.lastName, user.email, user.password);
+        this.setId(super.generateDb());
     }
 
     public void addSupplierIdToList(int id)
