@@ -88,6 +88,8 @@
         }
 
     </style>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -109,20 +111,24 @@
     <h1 style="font-family: sansation; text-align: center;">יאללה מתחילים!</h1>
     <form id="form1_id" onload="func()">
     <div id="filter">
-        <input class="formCheckbox required" type="checkbox" onclick="func()"/>1
-        <input class="formCheckbox required" type="checkbox" onclick="func()"/>2
+        <input class="formCheckbox required" id="form1_isd" type="checkbox" value="1" onclick="func()"/>
+        <input class="formCheckbox required" type="checkbox" value="2" onclick="func()"/>
         <input class="formCheckbox required" type="checkbox" onclick="func()"/>3
-        <input id="submit" disabled value="4"/>
+        <input type="button" id="submit" disabled value="4"/>
     </div>
     </form>
     <script>
-        function func()
-        {
-            if ($('#form1_id input:checked').length) {
-                $('#submit').removeAttr(disabled);
+        var countChecked = function() {
+            if ($('.formCheckbox:checkbox:checked').length!=0) {
+                $('#submit').prop("disabled", false);
             }
-        }
-        $("input[type=checkbox]").onclick(func);
+            else{
+                $('#submit').prop("disabled", true);
+            }
+        };
+        countChecked();
+
+        $( "input[type=checkbox]" ).on( "click", countChecked );
     </script>
 
     <div id="containerWhen" style="display: block">

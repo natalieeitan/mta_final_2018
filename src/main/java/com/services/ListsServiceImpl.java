@@ -14,6 +14,7 @@ public class ListsServiceImpl implements ManagementService {
 	private static final List<Supplier> suppliersList = new ArrayList();
 	private static final List<Couple> couplesList = new ArrayList();
 	private static final List<User> usersList = new ArrayList<>();
+
 	public ListsServiceImpl() {
 		//		Couple c = new Couple(new User("aa","bb", "adi@gmail.com","1234"));
 		//		c.setDaysToMarry(DayOfWeek.THURSDAY);
@@ -77,7 +78,7 @@ public class ListsServiceImpl implements ManagementService {
 	@Override
 	public Optional<User> getUserByPasswordAndEmail(String password, String email) {
 		return getUsers().stream()
-				.filter(x -> email.equals(x.getEmail()))
+				.filter(x -> (email.equals(x.getEmail()) && password.equals(x.getPassword())))
 				.findFirst();
 	}
 
@@ -98,16 +99,12 @@ public class ListsServiceImpl implements ManagementService {
 
 	@Override
 	public boolean isEmailAlreadyExist(String email) {
-		Couple searchByEmailOnCouples = getCouples().stream()
-				.filter(x -> x.getEmail().equals(email))
-				.findAny()
-				.orElse(null);
-		Supplier searchByEmailOnSupplier = getSuppliers().stream()
+		User searchByEmail = getUsers().stream()
 				.filter(x -> x.getEmail().equals(email))
 				.findAny()
 				.orElse(null);
 
-		if (searchByEmailOnCouples != null || searchByEmailOnSupplier != null)
+		if (searchByEmail != null)
 			return true;
 
 		return false;

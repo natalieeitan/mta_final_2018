@@ -49,7 +49,7 @@ public class UserServlet extends HttpServlet {
 			String style = request.getParameter("style");
 			String id = request.getParameter("id");
 			dbService.updateSupplier(id,vanueName, phone,maxCapacity,isGarden, area, minPrice, style);
-			response.sendRedirect("/client/html/supplier-dashboard.html");
+			response.sendRedirect("/client/html/supplier-dashboard.html?id="+id);
 		}
 
 		else {
@@ -62,10 +62,10 @@ public class UserServlet extends HttpServlet {
 		if(request.getParameter("action_signin")!=null){
 			Optional<User> res = dbService.getUserByPasswordAndEmail(request.getParameter("password"),request.getParameter("email"));
 			if(res.isPresent()){
-				response.sendRedirect("/client/html/notfound.html");
+				response.sendRedirect("/client/html/found.html");
 			}
 			else{
-				response.sendRedirect("/client/html/found.html");
+				response.sendRedirect("/client/html/not-found.html");
 			}
 		}
 	}
