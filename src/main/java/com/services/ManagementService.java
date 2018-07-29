@@ -6,12 +6,13 @@ import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.utilities.Season;
 
+import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Optional;
 
 public interface ManagementService {
-	List<Couple> getCouples();
+	List<Couple> getCouples() throws SQLException;
 
 	List<Supplier> getSuppliers();
 

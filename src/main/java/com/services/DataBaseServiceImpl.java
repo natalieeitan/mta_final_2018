@@ -6,13 +6,25 @@ import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.utilities.Season;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Optional;
 
+import static com.utilities.SqlQueries.GET_ALL_COUPLES;
+
 public class DataBaseServiceImpl implements ManagementService {
+
+	private WedAppServer wedAppServer;
+
+	public DataBaseServiceImpl(){
+		this.wedAppServer = new WedAppServer();
+	}
 	@Override
-	public List<Couple> getCouples() {
+	public List<Couple> getCouples() throws SQLException {
+		ResultSet rs = this.wedAppServer.getDataFromDB(GET_ALL_COUPLES);
+		//todo - convert to List<Couple>
 		return null;
 	}
 
