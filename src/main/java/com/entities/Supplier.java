@@ -1,7 +1,6 @@
 package com.entities;
 
 import com.utilities.Area;
-import com.utilities.Cities;
 import com.utilities.Style;
 
 public class Supplier extends User {
@@ -11,7 +10,7 @@ public class Supplier extends User {
     private String phone2;
     private int maxCapacity;
     private boolean isGarden;
-    private Cities city;
+//    private Cities city;
     private Area area;
     private int minPricePerPerson;
     private Style style;
@@ -37,9 +36,9 @@ public class Supplier extends User {
         isGarden = garden;
     }
 
-    public void setCity(Cities city) {
-        this.city = city;
-    }
+//    public void setCity(Cities city) {
+//        this.city = city;
+//    }
 
     public void setArea(Area area) {
         this.area = area;
