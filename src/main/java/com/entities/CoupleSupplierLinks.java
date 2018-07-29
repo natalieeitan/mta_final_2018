@@ -1,5 +1,6 @@
 package com.entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,4 +11,7 @@ public class CoupleSupplierLinks {
 	// value: list of string: userId of supplier
 	Map<String, List<String>> map = new HashMap<>();
 
+	public void linkCoupleAndSupplier(String coupleUserId, String supplierUserId){
+		map.computeIfAbsent(coupleUserId, k -> new ArrayList<>()).add(supplierUserId);
+	}
 }
