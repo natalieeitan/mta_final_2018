@@ -7,7 +7,6 @@ public class Supplier extends User {
 
     private String vanueName;
     private String phone;
-    private String phone2;
     private int maxCapacity;
     private boolean isGarden;
 //    private Cities city;
