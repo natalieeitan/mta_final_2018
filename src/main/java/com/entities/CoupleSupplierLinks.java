@@ -9,9 +9,15 @@ public class CoupleSupplierLinks {
 	//this map is to represent links between couple and supplier
 	// key: string: will be userId of Couple
 	// value: list of string: userId of supplier
-	Map<String, List<String>> map = new HashMap<>();
+	private Map<String, List<String>> map = new HashMap<>();
 
 	public void linkCoupleAndSupplier(String coupleUserId, String supplierUserId){
 		map.computeIfAbsent(coupleUserId, k -> new ArrayList<>()).add(supplierUserId);
 	}
+
+	public List<String> getCoupleSupplierLinksBySupplierId(String supplierId){
+		return map.get(supplierId);
+	}
+
+
 }

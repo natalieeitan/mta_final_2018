@@ -27,9 +27,9 @@ public interface ManagementService {
 
 	int getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek);
 
-	Couple findCoupleById(String id);
+	Couple getCoupleById(String id);
 
-	Supplier findSupplierById(String id);
+	Supplier getSupplierById(String id);
 
 	void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area, String minPricePerPerson, String style);
 

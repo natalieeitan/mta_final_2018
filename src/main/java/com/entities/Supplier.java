@@ -50,4 +50,32 @@ public class Supplier extends User {
     public void setStyle(Style style) {
         this.style = style;
     }
+
+    public int getMinPricePerPerson() {
+        return minPricePerPerson;
+    }
+
+    public int getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public boolean isGarden() {
+        return isGarden;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public Style getStyle() {
+        return style;
+    }
+
+    public String getVanueName() {
+        return vanueName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
 }

@@ -57,4 +57,16 @@ public class Couple extends User {
 
     public Season getSeasonToMarry(){ return this.seasonToMarry; }
     public DayOfWeek getDayOfWeek(){ return this.daysToMarry; }
+
+    public PriceRange getPricing() {
+        return pricing;
+    }
+
+    public int getNumOfInvites() {
+        return numOfInvites;
+    }
+
+    public void setNumOfInvites(int numOfInvites) {
+        this.numOfInvites = numOfInvites;
+    }
 }

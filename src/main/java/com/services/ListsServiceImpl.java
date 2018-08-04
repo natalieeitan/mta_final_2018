@@ -45,7 +45,7 @@ public class ListsServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public Couple findCoupleById(String id) {
+	public Couple getCoupleById(String id) {
 		return getCouples().stream()
 				.filter(x -> Objects.equals(x.getId(), id))
 				.findAny()
@@ -53,7 +53,7 @@ public class ListsServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public Supplier findSupplierById(String id) {
+	public Supplier getSupplierById(String id) {
 		return getSuppliers().stream()
 				.filter(x -> Objects.equals(x.getId(), id))
 				.findAny()
@@ -63,7 +63,7 @@ public class ListsServiceImpl implements ManagementService {
 	@Override
 	public void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area,
 			String minPricePerPerson, String style) {
-		Supplier supplier = findSupplierById(id);
+		Supplier supplier = getSupplierById(id);
 		int index = suppliersList.indexOf(supplier);
 		supplier.setVanueName(vanueName);
 		supplier.setPhone(phone);

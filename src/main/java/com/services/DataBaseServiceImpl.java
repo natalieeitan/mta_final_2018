@@ -59,12 +59,12 @@ public class DataBaseServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public Couple findCoupleById(String id) {
+	public Couple getCoupleById(String id) {
 		return null;
 	}
 
 	@Override
-	public Supplier findSupplierById(String id) {
+	public Supplier getSupplierById(String id) {
 		return null;
 	}
 
