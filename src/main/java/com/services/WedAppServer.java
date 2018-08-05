@@ -30,6 +30,7 @@ public class WedAppServer {
 			// Establish the connection
 			connect();
 			// Create and execute an SQL statement that inserts data.
+            stmt = con.createStatement();
 			stmt.executeUpdate(query);
 		}
 
@@ -55,30 +56,33 @@ public class WedAppServer {
 		// Handle any errors that may have occurred.
 		catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			rs.close();
-			stmt.close();
-			con.close();
+		}
+		/////////////////// DO NOT CLOSE rs,stmt and con!!!! Returned Value must have all of them!
+		/////////////////// After ending with returned value, use CloseConnection()!!!
+		finally {
+			//rs.close();
+			//stmt.close();
+			//con.close();
 		}
 
 		return rs;
 	}
 
-	//	public void closeConnection() {
-	//		if (rs != null)
-	//			try {
-	//				rs.close();
-	//			} catch (Exception e) {
-	//			}
-	//		if (stmt != null)
-	//			try {
-	//				stmt.close();
-	//			} catch (Exception e) {
-	//			}
-	//		if (con != null)
-	//			try {
-	//				con.close();
-	//			} catch (Exception e) {
-	//			}
-	//	}
+		public void closeConnection() {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (Exception e) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+				}
+		}
 }

@@ -10,11 +10,21 @@ public class User {
 	protected String password;
 	protected boolean emailVerified;
 
+	public User(String ID, String firstName, String lastName, String email, String password) {
+		this.id=ID;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		emailVerified=false;
+	}
+
 	public User(String firstName, String lastName, String email, String password) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
+		emailVerified=false;
 	}
 
 	public String generateDb()
@@ -31,9 +41,41 @@ public class User {
 		this.id = id;
 	}
 
+	public String getFirstName(){return this.firstName;}
+
+	public void setFirstName(String FirstName)
+	{
+		this.firstName = FirstName;
+	}
+
+	public String getLastName(){return this.lastName;}
+
+	public void setLastName(String LastName)
+	{
+		this.lastName = LastName;
+	}
+
 	public String getEmail(){ return this.email;}
+
+	public void setEmail(String Email)
+	{
+		this.email = Email;
+	}
 
 	public String getPassword() {
 		return password;
+	}
+
+	public void setPassword(String Password) {
+		this.password=Password;
+	}
+
+	public Integer getEmailVerified() { return (emailVerified ? 1:0);}
+
+	public void setEmailVerified(Integer isVerified){
+		if(isVerified==1) {
+            this.emailVerified=true;
+        } else
+			this.emailVerified=false;
 	}
 }
