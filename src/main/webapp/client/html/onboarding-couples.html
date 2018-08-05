@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-    <title>הרשמה מלאה</title>
+    <title>החתונה המושלמת שלי</title>
     <style>
         html, body {
             width: 100%;
@@ -94,227 +94,292 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 <body dir="rtl">
-<div id="container">
-    <div class="flex-container w3-padding w3-white">
-        <div>
-            <div style="float: left; width: 130px">
-                <button id="signUpBtn" class="w3-button w3-round-large">הרשמה לאתר</button>
-            </div>
-            <div style="float: right; width: 225px">
-                <button id="signInBtn" class="w3-button w3-round-large">כניסה לאתר</button>
-            </div>
-        </div>
-    </div>
-    <!--<div class="w3-display-container w3-wide bgimg">-->
-    <!--</div>-->
-    <h1 style="font-family: sansation; text-align: center;">יאללה מתחילים!</h1>
-    <form id="form1_id" onload="func()">
-    <div id="filter">
-        <input class="formCheckbox required" id="form1_isd" type="checkbox" value="1" onclick="func()"/>
-        <input class="formCheckbox required" type="checkbox" value="2" onclick="func()"/>
-        <input class="formCheckbox required" type="checkbox" onclick="func()"/>3
-        <input type="button" id="submit" disabled value="4"/>
-    </div>
-    </form>
-    <script>
-        var countChecked = function() {
-            if ($('.formCheckbox:checkbox:checked').length!=0) {
-                $('#submit').prop("disabled", false);
-            }
-            else{
-                $('#submit').prop("disabled", true);
-            }
-        };
-        countChecked();
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <a class="navbar-brand" href="#">הרשמה לאתר</a>
 
-        $( "input[type=checkbox]" ).on( "click", countChecked );
-    </script>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div id="containerWhen" style="display: block">
-        <h2 style="font-family: sansation; text-align: center;">מתי רוצים להתחתן?</h2>
-        <outer>
-            <button class="inner optionButton center" onclick="spontaneous()">ספונטניים</button>
-            <button class="inner optionButton center" onclick="datePicker()">תאריך ספציפי</button>
-            <button class="inner optionButton center" onclick="seasonsButtons()">עונה מועדפת</button>
-        </outer>
+    </nav>
 
-        <div id="selectDate">
-            <input type="date" onchange="WhenCanContinue()">
-        </div>
-        <form name="frmTest" id="frmTest">
-            <div id="daysOfWeek">
-                <h1 id="favoriteDayOfWeek">בחרו יום מועדף בשבוע</h1>
-                <input id="daySunday" type="checkbox" ref="#sunday" onchange="daysClick()">ראשון
-                <input id="dayMonday" type="checkbox" ref="#monday" onchange="daysClick()">שני
-                <input id="dayTuesday" type="checkbox" href="#tuesday" onchange="daysClick()"> שלישי
-                <input id="dayWednesday" type="checkbox" href="#wednesday" onchange="daysClick()"> רביעי
-                <input id="dayThrusday" type="checkbox" href="#thrusday" onchange="daysClick()"> חמישי
-                <input id="dayFriday" type="checkbox" href="#thrusday" onchange="daysClick()"> שישי
-            </div>
-        </form>
-        <div id="seasonsOptions">
-            <div class="w3-quarter">
-                <img src="/client/html/summer.jpg" style="width:45%" class="w2-circle w3-hover-opacity"
-                     onclick="WhenCanContinue()">
-                <h3>קיץ</h3>
-            </div>
-            <div class="w3-quarter">
-                <img src="/client/html/autumn.jpg" style="width:45%" class="w2-circle w3-hover-opacity"
-                     onclick="WhenCanContinue()">
-                <h3>סתיו</h3>
-            </div>
-            <div class="w3-quarter">
-                <img src="/client/html/winter.jpeg" style="width:45%" class="w2-circle w3-hover-opacity"
-                     onclick="WhenCanContinue()">
-                <h3>חורף</h3>
-            </div>
-            <div class="w3-quarter">
-                <img src="/client/html/spring.jpg" style="width:45%" class="w2-circle w3-hover-opacity"
-                     onclick="WhenCanContinue()">
-                <h3>אביב</h3>
+<div class="container-fluid" >
+
+    <h2>            מתי אתם רוצים להתחתן?
+    </h2>
+    <div class="row">
+        <div col-4>
+            <div class="card border-primary" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
             </div>
         </div>
-        <div class="w3-quarter">
-            <input id="whenNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToWhere()" value="המשך">
+        <div col-4>
+            <div class="card border-primary" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
         </div>
-        <script>
-            function daysClick() {
-                if ($("#frmTest input:checkbox:checked").length > 0)
-                {
-                    document.getElementById("whenNextBtn").disabled = false;
-                }
-            }
-                // if (
-                //     (document.getElementById("daySunday").checked) ||
-                //     (document.getElementById("dayMonday").checked) ||
-                //     (document.getElementById("dayTuesday").checked) ||
-                //     (document.getElementById("dayWednesday").checked) ||
-                //     (document.getElementById("dayThrusday").checked) ||
-                //     (document.getElementById("dayFriday").checked)
-                // )
-                //     document.getElementById("whenNextBtn").disabled = false;
-                // else
-                //     document.getElementById("whenNextBtn").disabled = true;
-            //}
+        <div col-4>
+            <div class="card border-primary" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
 
-            // // Add active class to the current button (highlight it)
-            // var header = document.getElementById("favoriteDayOfWeek");
-            // var btns = header.getElementsByClassName("btn");
-            // for (var i = 0; i < btns.length; i++) {
-            //     btns[i].addEventListener("click", function () {
-            //         var current = document.getElementsByClassName("w3-hover-opacity");
-            //         current[0].className = current[0].className.replace(" w3-hover-opacity", "");
-            //         this.className += " w3-hover-opacity";
-            //     });
-            // }
-
-            function WhenCanContinue() {
-                canContinue("whenNextBtn");
-            }
-
-            function WhenNotContinue() {
-                notContinue("whenNextBtn");
-            }
-
-            function spontaneous() {
-                WhenNotContinue();
-                var x = document.getElementById("selectDate");
-                x.style.display = "none";
-                x = document.getElementById("seasonsOptions");
-                x.style.display = "none";
-                x = document.getElementById("daysOfWeek");
-                x.style.display = "block";
-                x = document.getElementById("favoriteDayOfWeek");
-                x.style.display = "block";
-            }
-
-            function datePicker() {
-                WhenNotContinue();
-                var x = document.getElementById("selectDate");
-                x.style.display = "block";
-                x = document.getElementById("seasonsOptions");
-                x.style.display = "none";
-                x = document.getElementById("daysOfWeek");
-                x.style.display = "none";
-                x = document.getElementById("favoriteDayOfWeek");
-                x.style.display = "none";
-            }
-
-            function seasonsButtons() {
-                WhenNotContinue();
-                var x = document.getElementById("selectDate");
-                x.style.display = "none";
-                x = document.getElementById("daysOfWeek");
-                x.style.display = "none";
-                x = document.getElementById("seasonsOptions");
-                x.style.display = "block";
-                x = document.getElementById("favoriteDayOfWeek");
-                x.style.display = "none";
-            }
-
-            function goToWhere() {
-                goToNext("containerWhen", "containerWhere");
-            }
-
-            document.getElementById("contactUsBtn").onclick = function () {
-                location.href = "/client/html/contactUs.html";
-            };
-            document.getElementById("whoAreWeBtn").onclick = function () {
-                location.href = "/client/html/whoAreWe.html";
-            };
-        </script>
     </div>
 
-    <div id="containerWhere" style="display: none">
-        <h2 style="font-family: sansation; text-align: center;">איפה רוצים להתחתן?</h2>
-        <input type="checkbox" id="north" href="#north" style="width:12.5%" onclick="areaClick()">צפון</input>
-        <input type="checkbox" id="center" href="#center" style="width:12.5%" onclick="areaClick()">מרכז</input>
-        <input type="checkbox" id="Jerusalem" href="#Jerusalem" style="width:12.5%"
-               onclick="canContinue()">ירושלים</input>
-        <input type="checkbox" id="Sharon" href="#Sharon" style="width:12.5%" onclick="areaClick()">שרון</input>
-        <input type="checkbox" id="Shfela" href="#Shfela" style="width:12.5%" onclick="areaClick()">שפלה</a>
-        <input type="checkbox" id="South" href="#South" style="width:12.5%" onclick="areaClick()">דרום</input>
-        <br/>
-        <input id="whereNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToWhere()" value="המשך">
+    <div>
     </div>
-    <script>
-        function areaClick() {
-            if (
-                (document.getElementById("north").checked) ||
-                (document.getElementById("center").checked) ||
-                (document.getElementById("Jerusalem").checked) ||
-                (document.getElementById("Sharon").checked) ||
-                (document.getElementById("Shfela").checked) ||
-                (document.getElementById("South").checked)
-            )
-                document.getElementById("whereNextBtn").disabled = false;
-            else
-                document.getElementById("whereNextBtn").disabled = true;
-        }
-    </script>
-    <footer style="padding-top: 100px">
-        <div style="float: left; width: 130px">
-            <button id="contactUsBtn" class="w3-button w3-round-large">צור קשר</button>
-        </div>
-        <div style="float: right; width: 225px">
-            <button id="whoAreWeBtn" class="w3-button w3-round-large">מי אנחנו?</button>
-        </div>
-    </footer>
-    <script>
-        function canContinue(id) {
-            document.getElementById(id).disabled = false;
-        }
-
-        function notContinue(id) {
-            document.getElementById(id).disabled = true;
-        }
-
-        function goToNext(idToEnable, idToDisable) {
-            document.getElementById(idToEnable).style.display = "none";
-            document.getElementById(idToDisable).style.display = "block";
-        }
-    </script>
 </div>
+
+
+
+
+
+
+<!--<div id="container" style="alignment: center">-->
+   <!---->
+    <!--<div id="containerWhen" style="display: block">-->
+        <!--<h2 style="font-family: sansation; text-align: center;">מתי רוצים להתחתן?</h2>-->
+        <!--<outer>-->
+            <!--<button class="inner optionButton center" onclick="spontaneous()">ספונטניים</button>-->
+            <!--<button class="inner optionButton center" onclick="datePicker()">תאריך ספציפי</button>-->
+            <!--<button class="inner optionButton center" onclick="seasonsButtons()">עונה מועדפת</button>-->
+        <!--</outer>-->
+
+        <!--<div id="selectDate">-->
+            <!--<input type="date" onchange="WhenCanContinue()">-->
+        <!--</div>-->
+        <!--<form name="frmTest" id="frmTest">-->
+            <!--<div id="daysOfWeek">-->
+                <!--<h1 id="favoriteDayOfWeek">בחרו יום מועדף בשבוע</h1>-->
+                <!--<input id="daySunday" class="daysOdWeek" type="checkbox" ref="#sunday">ראשון-->
+                <!--<input id="dayMonday" class="daysOdWeek" type="checkbox" ref="#monday">שני-->
+                <!--<input id="dayTuesday" class="daysOdWeek" type="checkbox" href="#tuesday"> שלישי-->
+                <!--<input id="dayWednesday" class="daysOdWeek" type="checkbox" href="#wednesday"> רביעי-->
+                <!--<input id="dayThrusday" class="daysOdWeek" type="checkbox" href="#thrusday"> חמישי-->
+                <!--<input id="dayFriday" class="daysOdWeek" type="checkbox" href="#thrusday"> שישי-->
+            <!--</div>-->
+        <!--</form>-->
+        <!--<div id="seasonsOptions">-->
+            <!--<div class="w3-quarter">-->
+                <!--<img src="/client/html/summer.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
+                     <!--onclick="WhenCanContinue()">-->
+                <!--<h3>קיץ</h3>-->
+            <!--</div>-->
+            <!--<div class="w3-quarter">-->
+                <!--<img src="/client/html/autumn.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
+                     <!--onclick="WhenCanContinue()">-->
+                <!--<h3>סתיו</h3>-->
+            <!--</div>-->
+            <!--<div class="w3-quarter">-->
+                <!--<img src="/client/html/winter.jpeg" style="width:45%" class="w2-circle w3-hover-opacity"-->
+                     <!--onclick="WhenCanContinue()">-->
+                <!--<h3>חורף</h3>-->
+            <!--</div>-->
+            <!--<div class="w3-quarter">-->
+                <!--<img src="/client/html/spring.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
+                     <!--onclick="WhenCanContinue()">-->
+                <!--<h3>אביב</h3>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="w3-quarter">-->
+            <!--<input id="whenNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToWhere()"-->
+                   <!--value="המשך">-->
+        <!--</div>-->
+        <!--<script>-->
+            <!--function enableWhenNext() {-->
+                <!--if ($('.daysOdWeek:checkbox:checked').length != 0) {-->
+                    <!--$('#whenNextBtn').prop("disabled", false);-->
+                <!--}-->
+                <!--else {-->
+                    <!--$('#whenNextBtn').prop("disabled", true);-->
+                <!--}-->
+            <!--};-->
+            <!--enableWhenNext();-->
+            <!--$("input[type=checkbox]").on("click", enableWhenNext);-->
+
+            <!--function WhenCanContinue() {-->
+                <!--canContinue("whenNextBtn");-->
+            <!--}-->
+
+            <!--function WhenNotContinue() {-->
+                <!--notContinue("whenNextBtn");-->
+            <!--}-->
+
+            <!--function spontaneous() {-->
+                <!--WhenNotContinue();-->
+                <!--var x = document.getElementById("selectDate");-->
+                <!--x.style.display = "none";-->
+                <!--x = document.getElementById("seasonsOptions");-->
+                <!--x.style.display = "none";-->
+                <!--x = document.getElementById("daysOfWeek");-->
+                <!--x.style.display = "block";-->
+                <!--x = document.getElementById("favoriteDayOfWeek");-->
+                <!--x.style.display = "block";-->
+            <!--}-->
+
+            <!--function datePicker() {-->
+                <!--WhenNotContinue();-->
+                <!--var x = document.getElementById("selectDate");-->
+                <!--x.style.display = "block";-->
+                <!--x = document.getElementById("seasonsOptions");-->
+                <!--x.style.display = "none";-->
+                <!--x = document.getElementById("daysOfWeek");-->
+                <!--x.style.display = "none";-->
+                <!--x = document.getElementById("favoriteDayOfWeek");-->
+                <!--x.style.display = "none";-->
+            <!--}-->
+
+            <!--function seasonsButtons() {-->
+                <!--WhenNotContinue();-->
+                <!--var x = document.getElementById("selectDate");-->
+                <!--x.style.display = "none";-->
+                <!--x = document.getElementById("daysOfWeek");-->
+                <!--x.style.display = "none";-->
+                <!--x = document.getElementById("seasonsOptions");-->
+                <!--x.style.display = "block";-->
+                <!--x = document.getElementById("favoriteDayOfWeek");-->
+                <!--x.style.display = "none";-->
+            <!--}-->
+
+            <!--function goToWhere() {-->
+                <!--goToNext("containerWhere", "containerWhen");-->
+            <!--}-->
+
+            <!--document.getElementById("contactUsBtn").onclick = function () {-->
+                <!--location.href = "/client/html/contactUs.html";-->
+            <!--};-->
+            <!--document.getElementById("whoAreWeBtn").onclick = function () {-->
+                <!--location.href = "/client/html/whoAreWe.html";-->
+            <!--};-->
+        <!--</script>-->
+    <!--</div>-->
+
+    <!--<div id="containerWhere" style="display: none">-->
+        <!--<h2 style="font-family: sansation; text-align: center;">איפה רוצים להתחתן?</h2>-->
+        <!--<input class="areaToMarry" type="checkbox" id="north">צפון</input>-->
+        <!--<input class="areaToMarry" type="checkbox" id="center">מרכז</input>-->
+        <!--<input class="areaToMarry" type="checkbox" id="Jerusalem">ירושלים</input>-->
+        <!--<input class="areaToMarry" type="checkbox" id="Sharon">שרון</input>-->
+        <!--<input class="areaToMarry" type="checkbox" id="Shfela">שפלה</a>-->
+        <!--<input class="areaToMarry" type="checkbox" id="South"">דרום</input>-->
+        <!--<br/>-->
+        <!--<input id="whereNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToStyle()"-->
+               <!--value="המשך">-->
+    <!--</div>-->
+    <!--<script>-->
+        <!--function goToStyle() {-->
+            <!--goToNext("containerStyle", "containerWhere");-->
+        <!--}-->
+
+        <!--function enableWhereNext() {-->
+            <!--if ($('.areaToMarry:checkbox:checked').length != 0) {-->
+                <!--$('#whereNextBtn').prop("disabled", false);-->
+            <!--}-->
+            <!--else {-->
+                <!--$('#whereNextBtn').prop("disabled", true);-->
+            <!--}-->
+        <!--};-->
+        <!--enableWhereNext();-->
+        <!--$("input[type=checkbox]").on("click", enableWhereNext);-->
+    <!--</script>-->
+
+
+    <!--<div id="containerStyle" style="display: none">-->
+        <!--<h2 style="font-family: sansation; text-align: center;">מה הסגנון שלכם?</h2>-->
+        <!--<input class="styleToMarry" id="classic" type="checkbox">קלאסי</input>-->
+        <!--<input class="styleToMarry" id="urban" type="checkbox">אורבני</input>-->
+        <!--<input class="styleToMarry" id="rustic" type="checkbox">כפרי</input>-->
+        <!--<input class="styleToMarry" id="dancing" type="checkbox">רק רוצים לרקוד</a> &lt;!&ndash;anyStyle&ndash;&gt;-->
+        <!--<br/>-->
+        <!--<input id="styleNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToHowManyAndPrice()"-->
+               <!--value="המשך">-->
+    <!--</div>-->
+
+    <!--<script>-->
+        <!--function goToHowManyAndPrice() {-->
+            <!--goToNext("containerHowManyAndPrice", "containerStyle");-->
+        <!--}-->
+
+        <!--function enableStyleNext() {-->
+            <!--if ($('.styleToMarry:checkbox:checked').length != 0) {-->
+                <!--$('#styleNextBtn').prop("disabled", false);-->
+            <!--}-->
+            <!--else {-->
+                <!--$('#styleNextBtn').prop("disabled", true);-->
+            <!--}-->
+        <!--};-->
+        <!--enableStyleNext();-->
+        <!--$("input[type=checkbox]").on("click", enableStyleNext);-->
+    <!--</script>-->
+
+    <!--<div id="containerHowManyAndPrice" style="display: none">-->
+        <!--<h2 style="font-family: sansation; text-align: center;">מספר אנשים ותקציב?</h2>-->
+        <!--<h3>כמה תהיו?</h3>-->
+        <!--<input type="number" name="HowMany"><br><br>-->
+        <!--<h3>מחיר למנה:</h3><br>-->
+        <!--<input class="price" type="radio" name="price">200-250</input><br>-->
+        <!--<input class="price" type="radio" name="price">250-300</input><br>-->
+        <!--<input class="price" type="radio" name="price">300-350</input><br>-->
+        <!--<input class="price" type="radio" name="price">לא גיבשנו תקציב</a><br>-->
+        <!--<input id="HowManyAndPriceNextBtn" class="w3-button w3-round-large" disabled="true"-->
+               <!--onclick="goToHowManyAndPrice()" value="המשך">-->
+    <!--</div>-->
+    <!--<script>-->
+        <!--function enableHowManyAndPriceNext() {-->
+            <!--if ($('.price:checked').length != 0) {-->
+                <!--$('#HowManyAndPriceNextBtn').prop("disabled", false);-->
+            <!--}-->
+            <!--else {-->
+                <!--$('#HowManyAndPriceNextBtn').prop("disabled", true);-->
+            <!--}-->
+        <!--};-->
+        <!--enableHowManyAndPriceNext();-->
+        <!--$("input[type=checkbox]").on("click", enableHowManyAndPriceNext);-->
+    <!--</script>-->
+
+
+    <!--<footer style="padding-top: 100px">-->
+        <!--<div style="float: left; width: 130px">-->
+            <!--<button id="contactUsBtn" class="w3-button w3-round-large">צור קשר</button>-->
+        <!--</div>-->
+        <!--<div style="float: right; width: 225px">-->
+            <!--<button id="whoAreWeBtn" class="w3-button w3-round-large">מי אנחנו?</button>-->
+        <!--</div>-->
+    <!--</footer>-->
+    <!--<script>-->
+        <!--function canContinue(id) {-->
+            <!--document.getElementById(id).disabled = false;-->
+        <!--}-->
+
+        <!--function notContinue(id) {-->
+            <!--document.getElementById(id).disabled = true;-->
+        <!--}-->
+
+        <!--function goToNext(idToEnable, idToDisable) {-->
+
+            <!--document.getElementById(idToEnable).style.display = "block";-->
+            <!--document.getElementById(idToDisable).style.display = "none";-->
+        <!--}-->
+    <!--</script>-->
+<!--</div>-->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

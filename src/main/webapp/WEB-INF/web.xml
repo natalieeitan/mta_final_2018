@@ -15,7 +15,7 @@
   <!--</servlet-mapping>-->
 
   <welcome-file-list>
-    <welcome-file>/client/html/dashboard.html</welcome-file>
+    <welcome-file>/client/html/index.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
