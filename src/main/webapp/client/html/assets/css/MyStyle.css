@@ -1,0 +1,22 @@
+﻿@import url(https://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+@import url(https://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
+
+body {
+    direction:rtl !important;
+    font-family: 'Open Sans Hebrew', serif !important;
+}
+form {
+    direction: rtl !important;
+}
+.pinkText {
+    color: #F89FA1 !important;
+}
+.bgImage{
+    background-image:url(../images/_smarty/backgrounds/default.jpg)
+}
+.sectionOpacity{
+    background-color:white !important;
+}
+.box-static.box-border-top {
+    border-top: #F89FA1 3px solid;
+}
