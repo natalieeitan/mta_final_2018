@@ -9,7 +9,7 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <div id="sidenav">
 </div>
-<form action="supplier" method="GET">
+<form action="/user" method="get">
     <table style="width:100%">
         <tr>
             <th>Firstname</th>
@@ -32,16 +32,6 @@
     $(function () {
         $("#sidenav").load("supplier-side-bar.html");
     });
-</script>
-<script type="text/javascript">
-    function getUrlParam(name) {
-        url = location.href;
-        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-        var regexS = "[\\?&]" + name + "=([^&#]*)";
-        var regex = new RegExp(regexS);
-        var results = regex.exec(url);
-        document.getElementById("id").value = results[1];
-    }
 </script>
 </body>
 </html>

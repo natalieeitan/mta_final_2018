@@ -30,6 +30,7 @@ public class UserServlet extends HttpServlet {
 			String id = null;
 			try {
 				id = dbService.addUser(newUser,isSupplier);
+				ctx.setAttribute("userId", id);
 			} catch (EmailAlreadyExistException e) {
 				return;
 				//todo- need to preset message to user about email exist
@@ -50,7 +51,6 @@ public class UserServlet extends HttpServlet {
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
 			String id = request.getParameter("id");
-			ctx.setAttribute("userId", id);
 			dbService.updateSupplier(id,vanueName, phone,maxCapacity,isGarden, area, minPrice, style);
 			response.sendRedirect("/client/html/supplier-dashboard.html?id="+id);
 		}

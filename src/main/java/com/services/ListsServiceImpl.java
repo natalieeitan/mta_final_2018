@@ -16,15 +16,15 @@ public class ListsServiceImpl implements ManagementService {
 	private static final List<User> usersList = new ArrayList<>();
 
 	public ListsServiceImpl() {
-		//		Couple c = new Couple(new User("aa","bb", "adi@gmail.com","1234"));
-		//		c.setDaysToMarry(DayOfWeek.THURSDAY);
-		//		Couple c1 = new Couple(new User("cc","dd", "adi@gmail.com","1234"));
-		//		c1.setDaysToMarry(DayOfWeek.WEDNESDAY);
-		//		Couple c2 = new Couple(new User("ddd","ff", "adi@gmail.com","1234"));
-		//		c2.setDaysToMarry(DayOfWeek.THURSDAY);
-		//		couplesList.add(c);
-		//		couplesList.add(c1);
-		//		couplesList.add(c2);
+		Couple c = new Couple(new User("aa", "bb", "adi@gmail.com", "1234"));
+		c.setDaysToMarry(DayOfWeek.THURSDAY);
+		Couple c1 = new Couple(new User("cc", "dd", "adi@gmail.com", "1234"));
+		c1.setDaysToMarry(DayOfWeek.WEDNESDAY);
+		Couple c2 = new Couple(new User("ddd", "ff", "adi@gmail.com", "1234"));
+		c2.setDaysToMarry(DayOfWeek.THURSDAY);
+		couplesList.add(c);
+		couplesList.add(c1);
+		couplesList.add(c2);
 	}
 
 	//statistics
@@ -99,7 +99,9 @@ public class ListsServiceImpl implements ManagementService {
 
 	@Override
 	public boolean isEmailAlreadyExist(String email) {
-		User searchByEmail = getUsers().stream()
+		User searchByEmail =  Optional.ofNullable(getUsers())
+				.orElseGet(Collections::emptyList)
+				.stream()
 				.filter(x -> x.getEmail().equals(email))
 				.findAny()
 				.orElse(null);
