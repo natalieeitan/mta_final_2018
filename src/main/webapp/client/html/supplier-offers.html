@@ -9,11 +9,39 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <div id="sidenav">
 </div>
+<form action="supplier" method="GET">
+    <table style="width:100%">
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Jill</td>
+            <td>Smith</td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>Eve</td>
+            <td>Jackson</td>
+            <td>94</td>
+        </tr>
+    </table>
+</form>
 <script>
-    $(function(){
+    $(function () {
         $("#sidenav").load("supplier-side-bar.html");
     });
 </script>
-
+<script type="text/javascript">
+    function getUrlParam(name) {
+        url = location.href;
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regexS = "[\\?&]" + name + "=([^&#]*)";
+        var regex = new RegExp(regexS);
+        var results = regex.exec(url);
+        document.getElementById("id").value = results[1];
+    }
+</script>
 </body>
 </html>

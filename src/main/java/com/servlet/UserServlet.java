@@ -4,6 +4,7 @@ import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.services.ListsServiceImpl;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +17,9 @@ import java.util.Optional;
 public class UserServlet extends HttpServlet {
 	ListsServiceImpl dbService = new ListsServiceImpl();
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
+		ServletContext ctx = getServletConfig().getServletContext();
 		if (request.getParameter("action_signup")!=null) {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
@@ -48,6 +50,7 @@ public class UserServlet extends HttpServlet {
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
 			String id = request.getParameter("id");
+			ctx.setAttribute("userId", id);
 			dbService.updateSupplier(id,vanueName, phone,maxCapacity,isGarden, area, minPrice, style);
 			response.sendRedirect("/client/html/supplier-dashboard.html?id="+id);
 		}

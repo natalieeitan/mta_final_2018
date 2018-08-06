@@ -12,7 +12,7 @@ public class SupplierService {
 	CoupleSupplierLinks coupleSupplierLinks;
 	ManagementService managementService;
 
-	public SupplierService(){
+	public SupplierService() {
 		coupleSupplierLinks = new CoupleSupplierLinks();
 		//todo- replace with DB impl
 		managementService = new ListsServiceImpl();
@@ -26,7 +26,8 @@ public class SupplierService {
 						&& !coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId).contains(couple.getId()))
 				.collect(Collectors.toList());
 	}
-	public void connectWithCouple(String supplierId, String coupleId){
+
+	public void connectWithCouple(String supplierId, String coupleId) {
 		coupleSupplierLinks.linkCoupleAndSupplier(coupleId, supplierId);
 	}
 }
