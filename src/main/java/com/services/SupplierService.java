@@ -23,7 +23,7 @@ public class SupplierService {
 		//return couples that want amount of invites that <= from supplier max capacity && not already connected with him
 		return managementService.getCouples().stream()
 				.filter(couple -> couple.getNumOfInvites() <= loggedSupplier.getMaxCapacity()
-						&& !coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId).contains(couple.getId()))
+						&& (coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId) == null || !coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId).contains(couple.getId())))
 				.collect(Collectors.toList());
 	}
 
