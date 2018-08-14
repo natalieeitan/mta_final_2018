@@ -12,7 +12,7 @@ public class SupplierService {
 	CoupleSupplierLinks coupleSupplierLinks;
 	ManagementService managementService;
 
-	public SupplierService(){
+	public SupplierService() {
 		coupleSupplierLinks = new CoupleSupplierLinks();
 		//todo- replace with DB impl
 		managementService = new ListsServiceImpl();
@@ -23,10 +23,11 @@ public class SupplierService {
 		//return couples that want amount of invites that <= from supplier max capacity && not already connected with him
 		return managementService.getCouples().stream()
 				.filter(couple -> couple.getNumOfInvites() <= loggedSupplier.getMaxCapacity()
-						&& !coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId).contains(couple.getId()))
+						&& (coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId) == null || !coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId).contains(couple.getId())))
 				.collect(Collectors.toList());
 	}
-	public void connectWithCouple(String supplierId, String coupleId){
+
+	public void connectWithCouple(String supplierId, String coupleId) {
 		coupleSupplierLinks.linkCoupleAndSupplier(coupleId, supplierId);
 	}
 }

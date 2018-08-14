@@ -107,13 +107,13 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
                             <a href="#" class="btn btn-featured btn-round btn-pink">
-                                <span style="font-size:24px;">מתחתנים</span>
+                                <span style="font-size:24px;" id="coupleSignUp">מתחתנים</span>
                                 <i class="et-heart btn-round"></i>
                             </a>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <a href="#" class="btn btn-featured btn-round btn-aqua">
-                                <span style="font-size:24px;">ספקים</span>
+                                <span style="font-size:24px;" id="supplierSignUp">ספקים</span>
                                 <i class="et-wine btn-round"></i>
 
                             </a>
@@ -299,32 +299,42 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 col-sm-5">
-                        <label style="text-align: right">
-                            לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ כלרשט
-                            מיחוצים. קלאצי קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק. תצטנפל
-                            בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום
-                            בלינך רוגצה. לפמעט
-                        </label>
-                        </br>
-
-                        <label style="text-align: right">
-                            להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ
-                            בעריר גק ליץ, ושבעגט. צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. ליבם
-                            סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה - לתכי מורגם בורק?
-                            לתיג ישבעס.
-                            אין לי כוח לשבת על זה יותר. בא לי למות!
-                        </label>
-                        <div>
+                    <div class="col-md-6 col-sm-5">
+                        <div style="width:95%">
+                            <i class="et-heart ico-bordered ico-hover-dark ico-lg"></i>
+                            <label style="text-align: right">
+                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ
+                                כלרשט
+                                מיחוצים. קלאצי קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק.
+                                תצטנפל
+                                בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום
+                                בלינך רוגצה. לפמעט
+                            </label>
                         </div>
                     </div>
 
+                    <div class="col-md-6 col-sm-5">
+                        <div style="width:95%">
+                            <i class="et-wine ico-bordered ico-hover-dark ico-lg"></i>
+                            <label style="text-align: center">
+                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ
+                                כלרשט
+                                מיחוצים. קלאצי קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק.
+                                תצטנפל
+                                בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום
+                                בלינך רוגצה. לפמעט
+                            </label>
+                        </div>
+                    </div>
                 </div>
-
             </div>
 
         </div>
-    </section>
+
+</div>
+
+</div>
+</section>
 
 
 </div>
@@ -347,8 +357,8 @@
 
 <!-- PAGELEVEL SCRIPTS -->
 <script src="assets/js/contact.js"></script>
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->
 
 <!--<!DOCTYPE html>-->
 <!--<html lang="he">-->
@@ -440,30 +450,19 @@
 <!--&lt;!&ndash;</div>&ndash;&gt;-->
 <!--&lt;!&ndash;</footer>&ndash;&gt;-->
 
-<!--<script type="text/javascript">-->
-<!--document.getElementById("signUpBtn").onclick = function () {-->
-<!--location.href = "/client/html/register.html";-->
-<!--};-->
-<!--document.getElementById("signInBtn").onclick = function () {-->
-<!--location.href = "/client/html/signIn.html";-->
-<!--};-->
+<script type="text/javascript">
 
-<!--document.getElementById("supplierSignUp").onclick = function () {-->
-<!--location.href = "/client/html/register.html?supplier=true";-->
-<!--};-->
+document.getElementById("supplierSignUp").onclick = function () {
+location.href = "/client/html/register.html?supplier=true";
+};
 
-<!--document.getElementById("coupleSignUp").onclick = function () {-->
-<!--location.href = "/client/html/signIn.html?couple=true";-->
-<!--};-->
+document.getElementById("coupleSignUp").onclick = function () {
+location.href = "/client/html/register.html?supplier=false";
+};
 
-<!--document.getElementById("contactUsBtn").onclick = function () {-->
-<!--location.href = "/client/html/contactUs.html";-->
-<!--};-->
-<!--document.getElementById("whoAreWeBtn").onclick = function () {-->
-<!--location.href = "/client/html/whoAreWe.html";-->
-<!--};-->
-<!--</script>-->
-
+</script>
+</body>
+</html>
 <!--&lt;!&ndash; Optional JavaScript &ndash;&gt;-->
 <!--&lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->

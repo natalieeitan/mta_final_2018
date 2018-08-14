@@ -4,6 +4,7 @@ import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.services.ListsServiceImpl;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,8 +17,9 @@ import java.util.Optional;
 public class UserServlet extends HttpServlet {
 	ListsServiceImpl dbService = new ListsServiceImpl();
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
+		ServletContext ctx = getServletConfig().getServletContext();
 		if (request.getParameter("action_signup")!=null) {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
@@ -28,6 +30,7 @@ public class UserServlet extends HttpServlet {
 			String id = null;
 			try {
 				id = dbService.addUser(newUser,isSupplier);
+				ctx.setAttribute("userId", id);
 			} catch (EmailAlreadyExistException e) {
 				return;
 				//todo- need to preset message to user about email exist
