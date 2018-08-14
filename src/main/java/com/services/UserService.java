@@ -1,6 +1,7 @@
 package com.services;
 
 import com.entities.User;
+import com.utilities.SqlQueries;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,16 +52,16 @@ public class UserService {
         for (User user: users)
         {
             try {
-                db.insertToDB("UPDATE WedAppServer.dbo.Users SET FirstName = '" + user.getFirstName()
-                        + "' WHERE ID = " + user.getId());
-                db.insertToDB("UPDATE WedAppServer.dbo.Users SET LastName = '" + user.getLastName()
-                        + "' WHERE ID = " + user.getId());
-                db.insertToDB("UPDATE WedAppServer.dbo.Users SET Email = '" + user.getEmail()
-                        + "' WHERE ID = " + user.getId());
-                db.insertToDB("UPDATE WedAppServer.dbo.Users SET Password = '" + user.getPassword()
-                        + "' WHERE ID = " + user.getId());
-                db.insertToDB("UPDATE WedAppServer.dbo.Users SET EmailVerified = " + user.getEmailVerified()
-                        + " WHERE ID = " + user.getId());
+                db.insertToDB(SqlQueries.UPDATE_USER_FIRST_NAME + user.getFirstName()
+                        + SqlQueries.WHERE_ID + user.getId());
+                db.insertToDB(SqlQueries.UPDATE_USER_LAST_NAME + user.getLastName()
+                        + SqlQueries.WHERE_ID + user.getId());
+                db.insertToDB(SqlQueries.UPDATE_USER_EMAIL + user.getEmail()
+                        + SqlQueries.WHERE_ID + user.getId());
+                db.insertToDB(SqlQueries.UPDATE_USER_PASSWORD + user.getPassword()
+                        + SqlQueries.WHERE_ID + user.getId());
+                db.insertToDB(SqlQueries.UPDATE_USER_EMAIL_VERIFIED + user.getEmailVerified()
+                        + SqlQueries.WHERE_ID + user.getId());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
