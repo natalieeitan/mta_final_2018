@@ -2,6 +2,7 @@ package com.servlet;
 
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
+import com.services.DataBaseServiceImpl;
 import com.services.ListsServiceImpl;
 
 import javax.servlet.ServletContext;
@@ -15,11 +16,13 @@ import java.util.Optional;
 
 @WebServlet(name = "servlet.UserServlet", urlPatterns = {"/user"})
 public class UserServlet extends HttpServlet {
-	ListsServiceImpl dbService = new ListsServiceImpl();
+	ListsServiceImpl listService = new ListsServiceImpl();
+	DataBaseServiceImpl dbService = new DataBaseServiceImpl();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		ServletContext ctx = getServletConfig().getServletContext();
+		request.setCharacterEncoding("UTF-8");
 		if (request.getParameter("action_signup")!=null) {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
@@ -29,7 +32,8 @@ public class UserServlet extends HttpServlet {
 			User newUser = new User(firstName, lastName, email, password);
 			String id = null;
 			try {
-				id = dbService.addUser(newUser,isSupplier);
+				id = listService.addUser(newUser,isSupplier);
+				dbService.insertUserToDb(newUser, isSupplier);
 				ctx.setAttribute("userId", id);
 			} catch (EmailAlreadyExistException e) {
 				return;
@@ -51,7 +55,7 @@ public class UserServlet extends HttpServlet {
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
 			String id = request.getParameter("id");
-			dbService.updateSupplier(id,vanueName, phone,maxCapacity,isGarden, area, minPrice, style);
+			listService.updateSupplier(id,vanueName, phone,maxCapacity,isGarden, area, minPrice, style);
 			response.sendRedirect("/client/html/supplier-dashboard.html?id="+id);
 		}
 
@@ -63,7 +67,7 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if(request.getParameter("action_signin")!=null){
-			Optional<User> res = dbService.getUserByPasswordAndEmail(request.getParameter("password"),request.getParameter("email"));
+			Optional<User> res = listService.getUserByPasswordAndEmail(request.getParameter("password"),request.getParameter("email"));
 			if(res.isPresent()){
 				response.sendRedirect("/client/html/found.html");
 			}

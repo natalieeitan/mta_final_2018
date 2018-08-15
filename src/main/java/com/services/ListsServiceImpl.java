@@ -16,21 +16,21 @@ public class ListsServiceImpl implements ManagementService {
 	private static final List<User> usersList = new ArrayList<>();
 
 	public ListsServiceImpl() {
-		Couple c = new Couple(new User("aa", "bb", "adi@gmail.com", "1234"));
-		c.setDaysToMarry(DayOfWeek.THURSDAY);
-		c.setNumOfInvites(200);
-		Couple c1 = new Couple(new User("cc", "dd", "adi@gmail.com", "1234"));
-		c1.setDaysToMarry(DayOfWeek.WEDNESDAY);
-		c.setNumOfInvites(300);
-		Couple c2 = new Couple(new User("ddd", "ff", "adi@gmail.com", "1234"));
-		c2.setDaysToMarry(DayOfWeek.THURSDAY);
-		couplesList.add(c);
-		couplesList.add(c1);
-		couplesList.add(c2);
-		Supplier s = new Supplier(new User("ff","dd","as","123"));
-		s.setMaxCapacity(400);
-
-		suppliersList.add(s);
+//		Couple c = new Couple(new User("aa", "bb", "adi@gmail.com", "1234"));
+//		c.setDaysToMarry(DayOfWeek.THURSDAY);
+//		c.setNumOfInvites(200);
+//		Couple c1 = new Couple(new User("cc", "dd", "adi@gmail.com", "1234"));
+//		c1.setDaysToMarry(DayOfWeek.WEDNESDAY);
+//		c.setNumOfInvites(300);
+//		Couple c2 = new Couple(new User("ddd", "ff", "adi@gmail.com", "1234"));
+//		c2.setDaysToMarry(DayOfWeek.THURSDAY);
+//		couplesList.add(c);
+//		couplesList.add(c1);
+//		couplesList.add(c2);
+//		Supplier s = new Supplier(new User("ff","dd","as","123"));
+//		s.setMaxCapacity(400);
+//
+//		suppliersList.add(s);
 	}
 
 	//statistics
