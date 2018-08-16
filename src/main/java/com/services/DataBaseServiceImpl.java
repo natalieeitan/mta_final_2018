@@ -5,6 +5,8 @@ import com.entities.Supplier;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.utilities.Season;
+import com.utilities.SqlQueries;
+import com.utilities.UserType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -78,4 +80,22 @@ public class DataBaseServiceImpl implements ManagementService {
 	public Optional<User> getUserByPasswordAndEmail(String password, String email) {
 		return null;
 	}
+
+	public void insertUserToDb(User user, boolean isSupplier){
+		if(isSupplier){
+			user.setType(UserType.Supplier);
+		}
+		else {
+			user.setType(UserType.Couple);
+		}
+		wedAppServer.executeQuery(SqlQueries.insertIntoUserTable(user));
+	}
+
+	public void connectCoupleAndSupplier(String coupleId, String supplierId){
+		wedAppServer.executeQuery(SqlQueries.insertIntoCoupleSupplierTable(supplierId, coupleId));
+	}
+
+//	public List<Couple> getCouplesOptionalConnections(String supplierId) {
+//		wedAppServer.getDataFromDB(SqlQueries.())
+//	}
 }

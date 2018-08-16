@@ -4,10 +4,10 @@ package com.utilities;
  * Created by natalieeitan on 09/04/2018.
  */
 public enum Season{
-	SUMMER("Summer"),
-	SPRING("Spring"),
+	FALL("Fall"),
 	WINTER("Winter"),
-	FALL("fall")
+	SPRING("Spring"),
+	SUMMER("Summer")
 	;
 	private String name;
 

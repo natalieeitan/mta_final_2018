@@ -1,5 +1,7 @@
 package com.entities;
 
+import com.utilities.UserType;
+
 import java.util.UUID;
 
 public class User {
@@ -9,6 +11,7 @@ public class User {
 	protected String email;
 	protected String password;
 	protected boolean emailVerified;
+	protected UserType type;
 
 	public User(String ID, String firstName, String lastName, String email, String password) {
 		this.id=ID;
@@ -77,5 +80,13 @@ public class User {
             this.emailVerified=true;
         } else
 			this.emailVerified=false;
+	}
+
+	public UserType getType() {
+		return type;
+	}
+
+	public void setType(UserType type) {
+		this.type = type;
 	}
 }
