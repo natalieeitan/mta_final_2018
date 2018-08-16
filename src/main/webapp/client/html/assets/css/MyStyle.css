@@ -2,21 +2,82 @@
 @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
 
 body {
-    direction:rtl !important;
+    direction: rtl !important;
     font-family: 'Open Sans Hebrew', serif !important;
 }
+
 form {
     direction: rtl !important;
+    font-family: 'Open Sans Hebrew', serif !important;
 }
+
+header {
+    font-family: 'Open Sans Hebrew', serif !important;
+}
+
 .pinkText {
     color: #F89FA1 !important;
 }
-.bgImage{
-    background-image:url(../images/_smarty/backgrounds/default.jpg)
+
+.bgImage {
+    background-image: url(../images/_smarty/backgrounds/default.jpg)
 }
-.sectionOpacity{
-    background-color:white !important;
+
+.sectionOpacity {
+    background-color: white !important;
 }
+
 .box-static.box-border-top {
     border-top: #F89FA1 3px solid;
+}
+
+@media (min-width: 992px) {
+    .aboutSectionDesktop {
+        padding: 175px 0;
+    }
+}
+
+.radio input:checked + i, .checkbox input:checked + i, .toggle input:checked + i {
+    border-color: #F89FA1;
+}
+
+.nav-tabs > li > a.active {
+    color: #40C0CB !important;
+}
+
+.btnSeason.active {
+    background-color: pink !important;
+}
+
+.table-responsive-sm{
+    background-color: white;
+    margin-right: 10%;
+}
+
+.budgetHeight
+{
+    height: 150px;
+}
+
+.my-container {
+    position: relative!important;
+    font-family: Arial!important;
+}
+
+.my-text-block {
+    position: absolute!important;
+    bottom: 3%!important;
+    right: 5%!important;
+    background-color: black!important;
+    color: white!important;
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+    opacity: 0.8!important;
+    width:30%!important;
+    height: auto;
+}
+
+.my-img-hover
+{
+    cursor: pointer;
 }
