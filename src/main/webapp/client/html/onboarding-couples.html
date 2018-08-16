@@ -1,385 +1,861 @@
 <!DOCTYPE html>
-<html lang="he">
-<head dir="rtl">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/w3css/4/w3.css">
-    <link rel="stylesheet" type="text/css" href="/client/css/global.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
-    <title>החתונה המושלמת שלי</title>
-    <style>
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+<html lang="he" dir="rtl">
 
-        #container {
-            width: inherit;
-            height: inherit;
-            margin: 0;
-            padding: 0;
-        }
+<head>
+    <meta charset="utf-8" />
+    <title>מארגנת החתונות - החשבון שלי</title>
+    <meta name="description" content="" />
+    <meta name="Author" content="" />
 
-        h1 {
-            margin: 0;
-            padding: 0;
-        }
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <!-- WEB FONTS : use %7C instead of | (pipe) -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
+          rel="stylesheet" type="text/css" />
 
-        #selectDate {
-            display: none;
-        }
+    <!-- CORE CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-        #seasonsOptions {
-            display: none;
-        }
+    <!-- THEME CSS -->
+    <link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
 
-        #daysOfWeek {
-            display: none;
-        }
 
-        #favoriteDayOfWeek {
-            display: none;
-        }
+    <!-- PAGE LEVEL SCRIPTS -->
+    <link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+    <link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/MyStyle.css" rel="stylesheet" />
+    <link href="assets/css/layout-RTL.css" rel="stylesheet" />
 
-        body, h1, h2 {
-            font-family: "Raleway", sans-serif
-        }
+    <!-- REVOLUTION SLIDER -->
+    <link href="assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/slider.revolution/css/settings.css" rel="stylesheet" type="text/css" />
 
-        p {
-            line-height: 2
-        }
 
-        .bgimg {
-            opacity: 0.8;
-            min-height: 100%;
-            background: url("wedding_couple.jpg") center;
-            background-size: cover;
-        }
-
-        @font-face {
-            font-family: sansation;
-            src: url(../fonts/ganclm_bold-webfont.woff);
-        }
-
-        .optionButton {
-            border: none;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            border-radius: 50%;
-            text-align: center;
-        }
-
-        #outer {
-            width: 100%;
-            text-align: center;
-            position: absolute;
-            top: 50%;
-        }
-
-        .inner {
-            display: inline-block;
-        }
-
-    </style>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<body dir="rtl">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-        <a class="navbar-brand" href="#">הרשמה לאתר</a>
+<body class="smoothcircle enable-animation has-video-bg" data-background="assets/images/_smarty/backgrounds/default.jpg"
+      dir="rtl">
+<div id="wrapper">
+    <div id="header" class="navbar-toggleable-md sticky transparent header-md clearfix">
+        <header id="topNav">
+            <div class="container">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                <!-- Mobile Menu Button -->
+                <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
 
-    </nav>
+                <!-- Logo -->
+                <!--<a class="logo float-left scrollTo" href="#top">
+                    <img src="assets/images/_smarty/logo_light.png" alt="" />
+                    <img src="assets/images/_smarty/logo_dark.png" alt="" />
+                </a>-->
 
-<div class="container-fluid" >
+                <div class="navbar-collapse collapse float-right nav-main-collapse">
+                    <nav class="nav-main">
 
-    <h2>            מתי אתם רוצים להתחתן?
-    </h2>
-    <div class="row">
-        <div col-4>
-            <div class="card border-primary" style="max-width: 18rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+                            <li class="active">
+                                <!-- HOME -->
+                                <a href="#MyAccount" class="pinkText">
+                                    החשבון שלנו
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#MyOffers" class="pinkText">
+                                    ההצעות שלכם
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#Recommendation" class="pinkText">
+                                    מומלצים
+                                </a>
+                            </li>
+                        </ul>
+
+                    </nav>
                 </div>
             </div>
-        </div>
-        <div col-4>
-            <div class="card border-primary" style="max-width: 18rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
-        <div col-4>
-            <div class="card border-primary" style="max-width: 18rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body text-primary">
-                    <h5 class="card-title">Primary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-        </div>
+        </header>
+        <!-- /Top Nav -->
 
     </div>
 
-    <div>
+    <!-- /SIDE card -->
+    <!-- My Account -->
+    <section id="MyAccount" class="">
+        <div class="container">
+            <!--header-->
+            <!-- <div class="col-lg-3 col-md-4 col-sm-12">
+
+                    <div class="box-static box-border-top p-30">
+                        <div class="box-icon-title text-center">
+                            <i class="fa fa-user ico-rounded ico-hover-dark "></i>
+                            <h2>ירדן וקובי לביא</h2>
+                        </div>
+
+                    </div>
+                </div> -->
+            <header class="text-center mb-60">
+                <h2 class="pinkText">החשבון שלנו</h2>
+                <hr/>
+            </header>
+
+            <div class="container">
+                <div class="row">
+
+                    <!-- tabs -->
+                    <div class="col-md-3 col-sm-3">
+                        <ul class="nav nav-tabs nav-stacked flex-column text-right">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#When" data-toggle="tab" onclick="disableStart()">
+                                    מתי נתחתן?
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#Where" data-toggle="tab" onclick="disableStart()">
+                                    איפה נתחתן?
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#OurStyle" data-toggle="tab" onclick="disableStart()">
+                                    מה הסטייל שלנו?
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#Budget" data-toggle="tab" onclick="disableStart()">
+                                    על כמה נשלם?
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- tabs content -->
+                    <div class="col-md-9 col-sm-9">
+                        <div id="start" Sclass="col-md-12">
+                            <div class="box-icon box-icon-center box-icon-content text-right" style=" margin-top: 0px">
+                                <img style='vertical-align:middle;' src='arrow.png'>
+                                <h2 style="float:left; margin-left: 34%; margin-top:3%;">
+                                    איך תרצו להתחתן?</h2>
+                            </div>
+
+                        </div>
+                        <div class="tab-content tab-stacked nav-alternate text-right">
+                            <div id="When" class="tab-pane">
+                                <form class="">
+                                    <div class="row"></div>
+                                    <div class="checkbox col-12">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1">
+                                            <i></i> ספונטנים
+                                        </label>
+                                        <div class="divider"></div>
+
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1" id="season" onchange="functionf(this.id,'chooseSeason')">
+                                            <i></i> תמיד חלמתי להתחתן ב...
+                                        </label>
+
+                                        <div id="chooseSeason" style="display: none">
+                                            <div class="row">
+                                                <!-- summer -->
+                                                <div class="col-3">
+                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+                                                        <div class="box-icon-title">
+                                                            <i class="fa fa-sun-o"></i>
+                                                            <h2 class="pinkText">קיץ</h2>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> יוני
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> יולי
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> אוגוסט
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- fall -->
+                                                <div class="col-3">
+                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+                                                        <div class="box-icon-title">
+                                                            <i class="fa fa-leaf"></i>
+                                                            <h2 class="pinkText">סתיו</h2>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> ספטמבר
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> אוקטובר
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> נובמבר
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- winter -->
+                                                <div class="col-3">
+                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+                                                        <div class="box-icon-title">
+                                                            <i class="fa fa-umbrella"></i>
+                                                            <h2 class="pinkText">חורף</h2>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> דצמבר
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> ינואר
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> פברואר
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- spring -->
+                                                <div class="col-3">
+                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+                                                        <div class="box-icon-title">
+                                                            <i class="fa fa-tree"></i>
+                                                            <h2 class="pinkText">אביב</h2>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> מרץ
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> אפריל
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="1">
+                                                                <i></i> מאי
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+
+                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
+                                                        <div class="box-icon-title">
+                                                            <i class="fa fa-calendar-o"></i>
+                                                            <h2 class="pinkText">ימים בשבוע</h2>
+                                                        </div>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" value="1">
+                                                            <i></i> ראשון
+                                                        </label>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" value="1">
+                                                            <i></i> שני
+                                                        </label>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" value="1">
+                                                            <i></i> שלישי
+                                                        </label>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" value="1">
+                                                            <i></i> רביעי
+                                                        </label>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" value="1">
+                                                            <i></i> חמישי
+                                                        </label>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" value="1">
+                                                            <i></i> שישי
+                                                        </label>
+                                                        <label class="checkbox">
+                                                            <input type="checkbox" value="1">
+                                                            <i></i> שבת
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="divider"></div>
+
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1" id="specific" onchange="functionf(this.id,'chooseSpecific')">
+                                            <i></i> חייבים להתחתן ביום הולדת!
+                                        </label>
+
+
+                                        <div id="chooseSpecific" style="display: none">
+                                            <div class="row text-center">
+                                                <label class="pinkText">בחרו את התאריך שלכם:</label>
+                                                <input type="text" class="datepicker pinkText" data-format="dd/mm/yyyy" style="display: inline; margin-top: 1px !important; position: unset; ">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                        </div>
+                                        <div class="row text-left">
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-info btn-round btn-lg">שמור</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        function functionf(check, change) {
+                                            if (document.getElementById(check).checked == true)
+                                                document.getElementById(change).style.display = "block";
+                                            else
+                                                document.getElementById(change).style.display = "none";
+                                        }
+                                    </script>
+                                </form>
+                            </div>
+
+                            <div id="Where" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1">
+                                            <i></i> מרכז
+                                        </label>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1">
+                                            <i class="btn-pink"></i> צפון
+                                        </label>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1">
+                                            <i></i> שפלה
+                                        </label>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1">
+                                            <i></i> ירושליים
+                                        </label>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1">
+                                            <i></i> שרון
+                                        </label>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="1">
+                                            <i></i> דרום
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                </div>
+                                <div class="row text-left">
+                                    <div class="col-12">
+                                        <button type="button" class="btn btn-info btn-round btn-lg">שמור</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="OurStyle" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="row">
+                                            <img src="chandelier.png" onclick="toggleCheck('classic')" class="my-img-hover">
+                                        </div>
+                                        <label class="checkbox text-center">
+                                            <input type="checkbox" value="1" id="classic">
+                                            <i></i> קלאסי
+                                        </label>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row">
+                                            <img src="graffiti.png" onclick="toggleCheck('urban')" class="my-img-hover">
+                                        </div>
+                                        <label class="checkbox text-center">
+                                            <input type="checkbox" value="1" id="urban">
+                                            <i></i> אורבני
+                                        </label>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row">
+                                            <img src="house.png" onclick="toggleCheck('rural')" class="my-img-hover">
+                                        </div>
+                                        <label class="checkbox text-center">
+                                            <input type="checkbox" value="1" id="rural">
+                                            <i></i> כפרי
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row text-left">
+                                    <div class="col-12">
+                                        <button type="button" class="btn btn-info btn-round btn-lg">שמור</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function toggleCheck(idToToggle)
+                                {
+                                    document.getElementById(idToToggle).checked=!document.getElementById(idToToggle).checked;
+                                }
+                            </script>
+
+                            <div id="Budget" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="budgetHeight box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
+                                            <div class="box-icon-title">
+                                                <i class="fa fa-users"></i>
+                                                <h2>כמה אנשים אתם תהיו?</h2>
+                                            </div>
+                                            <input type="number" min=80 placeholder="מינימום 80">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="budgetHeight box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
+                                            <div class="box-icon-title">
+                                                <i class="fa fa-dollar"></i>
+                                                <h2>
+                                                    מה התקציב לכל למנה?
+                                                    <h2>
+                                            </div>
+
+                                            <select class="selectpicker show-tick">
+                                                <option>200-250</option>
+                                                <option>250-300</option>
+                                                <option>300-350</option>
+                                                <option>350-400</option>
+                                                <option>400-450</option>
+                                                <option>500-550</option>
+                                                <option>עוד לא גיבשנו תקציב</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="row text-left">
+                                    <div class="col-12">
+                                        <button type="button" class="btn btn-info btn-round btn-lg">שמור</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>
+</section>
+<!-- /MY Account -->
+<!-- MyOffers -->
+<section id="MyOffers" class="bgImage sectionOpacity">
+    <h1 class="pinkText text-center">ההצעות שלכם</h1>
+    <div class="col-sm-11 text-center">
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead class="thead-light pinkText">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">שם האולם</th>
+                    <th scope="col">כתובת</th>
+                    <th scope="col">טלפון</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>חוות אלנבי</td>
+                    <td>נצר סירני, 7039500</td>
+                    <td>077-12356</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>גן הורדים</td>
+                    <td>הרצל 150, ראשון לציון</td>
+                    <td>077-12356</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>הקיו</td>
+                    <td>גליל ים</td>
+                    <td>077-12356</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section id="Recommendation">
+    <h1 class="pinkText text-center">המומלצים שלנו</h1>
+
+    <div class=" revolution_slider">
+        <div class="slider fullwidthbanner-container roundedcorners mb-60">
+
+            <div class="fullwidthbanner" data-height="500" data-navigationStyle="preview2">
+                <ul class="hide">
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="">
+                        <div class="my-container">
+                            <div class="row">
+                                <img src="GanVradim02.jpg" class="responsive" alt="Nature">
+                                <div class="my-text-block text-center">
+                                    <h3>גן הורדים</h3>
+                                    <h4>ראשון לציון</h4>
+                                    <p>
+                                        גן יפייפה בלב הכרך הסואן המשלב בין הטבע הפראי לעיצוב האורבני. בגן ישנו גם אולם מעוצב להפליא ומאובזר בטכנולוגיות המובילות
+                                        ביותר בשביל האירוע המוצלח שלכם.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="">
+                        <div class="my-container">
+                            <img src="alenby.jpeg" class="responsive" alt="Nature">
+                            <div class="my-text-block text-center">
+                                <h3>חוות אלנבי</h3>
+                                <h4>נצר סירני</h4>
+                                <p>
+                                    חפשים את המקום המושלם לחגוג חתונות קטנות במרכז? אולם אירועים בשפלה חוות אלנבי, מתמחה בהפקת אירועים עד 300 איש, כנסו להתרשמות
+                                    ויצירת קשר לאירועים באווירה כפרית.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide title 1">
+                        <div class="row">
+                            <div class="col-8">
+                                <img src="classic.jpg" width="100%" class="ls-bg" />
+                            </div>
+
+                            <div class="col-4">
+                                <div class="pull-right text-right">
+                                    <span>
+                                        איזה מקוםמהממםםםםםםם
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li> -->
+                    <!-- SLIDE -->
+                    <!--<li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide title 2">
+
+
+                        <div> Slide 2</div>
+                    </li>-->
+
+                </ul>
+                <div class="tp-bannertimer">
+                    <!-- progress bar -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    function disableStart() {
+        document.getElementById("start").style.display = "none";
+    }
+</script>
+<!-- /wrapper -->
+<!-- SCROLL TO TOP -->
+<a href="#" id="toTop"></a>
+
+
+<!-- PRELOADER -->
+<div id="preloader">
+    <div class="inner">
+        <span class="loader"></span>
     </div>
 </div>
+<!-- /PRELOADER -->
+<!-- JAVASCRIPT FILES -->
+<script>var plugin_path = 'assets/plugins/';</script>
+<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script src="assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="assets/js/view/demo.revolution_slider.js"></script>
+
+<script src="assets/js/scripts.js"></script>
+
+<!-- PAGELEVEL SCRIPTS -->
+<script src="assets/js/contact.js"></script>
 
 
 
+</body>
 
+</html>
 
 
 <!--<div id="container" style="alignment: center">-->
-   <!---->
-    <!--<div id="containerWhen" style="display: block">-->
-        <!--<h2 style="font-family: sansation; text-align: center;">מתי רוצים להתחתן?</h2>-->
-        <!--<outer>-->
-            <!--<button class="inner optionButton center" onclick="spontaneous()">ספונטניים</button>-->
-            <!--<button class="inner optionButton center" onclick="datePicker()">תאריך ספציפי</button>-->
-            <!--<button class="inner optionButton center" onclick="seasonsButtons()">עונה מועדפת</button>-->
-        <!--</outer>-->
-
-        <!--<div id="selectDate">-->
-            <!--<input type="date" onchange="WhenCanContinue()">-->
-        <!--</div>-->
-        <!--<form name="frmTest" id="frmTest">-->
-            <!--<div id="daysOfWeek">-->
-                <!--<h1 id="favoriteDayOfWeek">בחרו יום מועדף בשבוע</h1>-->
-                <!--<input id="daySunday" class="daysOdWeek" type="checkbox" ref="#sunday">ראשון-->
-                <!--<input id="dayMonday" class="daysOdWeek" type="checkbox" ref="#monday">שני-->
-                <!--<input id="dayTuesday" class="daysOdWeek" type="checkbox" href="#tuesday"> שלישי-->
-                <!--<input id="dayWednesday" class="daysOdWeek" type="checkbox" href="#wednesday"> רביעי-->
-                <!--<input id="dayThrusday" class="daysOdWeek" type="checkbox" href="#thrusday"> חמישי-->
-                <!--<input id="dayFriday" class="daysOdWeek" type="checkbox" href="#thrusday"> שישי-->
-            <!--</div>-->
-        <!--</form>-->
-        <!--<div id="seasonsOptions">-->
-            <!--<div class="w3-quarter">-->
-                <!--<img src="/client/html/summer.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
-                     <!--onclick="WhenCanContinue()">-->
-                <!--<h3>קיץ</h3>-->
-            <!--</div>-->
-            <!--<div class="w3-quarter">-->
-                <!--<img src="/client/html/autumn.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
-                     <!--onclick="WhenCanContinue()">-->
-                <!--<h3>סתיו</h3>-->
-            <!--</div>-->
-            <!--<div class="w3-quarter">-->
-                <!--<img src="/client/html/winter.jpeg" style="width:45%" class="w2-circle w3-hover-opacity"-->
-                     <!--onclick="WhenCanContinue()">-->
-                <!--<h3>חורף</h3>-->
-            <!--</div>-->
-            <!--<div class="w3-quarter">-->
-                <!--<img src="/client/html/spring.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
-                     <!--onclick="WhenCanContinue()">-->
-                <!--<h3>אביב</h3>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="w3-quarter">-->
-            <!--<input id="whenNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToWhere()"-->
-                   <!--value="המשך">-->
-        <!--</div>-->
-        <!--<script>-->
-            <!--function enableWhenNext() {-->
-                <!--if ($('.daysOdWeek:checkbox:checked').length != 0) {-->
-                    <!--$('#whenNextBtn').prop("disabled", false);-->
-                <!--}-->
-                <!--else {-->
-                    <!--$('#whenNextBtn').prop("disabled", true);-->
-                <!--}-->
-            <!--};-->
-            <!--enableWhenNext();-->
-            <!--$("input[type=checkbox]").on("click", enableWhenNext);-->
-
-            <!--function WhenCanContinue() {-->
-                <!--canContinue("whenNextBtn");-->
-            <!--}-->
-
-            <!--function WhenNotContinue() {-->
-                <!--notContinue("whenNextBtn");-->
-            <!--}-->
-
-            <!--function spontaneous() {-->
-                <!--WhenNotContinue();-->
-                <!--var x = document.getElementById("selectDate");-->
-                <!--x.style.display = "none";-->
-                <!--x = document.getElementById("seasonsOptions");-->
-                <!--x.style.display = "none";-->
-                <!--x = document.getElementById("daysOfWeek");-->
-                <!--x.style.display = "block";-->
-                <!--x = document.getElementById("favoriteDayOfWeek");-->
-                <!--x.style.display = "block";-->
-            <!--}-->
-
-            <!--function datePicker() {-->
-                <!--WhenNotContinue();-->
-                <!--var x = document.getElementById("selectDate");-->
-                <!--x.style.display = "block";-->
-                <!--x = document.getElementById("seasonsOptions");-->
-                <!--x.style.display = "none";-->
-                <!--x = document.getElementById("daysOfWeek");-->
-                <!--x.style.display = "none";-->
-                <!--x = document.getElementById("favoriteDayOfWeek");-->
-                <!--x.style.display = "none";-->
-            <!--}-->
-
-            <!--function seasonsButtons() {-->
-                <!--WhenNotContinue();-->
-                <!--var x = document.getElementById("selectDate");-->
-                <!--x.style.display = "none";-->
-                <!--x = document.getElementById("daysOfWeek");-->
-                <!--x.style.display = "none";-->
-                <!--x = document.getElementById("seasonsOptions");-->
-                <!--x.style.display = "block";-->
-                <!--x = document.getElementById("favoriteDayOfWeek");-->
-                <!--x.style.display = "none";-->
-            <!--}-->
-
-            <!--function goToWhere() {-->
-                <!--goToNext("containerWhere", "containerWhen");-->
-            <!--}-->
-
-            <!--document.getElementById("contactUsBtn").onclick = function () {-->
-                <!--location.href = "/client/html/contactUs.html";-->
-            <!--};-->
-            <!--document.getElementById("whoAreWeBtn").onclick = function () {-->
-                <!--location.href = "/client/html/whoAreWe.html";-->
-            <!--};-->
-        <!--</script>-->
-    <!--</div>-->
-
-    <!--<div id="containerWhere" style="display: none">-->
-        <!--<h2 style="font-family: sansation; text-align: center;">איפה רוצים להתחתן?</h2>-->
-        <!--<input class="areaToMarry" type="checkbox" id="north">צפון</input>-->
-        <!--<input class="areaToMarry" type="checkbox" id="center">מרכז</input>-->
-        <!--<input class="areaToMarry" type="checkbox" id="Jerusalem">ירושלים</input>-->
-        <!--<input class="areaToMarry" type="checkbox" id="Sharon">שרון</input>-->
-        <!--<input class="areaToMarry" type="checkbox" id="Shfela">שפלה</a>-->
-        <!--<input class="areaToMarry" type="checkbox" id="South"">דרום</input>-->
-        <!--<br/>-->
-        <!--<input id="whereNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToStyle()"-->
-               <!--value="המשך">-->
-    <!--</div>-->
-    <!--<script>-->
-        <!--function goToStyle() {-->
-            <!--goToNext("containerStyle", "containerWhere");-->
-        <!--}-->
-
-        <!--function enableWhereNext() {-->
-            <!--if ($('.areaToMarry:checkbox:checked').length != 0) {-->
-                <!--$('#whereNextBtn').prop("disabled", false);-->
-            <!--}-->
-            <!--else {-->
-                <!--$('#whereNextBtn').prop("disabled", true);-->
-            <!--}-->
-        <!--};-->
-        <!--enableWhereNext();-->
-        <!--$("input[type=checkbox]").on("click", enableWhereNext);-->
-    <!--</script>-->
-
-
-    <!--<div id="containerStyle" style="display: none">-->
-        <!--<h2 style="font-family: sansation; text-align: center;">מה הסגנון שלכם?</h2>-->
-        <!--<input class="styleToMarry" id="classic" type="checkbox">קלאסי</input>-->
-        <!--<input class="styleToMarry" id="urban" type="checkbox">אורבני</input>-->
-        <!--<input class="styleToMarry" id="rustic" type="checkbox">כפרי</input>-->
-        <!--<input class="styleToMarry" id="dancing" type="checkbox">רק רוצים לרקוד</a> &lt;!&ndash;anyStyle&ndash;&gt;-->
-        <!--<br/>-->
-        <!--<input id="styleNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToHowManyAndPrice()"-->
-               <!--value="המשך">-->
-    <!--</div>-->
-
-    <!--<script>-->
-        <!--function goToHowManyAndPrice() {-->
-            <!--goToNext("containerHowManyAndPrice", "containerStyle");-->
-        <!--}-->
-
-        <!--function enableStyleNext() {-->
-            <!--if ($('.styleToMarry:checkbox:checked').length != 0) {-->
-                <!--$('#styleNextBtn').prop("disabled", false);-->
-            <!--}-->
-            <!--else {-->
-                <!--$('#styleNextBtn').prop("disabled", true);-->
-            <!--}-->
-        <!--};-->
-        <!--enableStyleNext();-->
-        <!--$("input[type=checkbox]").on("click", enableStyleNext);-->
-    <!--</script>-->
-
-    <!--<div id="containerHowManyAndPrice" style="display: none">-->
-        <!--<h2 style="font-family: sansation; text-align: center;">מספר אנשים ותקציב?</h2>-->
-        <!--<h3>כמה תהיו?</h3>-->
-        <!--<input type="number" name="HowMany"><br><br>-->
-        <!--<h3>מחיר למנה:</h3><br>-->
-        <!--<input class="price" type="radio" name="price">200-250</input><br>-->
-        <!--<input class="price" type="radio" name="price">250-300</input><br>-->
-        <!--<input class="price" type="radio" name="price">300-350</input><br>-->
-        <!--<input class="price" type="radio" name="price">לא גיבשנו תקציב</a><br>-->
-        <!--<input id="HowManyAndPriceNextBtn" class="w3-button w3-round-large" disabled="true"-->
-               <!--onclick="goToHowManyAndPrice()" value="המשך">-->
-    <!--</div>-->
-    <!--<script>-->
-        <!--function enableHowManyAndPriceNext() {-->
-            <!--if ($('.price:checked').length != 0) {-->
-                <!--$('#HowManyAndPriceNextBtn').prop("disabled", false);-->
-            <!--}-->
-            <!--else {-->
-                <!--$('#HowManyAndPriceNextBtn').prop("disabled", true);-->
-            <!--}-->
-        <!--};-->
-        <!--enableHowManyAndPriceNext();-->
-        <!--$("input[type=checkbox]").on("click", enableHowManyAndPriceNext);-->
-    <!--</script>-->
-
-
-    <!--<footer style="padding-top: 100px">-->
-        <!--<div style="float: left; width: 130px">-->
-            <!--<button id="contactUsBtn" class="w3-button w3-round-large">צור קשר</button>-->
-        <!--</div>-->
-        <!--<div style="float: right; width: 225px">-->
-            <!--<button id="whoAreWeBtn" class="w3-button w3-round-large">מי אנחנו?</button>-->
-        <!--</div>-->
-    <!--</footer>-->
-    <!--<script>-->
-        <!--function canContinue(id) {-->
-            <!--document.getElementById(id).disabled = false;-->
-        <!--}-->
-
-        <!--function notContinue(id) {-->
-            <!--document.getElementById(id).disabled = true;-->
-        <!--}-->
-
-        <!--function goToNext(idToEnable, idToDisable) {-->
-
-            <!--document.getElementById(idToEnable).style.display = "block";-->
-            <!--document.getElementById(idToDisable).style.display = "none";-->
-        <!--}-->
-    <!--</script>-->
+<!---->
+<!--<div id="containerWhen" style="display: block">-->
+<!--<h2 style="font-family: sansation; text-align: center;">מתי רוצים להתחתן?</h2>-->
+<!--<outer>-->
+<!--<button class="inner optionButton center" onclick="spontaneous()">ספונטניים</button>-->
+<!--<button class="inner optionButton center" onclick="datePicker()">תאריך ספציפי</button>-->
+<!--<button class="inner optionButton center" onclick="seasonsButtons()">עונה מועדפת</button>-->
+<!--</outer>-->
+<!--<div id="selectDate">-->
+<!--<input type="date" onchange="WhenCanContinue()">-->
 <!--</div>-->
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</body>
-</html>
+<!--<form name="frmTest" id="frmTest">-->
+<!--<div id="daysOfWeek">-->
+<!--<h1 id="favoriteDayOfWeek">בחרו יום מועדף בשבוע</h1>-->
+<!--<input id="daySunday" class="daysOdWeek" type="checkbox" ref="#sunday">ראשון-->
+<!--<input id="dayMonday" class="daysOdWeek" type="checkbox" ref="#monday">שני-->
+<!--<input id="dayTuesday" class="daysOdWeek" type="checkbox" href="#tuesday"> שלישי-->
+<!--<input id="dayWednesday" class="daysOdWeek" type="checkbox" href="#wednesday"> רביעי-->
+<!--<input id="dayThrusday" class="daysOdWeek" type="checkbox" href="#thrusday"> חמישי-->
+<!--<input id="dayFriday" class="daysOdWeek" type="checkbox" href="#thrusday"> שישי-->
+<!--</div>-->
+<!--</form>-->
+<!--<div id="seasonsOptions">-->
+<!--<div class="w3-quarter">-->
+<!--<img src="/client/html/summer.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
+<!--onclick="WhenCanContinue()">-->
+<!--<h3>קיץ</h3>-->
+<!--</div>-->
+<!--<div class="w3-quarter">-->
+<!--<img src="/client/html/autumn.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
+<!--onclick="WhenCanContinue()">-->
+<!--<h3>סתיו</h3>-->
+<!--</div>-->
+<!--<div class="w3-quarter">-->
+<!--<img src="/client/html/winter.jpeg" style="width:45%" class="w2-circle w3-hover-opacity"-->
+<!--onclick="WhenCanContinue()">-->
+<!--<h3>חורף</h3>-->
+<!--</div>-->
+<!--<div class="w3-quarter">-->
+<!--<img src="/client/html/spring.jpg" style="width:45%" class="w2-circle w3-hover-opacity"-->
+<!--onclick="WhenCanContinue()">-->
+<!--<h3>אביב</h3>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="w3-quarter">-->
+<!--<input id="whenNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToWhere()"-->
+<!--value="המשך">-->
+<!--</div>-->
+<!--<script>-->
+<!--function enableWhenNext() {-->
+<!--if ($('.daysOdWeek:checkbox:checked').length != 0) {-->
+<!--$('#whenNextBtn').prop("disabled", false);-->
+<!--}-->
+<!--else {-->
+<!--$('#whenNextBtn').prop("disabled", true);-->
+<!--}-->
+<!--};-->
+<!--enableWhenNext();-->
+<!--$("input[type=checkbox]").on("click", enableWhenNext);-->
+<!--function WhenCanContinue() {-->
+<!--canContinue("whenNextBtn");-->
+<!--}-->
+<!--function WhenNotContinue() {-->
+<!--notContinue("whenNextBtn");-->
+<!--}-->
+<!--function spontaneous() {-->
+<!--WhenNotContinue();-->
+<!--var x = document.getElementById("selectDate");-->
+<!--x.style.display = "none";-->
+<!--x = document.getElementById("seasonsOptions");-->
+<!--x.style.display = "none";-->
+<!--x = document.getElementById("daysOfWeek");-->
+<!--x.style.display = "block";-->
+<!--x = document.getElementById("favoriteDayOfWeek");-->
+<!--x.style.display = "block";-->
+<!--}-->
+<!--function datePicker() {-->
+<!--WhenNotContinue();-->
+<!--var x = document.getElementById("selectDate");-->
+<!--x.style.display = "block";-->
+<!--x = document.getElementById("seasonsOptions");-->
+<!--x.style.display = "none";-->
+<!--x = document.getElementById("daysOfWeek");-->
+<!--x.style.display = "none";-->
+<!--x = document.getElementById("favoriteDayOfWeek");-->
+<!--x.style.display = "none";-->
+<!--}-->
+<!--function seasonsButtons() {-->
+<!--WhenNotContinue();-->
+<!--var x = document.getElementById("selectDate");-->
+<!--x.style.display = "none";-->
+<!--x = document.getElementById("daysOfWeek");-->
+<!--x.style.display = "none";-->
+<!--x = document.getElementById("seasonsOptions");-->
+<!--x.style.display = "block";-->
+<!--x = document.getElementById("favoriteDayOfWeek");-->
+<!--x.style.display = "none";-->
+<!--}-->
+<!--function goToWhere() {-->
+<!--goToNext("containerWhere", "containerWhen");-->
+<!--}-->
+<!--document.getElementById("contactUsBtn").onclick = function () {-->
+<!--location.href = "/client/html/contactUs.html";-->
+<!--};-->
+<!--document.getElementById("whoAreWeBtn").onclick = function () {-->
+<!--location.href = "/client/html/whoAreWe.html";-->
+<!--};-->
+<!--</script>-->
+<!--</div>-->
+<!--<div id="containerWhere" style="display: none">-->
+<!--<h2 style="font-family: sansation; text-align: center;">איפה רוצים להתחתן?</h2>-->
+<!--<input class="areaToMarry" type="checkbox" id="north">צפון</input>-->
+<!--<input class="areaToMarry" type="checkbox" id="center">מרכז</input>-->
+<!--<input class="areaToMarry" type="checkbox" id="Jerusalem">ירושלים</input>-->
+<!--<input class="areaToMarry" type="checkbox" id="Sharon">שרון</input>-->
+<!--<input class="areaToMarry" type="checkbox" id="Shfela">שפלה</a>-->
+<!--<input class="areaToMarry" type="checkbox" id="South"">דרום</input>-->
+<!--<br/>-->
+<!--<input id="whereNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToStyle()"-->
+<!--value="המשך">-->
+<!--</div>-->
+<!--<script>-->
+<!--function goToStyle() {-->
+<!--goToNext("containerStyle", "containerWhere");-->
+<!--}-->
+<!--function enableWhereNext() {-->
+<!--if ($('.areaToMarry:checkbox:checked').length != 0) {-->
+<!--$('#whereNextBtn').prop("disabled", false);-->
+<!--}-->
+<!--else {-->
+<!--$('#whereNextBtn').prop("disabled", true);-->
+<!--}-->
+<!--};-->
+<!--enableWhereNext();-->
+<!--$("input[type=checkbox]").on("click", enableWhereNext);-->
+<!--</script>-->
+<!--<div id="containerStyle" style="display: none">-->
+<!--<h2 style="font-family: sansation; text-align: center;">מה הסגנון שלכם?</h2>-->
+<!--<input class="styleToMarry" id="classic" type="checkbox">קלאסי</input>-->
+<!--<input class="styleToMarry" id="urban" type="checkbox">אורבני</input>-->
+<!--<input class="styleToMarry" id="rustic" type="checkbox">כפרי</input>-->
+<!--<input class="styleToMarry" id="dancing" type="checkbox">רק רוצים לרקוד</a> &lt;!&ndash;anyStyle&ndash;&gt;-->
+<!--<br/>-->
+<!--<input id="styleNextBtn" class="w3-button w3-round-large" disabled="true" onclick="goToHowManyAndPrice()"-->
+<!--value="המשך">-->
+<!--</div>-->
+<!--<script>-->
+<!--function goToHowManyAndPrice() {-->
+<!--goToNext("containerHowManyAndPrice", "containerStyle");-->
+<!--}-->
+<!--function enableStyleNext() {-->
+<!--if ($('.styleToMarry:checkbox:checked').length != 0) {-->
+<!--$('#styleNextBtn').prop("disabled", false);-->
+<!--}-->
+<!--else {-->
+<!--$('#styleNextBtn').prop("disabled", true);-->
+<!--}-->
+<!--};-->
+<!--enableStyleNext();-->
+<!--$("input[type=checkbox]").on("click", enableStyleNext);-->
+<!--</script>-->
+<!--<div id="containerHowManyAndPrice" style="display: none">-->
+<!--<h2 style="font-family: sansation; text-align: center;">מספר אנשים ותקציב?</h2>-->
+<!--<h3>כמה תהיו?</h3>-->
+<!--<input type="number" name="HowMany"><br><br>-->
+<!--<h3>מחיר למנה:</h3><br>-->
+<!--<input class="price" type="radio" name="price">200-250</input><br>-->
+<!--<input class="price" type="radio" name="price">250-300</input><br>-->
+<!--<input class="price" type="radio" name="price">300-350</input><br>-->
+<!--<input class="price" type="radio" name="price">לא גיבשנו תקציב</a><br>-->
+<!--<input id="HowManyAndPriceNextBtn" class="w3-button w3-round-large" disabled="true"-->
+<!--onclick="goToHowManyAndPrice()" value="המשך">-->
+<!--</div>-->
+<!--<script>-->
+<!--function enableHowManyAndPriceNext() {-->
+<!--if ($('.price:checked').length != 0) {-->
+<!--$('#HowManyAndPriceNextBtn').prop("disabled", false);-->
+<!--}-->
+<!--else {-->
+<!--$('#HowManyAndPriceNextBtn').prop("disabled", true);-->
+<!--}-->
+<!--};-->
+<!--enableHowManyAndPriceNext();-->
+<!--$("input[type=checkbox]").on("click", enableHowManyAndPriceNext);-->
+<!--</script>-->
+<!--<footer style="padding-top: 100px">-->
+<!--<div style="float: left; width: 130px">-->
+<!--<button id="contactUsBtn" class="w3-button w3-round-large">צור קשר</button>-->
+<!--</div>-->
+<!--<div style="float: right; width: 225px">-->
+<!--<button id="whoAreWeBtn" class="w3-button w3-round-large">מי אנחנו?</button>-->
+<!--</div>-->
+<!--</footer>-->
+<!--<script>-->
+<!--function canContinue(id) {-->
+<!--document.getElementById(id).disabled = false;-->
+<!--}-->
+<!--function notContinue(id) {-->
+<!--document.getElementById(id).disabled = true;-->
+<!--}-->
+<!--function goToNext(idToEnable, idToDisable) {-->
+<!--document.getElementById(idToEnable).style.display = "block";-->
+<!--document.getElementById(idToDisable).style.display = "none";-->
+<!--}-->
+<!--</script>-->
+<!--</div>-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
+<!--</body>-->
+<!--</html>-->
