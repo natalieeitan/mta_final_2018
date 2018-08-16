@@ -20,9 +20,10 @@ public class DataBaseServiceImpl implements ManagementService {
 
 	private WedAppServer wedAppServer;
 
-	public DataBaseServiceImpl(){
+	public DataBaseServiceImpl() {
 		this.wedAppServer = new WedAppServer();
 	}
+
 	@Override
 	public List<Couple> getCouples() throws SQLException {
 		ResultSet rs = this.wedAppServer.getDataFromDB(GET_ALL_COUPLES);
@@ -42,6 +43,8 @@ public class DataBaseServiceImpl implements ManagementService {
 
 	@Override
 	public boolean isEmailAlreadyExist(String email) {
+		//todo - complete this
+		wedAppServer.executeQuery(SqlQueries.isEmailAlreadyExistsOnUserTable(email));
 		return false;
 	}
 
@@ -71,7 +74,7 @@ public class DataBaseServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area,
+	public void updateSupplier(String id, String venueName, String phone, String maxCapacity, String isGarden, String area,
 			String minPricePerPerson, String style) {
 
 	}
@@ -81,21 +84,25 @@ public class DataBaseServiceImpl implements ManagementService {
 		return null;
 	}
 
-	public void insertUserToDb(User user, boolean isSupplier){
-		if(isSupplier){
+	public void insertUserToDb(User user, boolean isSupplier) {
+		//todo- check if email already exist, if yes then raise exception EmailAlreadyExistException and catch him on servlet and show message to user
+		if (isSupplier) {
 			user.setType(UserType.Supplier);
-		}
-		else {
+		} else {
 			user.setType(UserType.Couple);
 		}
 		wedAppServer.executeQuery(SqlQueries.insertIntoUserTable(user));
 	}
 
-	public void connectCoupleAndSupplier(String coupleId, String supplierId){
+	public void insertSupplierToDb(Supplier supplier) {
+		wedAppServer.executeQuery(SqlQueries.insertIntoSupplierTable(supplier));
+	}
+
+	public void connectCoupleAndSupplier(String coupleId, String supplierId) {
 		wedAppServer.executeQuery(SqlQueries.insertIntoCoupleSupplierTable(supplierId, coupleId));
 	}
 
-//	public List<Couple> getCouplesOptionalConnections(String supplierId) {
-//		wedAppServer.getDataFromDB(SqlQueries.())
-//	}
+	//	public List<Couple> getCouplesOptionalConnections(String supplierId) {
+	//		wedAppServer.getDataFromDB(SqlQueries.())
+	//	}
 }

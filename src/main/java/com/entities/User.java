@@ -28,6 +28,7 @@ public class User {
 		this.lastName = lastName;
 		this.password = password;
 		emailVerified=false;
+		this.id = generateDb();
 	}
 
 	public String generateDb()

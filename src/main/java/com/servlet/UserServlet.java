@@ -3,7 +3,6 @@ package com.servlet;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.services.DataBaseServiceImpl;
-import com.services.ListsServiceImpl;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,11 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Optional;
 
 @WebServlet(name = "servlet.UserServlet", urlPatterns = {"/user"})
 public class UserServlet extends HttpServlet {
-	ListsServiceImpl listService = new ListsServiceImpl();
+	//ListsServiceImpl listService = new ListsServiceImpl();
 	DataBaseServiceImpl dbService = new DataBaseServiceImpl();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -30,34 +28,36 @@ public class UserServlet extends HttpServlet {
 			String email = request.getParameter("userEmail");
 			boolean isSupplier= Boolean.valueOf(request.getParameter("isSupplier"));
 			User newUser = new User(firstName, lastName, email, password);
-			String id = null;
 			try {
-				id = listService.addUser(newUser,isSupplier);
+				//id = listService.addUser(newUser,isSupplier);
+				if(dbService.isEmailAlreadyExist(newUser.getEmail())){
+					throw new EmailAlreadyExistException();
+				}
 				dbService.insertUserToDb(newUser, isSupplier);
-				ctx.setAttribute("userId", id);
+				//save id on context to use on other servlets
+				ctx.setAttribute("userId", newUser.getId());
 			} catch (EmailAlreadyExistException e) {
 				return;
 				//todo- need to preset message to user about email exist
 			}
 			if(isSupplier){
-				response.sendRedirect("/client/html/onboarding-suppliers.html?id="+id);}
+				response.sendRedirect("/client/html/onboarding-suppliers.html");}
 			else{
-				response.sendRedirect("/client/html/onboarding-couples.html?id="+id);}
-			//todo-use id's sent on url to know who to update on db
+				response.sendRedirect("/client/html/onboarding-couples.html");}
 		}
 
-		else if (request.getParameter("action_onboarding_suppliers")!=null) {
-			String vanueName = request.getParameter("vanueName");
-			String phone = request.getParameter("phone");
-			String maxCapacity = request.getParameter("maxCapacity");
-			String isGarden = request.getParameter("isGarden");
-			String area = request.getParameter("area");
-			String minPrice = request.getParameter("minPrice");
-			String style = request.getParameter("style");
-			String id = request.getParameter("id");
-			listService.updateSupplier(id,vanueName, phone,maxCapacity,isGarden, area, minPrice, style);
-			response.sendRedirect("/client/html/supplier-dashboard.html?id="+id);
-		}
+//		else if (request.getParameter("action_onboarding_suppliers")!=null) {
+//			String venueName = request.getParameter("venueName");
+//			String phone = request.getParameter("phone");
+//			String maxCapacity = request.getParameter("maxCapacity");
+//			String isGarden = request.getParameter("isGarden");
+//			String area = request.getParameter("area");
+//			String minPrice = request.getParameter("minPrice");
+//			String style = request.getParameter("style");
+//			String id = request.getParameter("id");
+//			listService.updateSupplier(id,venueName, phone,maxCapacity,isGarden, area, minPrice, style);
+//			response.sendRedirect("/client/html/supplier-dashboard.html?id="+id);
+//		}
 
 		else {
 			response.sendRedirect("/client/html/onboarding-couples.html");
@@ -67,13 +67,13 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if(request.getParameter("action_signin")!=null){
-			Optional<User> res = listService.getUserByPasswordAndEmail(request.getParameter("password"),request.getParameter("email"));
-			if(res.isPresent()){
-				response.sendRedirect("/client/html/found.html");
-			}
-			else{
-				response.sendRedirect("/client/html/not-found.html");
-			}
+//			Optional<User> res = listService.getUserByPasswordAndEmail(request.getParameter("password"),request.getParameter("email"));
+//			if(res.isPresent()){
+//				response.sendRedirect("/client/html/found.html");
+//			}
+//			else{
+//				response.sendRedirect("/client/html/not-found.html");
+//			}
 		}
 	}
 }

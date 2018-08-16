@@ -5,7 +5,7 @@ import com.utilities.SchedulingRange;
 
 
 public class CoupleService {
-    ListsServiceImpl dbService = new ListsServiceImpl();
+    DataBaseServiceImpl dbService = new DataBaseServiceImpl();
 
     public void updateSchedulingRange(String id, SchedulingRange schedulingRange)
     {

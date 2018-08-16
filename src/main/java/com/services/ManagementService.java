@@ -31,7 +31,7 @@ public interface ManagementService {
 
 	Supplier getSupplierById(String id);
 
-	void updateSupplier(String id, String vanueName, String phone, String maxCapacity, String isGarden, String area, String minPricePerPerson, String style);
+	void updateSupplier(String id, String venueName, String phone, String maxCapacity, String isGarden, String area, String minPricePerPerson, String style);
 
 	Optional<User> getUserByPasswordAndEmail(String password, String email);
 }

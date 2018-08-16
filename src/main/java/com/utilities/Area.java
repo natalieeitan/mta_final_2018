@@ -1,6 +1,7 @@
 package com.utilities;
 
 public enum Area {
+    ///todo - not worling with all values
     North("north"),
     Haifa("Haifa"),
     Center("Center"),
@@ -19,4 +20,5 @@ public enum Area {
     public String getName() {
         return name;
     }
+
 }
