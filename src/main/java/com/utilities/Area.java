@@ -2,14 +2,13 @@ package com.utilities;
 
 public enum Area {
     ///todo - not worling with all values
-    North("north"),
+    GushDan("Gush-Dan"),
     Haifa("Haifa"),
-    Center("Center"),
-    TelAviv("Tal-Aviv"),
     Jerusalem("Jerusalem"),
-    Shfela("shfela"),
-    Sharon("sharon"),
-    South("south")
+    North("North"),
+    Sharon("Sharon"),
+    Shfela("Shfela"),
+    South("South")
     ;
     private String name;
 
