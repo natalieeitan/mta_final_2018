@@ -21,13 +21,11 @@ public class UserServlet extends HttpServlet {
 			throws IOException {
 		ServletContext ctx = getServletConfig().getServletContext();
 		request.setCharacterEncoding("UTF-8");
-		String c=request.getParameter("action_signup");
 		if (request.getParameter("action_signup")!=null) {
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
-			String parm=request.getParameter("isSupplier");
 			boolean isSupplier= Boolean.valueOf(request.getParameter("isSupplier"));
 			User newUser = new User(firstName, lastName, email, password);
 			try {
