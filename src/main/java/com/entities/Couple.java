@@ -8,7 +8,8 @@ import java.util.Date;
  * Created by natalieeitan on 09/04/2018.
  * just for test
  */
-public class Couple extends User {
+public class Couple {
+    private String userId;
     private SchedulingRange schedulingRange;
     private DayOfWeek daysToMarry;
 
@@ -20,13 +21,18 @@ public class Couple extends User {
     private int numOfInvites;
     private PriceRange pricing;
 
-
-    public Couple(User user) {
-        super(user.firstName, user.lastName, user.email, user.password);
-        user.type=UserType.Couple;
-        this.setId(super.generateDb());
+    public Couple(String userId, SchedulingRange schedulingRange, DayOfWeek daysToMarry, Date date, Season seasonToMarry,
+            Area area, Style styles, int numOfInvites, PriceRange pricing) {
+        this.userId = userId;
+        this.schedulingRange = schedulingRange;
+        this.daysToMarry = daysToMarry;
+        this.date = date;
+        this.seasonToMarry = seasonToMarry;
+        this.area = area;
+        this.styles = styles;
+        this.numOfInvites = numOfInvites;
+        this.pricing = pricing;
     }
-
 
     public void setSchedulingRange(SchedulingRange schedulingRange) {
         this.schedulingRange = schedulingRange;

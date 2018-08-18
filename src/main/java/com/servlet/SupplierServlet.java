@@ -2,19 +2,21 @@ package com.servlet;
 
 import com.entities.Supplier;
 import com.services.DataBaseServiceImpl;
-import com.utilities.Area;
-import com.utilities.Style;
+import com.services.SupplierService;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "servlet.SupplierServlet", urlPatterns = { "/supplier" })
 public class SupplierServlet extends HttpServlet {
 	DataBaseServiceImpl dbService = new DataBaseServiceImpl();
+	SupplierService supplierService = new SupplierService();
 
 	//todo - add city to supplier form
 	@Override
@@ -44,11 +46,10 @@ public class SupplierServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-		ServletContext ctx = getServletConfig().getServletContext();
-		if (request.getParameter("action_get_offers") != null) {
-			String supplierId = ctx.getAttribute("userId").toString();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Supplier> allSuppliers = supplierService.getAllSuppliers();
+		request.setAttribute("allSuppliers", allSuppliers); // Will be available as ${allSuppliers} in JSP
+		request.getRequestDispatcher("/WEB-INF/couples-suggestions.jsp").forward(request, response);
 
-		}
 	}
 }
