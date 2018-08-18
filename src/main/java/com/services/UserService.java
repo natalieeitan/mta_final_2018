@@ -24,15 +24,17 @@ public class UserService {
 		String lastName;
 		String email;
 		String password;
+		String type;
 
 		try {
-			ResultSet rs = db.getDataFromDB("SELECT * FROM WedAppServer.dbo.Users");
+			ResultSet rs = db.getDataFromDB(SqlQueries.GET_ALL_USERS);
 			while (rs.next()) {
 				id = rs.getString("ID");
 				firstName = rs.getString("FirstName");
 				lastName = rs.getString("LastName");
 				email = rs.getString("Email");
 				password = rs.getString("Password");
+				type = rs.getString("Type");
 
 				User user = new User(id, firstName, lastName, email, password);
 
@@ -47,18 +49,17 @@ public class UserService {
 
 	public void pushAllUsersToDB(List<User> users) {
 		WedAppServer db = new WedAppServer();
+		String query;
 		for (User user : users) {
 			try {
-				db.insertToDB(SqlQueries.UPDATE_USER_FIRST_NAME + user.getFirstName()
-						+ SqlQueries.WHERE_ID + user.getId());
-				db.insertToDB(SqlQueries.UPDATE_USER_LAST_NAME + user.getLastName()
-						+ SqlQueries.WHERE_ID + user.getId());
-				db.insertToDB(SqlQueries.UPDATE_USER_EMAIL + user.getEmail()
-						+ SqlQueries.WHERE_ID + user.getId());
-				db.insertToDB(SqlQueries.UPDATE_USER_PASSWORD + user.getPassword()
-						+ SqlQueries.WHERE_ID + user.getId());
-				db.insertToDB(SqlQueries.UPDATE_USER_EMAIL_VERIFIED + user.getEmailVerified()
-						+ SqlQueries.WHERE_ID + user.getId());
+				if(db.checkIfIDExistInTable("Users",user.getId())==1) {
+                    query=SqlQueries.updateUserInTable(user);
+                    db.insertToDB(query);
+				}
+				else {
+				    query=SqlQueries.insertIntoUserTable(user);
+					db.insertToDB(query);
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

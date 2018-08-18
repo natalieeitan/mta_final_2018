@@ -23,6 +23,7 @@ public class Couple extends User {
 
     public Couple(User user) {
         super(user.firstName, user.lastName, user.email, user.password);
+        user.type=UserType.Couple;
         this.setId(super.generateDb());
     }
 

@@ -10,17 +10,17 @@ public class Supplier {
 	private int maxCapacity;
 	private boolean isGarden;
 	//    private Cities city;
-	private Area area;
+	private int area;
 	private int minPricePerPerson;
-	private Style style;
+	private int style;
 //
 //	public Supplier(User user) {
 //		super(user.firstName, user.lastName, user.email, user.password);
 //		this.setId(super.generateDb());
 //	}
 
-	public Supplier(String userId, String venueName, String phone, int maxCapacity, boolean isGarden, Area area, int minPricePerPerson,
-			Style style) {
+	public Supplier(String userId, String venueName, String phone, int maxCapacity, boolean isGarden, int area, int minPricePerPerson,
+			int style) {
 		this.userId = userId;
 		this.venueName = venueName;
 		this.phone = phone;
@@ -30,6 +30,10 @@ public class Supplier {
 		this.minPricePerPerson = minPricePerPerson;
 		this.style = style;
 	}
+
+	public String getID(){
+	    return userId;
+    }
 
 	public void setVenueName(String venueName) {
 		this.venueName = venueName;
@@ -51,7 +55,7 @@ public class Supplier {
 	//        this.city = city;
 	//    }
 
-	public void setArea(Area area) {
+	public void setArea(int area) {
 		this.area = area;
 	}
 
@@ -59,7 +63,7 @@ public class Supplier {
 		this.minPricePerPerson = minPricePerPerson;
 	}
 
-	public void setStyle(Style style) {
+	public void setStyle(int style) {
 		this.style = style;
 	}
 
@@ -75,11 +79,11 @@ public class Supplier {
 		return isGarden;
 	}
 
-	public Area getArea() {
+	public int getArea() {
 		return area;
 	}
 
-	public Style getStyle() {
+	public int getStyle() {
 		return style;
 	}
 

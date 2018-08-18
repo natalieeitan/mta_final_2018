@@ -35,7 +35,7 @@ public class SupplierServlet extends HttpServlet {
 			//			Supplier supplier = new Supplier(id, venueName, phone, Integer.parseInt(maxCapacity), Boolean.valueOf(isGarden),
 			//					Area.valueOf(area), Integer.parseInt(minPrice), Style.valueOf(style));
 			Supplier supplier = new Supplier(id, venueName, phone, Integer.parseInt(maxCapacity), Boolean.valueOf(isGarden),
-					Area.Center, Integer.parseInt(minPrice), Style.AnyStyle);
+					1, Integer.parseInt(minPrice), 1);
 			dbService.insertSupplierToDb(supplier);
 			//listService.updateSupplier(id,venueName, phone,maxCapacity,isGarden, area, minPrice, style);
 
