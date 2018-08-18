@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>מארגנת החתונות</title>
-    <meta name="description" content=""/>
-    <meta name="Author" content=""/>
+    <meta name="description" content="" />
+    <meta name="Author" content="" />
 
     <!-- mobile settings -->
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"/>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <!-- WEB FONTS : use %7C instead of | (pipe) -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
-          rel="stylesheet" type="text/css"/>
+          rel="stylesheet" type="text/css" />
 
     <!-- CORE CSS -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!-- THEME CSS -->
-    <link href="assets/css/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <link href="assets/css/header-1.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme"/>
-    <link href="assets/css/essentials.css" rel="stylesheet" type="text/css"/>
-    <link href="assets/css/MyStyle.css" rel="stylesheet"/>
+    <link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+    <link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/MyStyle.css" rel="stylesheet" />
+    <link href="assets/css/layout-RTL.css" rel="stylesheet" />
+
 
 </head>
 
@@ -43,9 +46,9 @@
 
                 <!-- Logo -->
                 <!--<a class="logo float-left scrollTo" href="#top">
-                    <img src="assets/images/_smarty/logo_light.png" alt="" />
-                    <img src="assets/images/_smarty/logo_dark.png" alt="" />
-                </a>-->
+                <img src="assets/images/_smarty/logo_light.png" alt="" />
+                <img src="assets/images/_smarty/logo_dark.png" alt="" />
+            </a>-->
 
                 <div class="navbar-collapse collapse float-right nav-main-collapse">
                     <nav class="nav-main">
@@ -84,8 +87,7 @@
         <div class="overlay dark-2"></div>
 
         <!-- Video Background - replace videoURL with your youtube video URL -->
-        <a id="YTPlayer" class="player"
-           data-property="{videoURL:'https://youtu.be/6t6QbWyrP7I',containment:'body',autoPlay:true, mute:true, startAt:4, opacity:1}">youtube</a>
+        <a id="YTPlayer" class="player" data-property="{videoURL:'https://youtu.be/6t6QbWyrP7I',containment:'body',autoPlay:true, mute:true, startAt:4, opacity:1}">youtube</a>
         <!--/Video Background -->
 
         <div class="display-table">
@@ -99,21 +101,21 @@
                         <h1 class="text-white wow fadeInUp" data-wow-delay="0.4s">
                             מארגנת החתונות
                         </h1>
-                        <h2 class="fw-300 text-white wow fadeInUp" data-wow-delay="0.8s">העוזרת הדיגיטלית שתלווה אתכם עד
-                            החופה</h2>
+                        <h2 class="fw-300 text-white wow fadeInUp" data-wow-delay="0.8s">העוזרת הדיגיטלית שתלווה אתכם עד החופה
+                        </h2>
 
 
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6">
-                            <a href="#" class="btn btn-featured btn-round btn-pink">
-                                <span style="font-size:24px;" id="coupleSignUp">מתחתנים</span>
+                            <a href="#login" class="btn btn-featured btn-round btn-pink">
+                                <span style="font-size:24px;" id="coupleSignUp" onClick="clickCB('couples')">מתחתנים</span>
                                 <i class="et-heart btn-round"></i>
                             </a>
                         </div>
                         <div class="col-xs-12 col-sm-6">
-                            <a href="#" class="btn btn-featured btn-round btn-aqua">
-                                <span style="font-size:24px;" id="supplierSignUp">ספקים</span>
+                            <a href="#login" class="btn btn-featured btn-round btn-aqua">
+                                <span style="font-size:24px;" id="supplierSignUp" onClick="clickCB('suppliers')">ספקים</span>
                                 <i class="et-wine btn-round"></i>
 
                             </a>
@@ -137,9 +139,8 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="col-md-3 col-sm-5"></div>
                     <!-- LOGIN -->
-                    <div class="col-md-6 col-sm-5">
+                    <div class="col-md-4 col-sm-5">
                         <div class="box-static box-border-top p-30 box-white">
                             <div class="box-title mb-30">
                                 <h2 class="fs-20">משתמש קיים</h2>
@@ -170,7 +171,7 @@
                                     <div class="col-md-6 col-sm-6 col-6">
                                         <!-- Inform Tip -->
                                         <div class="form-tip pt-20">
-                                            <a class="btn btn-outline-link" href="#">שכחת סיסמה?</a>
+                                            <a class="btn btn-outline-link" href="#"></a>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-6 text-left" style="float:left;">
@@ -183,102 +184,88 @@
                     </div>
                     <!-- /LOGIN -->
                     <!-- REGISTER -->
-                    <div>
-                        <!--<div class="col-md-8 col-sm-7">-->
+                    <div class="col-md-8 col-sm-7">
 
-                        <!--<div class="box-static box-bordered box-white p-30">-->
+                        <div class="box-static box-bordered box-white p-30">
 
-                        <!--<div class="box-title mb-30">-->
-                        <!--<h2 class="fs-20">לא רשומים? הרשמו עכשיו</h2>-->
-                        <!--</div>-->
+                            <div class="box-title mb-30">
+                                <h2 class="fs-20">לא רשומים? הרשמו עכשיו</h2>
+                            </div>
+                            <form class="m-0 sky-form" action="/user" method="post"  dir="rtl">
+                                <fieldset>
+                                    <div class="row">
 
-                        <!--<form class="m-0 sky-form" action="#" method="post" enctype="multipart/form-data" dir="rtl">-->
-                        <!--<fieldset>-->
-                        <!--<div class="row">-->
+                                        <div class="col-md-6 col-sm-6">
+                                            <label>שם פרטי *</label>
+                                            <label class="input mb-10">
+                                                <i class="ico-append et-profile-male"></i>
+                                                <input name="firstName" required="" type="text">
+                                                <b class="tooltip tooltip-bottom-right">הקלד/י את השם הפרטי שלך</b>
+                                            </label>
+                                        </div>
 
-                        <!--<div class="col-md-6 col-sm-6">-->
-                        <!--<label>שם פרטי *</label>-->
-                        <!--<label class="input mb-10">-->
-                        <!--<i class="ico-append et-profile-male"></i>-->
-                        <!--<input required="" type="text">-->
-                        <!--<b class="tooltip tooltip-bottom-right">הקלד/י את השם הפרטי שלך</b>-->
-                        <!--</label>-->
-                        <!--</div>-->
+                                        <div class="col-md-6 col-sm-6">
+                                            <label>שם משפחה *</label>
+                                            <label class="input mb-10">
+                                                <i class="ico-append et-profile-male"></i>
+                                                <input name="lastName" required="" type="text">
+                                                <b class="tooltip tooltip-bottom-right">הקלד/י את השם המשפחה שלך</b>
+                                            </label>
+                                        </div>
 
-                        <!--<div class="col-md-6 col-sm-6">-->
-                        <!--<label for="register:last_name">שם משפחה *</label>-->
-                        <!--<label class="input mb-10">-->
-                        <!--<i class="ico-append et-profile-male"></i>-->
-                        <!--<input required="" type="text" id="register:last_name">-->
-                        <!--<b class="tooltip tooltip-bottom-right">הקלד/י את השם המשפחה שלך</b>-->
-                        <!--</label>-->
-                        <!--</div>-->
+                                    </div>
 
-                        <!--</div>-->
+                                    <div class="row">
 
-                        <!--<div class="row">-->
+                                        <div class="col-md-6 col-sm-6">
+                                            <label>דוא"ל" *</label>
+                                            <label class="input mb-10">
+                                                <i class="ico-append et-envelope"></i>
+                                                <input name="userEmail" required="" type="email">
+                                                <b class="tooltip tooltip-bottom-right">כתובת הדואר האלקטורני שלך</b>
+                                            </label>
+                                        </div>
 
-                        <!--<div class="col-md-6 col-sm-6">-->
-                        <!--<label for="register:email">דוא"ל" *</label>-->
-                        <!--<label class="input mb-10">-->
-                        <!--<i class="ico-append et-envelope"></i>-->
-                        <!--<input required="" type="text" id="register:email">-->
-                        <!--<b class="tooltip tooltip-bottom-right">כתובת הדואר האלקטורני שלך</b>-->
-                        <!--</label>-->
-                        <!--</div>-->
+                                        <div class="col-md-6 col-sm-6">
+                                            <label>סיסמה*</label>
+                                            <label class="input mb-10">
+                                                <i class="ico-append et-pencil"></i>
+                                                <input name="userPass" required="" type="text">
+                                                <b class="tooltip tooltip-bottom-right">בחר/י סיסמה חזקה
+                                                </b>
+                                            </label>
+                                        </div>
 
-                        <!--<div class="col-md-6 col-sm-6">-->
-                        <!--<label for="register:phone">נייד</label>-->
-                        <!--<label class="input mb-10">-->
-                        <!--<i class="ico-append et-phone"></i>-->
-                        <!--<input type="text" id="register:phone">-->
-                        <!--<b class="tooltip tooltip-bottom-right">מספר הטלפון האישי - -->
-                        <!--אופציונאלי</b>-->
-                        <!--</label>-->
-                        <!--</div>-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <label class="radio-btn">
+                                                <input type="radio" name="isSupplier" value="false" id="couples" required>
+                                                <i></i> מתחתנים *
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <label class="radio-btn">
+                                                <input type="radio" name="isSupplier" value="true" id="suppliers" required>
+                                                <i></i> ספקים *
+                                            </label>
+                                        </div>
 
-                        <!--</div>-->
+                                    </div>
+                                </fieldset>
+                                <input name="action_signup" hidden>
+                                <div class="row">
+                                    <div class="col-md-12" style="float:left">
+                                        <button type="submit" class="btn btn-pink btn-round">
+                                            <i class="fa fa-check"></i> הרשמה
+                                        </button>
+                                    </div>
+                                </div>
 
-                        <!--<div class="row">-->
+                            </form>
 
-                        <!--<div class="col-md-6 col-sm-6">-->
-                        <!--<label for="register:pass1">סיסמה *</label>-->
-                        <!--<label class="input mb-10">-->
-                        <!--<i class="ico-append et-key"></i>-->
-                        <!--<input required="" type="password" id="register:pass1">-->
-                        <!--<b class="tooltip tooltip-bottom-right">בחרו סיסמה טובה שאף אחד לא-->
-                        <!--יגלה</b>-->
-                        <!--</label>-->
-                        <!--</div>-->
+                        </div>
 
-                        <!--<div class="col-md-6 col-sm-6">-->
-                        <!--<label for="register:pass2">אימות סיסמה *</label>-->
-                        <!--<label class="input mb-10">-->
-                        <!--<i class="ico-append et-key"></i>-->
-                        <!--<input required="" type="password" id="register:pass2">-->
-                        <!--<b class="tooltip tooltip-bottom-right">הקלידו סיסמה בשנית</b>-->
-                        <!--</label>-->
-                        <!--</div>-->
-
-                        <!--</div>-->
-
-                        <!--<hr/>-->
-
-                        <!--</fieldset>-->
-
-                        <!--<div class="row">-->
-                        <!--<div class="col-md-12">-->
-                        <!--<button type="submit" class="btn btn-pink btn-round"><i class="fa fa-check"></i>-->
-                        <!--הרשמה-->
-                        <!--</button>-->
-                        <!--</div>-->
-                        <!--</div>-->
-
-                        <!--</form>-->
-
-                        <!--</div>-->
-
-                        <!--</div>-->
                     </div>
                     <!-- /REGISTER -->
 
@@ -290,39 +277,32 @@
         </div>
     </section>
     <!-- /CONTACT -->
-    <section id="about" class="bgImage sectionOpacity">
+    <section id="about" class="sectionOpacity aboutSectionDesktop">
         <div class="container">
             <header class="text-center mb-60">
                 <h2 class="pinkText">מי אנחנו?</h2>
                 <hr/>
             </header>
-
             <div class="container">
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-md-6 col-sm-5">
-                        <div style="width:95%">
-                            <i class="et-heart ico-bordered ico-hover-dark ico-lg"></i>
-                            <label style="text-align: right">
-                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ
-                                כלרשט
-                                מיחוצים. קלאצי קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק.
-                                תצטנפל
-                                בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום
-                                בלינך רוגצה. לפמעט
+                        <div>
+                            <i class="et-heart ico-rounded ico-hover-dark ico-lg"></i>
+                            <label>
+                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי קולהע צופעט למרקוח
+                                איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול,
+                                צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט
                             </label>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-sm-5">
                         <div style="width:95%">
-                            <i class="et-wine ico-bordered ico-hover-dark ico-lg"></i>
-                            <label style="text-align: center">
-                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ
-                                כלרשט
-                                מיחוצים. קלאצי קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק.
-                                תצטנפל
-                                בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום
-                                בלינך רוגצה. לפמעט
+                            <i class="et-wine ico-rounded ico-hover-dark ico-lg"></i>
+                            <label>
+                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי קולהע צופעט למרקוח
+                                איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול,
+                                צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט
                             </label>
                         </div>
                     </div>
@@ -330,25 +310,19 @@
             </div>
 
         </div>
-
-</div>
-
-</div>
-</section>
-
-
-</div>
-<!-- /wrapper -->
-<!-- SCROLL TO TOP -->
-<a href="#" id="toTop"></a>
-
-
-<!-- PRELOADER -->
-<div id="preloader">
-    <div class="inner">
-        <span class="loader"></span>
+    </section>
+    <!-- SCROLL TO TOP -->
+    <a href="#" id="toTop"></a>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="inner">
+            <span class="loader"></span>
+        </div>
     </div>
-</div><!-- /PRELOADER -->
+</div>
+
+<!-- /PRELOADER -->
+
 <!-- JAVASCRIPT FILES -->
 <script>var plugin_path = 'assets/plugins/';</script>
 <script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
@@ -357,116 +331,21 @@
 
 <!-- PAGELEVEL SCRIPTS -->
 <script src="assets/js/contact.js"></script>
-<!--</body>-->
-<!--</html>-->
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="he">-->
-<!--<head>-->
-<!--<meta charset="utf-8"/>-->
-<!--<title>מארגנת החתונות </title>-->
-<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
-<!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">-->
-<!--<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">-->
-<!--<link rel="stylesheet" type="text/css" href="/client/css/global.css">-->
-<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
-
-
-<!--</head>-->
-<!--<body dir="rtl">-->
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" >-->
-<!--<a class="navbar-brand" href="#"></a>-->
-
-<!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--<span class="navbar-toggler-icon"></span>-->
-<!--</button>-->
-
-<!--<div class="collapse navbar-collapse"  id="navbarSupportedContent" >-->
-<!--<ul class="navbar-nav mr-auto" dir="rtl">-->
-<!--<li class="nav-item">-->
-<!--<button id="signUpBtn" class="w3-button w3-round-large">הרשמה לאתר</button>-->
-<!--</li>-->
-<!--<li class="nav-item">-->
-<!--<button id="signInBtn" class="w3-button w3-round-large">כניסה לאתר</button>-->
-<!--</li>-->
-<!--</ul>-->
-<!--</div>-->
-<!--</nav>-->
-
-<!--<div class="container-fluid" >-->
-
-<!--<div class="row">-->
-<!--<div class="col-12 col-sm-6 col-md-6 ">-->
-<!--<div class="middle">-->
-<!--<button class="imageButton btn " id="supplierSignUp" style="width: 750px">-->
-<!--ספקים-->
-<!--</button>-->
-<!--</div>-->
-<!--<img class="card-img-top imageB" src="/client/html/vanue.jpg" style="width:100%;height: 100%;" >-->
-<!--</div>-->
-<!--<div class="col-12 col-sm-6 col-md-6">-->
-<!--<div class="middle">-->
-<!--<button class="imageButton btn" id="coupleSignUp"  style="width: 750px">-->
-<!--מתחתנים-->
-<!--</button>-->
-<!--</div>-->
-<!--<img class="card-img-top" src="/client/html/couple.jpg" style="width:100%;height: 100%;">-->
-
-<!--</div>-->
-
-<!--</div>-->
-<!--</div>-->
-<!--&lt;!&ndash;<div class="flex-container w3-padding w3-white">&ndash;&gt;-->
-<!--&lt;!&ndash;<header>&ndash;&gt;-->
-<!--&lt;!&ndash;<div style="float: left; width: 130px">&ndash;&gt;-->
-<!--&lt;!&ndash;<button id="signUpBtn" class="w3-button w3-round-large">הרשמה לאתר</button>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div style="float: right; width: 225px">&ndash;&gt;-->
-<!--&lt;!&ndash;<button id="signInBtn" class="w3-button w3-round-large">כניסה לאתר</button>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;</header>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="container w3-half">&ndash;&gt;-->
-<!--&lt;!&ndash;<img src="/client/html/couple.jpg" style="width:100%">&ndash;&gt;-->
-<!--&lt;!&ndash;<button id="coupleSignUp" class="container btn">&ndash;&gt;-->
-<!--&lt;!&ndash;מתחתנים?&ndash;&gt;-->
-<!--&lt;!&ndash;</button>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div class="container w3-half">&ndash;&gt;-->
-<!--&lt;!&ndash;<img src="/client/html/vanue.jpg" style="width:100%">&ndash;&gt;-->
-<!--&lt;!&ndash;<button id="supplierSignUp" class="container btn">&ndash;&gt;-->
-<!--&lt;!&ndash;ספקים?&ndash;&gt;-->
-<!--&lt;!&ndash;</button>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;<footer>&ndash;&gt;-->
-<!--&lt;!&ndash;<div style="float: left; width: 130px">&ndash;&gt;-->
-<!--&lt;!&ndash;<button id="contactUsBtn" class="w3-button w3-round-large">צור קשר</button>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;<div style="float: right; width: 225px">&ndash;&gt;-->
-<!--&lt;!&ndash;<button id="whoAreWeBtn" class="w3-button w3-round-large">מי אנחנו?</button>&ndash;&gt;-->
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-<!--&lt;!&ndash;</footer>&ndash;&gt;-->
-
 <script type="text/javascript">
+    function clickCB(id) {
+        document.getElementById(id).click();
+    }
 
-document.getElementById("supplierSignUp").onclick = function () {
-location.href = "/client/html/register.html?supplier=true";
-};
-
-document.getElementById("coupleSignUp").onclick = function () {
-location.href = "/client/html/register.html?supplier=false";
-};
+    // function getToSignInPage() {
+    //     if (document.getElementById('suppliers').checked)
+    //     window.location.href = "../html/onboarding-suppliers.html";
+    //
+    //     else if(!document.getElementById('suppliers').checked)
+    //         window.location.href = "../html/onboarding-couples.html";
+    //     return false;
+    // }
 
 </script>
 </body>
+
 </html>
-<!--&lt;!&ndash; Optional JavaScript &ndash;&gt;-->
-<!--&lt;!&ndash; jQuery first, then Popper.js, then Bootstrap JS &ndash;&gt;-->
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>-->
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
-<!--</body>-->
-<!--</html>-->
