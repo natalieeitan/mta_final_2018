@@ -2,7 +2,6 @@ package com.servlet;
 
 import com.entities.Supplier;
 import com.entities.User;
-import com.services.DataBaseServiceImpl;
 import com.services.SupplierService;
 
 import javax.servlet.ServletContext;
@@ -16,10 +15,8 @@ import java.util.List;
 
 @WebServlet(name = "servlet.SupplierServlet", urlPatterns = { "/supplier" })
 public class SupplierServlet extends HttpServlet {
-	DataBaseServiceImpl dbService = new DataBaseServiceImpl();
 	SupplierService supplierService = new SupplierService();
 
-	//todo - add city to supplier form
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -33,15 +30,12 @@ public class SupplierServlet extends HttpServlet {
 			ServletContext ctx = getServletConfig().getServletContext();
 
 			String id = getServletConfig().getServletContext().getAttribute("userId").toString();
-			//todo - fix - Area.valueof not working, Style.valueOf not working
-			//			Supplier supplier = new Supplier(id, venueName, phone, Integer.parseInt(maxCapacity), Boolean.valueOf(isGarden),
-			//					Area.valueOf(area), Integer.parseInt(minPrice), Style.valueOf(style));
+			//todo - replace number with something like- Area.valueof (not working)
 			Supplier supplier = new Supplier((User) ctx.getAttribute("user"),id, venueName, phone, Integer.parseInt(maxCapacity),
 					1, Integer.parseInt(minPrice), 1);
 			supplierService.insertSupplierToDb(supplier);
-			//listService.updateSupplier(id,venueName, phone,maxCapacity,isGarden, area, minPrice, style);
 
-			response.sendRedirect("/client/html/supplier-dashboard.html?id=" + id);
+			response.sendRedirect("/client/html/supplier-dashboard.html");
 		}
 	}
 
