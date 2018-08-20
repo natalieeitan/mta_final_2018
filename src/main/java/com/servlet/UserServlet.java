@@ -36,6 +36,7 @@ public class UserServlet extends HttpServlet {
 				dbService.insertUserToDb(newUser, isSupplier);
 				//save id on context to use on other servlets
 				ctx.setAttribute("userId", newUser.getId());
+				ctx.setAttribute("user", newUser);
 			} catch (EmailAlreadyExistException e) {
 				return;
 				//todo- need to preset message to user about email exist

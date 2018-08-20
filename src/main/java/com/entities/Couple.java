@@ -1,14 +1,9 @@
 package com.entities;
-import com.utilities.*;
+import com.utilities.PriceRange;
 
-import java.time.DayOfWeek;
 import java.util.Date;
 
-/**
- * Created by natalieeitan on 09/04/2018.
- * just for test
- */
-public class Couple {
+public class Couple extends User{
     private String ID;
     private int schedulingRange;
 
@@ -22,8 +17,9 @@ public class Couple {
     private int numOfInvites;
     private PriceRange pricing;
 
-    public Couple(String userId, int schedulingRange,  Date date,int daysToMarry,
+    public Couple(User user, String userId, int schedulingRange,  Date date,int daysToMarry,
             int areas, int styles, int numOfInvites, PriceRange pricing) {
+        super(user);
         this.ID = userId;
         this.schedulingRange = schedulingRange;
         this.daysToMarry = daysToMarry;

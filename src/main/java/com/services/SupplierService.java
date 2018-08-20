@@ -2,10 +2,7 @@ package com.services;
 
 import com.entities.Couple;
 import com.entities.Supplier;
-import com.entities.User;
-import com.utilities.Area;
 import com.utilities.SqlQueries;
-import com.utilities.Style;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,6 +28,10 @@ public class SupplierService {
 		return null;
 	}
 
+	public void insertSupplierToDb(Supplier supplier) {
+		dataBaseService.executeQuery(SqlQueries.insertIntoSupplierTable(supplier));
+	}
+
 	public void connectWithCouple(String supplierId, String coupleId) {
 		dataBaseService.connectCoupleAndSupplier(coupleId, supplierId);
 	}
@@ -43,7 +44,6 @@ public class SupplierService {
 		String venueName;
 		String phone;
 		int maxCapacity;
-		boolean isGarden;
 		int area;
 		int minPrice;
 		int style;
@@ -55,12 +55,11 @@ public class SupplierService {
 				venueName = rs.getString("VenueName");
 				phone = rs.getString("PhoneNumber");
 				maxCapacity=rs.getInt("MaxCapacity");
-				isGarden = rs.getBoolean("IsGarden");
 				area = rs.getInt("Area");
 				minPrice = rs.getInt("MinPricePerPerson");
 				style = rs.getInt("Style");
 
-				Supplier supplier = new Supplier(id,venueName,phone,maxCapacity,isGarden,area,minPrice,style);
+				Supplier supplier = new Supplier(id,venueName,phone,maxCapacity,area,minPrice,style);
 
 				suppliersList.add(supplier);
 			}

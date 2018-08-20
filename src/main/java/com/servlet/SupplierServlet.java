@@ -1,6 +1,7 @@
 package com.servlet;
 
 import com.entities.Supplier;
+import com.entities.User;
 import com.services.DataBaseServiceImpl;
 import com.services.SupplierService;
 
@@ -26,7 +27,6 @@ public class SupplierServlet extends HttpServlet {
 			String venueName = request.getParameter("venueName");
 			String phone = request.getParameter("phone");
 			String maxCapacity = request.getParameter("maxCapacity");
-			String isGarden = request.getParameter("isGarden");
 			String area = request.getParameter("area");
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
@@ -36,9 +36,9 @@ public class SupplierServlet extends HttpServlet {
 			//todo - fix - Area.valueof not working, Style.valueOf not working
 			//			Supplier supplier = new Supplier(id, venueName, phone, Integer.parseInt(maxCapacity), Boolean.valueOf(isGarden),
 			//					Area.valueOf(area), Integer.parseInt(minPrice), Style.valueOf(style));
-			Supplier supplier = new Supplier(id, venueName, phone, Integer.parseInt(maxCapacity), Boolean.valueOf(isGarden),
+			Supplier supplier = new Supplier((User) ctx.getAttribute("user"),id, venueName, phone, Integer.parseInt(maxCapacity),
 					1, Integer.parseInt(minPrice), 1);
-			dbService.insertSupplierToDb(supplier);
+			supplierService.insertSupplierToDb(supplier);
 			//listService.updateSupplier(id,venueName, phone,maxCapacity,isGarden, area, minPrice, style);
 
 			response.sendRedirect("/client/html/supplier-dashboard.html?id=" + id);
