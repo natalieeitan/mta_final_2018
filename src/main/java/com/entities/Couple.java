@@ -15,20 +15,21 @@ public class Couple {
     private Date date; //specific Date
     //private Season seasonToMarry; //season to marry
     private int daysToMarry; //preferred days to marry
-    private int months;
+    private int preferredMonths;
     private int areas;  //areas to marry
     private int styles;  //preferred styles
 
     private int numOfInvites;
-    private PriceRange pricing;
+    private int pricing;
 
     public Couple(String userId, int schedulingRange,  Date date,int daysToMarry,
-            int areas, int styles, int numOfInvites, PriceRange pricing) {
+            int preferredMonths, int areas, int styles, int numOfInvites, int pricing) {
         this.ID = userId;
         this.schedulingRange = schedulingRange;
         this.daysToMarry = daysToMarry;
         this.date = date;
         //this.seasonToMarry = seasonToMarry;
+        this.preferredMonths=preferredMonths;
         this.areas = areas;
         this.styles = styles;
         this.numOfInvites = numOfInvites;
@@ -59,16 +60,28 @@ public class Couple {
         this.styles = styles;
     }
 
-    public void setPricing(PriceRange pricing) {
+    public void setPricing(int pricing) {
         this.pricing = pricing;
     }
+
+    public String getID(){return this.ID;}
 
    // public Season getSeasonToMarry(){ return this.seasonToMarry; }
     public int getDayOfWeek(){ return this.daysToMarry; }
 
-    public PriceRange getPricing() {
+    public int getSchedulingRange(){return this.schedulingRange;}
+
+    public Date getDate(){return this.date;}
+
+    public int getPreferredMonths(){return this.preferredMonths;}
+
+    public int getArea(){return this.areas;}
+
+    public int getPricing() {
         return pricing;
     }
+
+    public int getStyle(){return this.styles;}
 
     public int getNumOfInvites() {
         return numOfInvites;
