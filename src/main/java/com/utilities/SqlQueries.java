@@ -1,5 +1,6 @@
 package com.utilities;
 
+import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
 import com.services.WedAppServer;
@@ -55,6 +56,37 @@ public class SqlQueries {
 	public static final String UPDATE_SUPPLIER_AREA = "UPDATE WedAppServer.dbo.Supplier SET Area = ";
 	public static final String UPDATE_SUPPLIER_MIN_PRICE_PER_PERSON="UPDATE WedAppServer.dbo.Supplier SET MinPricePerPerson = ";
 	public static final String UPDATE_SUPPLIER_STYLE="UPDATE WedAppServer.dbo.Supplier SET Style = ";
+
+	//COUPLE Table UPDATE Queries
+	public static String updateCoupleInTable(Couple couple) {
+		return SqlQueries.UPDATE_COUPLE_SCHEDULING_RANGE+couple.getSchedulingRange()
+				+ ", SpecificDate = '" + couple.getDate().getYear()+"-"+couple.getDate().getMonth()+"-"+couple.getDate().getDay()+ "'"
+				+ ", DaysToMarry = " + couple.getDayOfWeek()
+				+ ", PreferredMonths = " + couple.getPreferredMonths()
+				+ ", Areas = " + couple.getArea()
+				+ ", Styles = " + couple.getStyle()
+				+ ", NumberOfInvites = " + couple.getNumOfInvites()
+				+ ", PriceRange = " + couple.getPricing()
+				+ " WHERE ID = " + couple.getID();
+	}
+
+	public static final String UPDATE_COUPLE_ID = "UPDATE WedAppServer.dbo.Couple SET ID = '";
+	public static final String UPDATE_COUPLE_SCHEDULING_RANGE = "UPDATE WedAppServer.dbo.Couple SET SchedulingRange = ";
+
+	public static String insertIntoCoupleTable(Couple couple) {
+		return "INSERT INTO WedAppServer.dbo.Couple (ID, SchedulingRange, SpecificDate, DaysToMarry, PreferredMonths, Areas, Styles, " +
+				"NumberOfInvites , PriceRange) VALUES ('"
+				+ couple.getID() + "',"
+				+ couple.getSchedulingRange() + ", '"
+				+ couple.getDate().getYear()+"-"+couple.getDate().getMonth()+"-"+couple.getDate().getDay()+ "',"
+				+ couple.getDayOfWeek() + ", "
+				+ couple.getPreferredMonths() + ", "
+				+ couple.getArea() + ", "
+				+ couple.getStyle() + ", "
+				+ couple.getNumOfInvites() + ", "
+				+ couple.getPricing() + ");";
+	}
+
 
 	public static String insertIntoCoupleSupplierTable(String supplierId, String coupleId) {
 		return "INSERT INTO WedAppServer.dbo.CoupleSupplier (SupplierID, CoupleID) VALUES ('" + supplierId + "','" + coupleId + "');";
