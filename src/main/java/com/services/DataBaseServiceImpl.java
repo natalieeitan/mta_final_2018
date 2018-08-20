@@ -75,7 +75,7 @@ public class DataBaseServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public void updateSupplier(String id, String venueName, String phone, String maxCapacity, String isGarden, String area,
+	public void updateSupplier(String id, String venueName, String phone, String maxCapacity, String area,
 			String minPricePerPerson, String style) {
 
 	}
@@ -95,9 +95,10 @@ public class DataBaseServiceImpl implements ManagementService {
 		wedAppServer.executeQuery(SqlQueries.insertIntoUserTable(user));
 	}
 
-	public void insertSupplierToDb(Supplier supplier) {
-		wedAppServer.executeQuery(SqlQueries.insertIntoSupplierTable(supplier));
+	public void executeQuery(String query){
+		wedAppServer.executeQuery(query);
 	}
+
 
 	public void connectCoupleAndSupplier(String coupleId, String supplierId) {
 		wedAppServer.executeQuery(SqlQueries.insertIntoCoupleSupplierTable(supplierId, coupleId));

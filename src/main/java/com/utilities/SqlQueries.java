@@ -3,7 +3,6 @@ package com.utilities;
 import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
-import com.services.WedAppServer;
 
 public class SqlQueries {
 	public static String INSERT_COUPLE_SUPPLIER_LINK = "INSERT INTO WedAppServer.dbo.CoupleSupplier VALUES (";
@@ -42,7 +41,6 @@ public class SqlQueries {
         return SqlQueries.UPDATE_SUPPLIER_VENUE_NAME+supplier.getVenueName()
                 + "', PhoneNumber = '" + supplier.getPhone()
                 + "', MaxCapacity = " + supplier.getMaxCapacity()
-                + ", IsGarden = '" + supplier.getIsGarden()
                 + "', Area = " + supplier.getArea()
                 + ", MinPricePerPerson = " + supplier.getMinPricePerPerson()
                 + ", Style = " + supplier.getStyle()
@@ -104,12 +102,11 @@ public class SqlQueries {
 
 	public static String insertIntoSupplierTable(Supplier supplier) {
 	    return "INSERT INTO " + SUPPLIER_TABLE_NAME
-				+ " (ID, VenueName, PhoneNumber, MaxCapacity, IsGarden, Area, MinPricePerPerson, Style) VALUES ('"
+				+ " (ID, VenueName, PhoneNumber, MaxCapacity, Area, MinPricePerPerson, Style) VALUES ('"
 				+ supplier.getID() + "', '"
 				+ supplier.getVenueName() + "', '"
 				+ supplier.getPhone() + "', "
-				+ supplier.getMaxCapacity() + ", '"
-				+ supplier.getIsGarden()+ "', "
+				+ supplier.getMaxCapacity() + ","
 				+ supplier.getArea() + ", "
 				+ supplier.getMinPricePerPerson() + ", "
 				+ supplier.getStyle() + ");";

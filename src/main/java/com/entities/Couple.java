@@ -1,7 +1,6 @@
 package com.entities;
-import com.utilities.*;
+import com.utilities.PriceRange;
 
-import java.time.DayOfWeek;
 import java.util.Date;
 
 /**
