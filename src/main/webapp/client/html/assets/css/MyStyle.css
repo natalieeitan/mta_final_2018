@@ -80,3 +80,20 @@ header {
 {
     cursor: pointer;
 }
+
+.carousel-caption{
+    height: 40%;
+    width: 30%;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.handle-small
+{
+    display: block;
+}
+
+@media only screen and (max-width: 600px) {
+    .handle-small {
+        display: none !important;
+    }
+}
