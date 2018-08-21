@@ -41,6 +41,13 @@ public class User {
 	}
 
 	public User() {
+		this.email = "";
+		this.firstName = "";
+		this.lastName = "";
+		this.password = "";
+		this.id = "";
+		this.type = UserType.Empty;
+		this.emailVerified = false;
 
 	}
 
