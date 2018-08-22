@@ -19,6 +19,14 @@ header {
     color: #F89FA1 !important;
 }
 
+.blackText {
+    color: black !important;
+}
+
+.turText {
+    color: #17a2b8 !important;
+}
+
 .bgImage {
     background-image: url(../images/_smarty/backgrounds/default.jpg)
 }

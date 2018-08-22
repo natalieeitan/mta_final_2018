@@ -22,12 +22,13 @@ public class User {
 		emailVerified = true;
 	}
 
-	public User(String firstName, String lastName, String email, String password) {
+	public User(String firstName, String lastName, String email, String password, UserType type) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
 		emailVerified = true;
+		this.type=type;
 		this.id = generateDb();
 	}
 
@@ -46,7 +47,7 @@ public class User {
 		this.lastName = "";
 		this.password = "";
 		this.id = "";
-		this.type = UserType.Empty;
+		this.type = null;
 		this.emailVerified = false;
 
 	}

@@ -85,13 +85,8 @@ public class DataBaseServiceImpl implements ManagementService {
 		return null;
 	}
 
-	public void insertUserToDb(User user, boolean isSupplier) {
+	public void insertUserToDb(User user) {
 		//todo- check if email already exist, if yes then raise exception EmailAlreadyExistException and catch him on servlet and show message to user
-		if (isSupplier) {
-			user.setType(UserType.Supplier);
-		} else {
-			user.setType(UserType.Couple);
-		}
 		wedAppServer.executeQuery(SqlQueries.insertIntoUserTable(user));
 	}
 

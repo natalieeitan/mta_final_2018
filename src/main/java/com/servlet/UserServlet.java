@@ -3,6 +3,7 @@ package com.servlet;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.services.DataBaseServiceImpl;
+import com.utilities.UserType;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,17 +22,21 @@ public class UserServlet extends HttpServlet {
 		ServletContext ctx = getServletConfig().getServletContext();
 		request.setCharacterEncoding("UTF-8");
 		if (request.getParameter("action_signup")!=null) {
+			User newUser;
 			String firstName = request.getParameter("firstName");
 			String lastName = request.getParameter("lastName");
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
 			boolean isSupplier= Boolean.valueOf(request.getParameter("isSupplier"));
-			User newUser = new User(firstName, lastName, email, password);
+			if(isSupplier)
+			newUser = new User(firstName, lastName, email, password, UserType.Supplier);
+			else
+				newUser = new User(firstName, lastName, email, password, UserType.Couple);
 			try {
 				if(dbService.isEmailAlreadyExist(newUser.getEmail())){
 					throw new EmailAlreadyExistException();
 				}
-				dbService.insertUserToDb(newUser, isSupplier);
+				dbService.insertUserToDb(newUser);
 				//save id on context to use on other servlets
 				ctx.setAttribute("userId", newUser.getId());
 				ctx.setAttribute("user", newUser);
