@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Style{
-    AnyStyle("AnyStyle",1),
-    Rural("Rural",2),
-    Classic("Classic",4),
-    Urban("Urban",8)
+    ANY_STYLE("AnyStyle",1),
+    RURAL("Rural",2),
+    CLASSIC("Classic",4),
+    URBAN("Urban",8)
     ;
     private String name;
     private int bitValue;

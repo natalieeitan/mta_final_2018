@@ -3,8 +3,8 @@ package com.utilities;
 import com.entities.User;
 
 public enum UserType {
-	Couple("Couple", 1),
-	Supplier("Supplier", 2)
+	COUPLE("Couple", 1),
+	SUPPLIER("Supplier", 2)
 	;
 
 	private String name;
