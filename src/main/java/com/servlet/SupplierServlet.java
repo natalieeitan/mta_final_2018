@@ -3,6 +3,8 @@ package com.servlet;
 import com.entities.Supplier;
 import com.entities.User;
 import com.services.SupplierService;
+import com.utilities.Area;
+import com.utilities.Style;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -30,9 +32,9 @@ public class SupplierServlet extends HttpServlet {
 			ServletContext ctx = getServletConfig().getServletContext();
 
 			String id = getServletConfig().getServletContext().getAttribute("userId").toString();
-			//todo - replace number with something like- Area.valueof (not working)
+
 			Supplier supplier = new Supplier((User) ctx.getAttribute("user"),id, venueName, phone, Integer.parseInt(maxCapacity),
-					1, Integer.parseInt(minPrice), 1);
+					Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
 			supplierService.insertSupplierToDb(supplier);
 
 			response.sendRedirect("/client/html/supplier-dashboard.html");
