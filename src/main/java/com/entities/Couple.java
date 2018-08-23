@@ -31,6 +31,10 @@ public class Couple extends User {
 		this.pricing = pricing;
 	}
 
+	public Couple(String id){
+		this.ID=id;
+	}
+
 	public Couple(String userId, int schedulingRange, Date date, int daysToMarry,
 			int preferredMonths, int areas, int styles, int numOfInvites, int pricing) {
 		super();

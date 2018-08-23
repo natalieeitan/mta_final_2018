@@ -28,6 +28,10 @@ public class Supplier extends User {
 		this.style = style;
 	}
 
+	public Supplier(String id){
+		this.id=id;
+	}
+
 	public Supplier(String userId, String venueName, String phone, int maxCapacity, int area,
 			int minPricePerPerson,
 			int style) {
