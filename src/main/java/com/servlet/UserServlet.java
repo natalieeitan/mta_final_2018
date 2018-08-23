@@ -29,9 +29,9 @@ public class UserServlet extends HttpServlet {
 			String email = request.getParameter("userEmail");
 			boolean isSupplier= Boolean.valueOf(request.getParameter("isSupplier"));
 			if(isSupplier)
-			newUser = new User(firstName, lastName, email, password, UserType.Supplier);
+			newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
 			else
-				newUser = new User(firstName, lastName, email, password, UserType.Couple);
+				newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
 			try {
 				if(dbService.isEmailAlreadyExist(newUser.getEmail())){
 					throw new EmailAlreadyExistException();
