@@ -19,6 +19,7 @@ public class SqlQueries {
 	public static final String SUPPLIER_TABLE_NAME = "WedAppServer.dbo.Supplier";
 	public static final String USER_TABLE_NAME = "WedAppServer.dbo.Users";
 	public static final String COUPLE_TABLE_NAME = "WedAppServer.dbo.Couple";
+	public static final String NULL="NULL";
 
 	//USERS Table UPDATE Queries
 	public static String updateUserInTable(User user) {
@@ -70,6 +71,32 @@ public class SqlQueries {
 
 	public static final String UPDATE_COUPLE_ID = "UPDATE WedAppServer.dbo.Couple SET ID = '";
 	public static final String UPDATE_COUPLE_SCHEDULING_RANGE = "UPDATE WedAppServer.dbo.Couple SET SchedulingRange = ";
+
+	public static final String insertEmptyCoupleToTable(String id) {
+		return "INSERT INTO WedAppServer.dbo.Couple (ID, SchedulingRange, SpecificDate, DaysToMarry, PreferredMonths, Areas, Styles, " +
+				"NumberOfInvites , PriceRange) VALUES ('"
+				+ id + "', "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ");";
+	}
+
+	public static String insertEmplySupplierToTable(String id) {
+		return "INSERT INTO " + SUPPLIER_TABLE_NAME
+				+ " (ID, VenueName, PhoneNumber, MaxCapacity, Area, MinPricePerPerson, Style) VALUES ('"
+				+ id + "', "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ", "
+				+ NULL + ");";
+	}
 
 	public static String insertIntoCoupleTable(Couple couple) {
 		return "INSERT INTO WedAppServer.dbo.Couple (ID, SchedulingRange, SpecificDate, DaysToMarry, PreferredMonths, Areas, Styles, " +
