@@ -86,6 +86,14 @@ public class SqlQueries {
 				+ NULL + ");";
 	}
 
+	public static String getCoupleByIDString(String id){
+	    return "SELECT 1 FROM "+SqlQueries.COUPLE_TABLE_NAME+ " WHERE ID = '"+id+"'";
+    }
+
+    public static String getSupplierByIDString(String id){
+        return "SELECT 1 FROM "+SqlQueries.SUPPLIER_TABLE_NAME+ " WHERE ID = '"+id+"'";
+    }
+
 	public static String insertEmptySupplierToTable(String id) {
 		return "INSERT INTO " + SUPPLIER_TABLE_NAME
 				+ " (ID, VenueName, PhoneNumber, MaxCapacity, Area, MinPricePerPerson, Style) VALUES ('"

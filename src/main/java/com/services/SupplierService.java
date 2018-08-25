@@ -73,6 +73,7 @@ public class SupplierService {
 	public void pushAllSuppliersToDB(List<Supplier> suppliers) {
 		WedAppServer db = new WedAppServer();
 		String query;
+
 		for (Supplier supplier : suppliers) {
 			try {
 				if (db.checkIfIDExistInTable("Supplier", supplier.getID()) == 1) {
@@ -92,6 +93,7 @@ public class SupplierService {
 
 	public static void insertEmptySupplierToDB(String id) {
 		WedAppServer db = new WedAppServer();
+
 		try {
 			db.insertToDB(SqlQueries.insertEmptySupplierToTable(id));
 		} catch (SQLException e) {
@@ -102,6 +104,7 @@ public class SupplierService {
 	public static Supplier getSupplierByID(String id){
 	    SupplierService db=new SupplierService();
 	    List<Supplier> suppliers = db.getAllSuppliers();
+
 	    for(Supplier supplier: suppliers)
         {
             if(id.equals(supplier.getID()))
