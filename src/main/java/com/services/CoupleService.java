@@ -70,4 +70,12 @@ public class CoupleService {
         db.closeConnection();
     }
 
+    public static void insertEmptyCoupleToDB(String id) {
+        WedAppServer db = new WedAppServer();
+        try {
+            db.insertToDB(SqlQueries.insertEmptyCoupleToTable(id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -54,12 +54,12 @@ public class SupplierService {
 				id = rs.getString("ID");
 				venueName = rs.getString("VenueName");
 				phone = rs.getString("PhoneNumber");
-				maxCapacity=rs.getInt("MaxCapacity");
+				maxCapacity = rs.getInt("MaxCapacity");
 				area = rs.getInt("Area");
 				minPrice = rs.getInt("MinPricePerPerson");
 				style = rs.getInt("Style");
 
-				Supplier supplier = new Supplier(id,venueName,phone,maxCapacity,area,minPrice,style);
+				Supplier supplier = new Supplier(id, venueName, phone, maxCapacity, area, minPrice, style);
 
 				suppliersList.add(supplier);
 			}
@@ -75,14 +75,13 @@ public class SupplierService {
 		String query;
 		for (Supplier supplier : suppliers) {
 			try {
-                if(db.checkIfIDExistInTable("Supplier",supplier.getID())==1) {
-                    query=SqlQueries.updateSupplierInTable(supplier);
-                    db.insertToDB(query);
-                }
-                else {
-                    query=SqlQueries.insertIntoSupplierTable(supplier);
-                    db.insertToDB(query);
-                }
+				if (db.checkIfIDExistInTable("Supplier", supplier.getID()) == 1) {
+					query = SqlQueries.updateSupplierInTable(supplier);
+					db.insertToDB(query);
+				} else {
+					query = SqlQueries.insertIntoSupplierTable(supplier);
+					db.insertToDB(query);
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -91,4 +90,12 @@ public class SupplierService {
 		db.closeConnection();
 	}
 
+	public static void insertEmptySupplierToDB(String id) {
+		WedAppServer db = new WedAppServer();
+		try {
+			db.insertToDB(SqlQueries.insertEmplySupplierToTable(id));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
