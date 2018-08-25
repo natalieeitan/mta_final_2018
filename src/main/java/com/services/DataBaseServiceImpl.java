@@ -26,20 +26,22 @@ public class DataBaseServiceImpl implements ManagementService {
 
 	@Override
 	public List<Couple> getCouples() throws SQLException {
-		ResultSet rs = this.wedAppServer.getDataFromDB(GET_ALL_COUPLES);
-
-		//todo - convert to List<Couple>
-		return null;
+		//ResultSet rs = this.wedAppServer.getDataFromDB(GET_ALL_COUPLES);
+		CoupleService db=new CoupleService();
+		return db.getAllCouples();
 	}
 
 	@Override
 	public List<Supplier> getSuppliers() {
-		return null;
+		SupplierService db=new SupplierService();
+		return db.getAllSuppliers();
 	}
 
 	@Override
 	public List<User> getUsers() {
-		return null;
+		UserService db=new UserService();
+		return db.getAllUsers();
+
 	}
 
 	@Override
