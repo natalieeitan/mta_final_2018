@@ -1,8 +1,12 @@
 package com.servlet;
 
+import com.entities.Couple;
+import com.entities.Supplier;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
+import com.services.CoupleService;
 import com.services.DataBaseServiceImpl;
+import com.services.SupplierService;
 import com.utilities.UserType;
 
 import javax.servlet.ServletContext;
@@ -28,10 +32,14 @@ public class UserServlet extends HttpServlet {
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
 			boolean isSupplier= Boolean.valueOf(request.getParameter("isSupplier"));
-			if(isSupplier)
-			newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
+			if(isSupplier) {
+                newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
+            }
 			else
-				newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
+            {
+                newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
+
+            }
 			try {
 				if(dbService.isEmailAlreadyExist(newUser.getEmail())){
 					throw new EmailAlreadyExistException();
@@ -45,8 +53,10 @@ public class UserServlet extends HttpServlet {
 				//todo- need to preset message to user about email exist
 			}
 			if(isSupplier){
+                SupplierService.insertEmptySupplierToDB(newUser.getId());
 				response.sendRedirect("/client/html/onboarding-suppliers.html");}
 			else{
+                CoupleService.insertEmptyCoupleToDB(newUser.getId());
 				response.sendRedirect("/client/html/onboarding-couples.html");}
 		}
 	}
