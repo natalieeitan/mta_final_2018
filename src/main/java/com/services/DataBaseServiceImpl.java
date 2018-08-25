@@ -32,7 +32,7 @@ public class DataBaseServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public List<Supplier> getSuppliers() {
+	public List<Supplier> getSuppliers() throws SQLException{
 		SupplierService db=new SupplierService();
 		return db.getAllSuppliers();
 	}
@@ -67,14 +67,10 @@ public class DataBaseServiceImpl implements ManagementService {
 	}
 
 	@Override
-	public Couple getCoupleById(String id) {
-		return null;
-	}
+	public Supplier getSupplierById(String id){return null;}
 
 	@Override
-	public Supplier getSupplierById(String id) {
-		return null;
-	}
+	public Couple getCoupleById(String id) { return null; }
 
 	@Override
 	public void updateSupplier(String id, String venueName, String phone, String maxCapacity, String area,
