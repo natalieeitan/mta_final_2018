@@ -28,7 +28,7 @@ public class SqlQueries {
 				+"', Email = '" + user.getEmail()
 				+"', Password = '"+ user.getPassword()
 				+"', Type = '"+user.getType()
-				+ SqlQueries.WHERE_ID + user.getId();
+                + " WHERE ID = '" + user.getId()+"'";
 	}
 	public static final String UPDATE_USER_FIRST_NAME = "UPDATE WedAppServer.dbo.Users SET FirstName = '";
 	public static final String UPDATE_USER_LAST_NAME = "UPDATE WedAppServer.dbo.Users SET LastName = '";
@@ -42,10 +42,10 @@ public class SqlQueries {
         return SqlQueries.UPDATE_SUPPLIER_VENUE_NAME+supplier.getVenueName()
                 + "', PhoneNumber = '" + supplier.getPhone()
                 + "', MaxCapacity = " + supplier.getMaxCapacity()
-                + "', Area = " + supplier.getArea()
+                + ", Area = " + supplier.getArea()
                 + ", MinPricePerPerson = " + supplier.getMinPricePerPerson()
                 + ", Style = " + supplier.getStyle()
-                + " WHERE ID = " + supplier.getID();
+                + " WHERE ID = '" + supplier.getID()+"'";
     }
 	public static final String UPDATE_SUPPLIER_ID = "UPDATE WedAppServer.dbo.Supplier SET ID = '";
 	public static final String UPDATE_SUPPLIER_VENUE_NAME = "UPDATE WedAppServer.dbo.Supplier SET VenueName = '";
@@ -66,7 +66,7 @@ public class SqlQueries {
 				+ ", Styles = " + couple.getStyle()
 				+ ", NumberOfInvites = " + couple.getNumOfInvites()
 				+ ", PriceRange = " + couple.getPricing()
-				+ " WHERE ID = " + couple.getID();
+				+ " WHERE ID = '" + couple.getID()+"'";
 	}
 
 	public static final String UPDATE_COUPLE_ID = "UPDATE WedAppServer.dbo.Couple SET ID = '";
@@ -86,7 +86,7 @@ public class SqlQueries {
 				+ NULL + ");";
 	}
 
-	public static String insertEmplySupplierToTable(String id) {
+	public static String insertEmptySupplierToTable(String id) {
 		return "INSERT INTO " + SUPPLIER_TABLE_NAME
 				+ " (ID, VenueName, PhoneNumber, MaxCapacity, Area, MinPricePerPerson, Style) VALUES ('"
 				+ id + "', "
