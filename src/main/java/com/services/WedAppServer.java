@@ -117,7 +117,7 @@ public class WedAppServer {
         try {
             connect();
             stmt = con.createStatement();
-            rs = stmt.executeQuery("SELECT 1 FROM WedAppServer.dbo."+tableName+" WHERE ID = "+id);
+            rs = stmt.executeQuery("SELECT 1 FROM WedAppServer.dbo."+tableName+" WHERE ID = '"+id+"'");
             if(rs.next())
             {
                 closeConnection();

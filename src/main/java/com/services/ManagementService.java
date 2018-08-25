@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface ManagementService {
 	List<Couple> getCouples() throws SQLException;
 
-	List<Supplier> getSuppliers();
+	List<Supplier> getSuppliers() throws SQLException;
 
 	List<User> getUsers();
 

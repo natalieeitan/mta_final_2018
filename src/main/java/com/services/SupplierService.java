@@ -93,9 +93,23 @@ public class SupplierService {
 	public static void insertEmptySupplierToDB(String id) {
 		WedAppServer db = new WedAppServer();
 		try {
-			db.insertToDB(SqlQueries.insertEmplySupplierToTable(id));
+			db.insertToDB(SqlQueries.insertEmptySupplierToTable(id));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
+	public static Supplier getSupplierByID(String id){
+	    SupplierService db=new SupplierService();
+	    List<Supplier> suppliers = db.getAllSuppliers();
+	    for(Supplier supplier: suppliers)
+        {
+            if(id.equals(supplier.getID()))
+                return supplier;
+        }
+
+        return null;
+    }
+
+
 }

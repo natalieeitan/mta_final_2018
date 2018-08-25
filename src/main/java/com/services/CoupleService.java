@@ -78,4 +78,20 @@ public class CoupleService {
             e.printStackTrace();
         }
     }
+
+    public static Couple getCoupleByID(String id){
+        CoupleService db=new CoupleService();
+        try {
+            List<Couple> couples=db.getAllCouples();
+            for(Couple couple: couples)
+            {
+                if(id.equals(couple.getID()))
+                    return couple;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
