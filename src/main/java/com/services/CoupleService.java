@@ -1,6 +1,7 @@
 package com.services;
 
 import com.entities.Couple;
+import com.entities.Supplier;
 import com.utilities.SqlQueries;
 
 import java.sql.ResultSet;
@@ -12,10 +13,24 @@ import java.util.List;
 public class CoupleService {
     DataBaseServiceImpl dbService = new DataBaseServiceImpl();
 
-    public List<Couple> getAllCouples() throws SQLException {
+    public static List<Couple> getAllCouples() throws SQLException {
         List<Couple> couplesList = new ArrayList<Couple>();
         WedAppServer db = new WedAppServer();
 
+        try {
+            ResultSet rs = db.getDataFromDB(SqlQueries.GET_ALL_COUPLES);
+            while (rs.next()) {
+                Couple couple=getCoupleFromResultSet(rs);
+                couplesList.add(couple);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.closeConnection();
+        return couplesList;
+    }
+
+    public static Couple getCoupleFromResultSet(ResultSet rs) {
         String id;
         int schedulingRange;
         Date date;
@@ -27,26 +42,25 @@ public class CoupleService {
         int pricing;
 
         try {
-            ResultSet rs = db.getDataFromDB(SqlQueries.GET_ALL_COUPLES);
-            while (rs.next()) {
-                id = rs.getString("ID");
-                schedulingRange=rs.getInt("SchedulingRange");
-                date=rs.getDate("SpecificDate");
-                daysToMarry=rs.getInt("DaysToMarry");
-                preferredMonths=rs.getInt("PreferredMonths");
-                areas=rs.getInt("Areas");
-                styles=rs.getInt("Styles");
-                numOfInvites=rs.getInt("NumberOfInvites");
-                pricing=rs.getInt("PriceRange");
+            id = rs.getString("ID");
+            schedulingRange=rs.getInt("SchedulingRange");
+            date=rs.getDate("SpecificDate");
+            daysToMarry=rs.getInt("DaysToMarry");
+            preferredMonths=rs.getInt("PreferredMonths");
+            areas=rs.getInt("Areas");
+            styles=rs.getInt("Styles");
+            numOfInvites=rs.getInt("NumberOfInvites");
+            pricing=rs.getInt("PriceRange");
 
-                Couple couple=new Couple(id,schedulingRange,date,daysToMarry,preferredMonths,areas,styles,numOfInvites,pricing);
-                couplesList.add(couple);
-            }
+            Couple couple=new Couple(id,schedulingRange,date,daysToMarry,preferredMonths,areas,styles,numOfInvites,pricing);
+
+            return couple;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        db.closeConnection();
-        return couplesList;
+
+        return null;
     }
 
     public void pushAllCouplesToDB(List<Couple> couples) {
@@ -80,18 +94,75 @@ public class CoupleService {
     }
 
     public static Couple getCoupleByID(String id){
-        CoupleService db=new CoupleService();
+        WedAppServer db = new WedAppServer();
         try {
-            List<Couple> couples=db.getAllCouples();
-            for(Couple couple: couples)
-            {
-                if(id.equals(couple.getID()))
-                    return couple;
-            }
+            ResultSet rs = db.getDataFromDB(SqlQueries.getCoupleByIDString(id));
+            rs.next();
+            Couple couple=CoupleService.getCoupleFromResultSet(rs);
+            db.closeConnection();
+
+            return couple;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    public void insertAllFitSuppliersToDB(String coupleID){
+        List<String> fitSuppliersIDs=findAllFittingSuppliersIDsToDB(coupleID);
+        String query;
+        WedAppServer db= new WedAppServer();
+
+        for(String supplierID: fitSuppliersIDs)
+        {
+            query=SqlQueries.insertToCoupleSupplierTableString(coupleID,supplierID);
+
+            try {
+                db.insertToDB(query);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public List<String> findAllFittingSuppliersIDsToDB(String coupleID){
+        List<String> fitSuppliersIDs=new ArrayList<String>();
+
+        Couple couple=CoupleService.getCoupleByID(coupleID);
+        List<Supplier> allSuppliers=SupplierService.getAllSuppliers();
+
+        for(Supplier supplier:allSuppliers)
+        {
+            if(checkIfSupplierFits(couple,supplier))
+            {
+                fitSuppliersIDs.add(supplier.getID());
+            }
+        }
+
+        return fitSuppliersIDs;
+    }
+
+    public boolean checkIfSupplierFits(Couple couple, Supplier supplier) {
+        boolean fits = true;
+
+        //check pricing
+        if (couple.getPricing() <= supplier.getMinPricePerPerson())
+            fits=false;
+        //check area fit
+        if((couple.getArea()&supplier.getArea())==0)
+            fits=false;
+        //check style fit
+        if((couple.getStyle()&supplier.getStyle())==0)
+            fits=false;
+        //check number of invites
+        if(couple.getNumOfInvites()>supplier.getMaxCapacity())
+            fits=false;
+
+        ///////todo:date fit checks
+
+        return fits;
     }
 }

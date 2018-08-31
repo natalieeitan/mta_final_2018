@@ -36,7 +36,7 @@ public class SupplierService {
 		dataBaseService.connectCoupleAndSupplier(coupleId, supplierId);
 	}
 
-	public List<Supplier> getAllSuppliers() {
+	public static List<Supplier> getAllSuppliers() {
 		List<Supplier> suppliersList = new ArrayList<Supplier>();
 		WedAppServer db = new WedAppServer();
 
@@ -51,16 +51,7 @@ public class SupplierService {
 		try {
 			ResultSet rs = db.getDataFromDB(SqlQueries.GET_ALL_SUPPLIERS);
 			while (rs.next()) {
-				id = rs.getString("ID");
-				venueName = rs.getString("VenueName");
-				phone = rs.getString("PhoneNumber");
-				maxCapacity = rs.getInt("MaxCapacity");
-				area = rs.getInt("Area");
-				minPrice = rs.getInt("MinPricePerPerson");
-				style = rs.getInt("Style");
-
-				Supplier supplier = new Supplier(id, venueName, phone, maxCapacity, area, minPrice, style);
-
+				Supplier supplier=getSupplierFromResultSet(rs);
 				suppliersList.add(supplier);
 			}
 		} catch (SQLException e) {
@@ -68,6 +59,36 @@ public class SupplierService {
 		}
 		db.closeConnection();
 		return suppliersList;
+	}
+
+	public static Supplier getSupplierFromResultSet(ResultSet rs){
+		String id;
+		String venueName;
+		String phone;
+		int maxCapacity;
+		int area;
+		int minPrice;
+		int style;
+
+		try {
+			id = rs.getString("ID");
+			venueName = rs.getString("VenueName");
+			phone = rs.getString("PhoneNumber");
+			maxCapacity = rs.getInt("MaxCapacity");
+			area = rs.getInt("Area");
+			minPrice = rs.getInt("MinPricePerPerson");
+			style = rs.getInt("Style");
+
+			Supplier supplier = new Supplier(id, venueName, phone, maxCapacity, area, minPrice, style);
+
+			return supplier;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+
 	}
 
 	public void pushAllSuppliersToDB(List<Supplier> suppliers) {
@@ -102,13 +123,17 @@ public class SupplierService {
 	}
 
 	public static Supplier getSupplierByID(String id){
-	    SupplierService db=new SupplierService();
-	    List<Supplier> suppliers = db.getAllSuppliers();
+        WedAppServer db = new WedAppServer();
+        try {
+            ResultSet rs = db.getDataFromDB(SqlQueries.getSupplierByIDString(id));
+            rs.next();
+            Supplier supplier=SupplierService.getSupplierFromResultSet(rs);
+            db.closeConnection();
 
-	    for(Supplier supplier: suppliers)
-        {
-            if(id.equals(supplier.getID()))
-                return supplier;
+            return supplier;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return null;

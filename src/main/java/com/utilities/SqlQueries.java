@@ -19,6 +19,7 @@ public class SqlQueries {
 	public static final String SUPPLIER_TABLE_NAME = "WedAppServer.dbo.Supplier";
 	public static final String USER_TABLE_NAME = "WedAppServer.dbo.Users";
 	public static final String COUPLE_TABLE_NAME = "WedAppServer.dbo.Couple";
+	public static final String COUPLE_SUPPLIER_TABLE_NAME = "WedAppServer.dbo.CoupleSupplier";
 	public static final String NULL="NULL";
 
 	//USERS Table UPDATE Queries
@@ -87,11 +88,11 @@ public class SqlQueries {
 	}
 
 	public static String getCoupleByIDString(String id){
-	    return "SELECT 1 FROM "+SqlQueries.COUPLE_TABLE_NAME+ " WHERE ID = '"+id+"'";
+	    return "SELECT * FROM "+SqlQueries.COUPLE_TABLE_NAME+ " WHERE ID = '"+id+"'";
     }
 
     public static String getSupplierByIDString(String id){
-        return "SELECT 1 FROM "+SqlQueries.SUPPLIER_TABLE_NAME+ " WHERE ID = '"+id+"'";
+        return "SELECT * FROM "+SqlQueries.SUPPLIER_TABLE_NAME+ " WHERE ID = '"+id+"'";
     }
 
 	public static String insertEmptySupplierToTable(String id) {
@@ -146,6 +147,13 @@ public class SqlQueries {
 				+ supplier.getMinPricePerPerson() + ", "
 				+ supplier.getStyle() + ");";
 	}
+
+	public static String insertToCoupleSupplierTableString(String coupleID, String supplierID){
+	    return "INSERT INTO " + COUPLE_SUPPLIER_TABLE_NAME
+                + " (CoupleID, SupplierID) VALUES ('"
+                + coupleID + "', '"
+                + supplierID + "');";
+    }
 
 	public static String isEmailAlreadyExistsOnUserTable(String email) {
 		return "SELECT * FROM " + USER_TABLE_NAME + " WHERE Email='" + email + "';";
