@@ -87,6 +87,10 @@ public class SqlQueries {
 				+ NULL + ");";
 	}
 
+    public static String getUserByIDString(String id){
+        return "SELECT * FROM "+SqlQueries.USER_TABLE_NAME+ " WHERE ID = '"+id+"'";
+    }
+
 	public static String getCoupleByIDString(String id){
 	    return "SELECT * FROM "+SqlQueries.COUPLE_TABLE_NAME+ " WHERE ID = '"+id+"'";
     }
