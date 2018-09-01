@@ -13,39 +13,46 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "servlet.SupplierServlet", urlPatterns = { "/supplier" })
+@WebServlet(name = "servlet.SupplierServlet", urlPatterns = {"/supplier"})
 public class SupplierServlet extends HttpServlet {
-	SupplierService supplierService = new SupplierService();
+    SupplierService supplierService = new SupplierService();
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		request.setCharacterEncoding("UTF-8");
-		if (request.getParameter("action_onboarding_suppliers") != null) {
-			String venueName = request.getParameter("venueName");
-			String phone = request.getParameter("phone");
-			String maxCapacity = request.getParameter("maxCapacity");
-			String area = request.getParameter("area");
-			String minPrice = request.getParameter("minPrice");
-			String style = request.getParameter("style");
-			ServletContext ctx = getServletConfig().getServletContext();
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("UTF-8");
+        if (request.getParameter("action_onboarding_suppliers") != null) {
+            String venueName = request.getParameter("venueName");
+            String phone = request.getParameter("phone");
+            String maxCapacity = request.getParameter("maxCapacity");
+            String area = request.getParameter("area");
+            String minPrice = request.getParameter("minPrice");
+            String style = request.getParameter("style");
+            ServletContext ctx = getServletConfig().getServletContext();
 
-			String id = getServletConfig().getServletContext().getAttribute("userId").toString();
+            String id = getServletConfig().getServletContext().getAttribute("userId").toString();
 
-			Supplier supplier = new Supplier((User) ctx.getAttribute("user"),id, venueName, phone, Integer.parseInt(maxCapacity),
-					Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
-			supplierService.insertSupplierToDb(supplier);
+            Supplier supplier = new Supplier((User) ctx.getAttribute("user"), id, venueName, phone, Integer.parseInt(maxCapacity),
+                    Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
+            List<Supplier> suppliers = new ArrayList<Supplier>() {
+                {
+                    add(supplier);
+                }
+            };
+            supplierService.pushAllSuppliersToDB(suppliers);
+            //todo: try not to refresh page when moving to JSP
+			response.sendRedirect("client/html/onboarding-suppliers.html");
+            }
+        }
 
-			response.sendRedirect("/client/html/supplier-dashboard.html");
-		}
-	}
+        @Override
+        protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
+        ServletException, IOException {
+            List<Supplier> allSuppliers = supplierService.getAllSuppliers();
+            request.setAttribute("allSuppliers", allSuppliers); // Will be available as ${allSuppliers} in JSP
+            request.getRequestDispatcher("/WEB-INF/couples-suggestions.jsp").forward(request, response);
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Supplier> allSuppliers = supplierService.getAllSuppliers();
-		request.setAttribute("allSuppliers", allSuppliers); // Will be available as ${allSuppliers} in JSP
-		request.getRequestDispatcher("/WEB-INF/couples-suggestions.jsp").forward(request, response);
-
-	}
-}
+        }
+    }

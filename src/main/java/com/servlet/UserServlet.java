@@ -1,7 +1,5 @@
 package com.servlet;
 
-import com.entities.Couple;
-import com.entities.Supplier;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.services.CoupleService;
@@ -32,14 +30,10 @@ public class UserServlet extends HttpServlet {
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
 			boolean isSupplier= Boolean.valueOf(request.getParameter("isSupplier"));
-			if(isSupplier) {
+			if(isSupplier)
                 newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
-            }
 			else
-            {
                 newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
-
-            }
 			try {
 				if(dbService.isEmailAlreadyExist(newUser.getEmail())){
 					throw new EmailAlreadyExistException();
