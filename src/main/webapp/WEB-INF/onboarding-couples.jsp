@@ -152,7 +152,7 @@
 
                                         <!--spontaneous-->
                                         <label class="checkbox">
-                                            <input type="radio" id="spontaneousCB" value="spontaneous" name="whenRadio"
+                                            <input type="radio" id="spontaneousCB" value="ANYTIME" name="whenRadio"
                                                    onclick="WhenToggle('spontaneousCB')">
                                             <i></i> ספונטנים
                                         </label>
@@ -160,7 +160,7 @@
 
                                         <!--season-->
                                         <label class="checkbox">
-                                            <input type="radio" value="season" id="seasonCB" name="whenRadio"
+                                            <input type="radio" value="SEASON" id="seasonCB" name="whenRadio"
                                                    onclick="WhenToggle('seasonCB')">
                                             <i></i> תמיד חלמתי להתחתן ב...
                                         </label>
@@ -176,19 +176,19 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="june" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="JUNE" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> יוני
                                                             </label>
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="july" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="JULY" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> יולי
                                                             </label>
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="august" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="AUGUST" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> אוגוסט
                                                             </label>
                                                         </div>
@@ -204,19 +204,19 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="september" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="SEPTEMBER" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> ספטמבר
                                                             </label>
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="october" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="OCTOBER" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> אוקטובר
                                                             </label>
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="november" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="NOVEMBER" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> נובמבר
                                                             </label>
                                                         </div>
@@ -232,19 +232,19 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="december" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="DECEMBER" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> דצמבר
                                                             </label>
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="january" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="JANUARY" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> ינואר
                                                             </label>
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="february" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="FEBRUARY" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> פברואר
                                                             </label>
                                                         </div>
@@ -260,19 +260,19 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="march" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="MARCH" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> מרץ
                                                             </label>
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="april" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="APRIL" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> אפריל
                                                             </label>
                                                         </div>
                                                         <div class="col-12">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="may" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                <input type="checkbox" value="MAY" class="chooseSeasonCB" name="chooseSeasonCB">
                                                                 <i></i> מאי
                                                             </label>
                                                         </div>
@@ -290,31 +290,31 @@
                                                             <h2 class="pinkText">ימים בשבוע</h2>
                                                         </div>
                                                         <label class="checkbox">
-                                                            <input type="checkbox" value="sunday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                            <input type="checkbox" value="SUNDAY" class="chooseSeasonCB" name="chooseDaysCB">
                                                             <i></i> ראשון
                                                         </label>
                                                         <label class="checkbox">
-                                                            <input type="checkbox" value="monday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                            <input type="checkbox" value="MONDAY" class="chooseSeasonCB" name="chooseDaysCB">
                                                             <i></i> שני
                                                         </label>
                                                         <label class="checkbox">
-                                                            <input type="checkbox" value="tuesday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                            <input type="checkbox" value="TUESDAY" class="chooseSeasonCB" name="chooseDaysCB">
                                                             <i></i> שלישי
                                                         </label>
                                                         <label class="checkbox">
-                                                            <input type="checkbox" value="wednesday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                            <input type="checkbox" value="WEDNESDAY" class="chooseSeasonCB" name="chooseDaysCB">
                                                             <i></i> רביעי
                                                         </label>
                                                         <label class="checkbox">
-                                                            <input type="checkbox" value="thursday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                            <input type="checkbox" value="THURSDAY" class="chooseSeasonCB" name="chooseDaysCB">
                                                             <i></i> חמישי
                                                         </label>
                                                         <label class="checkbox">
-                                                            <input type="checkbox" value="friday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                            <input type="checkbox" value="FRIDAY" class="chooseSeasonCB" name="chooseDaysCB">
                                                             <i></i> שישי
                                                         </label>
                                                         <label class="checkbox">
-                                                            <input type="checkbox" value="saturday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                            <input type="checkbox" value="SATURDAY" class="chooseSeasonCB" name="chooseDaysCB">
                                                             <i></i> שבת
                                                         </label>
                                                     </div>
@@ -326,7 +326,7 @@
 
                                         <!--specific-->
                                         <label class="checkbox">
-                                            <input type="radio" value="specific" id="specificCB" name="whenRadio"
+                                            <input type="radio" value="SPECIFIC" id="specificCB" name="whenRadio"
                                                    onclick="WhenToggle('specificCB')">
                                             <i></i> חייבים להתחתן ביום הולדת!
                                         </label>
@@ -385,37 +385,37 @@
                                     <div class="row">
                                         <div class="col-4">
                                             <label class="checkbox">
-                                                <input type="checkbox" value="GushDan" name="AreaCB">
+                                                <input type="checkbox" value="GUSH_DAN" name="AreaCB">
                                                 <i></i> מרכז
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="checkbox">
-                                                <input type="checkbox" value="North" name="AreaCB">
+                                                <input type="checkbox" value="NORTH" name="AreaCB">
                                                 <i class="btn-pink"></i> צפון
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="checkbox">
-                                                <input type="checkbox" value="Shfela" name="AreaCB">
+                                                <input type="checkbox" value="SHFELA" name="AreaCB">
                                                 <i></i> שפלה
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="checkbox">
-                                                <input type="checkbox" value="Jerusalem" name="AreaCB">
+                                                <input type="checkbox" value="JERUSALEM" name="AreaCB">
                                                 <i></i> ירושליים
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="checkbox">
-                                                <input type="checkbox" value="Sharon" name="AreaCB">
+                                                <input type="checkbox" value="SHARON" name="AreaCB">
                                                 <i></i> שרון
                                             </label>
                                         </div>
                                         <div class="col-4">
                                             <label class="checkbox">
-                                                <input type="checkbox" value="South" name="AreaCB">
+                                                <input type="checkbox" value="SOUTH" name="AreaCB">
                                                 <i></i> דרום
                                             </label>
                                         </div>
@@ -439,7 +439,7 @@
                                                      class="my-img-hover">
                                             </div>
                                             <label class="checkbox text-center">
-                                                <input type="checkbox" value="Classic" id="classic" name="styleCB">
+                                                <input type="checkbox" value="CLASSIC" id="classic" name="styleCB">
                                                 <i></i> קלאסי
                                             </label>
                                         </div>
@@ -448,7 +448,7 @@
                                                 <img src="../client/html/graffiti.png" onclick="toggleCheck('urban')" class="my-img-hover">
                                             </div>
                                             <label class="checkbox text-center">
-                                                <input type="checkbox" value="Urban" id="urban" name="styleCB">
+                                                <input type="checkbox" value="URBAN" id="urban" name="styleCB">
                                                 <i></i> אורבני
                                             </label>
                                         </div>
@@ -457,7 +457,7 @@
                                                 <img src="../client/html/house.png" onclick="toggleCheck('rural')" class="my-img-hover">
                                             </div>
                                             <label class="checkbox text-center">
-                                                <input type="checkbox" value="Rural" id="rural" name="styleCB">
+                                                <input type="checkbox" value="RURAL" id="rural" name="styleCB">
                                                 <i></i> כפרי
                                             </label>
                                         </div>
@@ -501,14 +501,15 @@
                                                     </h2>
                                                 </div>
                                                 <select class="selectpicker show-tick" name="price">
-                                                    <option value="OneFifty">150-200</option>
-                                                    <option value="Two">200-250</option>
-                                                    <option value="TwoFifty">250-300</option>
-                                                    <option value="Three">300-350</option>
-                                                    <option value="ThreeFifty">350-400</option>
-                                                    <option value="Four">400-450</option>
-                                                    <option value="Five">יותר מ500</option>
-                                                    <option value="NoRange">עוד לא גיבשנו תקציב</option>
+                                                    <option value="ONE_FIFTY">150-200</option>
+                                                    <option value="TWO_HUNDRED">200-250</option>
+                                                    <option value="TWO_FIFTY">250-300</option>
+                                                    <option value="THREE_HUNDRED">300-350</option>
+                                                    <option value="THREE_FIFTY">350-400</option>
+                                                    <option value="FOUR_HUNDRED">400-450</option>
+                                                    <option value="FOUR_FIFTY">450-500</option>
+                                                    <option value="FIVE_HUNDRED">יותר מ500</option>
+                                                    <option value="NO_RANGE">עוד לא גיבשנו תקציב</option>
                                                 </select>
                                             </div>
                                         </div>

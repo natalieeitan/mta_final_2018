@@ -63,10 +63,9 @@ public class CoupleService {
         return null;
     }
 
-    public void pushAllCouplesToDB(List<Couple> couples) {
+    public static void pushAllCouplesToDB(Couple couple) {
         WedAppServer db = new WedAppServer();
         String query;
-        for (Couple couple : couples) {
             try {
                 if(db.checkIfIDExistInTable("Couple",couple.getID())==1) {
                     query=SqlQueries.updateCoupleInTable(couple);
@@ -79,8 +78,6 @@ public class CoupleService {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-
         db.closeConnection();
     }
 
