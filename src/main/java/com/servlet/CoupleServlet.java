@@ -36,9 +36,6 @@ public class CoupleServlet extends HttpServlet {
             SchedulingRange whenType = SchedulingRange.valueOf(request.getParameter("whenRadio"));
             couple.setSchedulingRange(whenType.getBitValue());
             switch (whenType) {
-                case ANYTIME: {
-                    break;
-                }
                 case SEASON: {
                     String[] monthValues = request.getParameterValues("chooseSeasonCB");
                     if (monthValues != null)
@@ -46,10 +43,11 @@ public class CoupleServlet extends HttpServlet {
                     String[] daysValues = request.getParameterValues("chooseDaysCB");
                     if (daysValues != null)
                         couple.setDaysToMarry(Day.convertStringArrayDaysToBits(daysValues));
+                    break;
                 }
                 case SPECIFIC: {
                     String dateStr = request.getParameter("specificDate");
-                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                     try {
                         java.util.Date date = df.parse(dateStr);
                         couple.setDate(date);

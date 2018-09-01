@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 public class CoupleService {
-    DataBaseServiceImpl dbService = new DataBaseServiceImpl();
+    DataBaseServiceImpl dataBaseService = new DataBaseServiceImpl();
 
     public static List<Couple> getAllCouples() throws SQLException {
         List<Couple> couplesList = new ArrayList<Couple>();
@@ -107,71 +107,8 @@ public class CoupleService {
         return null;
     }
 
-    //todo: to debug - change values in supplier and couples in db
-    public void insertAllFitSuppliersToDB(String coupleID){
-        List<String> fitSuppliersIDs=findAllFittingSuppliersIDsToDB(coupleID);
-        String query;
 
-        WedAppServer db= new WedAppServer();
-        StringBuilder sb=new StringBuilder();
-
-        sb.append(SqlQueries.insertToCoupleSupplierTableBeginString());
-
-        for(String supplierID: fitSuppliersIDs)
-        {
-            sb.append(SqlQueries.insertToCoupleSupplierTableValuesString(coupleID,supplierID));
-        }
-
-        //delete last comma
-        sb.delete(sb.length()-2,sb.length());
-        sb.append(";");
-
-        query=sb.toString();
-
-        try {
-            //delete all existing from db?
-
-            db.insertToDB(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public List<String> findAllFittingSuppliersIDsToDB(String coupleID){
-        List<String> fitSuppliersIDs=new ArrayList<String>();
-
-        Couple couple=CoupleService.getCoupleByID(coupleID);
-        List<Supplier> allSuppliers=SupplierService.getAllSuppliers();
-
-        for(Supplier supplier:allSuppliers)
-        {
-            if(checkIfSupplierFits(couple,supplier))
-            {
-                fitSuppliersIDs.add(supplier.getID());
-            }
-        }
-
-        return fitSuppliersIDs;
-    }
-
-    public boolean checkIfSupplierFits(Couple couple, Supplier supplier) {
-
-        //check pricing fit
-        if (couple.getPricing() <= supplier.getMinPricePerPerson()) //todo: fix - not working properly
-            return false;
-        //check area fit
-        if((couple.getArea()&supplier.getArea())==0)
-            return false;
-        //check style fit
-        if((couple.getStyle()&supplier.getStyle())==0)
-            return false;
-        //check number of invites
-        if(couple.getNumOfInvites()>supplier.getMaxCapacity())
-            return false;
-
-        ///////todo:date fit checks
-
-        return true;
+    public List<Supplier> getSuppliersLinkedByCoupleId(String coupleId) throws SQLException {
+        return dataBaseService.getSuppliersLinkedByCoupleId(coupleId);
     }
 }
