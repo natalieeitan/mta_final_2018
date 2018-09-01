@@ -87,6 +87,10 @@ public class SqlQueries {
 				+ NULL + ");";
 	}
 
+    public static String getUserByEmailString(String email){
+        return "SELECT * FROM WedAppServer.dbo.Users WHERE Email = '"+email+"'";
+    }
+
     public static String getUserByIDString(String id){
         return "SELECT * FROM "+SqlQueries.USER_TABLE_NAME+ " WHERE ID = '"+id+"'";
     }
@@ -124,6 +128,8 @@ public class SqlQueries {
 				+ couple.getNumOfInvites() + ", "
 				+ couple.getPricing() + ");";
 	}
+
+
 
 
 	public static String insertIntoCoupleSupplierTable(String supplierId, String coupleId) {
