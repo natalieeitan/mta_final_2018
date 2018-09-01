@@ -4,9 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import com.entities.Couple;
-import com.entities.Supplier;
 import com.services.CoupleService;
-import com.services.SupplierService;
 import com.utilities.*;
 
 import javax.servlet.ServletContext;
@@ -18,12 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "servlet.SupplierServlet", urlPatterns = {"/couple"})
+@WebServlet(name = "servlet.CoupleServlet", urlPatterns = {"/couple"})
 public class CoupleServlet extends HttpServlet {
-    SupplierService supplierService = new SupplierService();
+    CoupleService coupleService = new CoupleService();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         request.setCharacterEncoding("UTF-8");
         //get couple
@@ -35,6 +33,9 @@ public class CoupleServlet extends HttpServlet {
         if (request.getParameter("action_When") != null) {
             SchedulingRange whenType = SchedulingRange.valueOf(request.getParameter("whenRadio"));
             couple.setSchedulingRange(whenType.getBitValue());
+            couple.setDate(null);
+            couple.setPreferredMonths(0);
+            couple.setDaysToMarry(0);
             switch (whenType) {
                 case SEASON: {
                     String[] monthValues = request.getParameterValues("chooseSeasonCB");
@@ -47,7 +48,7 @@ public class CoupleServlet extends HttpServlet {
                 }
                 case SPECIFIC: {
                     String dateStr = request.getParameter("specificDate");
-                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
                     try {
                         java.util.Date date = df.parse(dateStr);
                         couple.setDate(date);
@@ -71,7 +72,7 @@ public class CoupleServlet extends HttpServlet {
         if (request.getParameter("action_Style") != null) {
             String[] styleValues = request.getParameterValues("styleCB");
             if (styleValues != null)
-                couple.setArea(Style.convertStringArrayStyleToBits(styleValues));
+                couple.setStyles(Style.convertStringArrayStyleToBits(styleValues));
         }
 
         //budget
@@ -81,7 +82,7 @@ public class CoupleServlet extends HttpServlet {
                 couple.setNumOfInvites(Integer.parseInt(peopleNumValue));
 
             PriceRange price = null;
-            String budgetValue = request.getParameter("styleCB");
+            String budgetValue = request.getParameter("price");
             if (budgetValue != null)
                 price = PriceRange.valueOf(budgetValue);
             couple.setPricing(price.getBitValue());
@@ -89,15 +90,15 @@ public class CoupleServlet extends HttpServlet {
 
         CoupleService.pushAllCouplesToDB(couple);
         //todo: try not to refresh page when moving to JSP
-        response.sendRedirect("client/html/onboarding-couples.html");
+        request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
             ServletException, IOException {
-        List<Supplier> allSuppliers = supplierService.getAllSuppliers();
-        request.setAttribute("allSuppliers", allSuppliers); // Will be available as ${allSuppliers} in JSP
-        request.getRequestDispatcher("/WEB-INF/couples-suggestions.jsp").forward(request, response);
+//        List<Supplier> allSuppliers = supplierService.getAllSuppliers();
+//        request.setAttribute("allSuppliers", allSuppliers); // Will be available as ${allSuppliers} in JSP
+//        request.getRequestDispatcher("/WEB-INF/couples-suggestions.jsp").forward(request, response);
 
     }
 }

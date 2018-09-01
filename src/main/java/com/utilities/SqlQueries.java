@@ -1,5 +1,7 @@
 package com.utilities;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
@@ -63,9 +65,12 @@ public class SqlQueries {
     public static String updateCoupleInTable(Couple couple) {
         String query = SqlQueries.UPDATE_COUPLE_SCHEDULING_RANGE + couple.getSchedulingRange();
         if (couple.getDate() == null)
-            query = query + ", SpecificDate = NULL" ;
-        else
-            query = query + ", SpecificDate = '" + couple.getDate() + "'";
+            query = query + ", SpecificDate = NULL";
+        else {
+            DateFormat destf = new SimpleDateFormat("yyyy-MM-dd");
+            String date= destf.format(couple.getDate());
+            query = query + ", SpecificDate = '" + date + "'";
+        }
 
         return query + ", DaysToMarry = " + couple.getDayOfWeek()
                 + ", PreferredMonths = " + couple.getPreferredMonths()

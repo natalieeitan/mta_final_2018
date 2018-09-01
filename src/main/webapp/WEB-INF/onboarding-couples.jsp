@@ -404,7 +404,7 @@
                                         <div class="col-4">
                                             <label class="checkbox">
                                                 <input type="checkbox" value="JERUSALEM" name="AreaCB">
-                                                <i></i> ירושליים
+                                                <i></i> ירושלים
                                             </label>
                                         </div>
                                         <div class="col-4">
@@ -487,7 +487,7 @@
                                                     <i class="fa fa-users"></i>
                                                     <h2>כמה אנשים אתם תהיו?</h2>
                                                 </div>
-                                                <input type="number" min=80 placeholder="מינימום 80" name="howManyPeople">
+                                                <input type="number" min=80 placeholder="מינימום 80" name="howManyPeople" required>
                                             </div>
 
                                         </div>
@@ -500,7 +500,7 @@
                                                         מה התקציב לכל למנה?
                                                     </h2>
                                                 </div>
-                                                <select class="selectpicker show-tick" name="price">
+                                                <select class="selectpicker show-tick" name="price" required>
                                                     <option value="ONE_FIFTY">150-200</option>
                                                     <option value="TWO_HUNDRED">200-250</option>
                                                     <option value="TWO_FIFTY">250-300</option>
@@ -517,7 +517,7 @@
                                     <!--save-->
                                     <div class="row text-left">
                                         <div class="col-12">
-                                            <button type="button" class="btn btn-info btn-round btn-lg">שמור</button>
+                                            <button type="submit" class="btn btn-info btn-round btn-lg">שמור</button>
                                         </div>
                                     </div>
                                 </form>
