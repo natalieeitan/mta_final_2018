@@ -41,6 +41,9 @@ public enum PriceRange {
 
 
     public int getBottomValue(){
+        if(this.name.equals(NO_RANGE.getName()))
+            return 0;
+
         String bottomString=getName().substring(0,3);
         int value= Integer.parseInt(bottomString);
 
@@ -48,6 +51,12 @@ public enum PriceRange {
     }
 
     public int getTopValue(){
+        if(this.name.equals(NO_RANGE.getName()))
+            return 5000;
+
+        if(this.name.equals(FIVE_HUNDRED.getName()))
+            return 5000;
+
         String topString=getName().substring(4,7);
         int value= Integer.parseInt(topString);
 
