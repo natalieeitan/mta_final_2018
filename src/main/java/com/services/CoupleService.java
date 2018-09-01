@@ -110,20 +110,33 @@ public class CoupleService {
         return null;
     }
 
+    //todo: to debug - delete supplier and couples from db
     public void insertAllFitSuppliersToDB(String coupleID){
         List<String> fitSuppliersIDs=findAllFittingSuppliersIDsToDB(coupleID);
         String query;
+
         WedAppServer db= new WedAppServer();
+        StringBuilder sb=new StringBuilder();
+
+        sb.append(SqlQueries.insertToCoupleSupplierTableBeginString());
 
         for(String supplierID: fitSuppliersIDs)
         {
-            query=SqlQueries.insertToCoupleSupplierTableString(coupleID,supplierID);
+            sb.append(SqlQueries.insertToCoupleSupplierTableValuesString(coupleID,supplierID));
+        }
 
-            try {
-                db.insertToDB(query);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        //delete last comma
+        sb.delete(sb.length()-2,sb.length());
+        sb.append(";");
+
+        query=sb.toString();
+
+        try {
+            //delete all existing from db?
+
+            db.insertToDB(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
     }
@@ -148,7 +161,7 @@ public class CoupleService {
     public boolean checkIfSupplierFits(Couple couple, Supplier supplier) {
         boolean fits = true;
 
-        //check pricing
+        //check pricing fit
         if (couple.getPricing() <= supplier.getMinPricePerPerson())
             fits=false;
         //check area fit

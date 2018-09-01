@@ -152,12 +152,18 @@ public class SqlQueries {
 				+ supplier.getStyle() + ");";
 	}
 
-	public static String insertToCoupleSupplierTableString(String coupleID, String supplierID){
-	    return "INSERT INTO " + COUPLE_SUPPLIER_TABLE_NAME
-                + " (CoupleID, SupplierID) VALUES ('"
-                + coupleID + "', '"
-                + supplierID + "');";
+	public static String insertToCoupleSupplierTableBeginString(){
+        return "INSERT INTO " + COUPLE_SUPPLIER_TABLE_NAME
+                + " (CoupleID, SupplierID) VALUES ";
     }
+
+    public static String insertToCoupleSupplierTableValuesString(String coupleID, String supplierID){
+        return "('"
+                + coupleID + "', '"
+                + supplierID + "'), ";
+    }
+
+
 
 	public static String isEmailAlreadyExistsOnUserTable(String email) {
 		return "SELECT * FROM " + USER_TABLE_NAME + " WHERE Email='" + email + "';";
