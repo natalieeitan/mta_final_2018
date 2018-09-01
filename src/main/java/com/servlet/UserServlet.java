@@ -20,7 +20,7 @@ public class UserServlet extends HttpServlet {
 	DataBaseServiceImpl dbService = new DataBaseServiceImpl();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
+			throws IOException, ServletException {
 		ServletContext ctx = getServletConfig().getServletContext();
 		request.setCharacterEncoding("UTF-8");
 		if (request.getParameter("action_signup")!=null) {
@@ -48,7 +48,8 @@ public class UserServlet extends HttpServlet {
 			}
 			if(isSupplier){
                 SupplierService.insertEmptySupplierToDB(newUser.getId());
-				response.sendRedirect("/client/html/onboarding-suppliers.html");}
+				//response.sendRedirect("/client/html/onboarding-suppliers.html");
+				request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);}
 			else{
                 CoupleService.insertEmptyCoupleToDB(newUser.getId());
 				response.sendRedirect("/client/html/onboarding-couples.html");}

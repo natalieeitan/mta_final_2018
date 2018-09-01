@@ -108,27 +108,6 @@ public class SupplierService {
 		db.closeConnection();
 	}
 
-	public void pushAllSuppliersToDB(List<Supplier> suppliers) {
-		WedAppServer db = new WedAppServer();
-		String query;
-
-		for (Supplier supplier : suppliers) {
-			try {
-				if (db.checkIfIDExistInTable("Supplier", supplier.getID()) == 1) {
-					query = SqlQueries.updateSupplierInTable(supplier);
-					db.insertToDB(query);
-				} else {
-					query = SqlQueries.insertIntoSupplierTable(supplier);
-					db.insertToDB(query);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		db.closeConnection();
-	}
-
 	public static void insertEmptySupplierToDB(String id) {
 		WedAppServer db = new WedAppServer();
 

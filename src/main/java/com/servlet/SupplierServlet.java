@@ -13,14 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "servlet.SupplierServlet", urlPatterns = {"/supplier"})
 public class SupplierServlet extends HttpServlet {
     SupplierService supplierService = new SupplierService();
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         if (request.getParameter("action_onboarding_suppliers") != null) {
             String venueName = request.getParameter("venueName");
@@ -38,16 +37,17 @@ public class SupplierServlet extends HttpServlet {
 
             supplierService.pushSupplierToDB(supplier);
             //todo: try not to refresh page when moving to JSP
-			response.sendRedirect("client/html/onboarding-suppliers.html");
+            request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
             }
         }
 
         @Override
         protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
         ServletException, IOException {
-            List<Supplier> allSuppliers = supplierService.getAllSuppliers();
-            request.setAttribute("allSuppliers", allSuppliers); // Will be available as ${allSuppliers} in JSP
-            request.getRequestDispatcher("/WEB-INF/couples-suggestions.jsp").forward(request, response);
+        //todo - complete with existing table on onboarding-suppliers
+        //    List<Supplier> allSuppliers = supplierService.getAllSuppliers();
+        //    request.setAttribute("allSuppliers", allSuppliers); // Will be available as ${allSuppliers} in JSP
+           // request.getRequestDispatcher("/WEB-INF/couples-suggestions.jsp").forward(request, response);
 
         }
     }
