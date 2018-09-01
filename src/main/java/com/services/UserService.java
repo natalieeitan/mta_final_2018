@@ -2,6 +2,7 @@ package com.services;
 
 import com.entities.User;
 import com.utilities.SqlQueries;
+import com.utilities.UserType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,6 +47,7 @@ public class UserService {
 		String email;
 		String password;
 		String type;
+		UserType utype;
 
 		try {
 			id = rs.getString("ID");
@@ -54,8 +56,9 @@ public class UserService {
 			email = rs.getString("Email");
 			password = rs.getString("Password");
 			type = rs.getString("Type");
+			utype=UserType.valueOf(type);
 
-			User user = new User(id, firstName, lastName, email, password);
+			User user = new User(id, firstName, lastName, email, password, utype);
 
 			return user;
 
@@ -71,6 +74,23 @@ public class UserService {
 		WedAppServer db = new WedAppServer();
 		try {
 			ResultSet rs = db.getDataFromDB(SqlQueries.getUserByIDString(id));
+			rs.next();
+			User user=UserService.getUserFromResultSet(rs);
+			db.closeConnection();
+
+			return user;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public static User getUserByEmail(String email){
+		WedAppServer db = new WedAppServer();
+		try {
+			ResultSet rs = db.getDataFromDB(SqlQueries.getUserByEmailString(email));
 			rs.next();
 			User user=UserService.getUserFromResultSet(rs);
 			db.closeConnection();
