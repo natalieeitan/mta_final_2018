@@ -6,15 +6,12 @@ import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.utilities.Season;
 import com.utilities.SqlQueries;
-import com.utilities.UserType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Optional;
-
-import static com.utilities.SqlQueries.GET_ALL_COUPLES;
 
 public class DataBaseServiceImpl implements ManagementService {
 
@@ -26,22 +23,17 @@ public class DataBaseServiceImpl implements ManagementService {
 
 	@Override
 	public List<Couple> getCouples() throws SQLException {
-		//ResultSet rs = this.wedAppServer.getDataFromDB(GET_ALL_COUPLES);
-		CoupleService db=new CoupleService();
-		return db.getAllCouples();
+		return CoupleService.getAllCouples();
 	}
 
 	@Override
 	public List<Supplier> getSuppliers() throws SQLException{
-		SupplierService db=new SupplierService();
-		return db.getAllSuppliers();
+		return SupplierService.getAllSuppliers();
 	}
 
 	@Override
 	public List<User> getUsers() {
-		UserService db=new UserService();
-		return db.getAllUsers();
-
+		return null;
 	}
 
 	@Override
@@ -100,4 +92,9 @@ public class DataBaseServiceImpl implements ManagementService {
 	//	public List<Couple> getCouplesOptionalConnections(String supplierId) {
 	//		wedAppServer.getDataFromDB(SqlQueries.())
 	//	}
+
+	public List<Supplier> getSuppliersLinkedByCoupleId(String coupleId) throws SQLException {
+		ResultSet resultSet = wedAppServer.getDataFromDB(SqlQueries.getSuppliersIdByCoupleIdFromCoupleSupplierTable(coupleId));
+		return SupplierService.getSuppliersListSuppliersIds(resultSet);
+	}
 }

@@ -176,4 +176,9 @@ public class SqlQueries {
     //	public static String getCouplesOptinalConnectionsBySupplierId(String supplierId){
     //		return "INSERT INTO WedAppServer.dbo.CoupleSupplier (SupplierId, CoupleId) VALUES ("+supplierId+","+coupleId+");";
     //	}
+
+	public static String getSuppliersIdByCoupleIdFromCoupleSupplierTable(String coupleId){
+		return "SELECT SupplierID FROM "+ COUPLE_SUPPLIER_TABLE_NAME + " WHERE CoupleID='" + coupleId+"';";
+
+	}
 }

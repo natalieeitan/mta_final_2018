@@ -40,14 +40,6 @@ public class SupplierService {
 		List<Supplier> suppliersList = new ArrayList<Supplier>();
 		WedAppServer db = new WedAppServer();
 
-		String id;
-		String venueName;
-		String phone;
-		int maxCapacity;
-		int area;
-		int minPrice;
-		int style;
-
 		try {
 			ResultSet rs = db.getDataFromDB(SqlQueries.GET_ALL_SUPPLIERS);
 			while (rs.next()) {
@@ -59,6 +51,25 @@ public class SupplierService {
 		}
 		db.closeConnection();
 		return suppliersList;
+	}
+
+	public static List<Supplier> getSuppliersListSuppliersIds(ResultSet rs){
+		List<Supplier> suppliersList = new ArrayList<Supplier>();
+		try {
+			while (rs!=null && rs.next()) {
+				Supplier supplier = getSupplierFromSupplierId(rs);
+				suppliersList.add(supplier);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return suppliersList;
+	}
+
+	private static Supplier getSupplierFromSupplierId(ResultSet rs) throws SQLException {
+		String supplierId = rs.getString("SupplierID");
+		return getSupplierByID(supplierId);
 	}
 
 	public static Supplier getSupplierFromResultSet(ResultSet rs) {
