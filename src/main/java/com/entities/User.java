@@ -32,6 +32,18 @@ public class User {
 		this.id = generateDb();
 	}
 
+	public User(String ID, String firstName, String lastName, String email, String password, UserType type) {
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		emailVerified = true;
+		this.type=type;
+		this.id = ID;
+	}
+
+
+
 	public User(User user) {
 		this.email = user.getEmail();
 		this.firstName = user.getFirstName();
