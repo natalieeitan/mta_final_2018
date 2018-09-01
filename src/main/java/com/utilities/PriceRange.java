@@ -38,4 +38,19 @@ public enum PriceRange {
 
         return PriceRange.NO_RANGE;
     }
+
+
+    public int getBottomValue(){
+        String bottomString=getName().substring(0,3);
+        int value= Integer.parseInt(bottomString);
+
+        return value;
+    }
+
+    public int getTopValue(){
+        String topString=getName().substring(4,7);
+        int value= Integer.parseInt(topString);
+
+        return value;
+    }
 }

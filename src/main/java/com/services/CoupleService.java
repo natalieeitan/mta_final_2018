@@ -107,7 +107,7 @@ public class CoupleService {
         return null;
     }
 
-    //todo: to debug - delete supplier and couples from db
+    //todo: to debug - change values in supplier and couples in db
     public void insertAllFitSuppliersToDB(String coupleID){
         List<String> fitSuppliersIDs=findAllFittingSuppliersIDsToDB(coupleID);
         String query;
@@ -156,23 +156,22 @@ public class CoupleService {
     }
 
     public boolean checkIfSupplierFits(Couple couple, Supplier supplier) {
-        boolean fits = true;
 
         //check pricing fit
-        if (couple.getPricing() <= supplier.getMinPricePerPerson())
-            fits=false;
+        if (couple.getPricing() <= supplier.getMinPricePerPerson()) //todo: fix - not working properly
+            return false;
         //check area fit
         if((couple.getArea()&supplier.getArea())==0)
-            fits=false;
+            return false;
         //check style fit
         if((couple.getStyle()&supplier.getStyle())==0)
-            fits=false;
+            return false;
         //check number of invites
         if(couple.getNumOfInvites()>supplier.getMaxCapacity())
-            fits=false;
+            return false;
 
         ///////todo:date fit checks
 
-        return fits;
+        return true;
     }
 }
