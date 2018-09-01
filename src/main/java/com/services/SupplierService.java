@@ -20,17 +20,17 @@ public class SupplierService {
 	public List<Couple> getCouplesOptionalConnection(String supplierId) throws SQLException {
 		//dataBaseService.getCouplesOptionalConnections(supplierId)
 		//		Supplier loggedSupplier = managementService.getSupplierById(supplierId);
-//		//return couples that want amount of invites that <= from supplier max capacity && not already connected with him
-//		return managementService.getCouples().stream()
-//				.filter(couple -> couple.getNumOfInvites() <= loggedSupplier.getMaxCapacity()
-//						&& (coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId) == null || !coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId).contains(couple.getId())))
-//				.collect(Collectors.toList());
+		//		//return couples that want amount of invites that <= from supplier max capacity && not already connected with him
+		//		return managementService.getCouples().stream()
+		//				.filter(couple -> couple.getNumOfInvites() <= loggedSupplier.getMaxCapacity()
+		//						&& (coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId) == null || !coupleSupplierLinks.getCoupleSupplierLinksBySupplierId(supplierId).contains(couple.getId())))
+		//				.collect(Collectors.toList());
 		return null;
 	}
 
-	public void insertSupplierToDb(Supplier supplier) {
-		dataBaseService.executeQuery(SqlQueries.insertIntoSupplierTable(supplier));
-	}
+//	public void insertSupplierToDb(Supplier supplier) {
+//		dataBaseService.executeQuery(SqlQueries.insertIntoSupplierTable(supplier));
+//	}
 
 	public void connectWithCouple(String supplierId, String coupleId) {
 		dataBaseService.connectCoupleAndSupplier(coupleId, supplierId);
@@ -51,7 +51,7 @@ public class SupplierService {
 		try {
 			ResultSet rs = db.getDataFromDB(SqlQueries.GET_ALL_SUPPLIERS);
 			while (rs.next()) {
-				Supplier supplier=getSupplierFromResultSet(rs);
+				Supplier supplier = getSupplierFromResultSet(rs);
 				suppliersList.add(supplier);
 			}
 		} catch (SQLException e) {
@@ -61,7 +61,7 @@ public class SupplierService {
 		return suppliersList;
 	}
 
-	public static Supplier getSupplierFromResultSet(ResultSet rs){
+	public static Supplier getSupplierFromResultSet(ResultSet rs) {
 		String id;
 		String venueName;
 		String phone;
@@ -89,6 +89,23 @@ public class SupplierService {
 
 		return null;
 
+	}
+
+	public void pushSupplierToDB(Supplier supplier) {
+		WedAppServer db = new WedAppServer();
+		String query;
+		try {
+			if (db.checkIfIDExistInTable("Supplier", supplier.getID()) == 1) {
+				query = SqlQueries.updateSupplierInTable(supplier);
+				db.insertToDB(query);
+			} else {
+				query = SqlQueries.insertIntoSupplierTable(supplier);
+				db.insertToDB(query);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		db.closeConnection();
 	}
 
 	public void pushAllSuppliersToDB(List<Supplier> suppliers) {
@@ -122,22 +139,21 @@ public class SupplierService {
 		}
 	}
 
-	public static Supplier getSupplierByID(String id){
-        WedAppServer db = new WedAppServer();
-        try {
-            ResultSet rs = db.getDataFromDB(SqlQueries.getSupplierByIDString(id));
-            rs.next();
-            Supplier supplier=SupplierService.getSupplierFromResultSet(rs);
-            db.closeConnection();
+	public static Supplier getSupplierByID(String id) {
+		WedAppServer db = new WedAppServer();
+		try {
+			ResultSet rs = db.getDataFromDB(SqlQueries.getSupplierByIDString(id));
+			rs.next();
+			Supplier supplier = SupplierService.getSupplierFromResultSet(rs);
+			db.closeConnection();
 
-            return supplier;
+			return supplier;
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-        return null;
-    }
-
+		return null;
+	}
 
 }

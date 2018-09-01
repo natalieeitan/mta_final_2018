@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "servlet.SupplierServlet", urlPatterns = {"/supplier"})
@@ -36,12 +35,8 @@ public class SupplierServlet extends HttpServlet {
 
             Supplier supplier = new Supplier((User) ctx.getAttribute("user"), id, venueName, phone, Integer.parseInt(maxCapacity),
                     Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
-            List<Supplier> suppliers = new ArrayList<Supplier>() {
-                {
-                    add(supplier);
-                }
-            };
-            supplierService.pushAllSuppliersToDB(suppliers);
+
+            supplierService.pushSupplierToDB(supplier);
             //todo: try not to refresh page when moving to JSP
 			response.sendRedirect("client/html/onboarding-suppliers.html");
             }
