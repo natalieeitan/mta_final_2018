@@ -5,6 +5,7 @@ import com.exceptions.EmailAlreadyExistException;
 import com.services.CoupleService;
 import com.services.DataBaseServiceImpl;
 import com.services.SupplierService;
+import com.services.WedAppServer;
 import com.utilities.UserType;
 
 import javax.servlet.ServletContext;
@@ -53,6 +54,27 @@ public class UserServlet extends HttpServlet {
 				CoupleService.insertEmptyCoupleToDB(newUser.getId());
 				request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
 			}
+		}
+
+		if (request.getParameter("action_signin") != null) {
+            String email=request.getParameter("email");
+            String password=request.getParameter("password");
+            int doesExist=dbService.VerifyEmailAndPassword(email,password);
+
+            if(doesExist==0) {
+                //todo: fill case of error
+                //error
+            }
+
+            if(doesExist==UserType.SUPPLIER.getBitValue()) {
+                //send to supplier page
+                request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
+            }
+
+            if(doesExist==UserType.COUPLE.getBitValue()) {
+                //send to couple page
+                request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
+            }
 		}
 	}
 
