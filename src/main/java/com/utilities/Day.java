@@ -26,7 +26,7 @@ public enum Day {
     }
     public int getBitValue(){return bitValue;}
 
-    public static List<Day> translateIntToDaysList(int days)
+    public static List<Day> ConvertIntToDaysList(int days)
     {
         List<Day> dayList=new ArrayList<>();
         for(Day day:Day.values())
@@ -38,7 +38,7 @@ public enum Day {
         return dayList;
     }
 
-    public static int translateDayListToInt(List<Day> dayList)
+    public static int convertDaysListToBits(List<Day> dayList)
     {
         int result=0;
         for(Day day: dayList)
@@ -46,5 +46,15 @@ public enum Day {
             result+=day.getBitValue();
         }
         return result;
+    }
+
+    public static int convertStringArrayDaysToBits(String[] DaysStr)
+    {
+        List<Day> daysList= new ArrayList<>();
+        for(String day:DaysStr)
+        {
+            daysList.add(Day.valueOf(day));
+        }
+        return convertDaysListToBits(daysList);
     }
 }

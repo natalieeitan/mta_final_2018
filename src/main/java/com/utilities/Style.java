@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Style{
-    ANY_STYLE("AnyStyle",1),
-    RURAL("Rural",2),
-    CLASSIC("Classic",4),
-    URBAN("Urban",8)
+    RURAL("Rural",1),
+    CLASSIC("Classic",2),
+    URBAN("Urban",4)
     ;
     private String name;
     private int bitValue;
@@ -22,7 +21,7 @@ public enum Style{
     }
     public int getBitValue(){return bitValue;}
 
-    public static List<Style> translateIntToStyleList(int styles)
+    public static List<Style> ConvertBitsToStyleList(int styles)
     {
         List<Style> styleList=new ArrayList<>();
         for(Style style:Style.values())
@@ -34,7 +33,7 @@ public enum Style{
         return styleList;
     }
 
-    public static int translateStyleListToInt(List<Style> styleList)
+    public static int ConvertStyleListToBits(List<Style> styleList)
     {
         int result=0;
         for(Style style: styleList)
@@ -42,5 +41,15 @@ public enum Style{
             result+=style.getBitValue();
         }
         return result;
+    }
+
+    public static int convertStringArrayStyleToBits(String[] stylesStr)
+    {
+        List<Style> stylesList= new ArrayList<>();
+        for(String style:stylesStr)
+        {
+            stylesList.add(Style.valueOf(style));
+        }
+        return ConvertStyleListToBits(stylesList);
     }
 }

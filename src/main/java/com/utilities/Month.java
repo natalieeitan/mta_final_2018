@@ -31,7 +31,7 @@ public enum Month {
     }
     public int getBitValue(){return bitValue;}
 
-    public static List<Month> translateIntToMonthList(int months)
+    public static List<Month> convertIntToMonthList(int months)
     {
         List<Month> monthList=new ArrayList<>();
         for(Month month:Month.values())
@@ -43,7 +43,7 @@ public enum Month {
         return monthList;
     }
 
-    public static int translateMonthListToInt(List<Month> monthList)
+    public static int convertMonthListToBits(List<Month> monthList)
     {
         int result=0;
         for(Month month: monthList)
@@ -51,5 +51,15 @@ public enum Month {
             result+=month.getBitValue();
         }
         return result;
+    }
+
+    public static int convertStringArrayMonthToBits(String[] monthsStr)
+    {
+        List<Month> monthsList= new ArrayList<>();
+        for(String month:monthsStr)
+        {
+            monthsList.add(Month.valueOf(month));
+        }
+        return convertMonthListToBits(monthsList);
     }
 }

@@ -16,7 +16,7 @@ public enum Area {
 
     @Override
     public String toString() {
-       return getName();
+        return getName();
     }
 
     private String name;
@@ -36,7 +36,7 @@ public enum Area {
     }
 
 
-    public static List<Area> translateIntToAreaList(int areas) {
+    public static List<Area> convertBitsToAreaList(int areas) {
         List<Area> areaList = new ArrayList<>();
 
         for (Area area : Area.values()) {
@@ -48,7 +48,7 @@ public enum Area {
         return areaList;
     }
 
-    public static int translateAreaListToInt(List<Area> areaList) {
+    public static int convertAreaListToBits(List<Area> areaList) {
         int result = 0;
 
         for (Area area : areaList) {
@@ -58,5 +58,11 @@ public enum Area {
         return result;
     }
 
-
+    public static int convertStringArrayAreasToBits(String[] areaStr) {
+        List<Area> areaList = new ArrayList<>();
+        for (String area : areaStr) {
+            areaList.add(Area.valueOf(area));
+        }
+        return convertAreaListToBits(areaList);
+    }
 }

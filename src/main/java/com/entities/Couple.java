@@ -74,7 +74,11 @@ public class Couple extends User {
 		this.styles = styles;
 	}
 
-    public void setPricing(int pricing) {
+	public void setPreferredMonths(int months) {
+		this.preferredMonths = months;
+	}
+
+	public void setPricing(int pricing) {
         this.pricing = pricing;
     }
 
