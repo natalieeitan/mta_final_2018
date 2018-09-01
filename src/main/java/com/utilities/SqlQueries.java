@@ -63,7 +63,7 @@ public class SqlQueries {
     public static String updateCoupleInTable(Couple couple) {
         String query = SqlQueries.UPDATE_COUPLE_SCHEDULING_RANGE + couple.getSchedulingRange();
         if (couple.getDate() == null)
-            query = query + ", SpecificDate = NULL" + couple.getDate();
+            query = query + ", SpecificDate = NULL" ;
         else
             query = query + ", SpecificDate = '" + couple.getDate() + "'";
 
