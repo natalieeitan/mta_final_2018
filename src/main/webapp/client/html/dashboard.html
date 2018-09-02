@@ -146,14 +146,15 @@
                                 <h2 class="fs-20">משתמש קיים</h2>
                             </div>
 
-                            <form class="sky-form" method="post" action="#" autocomplete="off">
+                            <form class="sky-form" method="post" action="/user" autocomplete="off">
+                                <input name="action_signin" hidden>
                                 <div class="clearfix">
 
                                     <!-- Email -->
                                     <label>דוא"ל</label>
                                     <label class="input mb-10">
                                         <i class="ico-append et-envelope"></i>
-                                        <input required="" type="email">
+                                        <input required="" type="email" name="email">
                                         <b class="tooltip tooltip-bottom-right">כתובת דוא"ל להתחברות</b>
                                     </label>
 
@@ -161,7 +162,7 @@
                                     <label>סיסמה</label>
                                     <label class="input mb-10">
                                         <i class="ico-append et-key"></i>
-                                        <input required="" type="password">
+                                        <input required="" type="password" name="password">
                                         <b class="tooltip tooltip-bottom-right">הסיסמה הסודית שלכם</b>
                                     </label>
 
@@ -175,7 +176,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-6 text-left" style="float:left;">
-                                        <button type="button" class="btn btn-pink btn-round btn-lg left">כניסה</button>
+                                        <button type="submit" class="btn btn-pink btn-round btn-lg left">כניסה</button>
                                     </div>
                                 </div>
                             </form>
