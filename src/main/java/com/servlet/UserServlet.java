@@ -5,7 +5,6 @@ import com.exceptions.EmailAlreadyExistException;
 import com.services.CoupleService;
 import com.services.DataBaseServiceImpl;
 import com.services.SupplierService;
-import com.services.WedAppServer;
 import com.utilities.UserType;
 
 import javax.servlet.ServletContext;
@@ -52,6 +51,7 @@ public class UserServlet extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 			} else {
 				CoupleService.insertEmptyCoupleToDB(newUser.getId());
+				request.setAttribute("linkedSuppliers", null);
 				request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
 			}
 		}

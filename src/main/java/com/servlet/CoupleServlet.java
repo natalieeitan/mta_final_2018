@@ -1,8 +1,5 @@
 package com.servlet;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 import com.entities.Couple;
 import com.services.CoupleService;
 import com.utilities.*;
@@ -14,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 @WebServlet(name = "servlet.CoupleServlet", urlPatterns = {"/couple"})
 public class CoupleServlet extends HttpServlet {
@@ -28,7 +27,11 @@ public class CoupleServlet extends HttpServlet {
         ServletContext ctx = getServletConfig().getServletContext();
         String id = getServletConfig().getServletContext().getAttribute("userId").toString();
         Couple couple = CoupleService.getCoupleByID(id);
-
+        try {
+            request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //when
         if (request.getParameter("action_When") != null) {
             SchedulingRange whenType = SchedulingRange.valueOf(request.getParameter("whenRadio"));
