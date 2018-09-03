@@ -62,4 +62,22 @@ public enum PriceRange {
 
         return value;
     }
+
+    public boolean checkIfPriceExceedsFromRange(int price){
+        if(this.name.equals(NO_RANGE.getName()))
+            return true;
+
+        if((price>this.getTopValue()))
+            return false;
+
+        return true;
+    }
+
+    public boolean checkIfPriceIsInRange(int price){
+
+        if((price>=this.getBottomValue())&(price<=this.getTopValue()))
+            return true;
+
+        return false;
+    }
 }
