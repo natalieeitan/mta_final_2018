@@ -149,9 +149,9 @@ public class SupplierService {
 		return null;
 	}
 
-	public List<Couple> getAllFitCouplesToSupplier(String supplierID){
+	public List<String> getAllFitCouplesIDsToSupplier(String supplierID){
 
-	    List<Couple> fitCoupleList=new ArrayList<>();
+	    List<String> fitCoupleList=new ArrayList<>();
 
 	    try {
             List<Couple> allCoupleList=CoupleService.getAllCouples();
@@ -160,7 +160,7 @@ public class SupplierService {
             {
                 if(checkIfCoupleFitsToSupplier(couple.getID(),supplierID))
                 {
-                    fitCoupleList.add(couple);
+                    fitCoupleList.add(couple.getID());
                 }
             }
 
