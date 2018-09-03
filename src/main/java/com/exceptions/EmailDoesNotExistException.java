@@ -1,7 +1,7 @@
 package com.exceptions;
 
-public class EmailDoenNotExistException extends Exception {
-    public EmailDoenNotExistException(){}
+public class EmailDoesNotExistException extends Exception {
+    public EmailDoesNotExistException(){}
 
     @Override
     public String getMessage() {
