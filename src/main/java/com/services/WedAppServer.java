@@ -1,6 +1,6 @@
 package com.services;
 import com.entities.User;
-import com.exceptions.EmailDoenNotExistException;
+import com.exceptions.EmailDoesNotExistException;
 import com.exceptions.WrongPasswordException;
 import com.utilities.*;
 

@@ -2,7 +2,10 @@ package com.services;
 
 import com.entities.Couple;
 import com.entities.Supplier;
+import com.utilities.Area;
+import com.utilities.PriceRange;
 import com.utilities.SqlQueries;
+import com.utilities.Style;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -145,5 +148,71 @@ public class SupplierService {
 
 		return null;
 	}
+
+	public List<Couple> getAllFitCouplesToSupplier(String supplierID){
+
+	    List<Couple> fitCoupleList=new ArrayList<>();
+
+	    try {
+            List<Couple> allCoupleList=CoupleService.getAllCouples();
+
+            for(Couple couple: allCoupleList)
+            {
+                if(checkIfCoupleFitsToSupplier(couple.getID(),supplierID))
+                {
+                    fitCoupleList.add(couple);
+                }
+            }
+
+            return fitCoupleList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    //the function checks if area, style, price range, and number of invites fit
+	public boolean checkIfCoupleFitsToSupplier(String coupleID, String supplierID){
+
+	    Supplier supplier=getSupplierByID(supplierID);
+		Couple couple=CoupleService.getCoupleByID(coupleID);
+        PriceRange pr=PriceRange.convertBitsToPriceRange(couple.getPricing());
+
+        return checkIfCoupleAreaFitsToSupplier(couple.getArea(),supplier.getArea())
+                & checkIfCoupleStyleFitsToSupplier(couple.getStyle(),supplier.getStyle())
+                & pr.checkIfPriceExceedsFromRange(supplier.getMinPricePerPerson())
+                & checkIfCoupleNumOfInvitesFitsToSupplier(couple.getNumOfInvites(),supplier.getMaxCapacity());
+
+	}
+
+	public boolean checkIfCoupleStyleFitsToSupplier(int coupleStyle, int supplierStyle){
+
+	    int fits= coupleStyle&supplierStyle;
+
+        if(fits==0)
+            return false;
+
+        return true;
+    }
+
+    public boolean checkIfCoupleAreaFitsToSupplier(int coupleArea, int supplierArea){
+
+	    int fits= coupleArea&supplierArea;
+
+        if(fits==0)
+            return false;
+
+        return true;
+    }
+
+    public boolean checkIfCoupleNumOfInvitesFitsToSupplier(int numOfInvites, int maxCapacity){
+
+	    if(numOfInvites>maxCapacity)
+	        return false;
+
+	    return true;
+    }
 
 }
