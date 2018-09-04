@@ -167,6 +167,14 @@ public class SqlQueries {
                 + supplier.getStyle() + ");";
     }
 
+    public static String getFitCouplesToSupplier(Supplier supplier){
+        return "SELECT * FROM "+COUPLE_TABLE_NAME+" WHERE NumberOfInvites < "+ supplier.getMaxCapacity()
+                + " AND Areas & "+ supplier.getArea() + " != 0"
+                + " AND Styles & "+ supplier.getStyle() + " != 0"
+                + " AND PriceRange >= "+PriceRange.convertIntToPriceRange(supplier.getMinPricePerPerson()).getBitValue()
+                ;
+    }
+
     public static String insertToCoupleSupplierTableBeginString() {
         return "INSERT INTO " + COUPLE_SUPPLIER_TABLE_NAME
                 + " (CoupleID, SupplierID) VALUES ";
