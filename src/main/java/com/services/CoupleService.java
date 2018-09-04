@@ -111,4 +111,17 @@ public class CoupleService {
     public List<Supplier> getSuppliersLinkedByCoupleId(String coupleId) throws SQLException {
         return dataBaseService.getSuppliersLinkedByCoupleId(coupleId);
     }
+
+    public static List<Couple> getCouplesListFromResultSet(ResultSet rs) throws SQLException {
+        List<Couple> coupleList=new ArrayList<>();
+
+        while (rs!=null && rs.next())
+        {
+            Couple couple=getCoupleFromResultSet(rs);
+            coupleList.add(couple);
+
+        }
+
+        return coupleList;
+    }
 }
