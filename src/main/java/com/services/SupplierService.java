@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SupplierService {
 	//CoupleSupplierLinks coupleSupplierLinks;
@@ -149,22 +150,21 @@ public class SupplierService {
 		return null;
 	}
 
-	public List<String> getAllFitCouplesIDsToSupplier(String supplierID){
-
-	    List<String> fitCoupleList=new ArrayList<>();
+    //the function checks if area, style, price range, and number of invites fit
+    public List<Couple> getAllFitCouplesIDsToSupplier(String supplierID){
+	    WedAppServer db=new WedAppServer();
+	    Supplier supplier=getSupplierByID(supplierID);
+	    String query=SqlQueries.getFitCouplesToSupplier(supplier);
+        List<Couple> coupleList=new ArrayList<>();
 
 	    try {
-            List<Couple> allCoupleList=CoupleService.getAllCouples();
+            ResultSet rs=db.getDataFromDB(query);
 
-            for(Couple couple: allCoupleList)
-            {
-                if(checkIfCoupleFitsToSupplier(couple.getID(),supplierID))
-                {
-                    fitCoupleList.add(couple.getID());
-                }
-            }
+            coupleList=CoupleService.getCouplesListFromResultSet(rs);
 
-            return fitCoupleList;
+            db.closeConnection();
+
+            return coupleList;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -182,7 +182,7 @@ public class SupplierService {
 
         return checkIfCoupleAreaFitsToSupplier(couple.getArea(),supplier.getArea())
                 & checkIfCoupleStyleFitsToSupplier(couple.getStyle(),supplier.getStyle())
-                & pr.checkIfPriceExceedsFromRange(supplier.getMinPricePerPerson())
+                & pr.checkIfPriceDoesNotExceedFromRange(supplier.getMinPricePerPerson())
                 & checkIfCoupleNumOfInvitesFitsToSupplier(couple.getNumOfInvites(),supplier.getMaxCapacity());
 
 	}
