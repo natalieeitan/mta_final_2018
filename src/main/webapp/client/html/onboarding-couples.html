@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 
 <head>
@@ -103,426 +103,587 @@
                 <hr/>
             </header>
 
-            <div class="container" style="margin-bottom: 15%">
-                <div class="row">
-
-                    <!-- tabs -->
-                    <div class="col-md-3 col-sm-3">
-                        <ul class="nav nav-tabs nav-stacked flex-column text-right">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#When" data-toggle="tab" onclick="disableStart()">
-                                    מתי נתחתן?
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#Where" data-toggle="tab" onclick="disableStart()">
-                                    איפה נתחתן?
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#OurStyle" data-toggle="tab" onclick="disableStart()">
-                                    מה הסטייל שלנו?
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#Budget" data-toggle="tab" onclick="disableStart()">
-                                    על כמה נשלם?
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- tabs content -->
-                    <div class="col-md-9 col-sm-9">
-                        <div id="start" class="row box-static box-border-top text-center">
-                            <div class="col-4">
-                                <img src='arrow.png'>
-                            </div>
-                            <div class="col d-flex align-items-center">
-                                <h2>
-                                    איך תרצו להתחתן?</h2>
-                            </div>
-                        </div>
-
-
-                        <div class="tab-content tab-stacked nav-alternate text-right">
-                            <div id="When" class="tab-pane">
-                                <form id="formWhen" action="/couple" method="post">
-                                    <input name="action_When" hidden>
-                                    <div class="row"></div>
-                                    <div class="checkbox col-12">
-
-                                        <!--spontaneous-->
-                                        <label class="checkbox">
-                                            <input type="radio" id="spontaneousCB" value="ANYTIME" name="whenRadio" onclick="WhenToggle('spontaneousCB')">
-                                            <i></i> ספונטנים
-                                        </label>
-                                        <div class="divider"></div>
-
-                                        <!--season-->
-                                        <label class="checkbox">
-                                            <input type="radio" value="SEASON" id="seasonCB" name="whenRadio" onclick="WhenToggle('seasonCB')">
-                                            <i></i> תמיד חלמתי להתחתן ב...
-                                        </label>
-                                        <div id="chooseSeason" class="collapse">
-                                            <!--season-->
-                                            <div class="row">
-                                                <!-- summer -->
-                                                <div class="col-md-3">
-                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
-                                                        <div class="box-icon-title">
-                                                            <i class="handle-small fa fa-sun-o"></i>
-                                                            <h2 class="pinkText">קיץ</h2>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="june" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> יוני
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="july" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> יולי
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="august" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> אוגוסט
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- fall -->
-                                                <div class="col-md-3">
-                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
-                                                        <div class="box-icon-title">
-                                                            <i class="handle-small fa fa-leaf"></i>
-                                                            <h2 class="pinkText">סתיו</h2>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="september" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> ספטמבר
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="october" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> אוקטובר
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="november" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> נובמבר
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- winter -->
-                                                <div class="col-md-3">
-                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
-                                                        <div class="box-icon-title">
-                                                            <i class="handle-small fa fa-umbrella"></i>
-                                                            <h2 class="pinkText">חורף</h2>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="december" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> דצמבר
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="january" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> ינואר
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="february" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> פברואר
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- spring -->
-                                                <div class="col-md-3">
-                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
-                                                        <div class="box-icon-title">
-                                                            <i class="handle-small fa fa-tree"></i>
-                                                            <h2 class="pinkText">אביב</h2>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="march" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> מרץ
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="april" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> אפריל
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="checkbox">
-                                                                <input type="checkbox" value="may" class="chooseSeasonCB" name="chooseSeasonCB">
-                                                                <i></i> מאי
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <!--days-->
-                                            <div class="row">
-                                                <div class="col-md-12">
-
-                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
-                                                        <div class="box-icon-title">
-                                                            <i class="handle-small fa fa-calendar-o"></i>
-                                                            <h2 class="pinkText">ימים בשבוע</h2>
-                                                        </div>
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" value="sunday" class="chooseSeasonCB" name="chooseDaysCB">
-                                                            <i></i> ראשון
-                                                        </label>
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" value="monday" class="chooseSeasonCB" name="chooseDaysCB">
-                                                            <i></i> שני
-                                                        </label>
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" value="tuesday" class="chooseSeasonCB" name="chooseDaysCB">
-                                                            <i></i> שלישי
-                                                        </label>
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" value="wednesday" class="chooseSeasonCB" name="chooseDaysCB">
-                                                            <i></i> רביעי
-                                                        </label>
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" value="thursday" class="chooseSeasonCB" name="chooseDaysCB">
-                                                            <i></i> חמישי
-                                                        </label>
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" value="friday" class="chooseSeasonCB" name="chooseDaysCB">
-                                                            <i></i> שישי
-                                                        </label>
-                                                        <label class="checkbox">
-                                                            <input type="checkbox" value="saturday" class="chooseSeasonCB" name="chooseDaysCB">
-                                                            <i></i> שבת
-                                                        </label>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="divider"></div>
-
-                                        <!--specific-->
-                                        <label class="checkbox">
-                                            <input type="radio" value="SPECIFIC" id="specificCB" name="whenRadio" onclick="WhenToggle('specificCB')">
-                                            <i></i> חייבים להתחתן ביום הולדת!
-                                        </label>
-                                        <div id="chooseSpecific" style="display: none">
-                                            <div class="row text-center">
-                                                <label class="pinkText">בחרו את התאריך שלכם:</label>
-                                                <input type="text" class="datepicker pinkText chooseSpecificDate" name="specificDate" data-format="dd/mm/yyyy" style="display: inline; margin-top: 1px !important; position: unset; ">
-                                            </div>
-                                        </div>
-
-                                        <!--save-->
-                                        <div class="row">
-                                        </div>
-                                        <div class="row text-left">
-                                            <div class="col-12">
-                                                <button type="submit" class="btn btn-info btn-round btn-lg">שמור
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <script>
-                                        function WhenToggle(id) {
-                                            var cbarray = document.getElementsByClassName('chooseSeasonCB');
-                                            switch (id) {
-                                                case 'spontaneousCB':
-                                                    document.getElementById('chooseSeason').style.display = "none";
-                                                    document.getElementById('chooseSpecific').style.display = "none";
-                                                    for (var i = 0; i < cbarray.length; i++) {
-                                                        cbarray[i].checked = false;
-                                                    }
-                                                    $('.chooseSpecificDate').val('').datepicker('update');
-                                                    break;
-                                                case 'seasonCB':
-                                                    document.getElementById('chooseSeason').style.display = "block";
-                                                    document.getElementById('chooseSpecific').style.display = "none";
-                                                    $('.chooseSpecificDate').val('').datepicker('update');
-                                                    break;
-                                                default: //specific
-                                                    document.getElementById('chooseSeason').style.display = "none";
-                                                    document.getElementById('chooseSpecific').style.display = "block";
-                                                    for (var i = 0; i < cbarray.length; i++) {
-                                                        cbarray[i].checked = false;
-                                                    }
-                                            }
-                                        }
-                                    </script>
-                                </form>
-                            </div>
-
-                            <div id="Where" class="tab-pane">
-                                <form id="formWhere" action="/couple" method="post">
-                                    <input name="action_Where" hidden>
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <label class="checkbox">
-                                                <input type="checkbox" value="GushDan" name="AreaCB">
-                                                <i></i> מרכז
-                                            </label>
-                                        </div>
-                                        <div class="col-4">
-                                            <label class="checkbox">
-                                                <input type="checkbox" value="North" name="AreaCB">
-                                                <i class="btn-pink"></i> צפון
-                                            </label>
-                                        </div>
-                                        <div class="col-4">
-                                            <label class="checkbox">
-                                                <input type="checkbox" value="Shfela" name="AreaCB">
-                                                <i></i> שפלה
-                                            </label>
-                                        </div>
-                                        <div class="col-4">
-                                            <label class="checkbox">
-                                                <input type="checkbox" value="Jerusalem" name="AreaCB">
-                                                <i></i> ירושליים
-                                            </label>
-                                        </div>
-                                        <div class="col-4">
-                                            <label class="checkbox">
-                                                <input type="checkbox" value="Sharon" name="AreaCB">
-                                                <i></i> שרון
-                                            </label>
-                                        </div>
-                                        <div class="col-4">
-                                            <label class="checkbox">
-                                                <input type="checkbox" value="South" name="AreaCB">
-                                                <i></i> דרום
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <!--save-->
-                                    <div class="row text-left">
-                                        <div class="col-12 text-left">
-                                            <button type="submit" class="btn btn-info btn-round btn-lg">שמור</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div id="OurStyle" class="tab-pane">
-                                <form id="formStyle" action="/couple" method="post">
-                                    <input name="action_Style" hidden>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="row">
-                                                <img src="chandelier.png" onclick="toggleCheck('classic')" class="my-img-hover">
-                                            </div>
-                                            <label class="checkbox text-center">
-                                                <input type="checkbox" value="Classic" id="classic" name="styleCB">
-                                                <i></i> קלאסי
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="row">
-                                                <img src="graffiti.png" onclick="toggleCheck('urban')" class="my-img-hover">
-                                            </div>
-                                            <label class="checkbox text-center">
-                                                <input type="checkbox" value="Urban" id="urban" name="styleCB">
-                                                <i></i> אורבני
-                                            </label>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="row">
-                                                <img src="house.png" onclick="toggleCheck('rural')" class="my-img-hover">
-                                            </div>
-                                            <label class="checkbox text-center">
-                                                <input type="checkbox" value="Rural" id="rural" name="styleCB">
-                                                <i></i> כפרי
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <!--save-->
-                                    <div class="row text-left">
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn-info btn-round btn-lg">שמור</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <script>
-                                    function toggleCheck(idToToggle) {
-                                        document.getElementById(idToToggle).checked = !document.getElementById(idToToggle).checked;
-                                    }
-                                </script>
-                            </div>
-
-                            <div id="Budget" class="tab-pane">
-                                <form id="formBudget" action="/couple" method="post">
-                                    <input name="action_Budget" hidden>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="budgetHeight box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
-                                                <div class="box-icon-title">
-                                                    <i class="fa fa-users"></i>
-                                                    <h2>כמה אנשים אתם תהיו?</h2>
-                                                </div>
-                                                <input type="number" min=80 placeholder="מינימום 80" name="howManyPeople">
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="budgetHeight box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
-                                                <div class="box-icon-title">
-                                                    <i class="fa fa-dollar"></i>
-                                                    <h2>
-                                                        מה התקציב לכל למנה?
-                                                    </h2>
-                                                </div>
-                                                <select class="selectpicker show-tick" name="price">
-                                                    <option value="OneFifty">150-200</option>
-                                                    <option value="Two">200-250</option>
-                                                    <option value="TwoFifty">250-300</option>
-                                                    <option value="Three">300-350</option>
-                                                    <option value="ThreeFifty">350-400</option>
-                                                    <option value="Four">400-450</option>
-                                                    <option value="Five">יותר מ500</option>
-                                                    <option value="NoRange">עוד לא גיבשנו תקציב</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--save-->
-                                    <div class="row text-left">
-                                        <div class="col-12">
-                                            <button type="button" class="btn btn-info btn-round btn-lg">שמור</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <div class="box-icon-title">
+                            <i class="fa fa-user text-center ico-lg"></i>
+                            <h3>ירדן וקובי</h3>
                         </div>
                     </div>
                 </div>
-
             </div>
+            <div id="accordion">
+                <div class="justify-content-around row text-center">
+                    <div id="headingOne" class="col-md-5">
+                        <h5 class="mb-0">
+                            <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width:175px">
+                                <span class="ico-hover et-gears" style="margin-left:10px"></span>
+                                צפו בהגדרות שלכם
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="headingTwo" class="col-md-5">
+                        <h5 class="mb-0">
+                            <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="width:175px">
+                                <span class="ico-hover et-tools-2" style="margin-left:10px"></span>
+                                ערכו את ההגדרות
+                            </button>
+                        </h5>
+                    </div>
+
+                </div>
+                <div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <hr />
+                            <div id="ShowSettings">
+                                <div class="container">
+                                    <div class="justify-content-around row" style="margin-top:15px">
+                                        <div class="col-md-5" id="WhenSettings">
+                                            <div class="box-static box-border-top MyP30">
+                                                <div>
+                                                    <h2 class="fs-20  text-center">מתי</h2>
+                                                </div>
+                                                <table class="myTable">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="font-weight: bold">חודשים:</td>
+                                                        <td>ספטמבר, אוקטובר,נובמבר, דצמבר, ינואר, פברואר, מרץ, אפריל, מאי</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="font-weight: bold">ימים:</td>
+                                                        <td>ראשון, שני, שלישי, רביעי,חמישי, שישי, שבת</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="font-weight: bold">תאריך ספציפי:</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-5" id="WhereSettings">
+                                            <div class="box-static box-border-top p-30r">
+                                                <div>
+                                                    <h2 class="fs-20  text-center">איפה</h2>
+                                                </div>
+                                                <table class="myTable">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="font-weight: bold">אזורים:</td>
+                                                        <td>שפלה, ירושלים, צפון, דרום</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container">
+                                    <div class="justify-content-around row" style="margin-top:15px">
+                                        <div class="col-md-5" id="StyleSetting">
+                                            <div class="box-static box-border-top p-30">
+                                                <div>
+                                                    <h2 class="fs-20 text-center">סגנון</h2>
+                                                </div>
+                                                <table class="myTable">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="font-weight: bold">סגנונות:</td>
+                                                        <td>קלאסי, אורבני, כפרי</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-5" id="BudgetSettings">
+                                            <div class="box-static box-border-top p-30 text-center">
+                                                <div>
+                                                    <h2 class="fs-20">תקציב</h2>
+                                                </div>
+                                                <table id="">
+                                                    <tbody class="myTable">
+                                                    <tr>
+                                                        <td style="font-weight: bold">כמה אורחים:</td>
+                                                        <td>350</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="font-weight: bold">מחיר למנה:</td>
+                                                        <td>250-300</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <hr />
+                            <div class="container" style="margin-bottom: 15%; margin-top: 5%;" id="editSettings">
+                                <div class="row">
+
+                                    <!-- tabs -->
+                                    <div class="col-md-3 col-sm-3">
+                                        <ul class="nav nav-tabs nav-stacked flex-column text-right">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#When" data-toggle="tab" onclick="disableStart()">
+                                                    מתי נתחתן?
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#Where" data-toggle="tab" onclick="disableStart()">
+                                                    איפה נתחתן?
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#OurStyle" data-toggle="tab" onclick="disableStart()">
+                                                    מה הסטייל שלנו?
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#Budget" data-toggle="tab" onclick="disableStart()">
+                                                    על כמה נשלם?
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- tabs content -->
+                                    <div class="col-md-9 col-sm-9">
+                                        <div class="d-none d-sm-block">
+                                            <div id="start" class="row box-static box-border-top text-center">
+                                                <div class="col-4">
+                                                    <img src='arrow.png'>
+                                                </div>
+                                                <div class="col d-flex align-items-center">
+                                                    <h2>
+                                                        איך תרצו להתחתן?
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-content tab-stacked nav-alternate text-right">
+                                            <div id="When" class="tab-pane">
+                                                <form id="formWhen" action="/couple" method="post">
+                                                    <input name="action_When" hidden>
+                                                    <div class="row"></div>
+                                                    <div class="checkbox col-12">
+
+                                                        <!--spontaneous-->
+                                                        <label class="checkbox">
+                                                            <input type="radio" id="spontaneousCB" value="ANYTIME" name="whenRadio" onclick="WhenToggle('spontaneousCB')">
+                                                            <i></i> ספונטנים
+                                                        </label>
+                                                        <div class="divider"></div>
+
+                                                        <!--season-->
+                                                        <label class="checkbox">
+                                                            <input type="radio" value="SEASON" id="seasonCB" name="whenRadio" onclick="WhenToggle('seasonCB')">
+                                                            <i></i> תמיד חלמתי להתחתן ב...
+                                                        </label>
+                                                        <div id="chooseSeason" class="collapse">
+                                                            <!--season-->
+                                                            <div class="row">
+                                                                <!-- summer -->
+                                                                <div class="col-md-3">
+                                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+                                                                        <div class="box-icon-title">
+                                                                            <i class="handle-small fa fa-sun-o"></i>
+                                                                            <h2 class="pinkText">קיץ</h2>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="june" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> יוני
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="july" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> יולי
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="august" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> אוגוסט
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- fall -->
+                                                                <div class="col-md-3">
+                                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+                                                                        <div class="box-icon-title">
+                                                                            <i class="handle-small fa fa-leaf"></i>
+                                                                            <h2 class="pinkText">סתיו</h2>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="september" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> ספטמבר
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="october" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> אוקטובר
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="november" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> נובמבר
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- winter -->
+                                                                <div class="col-md-3">
+                                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+                                                                        <div class="box-icon-title">
+                                                                            <i class="handle-small fa fa-umbrella"></i>
+                                                                            <h2 class="pinkText">חורף</h2>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="december" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> דצמבר
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="january" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> ינואר
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="february" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> פברואר
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- spring -->
+                                                                <div class="col-md-3">
+                                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content">
+                                                                        <div class="box-icon-title">
+                                                                            <i class="handle-small fa fa-tree"></i>
+                                                                            <h2 class="pinkText">אביב</h2>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="march" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> מרץ
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="april" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> אפריל
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-12">
+                                                                            <label class="checkbox">
+                                                                                <input type="checkbox" value="may" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <i></i> מאי
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!--days-->
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+
+                                                                    <div class="box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
+                                                                        <div class="box-icon-title">
+                                                                            <i class="handle-small fa fa-calendar-o"></i>
+                                                                            <h2 class="pinkText">ימים בשבוע</h2>
+                                                                        </div>
+                                                                        <label class="checkbox">
+                                                                            <input type="checkbox" value="sunday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <i></i> ראשון
+                                                                        </label>
+                                                                        <label class="checkbox">
+                                                                            <input type="checkbox" value="monday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <i></i> שני
+                                                                        </label>
+                                                                        <label class="checkbox">
+                                                                            <input type="checkbox" value="tuesday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <i></i> שלישי
+                                                                        </label>
+                                                                        <label class="checkbox">
+                                                                            <input type="checkbox" value="wednesday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <i></i> רביעי
+                                                                        </label>
+                                                                        <label class="checkbox">
+                                                                            <input type="checkbox" value="thursday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <i></i> חמישי
+                                                                        </label>
+                                                                        <label class="checkbox">
+                                                                            <input type="checkbox" value="friday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <i></i> שישי
+                                                                        </label>
+                                                                        <label class="checkbox">
+                                                                            <input type="checkbox" value="saturday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <i></i> שבת
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="divider"></div>
+
+                                                        <!--specific-->
+                                                        <label class="checkbox">
+                                                            <input type="radio" value="SPECIFIC" id="specificCB" name="whenRadio" onclick="WhenToggle('specificCB')">
+                                                            <i></i> חייבים להתחתן ביום הולדת!
+                                                        </label>
+                                                        <div id="chooseSpecific" style="display: none">
+                                                            <div class="row text-center">
+                                                                <label class="pinkText">בחרו את התאריך שלכם:</label>
+                                                                <input type="text" class="datepicker pinkText chooseSpecificDate" name="specificDate" data-format="dd/mm/yyyy" style="display: inline; margin-top: 1px !important; position: unset; ">
+                                                            </div>
+                                                        </div>
+
+                                                        <!--save-->
+                                                        <div class="row">
+                                                        </div>
+                                                        <div class="row text-left">
+                                                            <div class="col-12">
+                                                                <button type="submit" class="btn btn-info btn-round btn-lg ">
+                                                                    שמור
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <script>
+                                                        function WhenToggle(id) {
+                                                            var cbarray = document.getElementsByClassName('chooseSeasonCB');
+                                                            switch (id) {
+                                                                case 'spontaneousCB':
+                                                                    document.getElementById('chooseSeason').style.display = "none";
+                                                                    document.getElementById('chooseSpecific').style.display = "none";
+                                                                    for (var i = 0; i < cbarray.length; i++) {
+                                                                        cbarray[i].checked = false;
+                                                                    }
+                                                                    $('.chooseSpecificDate').val('').datepicker('update');
+                                                                    break;
+                                                                case 'seasonCB':
+                                                                    document.getElementById('chooseSeason').style.display = "block";
+                                                                    document.getElementById('chooseSpecific').style.display = "none";
+                                                                    $('.chooseSpecificDate').val('').datepicker('update');
+                                                                    break;
+                                                                default: //specific
+                                                                    document.getElementById('chooseSeason').style.display = "none";
+                                                                    document.getElementById('chooseSpecific').style.display = "block";
+                                                                    for (var i = 0; i < cbarray.length; i++) {
+                                                                        cbarray[i].checked = false;
+                                                                    }
+                                                            }
+                                                        }
+                                                    </script>
+                                                </form>
+                                            </div>
+
+                                            <div id="Where" class="tab-pane">
+                                                <form id="formWhere" action="/couple" method="post">
+                                                    <input name="action_Where" hidden>
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="GushDan" name="AreaCB">
+                                                                <i></i> מרכז
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="North" name="AreaCB">
+                                                                <i class="btn-pink"></i> צפון
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="Shfela" name="AreaCB">
+                                                                <i></i> שפלה
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="Jerusalem" name="AreaCB">
+                                                                <i></i> ירושליים
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="Sharon" name="AreaCB">
+                                                                <i></i> שרון
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <label class="checkbox">
+                                                                <input type="checkbox" value="South" name="AreaCB">
+                                                                <i></i> דרום
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!--save-->
+                                                    <div class="row text-left">
+                                                        <div class="col-12 text-left">
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg">שמור</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div id="OurStyle" class="tab-pane">
+                                                <form id="formStyle" action="/couple" method="post">
+                                                    <input name="action_Style" hidden>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="row">
+                                                                <img src="chandelier.png" onclick="toggleCheck('classic')" class="my-img-hover">
+                                                            </div>
+                                                            <label class="checkbox text-center">
+                                                                <input type="checkbox" value="Classic" id="classic" name="styleCB">
+                                                                <i></i> קלאסי
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="row">
+                                                                <img src="graffiti.png" onclick="toggleCheck('urban')" class="my-img-hover">
+                                                            </div>
+                                                            <label class="checkbox text-center">
+                                                                <input type="checkbox" value="Urban" id="urban" name="styleCB">
+                                                                <i></i> אורבני
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="row">
+                                                                <img src="house.png" onclick="toggleCheck('rural')" class="my-img-hover">
+                                                            </div>
+                                                            <label class="checkbox text-center">
+                                                                <input type="checkbox" value="Rural" id="rural" name="styleCB">
+                                                                <i></i> כפרי
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--save-->
+                                                    <div class="row text-left">
+                                                        <div class="col-12">
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg">שמור</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <script>
+                                                    function toggleCheck(idToToggle) {
+                                                        document.getElementById(idToToggle).checked = !document.getElementById(idToToggle).checked;
+                                                    }
+                                                </script>
+                                            </div>
+
+                                            <div id="Budget" class="tab-pane">
+                                                <form id="formBudget" action="/couple" method="post">
+                                                    <input name="action_Budget" hidden>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="budgetHeight box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
+                                                                <div class="box-icon-title">
+                                                                    <i class="fa fa-users d-none d-sm-block" style="margin-right:-25px"></i>
+                                                                    <h2>כמה אנשים אתם תהיו?</h2>
+                                                                </div>
+                                                                <input type="number" min=80 placeholder="מינימום 80" name="howManyPeople">
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="budgetHeight box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
+                                                                <div class="box-icon-title">
+                                                                    <i class="fa fa-dollar d-none d-sm-block" style="margin-right:-25px"></i>
+                                                                    <h2>
+                                                                        מה התקציב לכל למנה?
+                                                                    </h2>
+                                                                </div>
+                                                                <select class="selectpicker show-tick" name="price">
+                                                                    <option value="OneFifty">150-200</option>
+                                                                    <option value="Two">200-250</option>
+                                                                    <option value="TwoFifty">250-300</option>
+                                                                    <option value="Three">300-350</option>
+                                                                    <option value="ThreeFifty">350-400</option>
+                                                                    <option value="Four">400-450</option>
+                                                                    <option value="Five">יותר מ500</option>
+                                                                    <option value="NoRange">עוד לא גיבשנו תקציב</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--save-->
+                                                    <div class="row text-left">
+                                                        <div class="col-12">
+                                                            <button type="button" class="btn btn-info btn-round btn-lg">שמור</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="justify-content-around row rtl text-center">
+        <div class="col-md-4">
+            <button type="button" class="btn btn-info" id="showS" onclick="collapsing('ShowSettings','editSettings')">
+                <span class="ico-hover et-gears" style="margin-left:10px"></span>
+                צפו בפרטים שלכם
+            </button>
         </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-info" id="editS" onclick="collapsing('editSettings','ShowSettings')">
+                <span class="ico-hover et-tools-2" style="margin-left:10px"></span>
+                ערכו את הפרטים שלכם
+            </button>
+        </div>
+    </div>-->
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <script>
+            function collapsing(showId, hideId)
+            {
+                document.getElementById(showId).style.display = "block";
+                document.getElementById(hideId).style.display = "none";
+            }
+
+
+            $(document).ready(function () {
+                $("#editS").css("width", $("#showS").height());
+            });
+        </script>
     </section>
     <!-- /My Account -->
 
@@ -598,17 +759,17 @@
                     <ul class="hide">
                         <!-- SLIDE  -->
                         <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="">
-                                <div class="">
-                                    <img src="GanVradim02.jpg" class="responsive" alt="Nature">
-                                    <div class="carousel-caption">
-                                        <h3>גן הורדים</h3>
-                                        <h4 class="visible-xs-block hidden-xs">ראשון לציון</h4>
-                                        <p class="visible-xs-block hidden-xs">
-                                            גן יפייפה בלב הכרך הסואן המשלב בין הטבע הפראי לעיצוב האורבני. בגן ישנו גם אולם מעוצב להפליא ומאובזר בטכנולוגיות המובילות
-                                            ביותר בשביל האירוע המוצלח שלכם.
-                                        </p>
-                                    </div>
+                            <div class="">
+                                <img src="GanVradim02.jpg" class="responsive" alt="Nature">
+                                <div class="carousel-caption">
+                                    <h3>גן הורדים</h3>
+                                    <h4 class="visible-xs-block hidden-xs">ראשון לציון</h4>
+                                    <p class="visible-xs-block hidden-xs">
+                                        גן יפייפה בלב הכרך הסואן המשלב בין הטבע הפראי לעיצוב האורבני. בגן ישנו גם אולם מעוצב להפליא ומאובזר בטכנולוגיות המובילות
+                                        ביותר בשביל האירוע המוצלח שלכם.
+                                    </p>
                                 </div>
+                            </div>
                         </li>
 
                         <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="">

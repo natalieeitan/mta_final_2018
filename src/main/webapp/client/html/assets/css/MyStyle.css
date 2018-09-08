@@ -105,3 +105,34 @@ header {
         display: none !important;
     }
 }
+
+.pinkBackGround {
+    background-color: #F89FA1 !important
+}
+
+
+.tintkBackGround {
+    background-color: #117a8b !important
+}
+
+.nav-tabs.nav-stacked{
+    background-color:transparent !important;
+}
+
+.myTable td {
+    vertical-align: top;
+    text-align: right;
+    padding-bottom: 1em;
+    padding-right: 10px;
+}
+
+.MyP30 {
+    padding-right: 30px !important;
+    padding-left: 30px !important;
+}
+
+.box-static {
+    text-align: right;
+    padding-bottom: inherit;
+    height: 100%;
+}
