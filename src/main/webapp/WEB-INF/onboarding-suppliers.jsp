@@ -95,134 +95,183 @@
     <!-- My Account -->
     <section id="MyAccount" class="" style="margin-top: -70px">
         <div class="container">
-            <!--header-->
-            <!-- <div class="col-lg-3 col-md-4 col-sm-12">
-
-                <div class="box-static box-border-top p-30">
-                    <div class="box-icon-title text-center">
-                        <i class="fa fa-user ico-rounded ico-hover-dark "></i>
-                        <h2>ירדן וקובי לביא</h2>
-                    </div>
-
-                </div>
-            </div> -->
             <header class="text-center mb-60">
                 <h2 class="turText">החשבון שלנו</h2>
-                <hr/>
+                <hr />
             </header>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div id="start" class="col-md-12">
-                            <div class="box-icon box-icon-center box-icon-content  text-center">
-                                <h2>ערכו את פרטיכם</h2>
-                                <i class="ico-light ico-lg ico-hover et-tools-2" style="cursor: pointer"
-                                   onclick="editSettings()"></i>
-                            </div>
-
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <div class="box-icon-title">
+                            <i class="fa fa-user text-center ico-lg"></i>
+                            <h3>ירדן רוטברט</h3>
                         </div>
-
-                        <!--edit-->
-                        <div id="editSuppliersSettings" style="display: none">
-                            <form class="m-0 sky-form boxed" action="/supplier" method="post" dir="rtl">
-                                <input name="action_onboarding_suppliers" hidden>
-                                <input name="id" id="id" hidden>
-                                <fieldset>
-
-                                    <div class="justify-content-around row">
-                                        <!--name-->
-                                        <div class="col-md-4 col-sm-4">
-                                            <label>שם האולם*</label>
-                                            <label class="input mb-10">
-                                                <i class="ico-append fa fa-home"></i>
-                                                <input name="venueName" type="text" required>
-                                                <b class="tooltip tooltip-bottom-right">שם האולם</b>
-                                            </label>
-                                        </div>
-                                        <!--phone-->
-                                        <div class="col-md-4 col-sm-4">
-                                            <label>טלפון נוסף*</label>
-                                            <label class="input mb-10">
-                                                <i class="ico-append fa fa-phone"></i>
-                                                <input name="phone" type="text">
-                                                <b class="tooltip tooltip-bottom-right">טלפון נוסף</b>
-                                            </label>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="justify-content-around row">
-                                        <!--maxPeople-->
-                                        <div class="col-md-4 col-sm-4">
-                                            <label>תפוסה מקסימלית*</label>
-                                            <label class="input mb-10">
-                                                <i class="ico-append fa fa-group"></i>
-                                                <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required>
-                                                <b class="tooltip tooltip-bottom-right">תפוסה מקסימלית</b>
-                                            </label>
-                                        </div>
-                                        <!--price-->
-                                        <div class="col-md-4 col-sm-4">
-                                            <label>מחיר מנה מינימלי*</label>
-                                            <label class="input mb-10">
-                                                <i class="ico-append fa fa-dollar"></i>
-                                                <input name="minPrice" type="number" min="80" placeholder="80" required>
-                                                <b class="tooltip tooltip-bottom-right">מחיר מנה מינימלי</b>
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="justify-content-around row">
-                                        <!--area-->
-                                        <div class="col-md-4 col-sm-4">
-                                            <label>אזור בארץ*</label>
-                                            <label class="input mb-10">
-                                                <select name="area" class="selectpicker show-tick" required>
-                                                    <option value="GUSH_DAN">מרכז</option>
-                                                    <option value="HAIFA">חיפה</option>
-                                                    <option value="NORTH">צפון</option>
-                                                    <option value="SHFELA">שפלה</option>
-                                                    <option value="JERUSALEM">ירושלים</option>
-                                                    <option value="SHARON">שרון</option>
-                                                    <option value="SOUTH">דרום</option>
-                                                </select>
-                                            </label>
-                                        </div>
-                                        <!--style-->
-                                        <div class="col-md-4 col-sm-4">
-                                            <label>סגנון המקום*</label>
-                                            <label class="input mb-10">
-                                                <select name="style" required="" class="selectpicker show-tick">
-                                                    <option value="RURAL">כפרי</option>
-                                                    <option value="CLASSIC">קלאסי</option>
-                                                    <option value="URBAN">אורבני</option>
-                                                </select>
-                                            </label>
-                                        </div>
-                                    </div>
-
-
-                                    <!--save-->
-                                    <div class="justify-content-around row text-left">
-                                        <div class="col-12">
-                                            <button type="submit" id="save" class="btn btn-info btn-round btn-lg" onsubmit="changeText(this)">שמור
-                                            </button>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                        <!--/edit-->
-
-                        <script>
-                            function editSettings() {
-                                document.getElementById('start').style.display = "none";
-                                document.getElementById('editSuppliersSettings').style.display = "block";
-                            }
-                        </script>
                     </div>
                 </div>
+            </div>
+            <div id="accordion">
+                <div class="justify-content-around row text-center">
+                    <div id="headingOne" class="col-md-5">
+                        <h5 class="mb-0">
+                            <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width:175px">
+                                <span class="ico-hover et-gears" style="margin-left:10px"></span>
+                                צפו בהגדרות שלכם
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="headingTwo" class="col-md-5">
+                        <h5 class="mb-0">
+                            <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="width:175px">
+                                <span class="ico-hover et-tools-2" style="margin-left:10px"></span>
+                                ערכו את ההגדרות
+                            </button>
+                        </h5>
+                    </div>
+
+                </div>
+                <div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <hr />
+                            <div class="box-static box-border-top p-30" style="border-top-color:black">
+                                <table class="table tableCol">
+                                    <tbody>
+                                    <tr>
+                                        <td>שם האולם:</td>
+                                        <td>חוות אלנבי</td>
+                                        <td>טלפון נוסף:</td>
+                                        <td>03-50484864</td>
+                                    </tr>
+                                    <tr>
+                                        <td>תפוסה מקסימלית:</td>
+                                        <td>1000</td>
+                                        <td>מחיר מינימלי למנה</td>
+                                        <td>150</td>
+                                    </tr>
+                                    <tr>
+                                        <td>אזור בארץ:</td>
+                                        <td>מרכז</td>
+                                        <td>סגנון המקום:</td>
+                                        <td>כפרי</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <hr />
+                            <!--edit-->
+                            <div id="editSuppliersSettings">
+                                <form class="m-0 sky-form boxed" action="/supplier" method="post" dir="rtl" style="background-color: rgba(0,0,0,0.05);">
+                                    <input name="action_onboarding_suppliers" hidden>
+                                    <input name="id" id="id" hidden>
+                                    <fieldset>
+                                        <div class="justify-content-around row" style="margin-top: 30px">
+                                            <!--name-->
+                                            <div class="col-md-4 col-sm-4">
+                                                <label>שם האולם*</label>
+                                                <label class="input mb-10">
+                                                    <i class="ico-append fa fa-home"></i>
+                                                    <input name="venueName" type="text" required>
+                                                    <b class="tooltip tooltip-bottom-right">שם האולם</b>
+                                                </label>
+                                            </div>
+                                            <!--phone-->
+                                            <div class="col-md-4 col-sm-4">
+                                                <label>טלפון נוסף*</label>
+                                                <label class="input mb-10">
+                                                    <i class="ico-append fa fa-phone"></i>
+                                                    <input name="phone" type="text">
+                                                    <b class="tooltip tooltip-bottom-right">טלפון נוסף</b>
+                                                </label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="justify-content-around row">
+                                            <!--maxPeople-->
+                                            <div class="col-md-4 col-sm-4">
+                                                <label>תפוסה מקסימלית*</label>
+                                                <label class="input mb-10">
+                                                    <i class="ico-append fa fa-group"></i>
+                                                    <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required>
+                                                    <b class="tooltip tooltip-bottom-right">תפוסה מקסימלית</b>
+                                                </label>
+                                            </div>
+                                            <!--price-->
+                                            <div class="col-md-4 col-sm-4">
+                                                <label>מחיר מנה מינימלי*</label>
+                                                <label class="input mb-10">
+                                                    <i class="ico-append fa fa-dollar"></i>
+                                                    <input name="minPrice" type="number" min="80" placeholder="80" required>
+                                                    <b class="tooltip tooltip-bottom-right">מחיר מנה מינימלי</b>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="justify-content-around row">
+                                            <!--area-->
+                                            <div class="col-md-4 col-sm-4">
+                                                <label>אזור בארץ*</label>
+                                                <label class="input mb-10">
+                                                    <select name="area" class="selectpicker show-tick" required>
+                                                        <option value="GUSH_DAN">מרכז</option>
+                                                        <option value="HAIFA">חיפה</option>
+                                                        <option value="NORTH">צפון</option>
+                                                        <option value="SHFELA">שפלה</option>
+                                                        <option value="JERUSALEM">ירושלים</option>
+                                                        <option value="SHARON">שרון</option>
+                                                        <option value="SOUTH">דרום</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                            <!--style-->
+                                            <div class="col-md-4 col-sm-4">
+                                                <label>סגנון המקום*</label>
+                                                <label class="input mb-10">
+                                                    <select name="style" required="" class="selectpicker show-tick">
+                                                        <option value="RURAL">כפרי</option>
+                                                        <option value="CLASSIC">קלאסי</option>
+                                                        <option value="URBAN">אורבני</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+                                        <!--save-->
+                                        <div class="justify-content-around row text-left">
+                                            <div class="col-12">
+                                                <button type="submit" id="save" class="btn btn-info btn-round btn-lg" onsubmit="changeText(this)">
+                                                    שמור
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <!--/edit-->
+                        </div>
+                    </div>
+                </div>
+                <!--<div id="start" class="col-md-12">
+                    <div class="box-icon box-icon-center box-icon-content  text-center">
+                        <h2>ערכו את פרטיכם</h2>
+                        <i class="ico-light ico-lg ico-hover et-tools-2" style="cursor: pointer"
+                           onclick="editSettings()"></i>
+                    </div>
+
+                </div>-->
+
+
+                <script>
+                    function editSettings() {
+                        document.getElementById('start').style.display = "none";
+                        document.getElementById('editSuppliersSettings').style.display = "block";
+                    }
+                </script>
             </div>
         </div>
     </section>
@@ -363,7 +412,7 @@
     <!-- /PRELOADER -->
 
     <!-- JAVASCRIPT FILES -->
-    <script>var plugin_path = 'assets/plugins/';</script>
+    <script>var plugin_path = '../client/html/assets/plugins/';</script>
     <script src="../client/html/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
     <!-- SLIDER -->
     <script src="../client/html/assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js"></script>

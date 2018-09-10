@@ -148,7 +148,7 @@
                                                 <div>
                                                     <h2 class="fs-20  text-center">מתי</h2>
                                                 </div>
-                                                <table class="myTable">
+                                                <table class="table">
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">חודשים:</td>
@@ -172,7 +172,7 @@
                                                 <div>
                                                     <h2 class="fs-20  text-center">איפה</h2>
                                                 </div>
-                                                <table class="myTable">
+                                                <table class="table">
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">אזורים:</td>
@@ -192,7 +192,7 @@
                                                 <div>
                                                     <h2 class="fs-20 text-center">סגנון</h2>
                                                 </div>
-                                                <table class="myTable">
+                                                <table class="table">
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">סגנונות:</td>
@@ -208,7 +208,7 @@
                                                 <div>
                                                     <h2 class="fs-20">תקציב</h2>
                                                 </div>
-                                                <table class="myTable">
+                                                <table class="table">
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">כמה אורחים:</td>
@@ -283,7 +283,7 @@
 
                                                         <!--spontaneous-->
                                                         <label class="checkbox">
-                                                            <input type="radio" id="spontaneousCB" value="ANYTIME" name="whenRadio" onclick="WhenToggle('spontaneousCB')">
+                                                            <input type="radio" id="spontaneousCB" value="ANYTIME" name="whenRadio" onclick="WhenToggle('spontaneousCB')" required>
                                                             <i></i> ספונטנים
                                                         </label>
                                                         <div class="divider"></div>
@@ -673,21 +673,6 @@
         </div>
     </div>-->
         </div>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-        <script>
-            function collapsing(showId, hideId)
-            {
-                document.getElementById(showId).style.display = "block";
-                document.getElementById(hideId).style.display = "none";
-            }
-
-
-            $(document).ready(function () {
-                $("#editS").css("width", $("#showS").height());
-            });
-        </script>
     </section>
     <!-- /My Account -->
 
