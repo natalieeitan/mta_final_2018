@@ -89,8 +89,8 @@ public class DataBaseServiceImpl implements ManagementService {
 		wedAppServer.executeQuery(SqlQueries.insertIntoCoupleSupplierTable(supplierId, coupleId));
 	}
 
-	public int VerifyEmailAndPassword(String email, String password){
-		return wedAppServer.VerifyEmailAndPassword(email,password);
+	public User getUserByEmailAndPassword(String email, String password){
+		return wedAppServer.getUserByEmailAndPassword(email,password);
 	}
 
 	//	public List<Couple> getCouplesOptionalConnections(String supplierId) {

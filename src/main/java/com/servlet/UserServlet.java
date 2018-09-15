@@ -1,5 +1,6 @@
 package com.servlet;
 
+import com.entities.Couple;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.services.CoupleService;
@@ -14,10 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "servlet.UserServlet", urlPatterns = { "/user" })
 public class UserServlet extends HttpServlet {
-	DataBaseServiceImpl dbService = new DataBaseServiceImpl();
+	private DataBaseServiceImpl dbService = new DataBaseServiceImpl();
+	private SupplierService supplierService = new SupplierService();
+	private CoupleService coupleService = new CoupleService();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -60,21 +65,31 @@ public class UserServlet extends HttpServlet {
 		if (request.getParameter("action_signin") != null) {
             String email=request.getParameter("email");
             String password=request.getParameter("password");
-            int doesExist=dbService.VerifyEmailAndPassword(email,password);
+            User user=dbService.getUserByEmailAndPassword(email,password);
 
-            if(doesExist==0) {
+            if(user==null) {
                 //todo: fill case of error
                 //error
             }
 
-            if(doesExist==UserType.SUPPLIER.getBitValue()) {
+			else if(user.getType().equals(UserType.SUPPLIER)) {
                 //send to supplier page
+				ctx.setAttribute("userId", user.getId());
+				List<Couple> potentialCouplesForConnection = supplierService
+						.getAllFitCouplesIDsToSupplier(user.getId());
+				request.setAttribute("potentialCouples", potentialCouplesForConnection);
                 request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
             }
 
-            if(doesExist==UserType.COUPLE.getBitValue()) {
+            else {
                 //send to couple page
-                request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
+				try {
+					request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				ctx.setAttribute("userId", user.getId());
+				request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
             }
 		}
 	}
