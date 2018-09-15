@@ -1,12 +1,8 @@
 package com.services;
 import com.entities.User;
-import com.exceptions.EmailDoesNotExistException;
-import com.exceptions.WrongPasswordException;
-import com.utilities.*;
+import com.utilities.UserType;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class WedAppServer {

@@ -2,16 +2,13 @@ package com.services;
 
 import com.entities.Couple;
 import com.entities.Supplier;
-import com.utilities.Area;
 import com.utilities.PriceRange;
 import com.utilities.SqlQueries;
-import com.utilities.Style;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SupplierService {
 	//CoupleSupplierLinks coupleSupplierLinks;

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.entities.Couple" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: natalieeitan
   Date: 01/09/2018
@@ -97,7 +98,7 @@
         <div class="container">
             <header class="text-center mb-60">
                 <h2 class="turText">החשבון שלנו</h2>
-                <hr />
+                <hr/>
             </header>
             <div class="row">
                 <div class="col-md-12">
@@ -113,7 +114,8 @@
                 <div class="justify-content-around row text-center">
                     <div id="headingOne" class="col-md-5">
                         <h5 class="mb-0">
-                            <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width:175px">
+                            <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne" style="width:175px">
                                 <span class="ico-hover et-gears" style="margin-left:10px"></span>
                                 צפו בהגדרות שלכם
                             </button>
@@ -121,7 +123,8 @@
                     </div>
                     <div id="headingTwo" class="col-md-5">
                         <h5 class="mb-0">
-                            <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="width:175px">
+                            <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo" style="width:175px">
                                 <span class="ico-hover et-tools-2" style="margin-left:10px"></span>
                                 ערכו את ההגדרות
                             </button>
@@ -132,7 +135,7 @@
                 <div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                            <hr />
+                            <hr/>
                             <div class="box-static box-border-top p-30" style="border-top-color:black">
                                 <table class="table tableCol">
                                     <tbody>
@@ -161,10 +164,11 @@
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body">
-                            <hr />
+                            <hr/>
                             <!--edit-->
                             <div id="editSuppliersSettings">
-                                <form class="m-0 sky-form boxed" action="/supplier" method="post" dir="rtl" style="background-color: rgba(0,0,0,0.05);">
+                                <form class="m-0 sky-form boxed" action="/supplier" method="post" dir="rtl"
+                                      style="background-color: rgba(0,0,0,0.05);">
                                     <input name="action_onboarding_suppliers" hidden>
                                     <input name="id" id="id" hidden>
                                     <fieldset>
@@ -244,7 +248,8 @@
                                         <!--save-->
                                         <div class="justify-content-around row text-left">
                                             <div class="col-12">
-                                                <button type="submit" id="save" class="btn btn-info btn-round btn-lg" onsubmit="changeText(this)">
+                                                <button type="submit" id="save" class="btn btn-info btn-round btn-lg"
+                                                        onsubmit="changeText(this)">
                                                     שמור
                                                 </button>
                                             </div>
@@ -279,73 +284,106 @@
 
     <!-- MyOffers -->
     <section id="MyOffers" class="bgImage sectionOpacity">
+        <% String supplierId = (String) request.getAttribute("userId"); %>
         <h1 class="turText text-center" style="margin-top: -30px">ההצעות שלכם</h1>
         <div class="container">
             <div class="col-sm-12 text-center">
-                <div class="table-responsive-sm">
-                    <table class="table">
-                        <thead class="thead-light pinkText">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">שם הזוג</th>
-                            <th scope="col">מספר אורחים</th>
-                            <th scope="col">מחיר מנה</th>
-                            <th scope="col">חודשים מועדף</th>
-                            <th scope="col">ימים מועדפים</th>
-                            <th scope="col">צור קשר עם הזוג</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>ירדן וקובי</td>
-                            <td>250</td>
-                            <td>350-400</td>
-                            <td>יולי, אוגוסט</td>
-                            <td>חמישי</td>
-                            <td>
-                                <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
-                                    <span class="glyphicon glyphicon-send"></span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>נטלי ובר</td>
-                            <td>400-450</td>
-                            <td>לא גובש תקציב</td>
-                            <td>אוגוסט</td>
-                            <td>ראשון, שני, שלישי, רביעי, חמישי, שישי,שבת</td>
-                            <td>
-                                <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
-                                    <span class="glyphicon glyphicon-send"></span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>לירון ודליה</td>
-                            <td>300-350</td>
-                            <td>לא גובש תקציב</td>
-                            <td>אין עונה מועדפת</td>
-                            <td>אין יום מועדף</td>
-                            <td>
-                                <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
-                                    <span class="glyphicon glyphicon-send"></span>
-                                </button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <form action="/supplier" method="post">
+                    <input name="connectSupplierCouple" hidden>
+                    <div class="table-responsive-sm">
+                        <table class="table">
+                            <%List<Couple> potentialCouples = (List<Couple>) request.getAttribute("potentialCouples"); %>
+
+                            <thead class="thead-light pinkText">
+                            <tr>
+                                <th scope="col">שם הזוג</th>
+                                <th scope="col">מספר אורחים</th>
+                                <th scope="col">מחיר מנה</th>
+                                <th scope="col">חודשים מועדף</th>
+                                <th scope="col">ימים מועדפים</th>
+                                <th scope="col">צור קשר עם הזוג</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%
+                                if (potentialCouples != null) {
+                                    for (int i = 0; i < potentialCouples.size(); ++i) {
+                            %>
+                            <tr>
+                                <%--<td style="display:none;" class="couple_id"><%= potentialCouples.get(i).getId() %>--%>
+                                <%--</td>--%>
+                                <% String coupleId = potentialCouples.get(i).getID(); %>
+                                <td><%= potentialCouples.get(i).getName() %>
+                                </td>
+                                <td><%= potentialCouples.get(i).getNumOfInvites() %>
+                                </td>
+                                <td><%= potentialCouples.get(i).getPricing() %>
+                                </td>
+                                <td><%= potentialCouples.get(i).getPreferredMonths() %>
+                                </td>
+                                <td><%= potentialCouples.get(i).getDayOfWeek() %>
+                                </td>
+                                <input name="coupleId" type="text" value=" <%=coupleId%>" hidden>
+                                <td>
+                                    <button type="submit" class="btn btn-info connect-couple"> שלח
+                                        <span class="glyphicon glyphicon-send"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <%
+                                    }
+                                }
+                            %>
+                            <tr>
+                                <td>ירדן וקובי</td>
+                                <td>250</td>
+                                <td>350-400</td>
+                                <td>יולי, אוגוסט</td>
+                                <td>חמישי</td>
+                                <td>
+                                    <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
+                                        <span class="glyphicon glyphicon-send"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>נטלי ובר</td>
+                                <td>400-450</td>
+                                <td>לא גובש תקציב</td>
+                                <td>אוגוסט</td>
+                                <td>ראשון, שני, שלישי, רביעי, חמישי, שישי,שבת</td>
+                                <td>
+                                    <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
+                                        <span class="glyphicon glyphicon-send"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>לירון ודליה</td>
+                                <td>300-350</td>
+                                <td>לא גובש תקציב</td>
+                                <td>אין עונה מועדפת</td>
+                                <td>אין יום מועדף</td>
+                                <td>
+                                    <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
+                                        <span class="glyphicon glyphicon-send"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
             </div>
         </div>
 
         <script>
             function changeText(element) {
-                element.innerText = "נשלח"
+                element.innerText = "נשלח";
                 element.disabled = true;
             }
+
         </script>
     </section>
     <!-- /MyOffers -->

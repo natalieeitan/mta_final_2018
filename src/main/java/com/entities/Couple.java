@@ -84,6 +84,8 @@ public class Couple extends User {
 
     public String getID(){return this.ID;}
 
+    public String getName() { return super.getFirstName()+super.getLastName();}
+
 	// public Season getSeasonToMarry(){ return this.seasonToMarry; }
     public int getDayOfWeek(){ return this.daysToMarry; }
 

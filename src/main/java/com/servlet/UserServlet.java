@@ -48,6 +48,7 @@ public class UserServlet extends HttpServlet {
 			}
 			if (isSupplier) {
 				SupplierService.insertEmptySupplierToDB(newUser.getId());
+				request.setAttribute("potentialCouples", null);
 				request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 			} else {
 				CoupleService.insertEmptyCoupleToDB(newUser.getId());

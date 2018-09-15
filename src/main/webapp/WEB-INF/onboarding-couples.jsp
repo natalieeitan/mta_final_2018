@@ -683,9 +683,10 @@
             <div class="col-sm-12 text-center">
                 <div class="table-responsive-sm">
                     <table class="table">
+                        <%List<Supplier> linkedSuppliers = (List<Supplier>) request.getAttribute("linkedSuppliers"); %>
+
                         <thead class="thead-light pinkText">
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">שם האולם</th>
                             <th scope="col">כתובת</th>
                             <th scope="col">טלפון</th>
@@ -693,42 +694,22 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <%
+                            if (linkedSuppliers != null) {
+                                for (int i = 0; i < linkedSuppliers.size(); ++i) {
+                        %>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>חוות אלנבי</td>
-                            <td>נצר סירני, 7039500</td>
-                            <td>077-12356</td>
+                            <td><%= linkedSuppliers.get(i).getVenueName() %>
+                            </td>
+                            <td><%= linkedSuppliers.get(i).getArea() %>
+                            </td>
+                            <td><%= linkedSuppliers.get(i).getPhone() %>
+                            </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>גן הורדים</td>
-                            <td>הרצל 150, ראשון לציון</td>
-                            <td>077-12356</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>הקיו</td>
-                            <td>גליל ים</td>
-                            <td>077-12356</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>חוות אלנבי</td>
-                            <td>נצר סירני, 7039500</td>
-                            <td>077-12356</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>גן הורדים</td>
-                            <td>הרצל 150, ראשון לציון</td>
-                            <td>077-12356</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>הקיו</td>
-                            <td>גליל ים</td>
-                            <td>077-12356</td>
-                        </tr>
+                        <%
+                                }
+                            }
+                        %>
                         </tbody>
                     </table>
                 </div>
