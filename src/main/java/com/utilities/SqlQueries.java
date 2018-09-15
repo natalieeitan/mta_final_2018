@@ -1,10 +1,11 @@
 package com.utilities;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class SqlQueries {
     public static String INSERT_COUPLE_SUPPLIER_LINK = "INSERT INTO WedAppServer.dbo.CoupleSupplier VALUES (";
@@ -172,7 +173,7 @@ public class SqlQueries {
                 + " AND Areas & "+ supplier.getArea() + " != 0"
                 + " AND Styles & "+ supplier.getStyle() + " != 0"
                 + " AND PriceRange >= "+PriceRange.convertIntToPriceRange(supplier.getMinPricePerPerson()).getBitValue()
-                ;
+                + " AND NOT EXISTS (SELECT * FROM WedAppServer.dbo.CoupleSupplier WHERE(CoupleID = WedAppServer.dbo.Couple.ID AND SupplierID = '"+supplier.getID()+"'));";
     }
 
     public static String insertToCoupleSupplierTableBeginString() {

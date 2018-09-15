@@ -42,11 +42,12 @@ public class SupplierServlet extends HttpServlet {
 					Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
 
 			supplierService.pushSupplierToDB(supplier);
-			List<Couple> potentialCouplesForConnection = supplierService
-					.getAllFitCouplesIDsToSupplier(getServletConfig().getServletContext().getAttribute("userId").toString());
-			request.setAttribute("potentialCouples", potentialCouplesForConnection);
-			request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 		}
+		List<Couple> potentialCouplesForConnection = supplierService
+				.getAllFitCouplesIDsToSupplier(getServletConfig().getServletContext().getAttribute("userId").toString());
+		request.setAttribute("potentialCouples", potentialCouplesForConnection);
+		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
+
 	}
 
 	@Override
