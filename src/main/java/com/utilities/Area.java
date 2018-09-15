@@ -6,7 +6,6 @@ import java.util.List;
 
 public enum Area {
 
-    ///todo - not worling with all values
     GUSH_DAN("גוש דן", 1),
     HAIFA("חיפה", 2),
     JERUSALEM("ירושלים", 4),

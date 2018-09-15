@@ -1,6 +1,7 @@
 package com.entities;
 
 import com.utilities.Area;
+import com.utilities.Style;
 
 public class Supplier extends User {
 	private String userId;
@@ -30,8 +31,8 @@ public class Supplier extends User {
 		this.style = style;
 	}
 
-	public Supplier(String id){
-		this.id=id;
+	public Supplier(String id) {
+		this.id = id;
 	}
 
 	public Supplier(String userId, String venueName, String phone, int maxCapacity, int area,
@@ -91,10 +92,16 @@ public class Supplier extends User {
 		return area;
 	}
 
-	public String getAreaName(int area){ return Area.getAreaByInt(area).getName();}
+	public String getAreaName(int area) {
+		return Area.getAreaByInt(area).getName();
+	}
 
 	public int getStyle() {
 		return style;
+	}
+
+	public String getStyleName(int style) {
+		return Style.getStyleByInt(style).getName();
 	}
 
 	public String getVenueName() {

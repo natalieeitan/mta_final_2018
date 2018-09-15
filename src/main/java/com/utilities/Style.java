@@ -1,12 +1,13 @@
 package com.utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public enum Style{
-    RURAL("Rural",1),
-    CLASSIC("Classic",2),
-    URBAN("Urban",4)
+    RURAL("כפרי",1),
+    CLASSIC("קלאסי",2),
+    URBAN("אורבני",4)
     ;
     private String name;
     private int bitValue;
@@ -19,6 +20,7 @@ public enum Style{
     public String getName() {
         return name;
     }
+
     public int getBitValue(){return bitValue;}
 
     public static List<Style> ConvertBitsToStyleList(int styles)
@@ -52,4 +54,12 @@ public enum Style{
         }
         return ConvertStyleListToBits(stylesList);
     }
+
+    public static Style getStyleByInt(int style){
+        return Arrays.stream(values())
+                .filter(a -> a.getBitValue() == style)
+                .findFirst()
+                .orElse(null);
+    }
+
 }

@@ -49,6 +49,15 @@
 <body class="smoothcircle enable-animation has-video-bg" data-background="../client/html/assets/images/_smarty/backgrounds/default.jpg"
       dir="rtl">
 <div id="wrapper">
+    <%Supplier currSupplier =  (Supplier) request.getAttribute("supplier");
+        String venueName = (currSupplier!=null)?currSupplier.getVenueName() : "";
+        String phone = (currSupplier!=null)?currSupplier.getPhone() : "";
+        int maxCapacity = (currSupplier!=null)?currSupplier.getMaxCapacity() : 0;
+        int minPrice = (currSupplier!=null)?currSupplier.getMinPricePerPerson() : 0;
+        String area = (currSupplier!=null)?currSupplier.getAreaName(currSupplier.getArea()) : "מרכז";
+        String style = (currSupplier!=null)?currSupplier.getStyleName(currSupplier.getStyle()) : "כפרי";
+
+    %>
     <div id="header" class="navbar-toggleable-md sticky header-md dark clearfix" style="color:black">
         <header id="topNav">
             <div class="container">
@@ -136,28 +145,27 @@
                 <div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                            <%Supplier currSupplier =  (Supplier) request.getAttribute("supplier"); %>
                             <hr/>
                             <div class="box-static box-border-top p-30" style="border-top-color:black">
                                 <table class="table tableCol">
                                     <tbody>
                                     <tr>
                                         <td>שם האולם:</td>
-                                        <td><%=currSupplier.getVenueName()%></td>
+                                        <td><%=venueName%></td>
                                         <td>טלפון נוסף:</td>
-                                        <td><%=currSupplier.getPhone()%></td>
+                                        <td><%=phone%></td>
                                     </tr>
                                     <tr>
                                         <td>תפוסה מקסימלית:</td>
-                                        <td><%=currSupplier.getMaxCapacity()%></td>
+                                        <td><%=maxCapacity%></td>
                                         <td>מחיר מינימלי למנה</td>
-                                        <td><%=currSupplier.getMinPricePerPerson()%></td>
+                                        <td><%=minPrice%></td>
                                     </tr>
                                     <tr>
                                         <td>אזור בארץ:</td>
-                                        <td><%=currSupplier.getAreaName(currSupplier.getArea())%>></td>
+                                        <td><%=area%></td>
                                         <td>סגנון המקום:</td>
-                                        <td>כפרי</td>
+                                        <td><%=style%></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -180,7 +188,7 @@
                                                 <label>שם האולם*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-home"></i>
-                                                    <input name="venueName" type="text" value="<%=currSupplier.getVenueName()%>" required>
+                                                    <input name="venueName" type="text" value="<%=venueName%>" required>
                                                     <b class="tooltip tooltip-bottom-right">שם האולם</b>
                                                 </label>
                                             </div>
@@ -189,7 +197,7 @@
                                                 <label>טלפון נוסף*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-phone"></i>
-                                                    <input name="phone" type="text" value="<%=currSupplier.getPhone()%>">
+                                                    <input name="phone" type="text" value="<%=phone%>">
                                                     <b class="tooltip tooltip-bottom-right">טלפון נוסף</b>
                                                 </label>
                                             </div>
@@ -202,7 +210,7 @@
                                                 <label>תפוסה מקסימלית*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-group"></i>
-                                                    <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required value="<%=currSupplier.getMaxCapacity()%>">
+                                                    <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required value="<%=maxCapacity%>">
                                                     <b class="tooltip tooltip-bottom-right">תפוסה מקסימלית</b>
                                                 </label>
                                             </div>
@@ -211,7 +219,7 @@
                                                 <label>מחיר מנה מינימלי*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-dollar"></i>
-                                                    <input name="minPrice" type="number" min="80" placeholder="80" value="<%=currSupplier.getMinPricePerPerson()%>" required>
+                                                    <input name="minPrice" type="number" min="80" placeholder="80" value="<%=minPrice%>" required>
                                                     <b class="tooltip tooltip-bottom-right">מחיר מנה מינימלי</b>
                                                 </label>
                                             </div>

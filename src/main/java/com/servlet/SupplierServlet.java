@@ -42,6 +42,9 @@ public class SupplierServlet extends HttpServlet {
 					Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
 
 			supplierService.pushSupplierToDB(supplier);
+			ctx.setAttribute("supplier", supplier);
+			ctx.setAttribute("userId", id);
+			request.setAttribute("supplier", supplier);
 		}
 		List<Couple> potentialCouplesForConnection = supplierService
 				.getAllFitCouplesIDsToSupplier(getServletConfig().getServletContext().getAttribute("userId").toString());
