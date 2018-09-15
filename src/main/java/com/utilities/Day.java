@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Day {
-    SUNDAY("Sunday",1),
-    MONDAY("Monday",2),
-    TUESDAY("Tuesday",4),
-    WEDNESDAY("Wednesday",8),
-    THURSDAY("Thursday",16),
-    FRIDAY("Friday",32),
-    SATURDAY("Saturday",64)
+    SUNDAY("ראשון",1),
+    MONDAY("שני",2),
+    TUESDAY("שלישי",4),
+    WEDNESDAY("רביעי",8),
+    THURSDAY("חמישי",16),
+    FRIDAY("שישי",32),
+    SATURDAY("שבת",64)
     ;
 
     private String name;
@@ -56,5 +56,18 @@ public enum Day {
             daysList.add(Day.valueOf(day));
         }
         return convertDaysListToBits(daysList);
+    }
+
+    public static String convertBitsDaysList(int days) {
+        String daysString = "";
+        for (Day day : Day.values()) {
+            if ((day.getBitValue() & days) > 0) {
+                daysString = daysString + day.getName()+", ";
+            }
+        }
+        if(daysString.endsWith(", ")){
+            daysString = daysString.substring(0,daysString.length() - 1);
+        }
+        return daysString;
     }
 }

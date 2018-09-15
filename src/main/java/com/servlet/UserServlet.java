@@ -75,7 +75,7 @@ public class UserServlet extends HttpServlet {
 				//send to supplier page
 				ctx.setAttribute("userId", user.getId());
 				List<Couple> potentialCouplesForConnection = supplierService
-						.getAllFitCouplesIDsToSupplier(user.getId());
+						.getAllFitCouplesIDsToSupplierBySupplierId(user.getId());
 				request.setAttribute("potentialCouples", potentialCouplesForConnection);
 				Supplier loggedSupplier = SupplierService.getSupplierByID(user.getId());
 				ctx.setAttribute("supplier", loggedSupplier);

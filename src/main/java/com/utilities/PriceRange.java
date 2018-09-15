@@ -1,11 +1,9 @@
 package com.utilities;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public enum PriceRange {
-    NO_RANGE("NoRange", 1),
+    NO_RANGE("עוד לא גיבשנו תקציב", 1),
     ONE_FIFTY("151-200", 2),
     TWO_HUNDRED("201-250", 4),
     TWO_FIFTY("251-300", 8),
@@ -13,7 +11,7 @@ public enum PriceRange {
     THREE_FIFTY("351-400", 32),
     FOUR_HUNDRED("401-450", 64),
     FOUR_FIFTY("451-500", 128),
-    FIVE_HUNDRED("501 and above", 256);
+    FIVE_HUNDRED("יותר מ500", 256);
     private String name;
     private int bitValue;
 
@@ -89,5 +87,12 @@ public enum PriceRange {
         }
 
         return PriceRange.NO_RANGE;
+    }
+
+    public static PriceRange getPrinceRangeByInt(int priceRange){
+        return Arrays.stream(values())
+                .filter(a -> a.getBitValue() == priceRange)
+                .findFirst()
+                .orElse(null);
     }
 }

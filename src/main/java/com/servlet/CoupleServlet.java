@@ -92,6 +92,9 @@ public class CoupleServlet extends HttpServlet {
         }
 
         CoupleService.pushAllCouplesToDB(couple);
+        ctx.setAttribute("userId", id);
+        request.setAttribute("userId", id);
+        request.setAttribute("couple", couple);
         //todo: try not to refresh page when moving to JSP
         request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
     }

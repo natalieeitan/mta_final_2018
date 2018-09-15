@@ -2,7 +2,6 @@ package com.services;
 
 import com.entities.Couple;
 import com.entities.Supplier;
-import com.utilities.PriceRange;
 import com.utilities.SqlQueries;
 
 import java.sql.ResultSet;
@@ -29,9 +28,9 @@ public class SupplierService {
 		return null;
 	}
 
-//	public void insertSupplierToDb(Supplier supplier) {
-//		dataBaseService.executeQuery(SqlQueries.insertIntoSupplierTable(supplier));
-//	}
+	//	public void insertSupplierToDb(Supplier supplier) {
+	//		dataBaseService.executeQuery(SqlQueries.insertIntoSupplierTable(supplier));
+	//	}
 
 	public void connectWithCouple(String supplierId, String coupleId) {
 		dataBaseService.connectCoupleAndSupplier(coupleId, supplierId);
@@ -54,15 +53,14 @@ public class SupplierService {
 		return suppliersList;
 	}
 
-	public static List<Supplier> getSuppliersListSuppliersIds(ResultSet rs){
+	public static List<Supplier> getSuppliersListSuppliersIds(ResultSet rs) {
 		List<Supplier> suppliersList = new ArrayList<Supplier>();
 		try {
-			while (rs!=null && rs.next()) {
+			while (rs != null && rs.next()) {
 				Supplier supplier = getSupplierFromSupplierId(rs);
 				suppliersList.add(supplier);
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return suppliersList;
@@ -91,9 +89,7 @@ public class SupplierService {
 			minPrice = rs.getInt("MinPricePerPerson");
 			style = rs.getInt("Style");
 
-			Supplier supplier = new Supplier(id, venueName, phone, maxCapacity, area, minPrice, style);
-
-			return supplier;
+			return new Supplier(id, venueName, phone, maxCapacity, area, minPrice, style);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -146,70 +142,30 @@ public class SupplierService {
 
 		return null;
 	}
+	public List<Couple> getAllFitCouplesIDsToSupplierBySupplier(Supplier supplier) {
+		WedAppServer db = new WedAppServer();
+		String query = SqlQueries.getFitCouplesToSupplier(supplier);
+		List<Couple> coupleList;
 
-    //the function checks if area, style, price range, and number of invites fit
-    public List<Couple> getAllFitCouplesIDsToSupplier(String supplierID){
-	    WedAppServer db=new WedAppServer();
-	    Supplier supplier=getSupplierByID(supplierID);
-	    String query=SqlQueries.getFitCouplesToSupplier(supplier);
-        List<Couple> coupleList=new ArrayList<>();
+		try {
+			ResultSet rs = db.getDataFromDB(query);
 
-	    try {
-            ResultSet rs=db.getDataFromDB(query);
+			coupleList = CoupleService.getCouplesListFromResultSet(rs);
 
-            coupleList=CoupleService.getCouplesListFromResultSet(rs);
+			db.closeConnection();
 
-            db.closeConnection();
+			return coupleList;
 
-            return coupleList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    //the function checks if area, style, price range, and number of invites fit
-	public boolean checkIfCoupleFitsToSupplier(String coupleID, String supplierID){
-
-	    Supplier supplier=getSupplierByID(supplierID);
-		Couple couple=CoupleService.getCoupleByID(coupleID);
-        PriceRange pr=PriceRange.convertBitsToPriceRange(couple.getPricing());
-
-        return checkIfCoupleAreaFitsToSupplier(couple.getArea(),supplier.getArea())
-                & checkIfCoupleStyleFitsToSupplier(couple.getStyle(),supplier.getStyle())
-                & pr.checkIfPriceDoesNotExceedFromRange(supplier.getMinPricePerPerson())
-                & checkIfCoupleNumOfInvitesFitsToSupplier(couple.getNumOfInvites(),supplier.getMaxCapacity());
-
+		return null;
 	}
 
-	public boolean checkIfCoupleStyleFitsToSupplier(int coupleStyle, int supplierStyle){
-
-	    int fits= coupleStyle&supplierStyle;
-
-        if(fits==0)
-            return false;
-
-        return true;
-    }
-
-    public boolean checkIfCoupleAreaFitsToSupplier(int coupleArea, int supplierArea){
-
-	    int fits= coupleArea&supplierArea;
-
-        if(fits==0)
-            return false;
-
-        return true;
-    }
-
-    public boolean checkIfCoupleNumOfInvitesFitsToSupplier(int numOfInvites, int maxCapacity){
-
-	    if(numOfInvites>maxCapacity)
-	        return false;
-
-	    return true;
-    }
-
+	//the function checks if area, style, price range, and number of invites fit
+	public List<Couple> getAllFitCouplesIDsToSupplierBySupplierId(String supplierID) {
+		Supplier supplier = getSupplierByID(supplierID);
+		return getAllFitCouplesIDsToSupplierBySupplier(supplier);
+	}
 }

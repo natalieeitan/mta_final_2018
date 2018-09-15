@@ -35,6 +35,18 @@ public enum Area {
         return bitValue;
     }
 
+    public static String convertBitsAreasList(int areas) {
+        String areasString = "";
+        for (Area area : Area.values()) {
+            if ((area.getBitValue() & areas) > 0) {
+                areasString = areasString + area.getName()+", ";
+            }
+        }
+        if(areasString.endsWith(", ")){
+            areasString = areasString.substring(0,areasString.length() - 2);
+        }
+        return areasString;
+    }
 
     public static List<Area> convertBitsToAreaList(int areas) {
         List<Area> areaList = new ArrayList<>();

@@ -1,5 +1,9 @@
 package com.entities;
 
+import com.utilities.*;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Couple extends User {
@@ -31,8 +35,8 @@ public class Couple extends User {
 		this.pricing = pricing;
 	}
 
-	public Couple(String id){
-		this.ID=id;
+	public Couple(String id) {
+		this.ID = id;
 	}
 
 	public Couple(String userId, int schedulingRange, Date date, int daysToMarry,
@@ -79,29 +83,66 @@ public class Couple extends User {
 	}
 
 	public void setPricing(int pricing) {
-        this.pricing = pricing;
-    }
-
-    public String getID(){return this.ID;}
-
-    public String getName() { return super.getFirstName()+super.getLastName();}
-
-	// public Season getSeasonToMarry(){ return this.seasonToMarry; }
-    public int getDayOfWeek(){ return this.daysToMarry; }
-
-    public int getSchedulingRange(){return this.schedulingRange;}
-
-    public Date getDate(){return this.date;}
-
-    public int getPreferredMonths(){return this.preferredMonths;}
-
-    public int getArea(){return this.areas;}
-
-    public int getPricing() {
-        return pricing;
+		this.pricing = pricing;
 	}
 
-    public int getStyle(){return this.styles;}
+	public String getID() {
+		return this.ID;
+	}
+
+	public String getName() {
+		return super.getFirstName() + super.getLastName();
+	}
+
+	// public Season getSeasonToMarry(){ return this.seasonToMarry; }
+	public int getDayOfWeek() {
+		return this.daysToMarry;
+	}
+
+	public int getSchedulingRange() {
+		return this.schedulingRange;
+	}
+
+	public Date getDate() {
+		return this.date;
+	}
+
+	public String getDateString(Date date) {
+		Format formatter = new SimpleDateFormat("dd-MM-yyyy");
+		return formatter.format(date);
+	}
+
+	public int getPreferredMonths() {
+		return this.preferredMonths;
+	}
+
+	public int getArea() {
+		return this.areas;
+	}
+
+	public int getPricing() {
+		return pricing;
+	}
+
+	public int getStyle() {
+		return this.styles;
+	}
+
+	public String getStylesList(int style) {
+		return Style.convertBitsToStyleList(style);
+	}
+
+	public String getAreasList(int areas) {
+		return Area.convertBitsAreasList(areas);
+	}
+
+	public String getDaysList(int days) {
+		return Day.convertBitsDaysList(days);
+	}
+
+	public String getMonthsList(int months) {
+		return Month.convertBitsMonthsList(months);
+	}
 
 	public int getNumOfInvites() {
 		return numOfInvites;
@@ -109,5 +150,9 @@ public class Couple extends User {
 
 	public void setNumOfInvites(int numOfInvites) {
 		this.numOfInvites = numOfInvites;
+	}
+
+	public String getPriceRangeName(int priceRange) {
+		return PriceRange.getPrinceRangeByInt(priceRange).getName();
 	}
 }

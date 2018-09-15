@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Month {
-    JANUARY("January",1),
-    FEBRUARY("February",2),
-    MARCH("March",4),
-    APRIL("April",8),
-    MAY("May",16),
-    JUNE("June",32),
-    JULY("July",64),
-    AUGUST("August",128),
-    SEPTEMBER("September",256),
-    OCTOBER("October",512),
-    NOVEMBER("November",1024),
-    DECEMBER("December",2048)
+    JANUARY("ינואר",1),
+    FEBRUARY("פברואר",2),
+    MARCH("מרץ",4),
+    APRIL("אפריל",8),
+    MAY("מאי",16),
+    JUNE("יוני",32),
+    JULY("יולי",64),
+    AUGUST("אוגוסט",128),
+    SEPTEMBER("ספטמבר",256),
+    OCTOBER("אוקטובר",512),
+    NOVEMBER("נובמבר",1024),
+    DECEMBER("דצמבר",2048)
     ;
 
     private String name;
@@ -61,5 +61,18 @@ public enum Month {
             monthsList.add(Month.valueOf(month));
         }
         return convertMonthListToBits(monthsList);
+    }
+
+    public static String convertBitsMonthsList(int months) {
+        String monthsString = "";
+        for (Month month : Month.values()) {
+            if ((month.getBitValue() & months) > 0) {
+                monthsString = monthsString + month.getName()+", ";
+            }
+        }
+        if(monthsString.endsWith(", ")){
+            monthsString = monthsString.substring(0,monthsString.length() - 1);
+        }
+        return monthsString;
     }
 }

@@ -23,10 +23,14 @@ public class SupplierServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8");
-		String id = getServletConfig().getServletContext().getAttribute("userId").toString();
+		List<Couple> potentialCouplesForConnection = null;
+		String supplierId = getServletConfig().getServletContext().getAttribute("userId").toString();
 		if (request.getParameter("connectSupplierCouple") != null) {
 			String coupleId = request.getParameter("coupleId");
-			supplierService.connectWithCouple(id, coupleId);
+			supplierService.connectWithCouple(supplierId, coupleId);
+			potentialCouplesForConnection = supplierService
+					.getAllFitCouplesIDsToSupplierBySupplierId(supplierId);
+
 		} else if (request.getParameter("action_onboarding_suppliers") != null) {
 			String venueName = request.getParameter("venueName");
 			String phone = request.getParameter("phone");
@@ -38,16 +42,17 @@ public class SupplierServlet extends HttpServlet {
 
 			//request.setAttribute("potentialCouples", null);
 
-			Supplier supplier = new Supplier((User) ctx.getAttribute("user"), id, venueName, phone, Integer.parseInt(maxCapacity),
+			Supplier supplier = new Supplier((User) ctx.getAttribute("user"), supplierId, venueName, phone, Integer.parseInt(maxCapacity),
 					Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
 
 			supplierService.pushSupplierToDB(supplier);
 			ctx.setAttribute("supplier", supplier);
-			ctx.setAttribute("userId", id);
+			ctx.setAttribute("userId", supplierId);
 			request.setAttribute("supplier", supplier);
+			potentialCouplesForConnection = supplierService
+					.getAllFitCouplesIDsToSupplierBySupplier(supplier);
+
 		}
-		List<Couple> potentialCouplesForConnection = supplierService
-				.getAllFitCouplesIDsToSupplier(getServletConfig().getServletContext().getAttribute("userId").toString());
 		request.setAttribute("potentialCouples", potentialCouplesForConnection);
 		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 
@@ -57,7 +62,7 @@ public class SupplierServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
 			ServletException, IOException {
 		List<Couple> potentialCouplesForConnection = supplierService
-				.getAllFitCouplesIDsToSupplier(getServletConfig().getServletContext().getAttribute("userId").toString());
+				.getAllFitCouplesIDsToSupplierBySupplierId(getServletConfig().getServletContext().getAttribute("userId").toString());
 		request.setAttribute("potentialCouples", potentialCouplesForConnection);
 		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 	}

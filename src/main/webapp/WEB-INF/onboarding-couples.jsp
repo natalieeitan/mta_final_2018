@@ -1,5 +1,7 @@
+<%@ page import="com.entities.Couple" %>
 <%@ page import="com.entities.Supplier" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.utilities.PriceRange" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -42,6 +44,15 @@
 <body class="smoothcircle enable-animation has-video-bg" data-background="../client/html/assets/images/_smarty/backgrounds/default.jpg"
       dir="rtl">
 <div id="wrapper">
+    <%Couple currCouple =  (Couple) request.getAttribute("couple");
+    int howManyInvites = (currCouple!=null)?currCouple.getNumOfInvites() : 0;
+    String priceRange = (currCouple!=null && currCouple.getPricing()!=0)?currCouple.getPriceRangeName(currCouple.getPricing()) : PriceRange.NO_RANGE.getName();
+    String styles = (currCouple!=null)?currCouple.getStylesList(currCouple.getStyle()) : "";
+    String areas = (currCouple!=null)?currCouple.getAreasList(currCouple.getArea()) : "";
+    String days = (currCouple!=null)?currCouple.getDaysList(currCouple.getDayOfWeek()) : "";
+    String months = (currCouple!=null)?currCouple.getMonthsList(currCouple.getPreferredMonths()) : "";
+    String dateSelected = (currCouple!=null && currCouple.getDate()!=null)?currCouple.getDateString(currCouple.getDate()) : "";
+    %>
     <div id="header" class="navbar-toggleable-md sticky transparent header-md clearfix">
         <header id="topNav">
             <div class="container">
@@ -152,15 +163,15 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">חודשים:</td>
-                                                        <td>ספטמבר, אוקטובר,נובמבר, דצמבר, ינואר, פברואר, מרץ, אפריל, מאי</td>
+                                                        <td><%=months%></td>
                                                     </tr>
                                                     <tr>
                                                         <td style="font-weight: bold">ימים:</td>
-                                                        <td>ראשון, שני, שלישי, רביעי,חמישי, שישי, שבת</td>
+                                                        <td><%=days%></td>
                                                     </tr>
                                                     <tr>
                                                         <td style="font-weight: bold">תאריך ספציפי:</td>
-                                                        <td></td>
+                                                        <td><%=dateSelected%></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -176,7 +187,7 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">אזורים:</td>
-                                                        <td>שפלה, ירושלים, צפון, דרום</td>
+                                                        <td><%=areas%></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -196,7 +207,7 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">סגנונות:</td>
-                                                        <td>קלאסי, אורבני, כפרי</td>
+                                                        <td><%=styles%></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -212,11 +223,11 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">כמה אורחים:</td>
-                                                        <td>350</td>
+                                                        <td><%=howManyInvites%></td>
                                                     </tr>
                                                     <tr>
                                                         <td style="font-weight: bold">מחיר למנה:</td>
-                                                        <td>250-300</td>
+                                                        <td><%=priceRange%></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -612,7 +623,7 @@
                                                                     <i class="fa fa-users d-none d-sm-block" style="margin-right:-25px"></i>
                                                                     <h2>כמה אנשים אתם תהיו?</h2>
                                                                 </div>
-                                                                <input type="number" min=80 placeholder="מינימום 80" name="howManyPeople">
+                                                                <input type="number" min=80 value="<%=howManyInvites%>" name="howManyPeople">
                                                             </div>
 
                                                         </div>
