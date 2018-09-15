@@ -1,18 +1,19 @@
 package com.utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public enum Area {
 
     ///todo - not worling with all values
-    GUSH_DAN("Gush-Dan", 1),
-    HAIFA("Haifa", 2),
-    JERUSALEM("Jerusalem", 4),
-    NORTH("North", 8),
-    SHARON("Sharon", 16),
-    SHFELA("Shfela", 32),
-    SOUTH("South", 64);
+    GUSH_DAN("גוש דן", 1),
+    HAIFA("חיפה", 2),
+    JERUSALEM("ירושלים", 4),
+    NORTH("צפון", 8),
+    SHARON("שרון", 16),
+    SHFELA("שפלה", 32),
+    SOUTH("דרום", 64);
 
     @Override
     public String toString() {
@@ -64,5 +65,12 @@ public enum Area {
             areaList.add(Area.valueOf(area));
         }
         return convertAreaListToBits(areaList);
+    }
+
+    public static Area getAreaByInt(int area){
+        return Arrays.stream(values())
+                .filter(a -> a.getBitValue() == area)
+                .findFirst()
+                .orElse(null);
     }
 }

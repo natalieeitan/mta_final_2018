@@ -1,5 +1,7 @@
 package com.entities;
 
+import com.utilities.Area;
+
 public class Supplier extends User {
 	private String userId;
 	private String venueName;
@@ -88,6 +90,8 @@ public class Supplier extends User {
 	public int getArea() {
 		return area;
 	}
+
+	public String getAreaName(int area){ return Area.getAreaByInt(area).getName();}
 
 	public int getStyle() {
 		return style;

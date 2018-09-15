@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 
 @WebServlet(name = "servlet.CoupleServlet", urlPatterns = {"/couple"})
 public class CoupleServlet extends HttpServlet {
-    CoupleService coupleService = new CoupleService();
+    private CoupleService coupleService = new CoupleService();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

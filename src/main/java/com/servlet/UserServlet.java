@@ -1,6 +1,7 @@
 package com.servlet;
 
 import com.entities.Couple;
+import com.entities.Supplier;
 import com.entities.User;
 import com.exceptions.EmailAlreadyExistException;
 import com.services.CoupleService;
@@ -63,34 +64,36 @@ public class UserServlet extends HttpServlet {
 		}
 
 		if (request.getParameter("action_signin") != null) {
-            String email=request.getParameter("email");
-            String password=request.getParameter("password");
-            User user=dbService.getUserByEmailAndPassword(email,password);
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			User user = dbService.getUserByEmailAndPassword(email, password);
 
-            if(user==null) {
-                //todo: fill case of error
-                //error
-            }
-
-			else if(user.getType().equals(UserType.SUPPLIER)) {
-                //send to supplier page
+			if (user == null) {
+				//todo: fill case of error
+				//error
+			} else if (user.getType().equals(UserType.SUPPLIER)) {
+				//send to supplier page
 				ctx.setAttribute("userId", user.getId());
 				List<Couple> potentialCouplesForConnection = supplierService
 						.getAllFitCouplesIDsToSupplier(user.getId());
 				request.setAttribute("potentialCouples", potentialCouplesForConnection);
-                request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
-            }
-
-            else {
-                //send to couple page
+				Supplier loggedSupplier = SupplierService.getSupplierByID(user.getId());
+				ctx.setAttribute("supplier", loggedSupplier);
+				request.setAttribute("supplier", loggedSupplier);
+				request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
+			} else {
+				//send to couple page
 				try {
 					request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 				ctx.setAttribute("userId", user.getId());
+				Couple loggedCouple = CoupleService.getCoupleByID(user.getId());
+				ctx.setAttribute("couple", loggedCouple);
+				request.setAttribute("couple", loggedCouple);
 				request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
-            }
+			}
 		}
 	}
 

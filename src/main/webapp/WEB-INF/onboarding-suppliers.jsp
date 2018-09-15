@@ -1,4 +1,5 @@
 <%@ page import="com.entities.Couple" %>
+<%@ page import="com.entities.Supplier" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: natalieeitan
@@ -135,25 +136,26 @@
                 <div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
+                            <%Supplier currSupplier =  (Supplier) request.getAttribute("supplier"); %>
                             <hr/>
                             <div class="box-static box-border-top p-30" style="border-top-color:black">
                                 <table class="table tableCol">
                                     <tbody>
                                     <tr>
                                         <td>שם האולם:</td>
-                                        <td>חוות אלנבי</td>
+                                        <td><%=currSupplier.getVenueName()%></td>
                                         <td>טלפון נוסף:</td>
-                                        <td>03-50484864</td>
+                                        <td><%=currSupplier.getPhone()%></td>
                                     </tr>
                                     <tr>
                                         <td>תפוסה מקסימלית:</td>
-                                        <td>1000</td>
+                                        <td><%=currSupplier.getMaxCapacity()%></td>
                                         <td>מחיר מינימלי למנה</td>
-                                        <td>150</td>
+                                        <td><%=currSupplier.getMinPricePerPerson()%></td>
                                     </tr>
                                     <tr>
                                         <td>אזור בארץ:</td>
-                                        <td>מרכז</td>
+                                        <td><%=currSupplier.getAreaName(currSupplier.getArea())%>></td>
                                         <td>סגנון המקום:</td>
                                         <td>כפרי</td>
                                     </tr>
@@ -178,7 +180,7 @@
                                                 <label>שם האולם*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-home"></i>
-                                                    <input name="venueName" type="text" required>
+                                                    <input name="venueName" type="text" value="<%=currSupplier.getVenueName()%>" required>
                                                     <b class="tooltip tooltip-bottom-right">שם האולם</b>
                                                 </label>
                                             </div>
@@ -187,7 +189,7 @@
                                                 <label>טלפון נוסף*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-phone"></i>
-                                                    <input name="phone" type="text">
+                                                    <input name="phone" type="text" value="<%=currSupplier.getPhone()%>">
                                                     <b class="tooltip tooltip-bottom-right">טלפון נוסף</b>
                                                 </label>
                                             </div>
@@ -200,7 +202,7 @@
                                                 <label>תפוסה מקסימלית*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-group"></i>
-                                                    <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required>
+                                                    <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required value="<%=currSupplier.getMaxCapacity()%>">
                                                     <b class="tooltip tooltip-bottom-right">תפוסה מקסימלית</b>
                                                 </label>
                                             </div>
@@ -209,7 +211,7 @@
                                                 <label>מחיר מנה מינימלי*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-dollar"></i>
-                                                    <input name="minPrice" type="number" min="80" placeholder="80" required>
+                                                    <input name="minPrice" type="number" min="80" placeholder="80" value="<%=currSupplier.getMinPricePerPerson()%>" required>
                                                     <b class="tooltip tooltip-bottom-right">מחיר מנה מינימלי</b>
                                                 </label>
                                             </div>
@@ -359,7 +361,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">3</th>
                                 <td>לירון ודליה</td>
                                 <td>300-350</td>
                                 <td>לא גובש תקציב</td>

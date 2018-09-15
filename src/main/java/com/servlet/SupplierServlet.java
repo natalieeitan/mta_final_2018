@@ -18,7 +18,7 @@ import java.util.List;
 
 @WebServlet(name = "servlet.SupplierServlet", urlPatterns = { "/supplier" })
 public class SupplierServlet extends HttpServlet {
-	SupplierService supplierService = new SupplierService();
+	private SupplierService supplierService = new SupplierService();
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
