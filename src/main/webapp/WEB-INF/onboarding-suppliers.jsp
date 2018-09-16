@@ -327,11 +327,11 @@
                                 </td>
                                 <td><%= potentialCouples.get(i).getNumOfInvites() %>
                                 </td>
-                                <td><%= potentialCouples.get(i).getPricing() %>
+                                <td><%= potentialCouples.get(i).getPriceRangeName(potentialCouples.get(i).getPricing()) %>
                                 </td>
-                                <td><%= potentialCouples.get(i).getPreferredMonths() %>
+                                <td><%= potentialCouples.get(i).getMonthsList(potentialCouples.get(i).getPreferredMonths()) %>
                                 </td>
-                                <td><%= potentialCouples.get(i).getDayOfWeek() %>
+                                <td><%= potentialCouples.get(i).getDaysList(potentialCouples.get(i).getDayOfWeek()) %>
                                 </td>
                                 <input name="coupleId" type="text" value=" <%=coupleId%>" hidden>
                                 <td>
