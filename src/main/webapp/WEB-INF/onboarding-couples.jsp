@@ -2,56 +2,92 @@
 <%@ page import="com.entities.Supplier" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.utilities.PriceRange" %>
+<%@ page import="com.utilities.SchedulingRange" %>
+<%@ page import="static com.utilities.SchedulingRange.*" %>
+<%@ page import="org.apache.commons.lang.ObjectUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>מארגנת החתונות - החשבון שלי</title>
-    <meta name="description" content="" />
-    <meta name="Author" content="" />
+    <meta name="description" content=""/>
+    <meta name="Author" content=""/>
 
     <!-- mobile settings -->
-    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"/>
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
     <!-- WEB FONTS : use %7C instead of | (pipe) -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
-          rel="stylesheet" type="text/css" />
+          rel="stylesheet" type="text/css"/>
 
     <!-- CORE CSS -->
-    <link href="../client/html/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../client/html/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- THEME CSS -->
-    <link href="../client/html/assets/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../client/html/assets/css/layout.css" rel="stylesheet" type="text/css"/>
 
 
     <!-- PAGE LEVEL SCRIPTS -->
-    <link href="../client/html/assets/css/header-1.css" rel="stylesheet" type="text/css" />
-    <link href="../client/html/assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
-    <link href="../client/html/assets/css/essentials.css" rel="stylesheet" type="text/css" />
-    <link href="../client/html/assets/css/MyStyle.css" rel="stylesheet" />
-    <link href="../client/html/assets/css/layout-RTL.css" rel="stylesheet" />
+    <link href="../client/html/assets/css/header-1.css" rel="stylesheet" type="text/css"/>
+    <link href="../client/html/assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme"/>
+    <link href="../client/html/assets/css/essentials.css" rel="stylesheet" type="text/css"/>
+    <link href="../client/html/assets/css/MyStyle.css" rel="stylesheet"/>
+    <link href="../client/html/assets/css/layout-RTL.css" rel="stylesheet"/>
 
     <!-- REVOLUTION SLIDER -->
-    <link href="../client/html/assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css" />
-    <link href="../client/html/assets/plugins/slider.revolution/css/settings.css" rel="stylesheet" type="text/css" />
+    <link href="../client/html/assets/plugins/slider.revolution/css/extralayers.css" rel="stylesheet" type="text/css"/>
+    <link href="../client/html/assets/plugins/slider.revolution/css/settings.css" rel="stylesheet" type="text/css"/>
 
 
 </head>
 
-<body class="smoothcircle enable-animation has-video-bg" data-background="../client/html/assets/images/_smarty/backgrounds/default.jpg"
+<body class="smoothcircle enable-animation has-video-bg"
+      data-background="../client/html/assets/images/_smarty/backgrounds/default.jpg"
       dir="rtl">
 <div id="wrapper">
-    <%Couple currCouple =  (Couple) request.getAttribute("couple");
-    int howManyInvites = (currCouple!=null)?currCouple.getNumOfInvites() : 0;
-    String priceRange = (currCouple!=null && currCouple.getPricing()!=0)?currCouple.getPriceRangeName(currCouple.getPricing()) : PriceRange.NO_RANGE.getName();
-    String styles = (currCouple!=null)?currCouple.getStylesList(currCouple.getStyle()) : "";
-    String areas = (currCouple!=null)?currCouple.getAreasList(currCouple.getArea()) : "";
-    String days = (currCouple!=null)?currCouple.getDaysList(currCouple.getDayOfWeek()) : "";
-    String months = (currCouple!=null)?currCouple.getMonthsList(currCouple.getPreferredMonths()) : "";
-    String dateSelected = (currCouple!=null && currCouple.getDate()!=null)?currCouple.getDateString(currCouple.getDate()) : "";
+    <%
+        String spon = "ספונטנים";
+        String days = "";
+        String months = "";
+        String dateSelected = "";
+        String styles = "";
+        int howManyInvites = 0;
+        String areas = "";
+        String priceRange = PriceRange.NO_RANGE.getName();
+        SchedulingRange schedRange = null;
+
+        Couple currCouple = (Couple) request.getAttribute("couple");
+        if (currCouple != null) {
+            howManyInvites = currCouple.getNumOfInvites();
+            styles = currCouple.getStylesList(currCouple.getStyle());
+            areas = currCouple.getAreasList(currCouple.getArea());
+            priceRange = (currCouple.getPricing() != 0) ? currCouple.getPriceRangeName(currCouple.getPricing()) : PriceRange.NO_RANGE.getName();
+            schedRange = convertIntToSchedulingRange(currCouple.getSchedulingRange());
+
+
+            switch (schedRange) {
+                case ANYTIME: {
+                    days = spon;
+                    months = spon;
+                    dateSelected = spon;
+                    break;
+                }
+                case SEASON: {
+                    days = (currCouple != null) ? currCouple.getDaysList(currCouple.getDayOfWeek()) : "";
+                    months = (currCouple != null) ? currCouple.getMonthsList(currCouple.getPreferredMonths()) : "";
+                    break;
+                }
+                case SPECIFIC: {
+                    dateSelected = (currCouple != null && currCouple.getDate() != null) ? currCouple.getDateString(currCouple.getDate()) : "";
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
     %>
     <div id="header" class="navbar-toggleable-md sticky transparent header-md clearfix">
         <header id="topNav">
@@ -131,7 +167,8 @@
                 <div class="justify-content-around row text-center">
                     <div id="headingOne" class="col-md-5">
                         <h5 class="mb-0">
-                            <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="width:175px">
+                            <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne" style="width:175px">
                                 <span class="ico-hover et-gears" style="margin-left:10px"></span>
                                 צפו בהגדרות שלכם
                             </button>
@@ -139,7 +176,8 @@
                     </div>
                     <div id="headingTwo" class="col-md-5">
                         <h5 class="mb-0">
-                            <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="width:175px">
+                            <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo" style="width:175px">
                                 <span class="ico-hover et-tools-2" style="margin-left:10px"></span>
                                 ערכו את ההגדרות
                             </button>
@@ -150,7 +188,7 @@
                 <div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
-                            <hr />
+                            <hr/>
                             <div id="ShowSettings">
                                 <div class="container">
                                     <div class="justify-content-around row" style="margin-top:15px">
@@ -163,15 +201,18 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">חודשים:</td>
-                                                        <td><%=months%></td>
+                                                        <td><%=months%>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="font-weight: bold">ימים:</td>
-                                                        <td><%=days%></td>
+                                                        <td><%=days%>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="font-weight: bold">תאריך ספציפי:</td>
-                                                        <td><%=dateSelected%></td>
+                                                        <td><%=dateSelected%>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -187,7 +228,8 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">אזורים:</td>
-                                                        <td><%=areas%></td>
+                                                        <td><%=areas%>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -207,7 +249,8 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">סגנונות:</td>
-                                                        <td><%=styles%></td>
+                                                        <td><%=styles%>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -223,11 +266,13 @@
                                                     <tbody>
                                                     <tr>
                                                         <td style="font-weight: bold">כמה אורחים:</td>
-                                                        <td><%=howManyInvites%></td>
+                                                        <td><%=howManyInvites%>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="font-weight: bold">מחיר למנה:</td>
-                                                        <td><%=priceRange%></td>
+                                                        <td><%=priceRange%>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -240,7 +285,7 @@
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body">
-                            <hr />
+                            <hr/>
                             <div class="container" style="margin-bottom: 15%; margin-top: 5%;" id="editSettings">
                                 <div class="row">
 
@@ -248,22 +293,26 @@
                                     <div class="col-md-3 col-sm-3">
                                         <ul class="nav nav-tabs nav-stacked flex-column text-right">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#When" data-toggle="tab" onclick="disableStart()">
+                                                <a class="nav-link" href="#When" data-toggle="tab"
+                                                   onclick="disableStart()">
                                                     מתי נתחתן?
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#Where" data-toggle="tab" onclick="disableStart()">
+                                                <a class="nav-link" href="#Where" data-toggle="tab"
+                                                   onclick="disableStart()">
                                                     איפה נתחתן?
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#OurStyle" data-toggle="tab" onclick="disableStart()">
+                                                <a class="nav-link" href="#OurStyle" data-toggle="tab"
+                                                   onclick="disableStart()">
                                                     מה הסטייל שלנו?
                                                 </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="#Budget" data-toggle="tab" onclick="disableStart()">
+                                                <a class="nav-link" href="#Budget" data-toggle="tab"
+                                                   onclick="disableStart()">
                                                     על כמה נשלם?
                                                 </a>
                                             </li>
@@ -294,14 +343,17 @@
 
                                                         <!--spontaneous-->
                                                         <label class="checkbox">
-                                                            <input type="radio" id="spontaneousCB" value="ANYTIME" name="whenRadio" onclick="WhenToggle('spontaneousCB')" required>
+                                                            <input type="radio" id="spontaneousCB" value="ANYTIME"
+                                                                   name="whenRadio"
+                                                                   onclick="WhenToggle('spontaneousCB')" required>
                                                             <i></i> ספונטנים
                                                         </label>
                                                         <div class="divider"></div>
 
                                                         <!--season-->
                                                         <label class="checkbox">
-                                                            <input type="radio" value="SEASON" id="seasonCB" name="whenRadio" onclick="WhenToggle('seasonCB')">
+                                                            <input type="radio" value="SEASON" id="seasonCB"
+                                                                   name="whenRadio" onclick="WhenToggle('seasonCB')">
                                                             <i></i> תמיד חלמתי להתחתן ב...
                                                         </label>
                                                         <div id="chooseSeason" class="collapse">
@@ -316,19 +368,25 @@
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="JUNE" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="JUNE"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> יוני
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="JULY" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="JULY"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> יולי
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="AUGUST" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="AUGUST"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> אוגוסט
                                                                             </label>
                                                                         </div>
@@ -344,19 +402,25 @@
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="SEPTEMBER" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="SEPTEMBER"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> ספטמבר
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="OCTOBER" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="OCTOBER"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> אוקטובר
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="NOVEMBER" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="NOVEMBER"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> נובמבר
                                                                             </label>
                                                                         </div>
@@ -372,19 +436,25 @@
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="DECEMBER" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="DECEMBER"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> דצמבר
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="JANUARY" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="JANUARY"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> ינואר
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="FEBRUARY" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="FEBRUARY"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> פברואר
                                                                             </label>
                                                                         </div>
@@ -400,19 +470,25 @@
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="MARCH" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="MARCH"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> מרץ
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="APRIL" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="APRIL"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> אפריל
                                                                             </label>
                                                                         </div>
                                                                         <div class="col-12">
                                                                             <label class="checkbox">
-                                                                                <input type="checkbox" value="MAY" class="chooseSeasonCB" name="chooseSeasonCB">
+                                                                                <input type="checkbox" value="MAY"
+                                                                                       class="chooseSeasonCB"
+                                                                                       name="chooseSeasonCB">
                                                                                 <i></i> מאי
                                                                             </label>
                                                                         </div>
@@ -430,31 +506,45 @@
                                                                             <h2 class="pinkText">ימים בשבוע</h2>
                                                                         </div>
                                                                         <label class="checkbox">
-                                                                            <input type="checkbox" value="SUNDAY" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <input type="checkbox" value="SUNDAY"
+                                                                                   class="chooseSeasonCB"
+                                                                                   name="chooseDaysCB">
                                                                             <i></i> ראשון
                                                                         </label>
                                                                         <label class="checkbox">
-                                                                            <input type="checkbox" value="MONDAY" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <input type="checkbox" value="MONDAY"
+                                                                                   class="chooseSeasonCB"
+                                                                                   name="chooseDaysCB">
                                                                             <i></i> שני
                                                                         </label>
                                                                         <label class="checkbox">
-                                                                            <input type="checkbox" value="tuesday" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <input type="checkbox" value="TUESDAY"
+                                                                                   class="chooseSeasonCB"
+                                                                                   name="chooseDaysCB">
                                                                             <i></i> שלישי
                                                                         </label>
                                                                         <label class="checkbox">
-                                                                            <input type="checkbox" value="WEDNESDAY" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <input type="checkbox" value="WEDNESDAY"
+                                                                                   class="chooseSeasonCB"
+                                                                                   name="chooseDaysCB">
                                                                             <i></i> רביעי
                                                                         </label>
                                                                         <label class="checkbox">
-                                                                            <input type="checkbox" value="THURSDAY" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <input type="checkbox" value="THURSDAY"
+                                                                                   class="chooseSeasonCB"
+                                                                                   name="chooseDaysCB">
                                                                             <i></i> חמישי
                                                                         </label>
                                                                         <label class="checkbox">
-                                                                            <input type="checkbox" value="FRIDAY" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <input type="checkbox" value="FRIDAY"
+                                                                                   class="chooseSeasonCB"
+                                                                                   name="chooseDaysCB">
                                                                             <i></i> שישי
                                                                         </label>
                                                                         <label class="checkbox">
-                                                                            <input type="checkbox" value="SATURDAY" class="chooseSeasonCB" name="chooseDaysCB">
+                                                                            <input type="checkbox" value="SATURDAY"
+                                                                                   class="chooseSeasonCB"
+                                                                                   name="chooseDaysCB">
                                                                             <i></i> שבת
                                                                         </label>
                                                                     </div>
@@ -466,13 +556,17 @@
 
                                                         <!--specific-->
                                                         <label class="checkbox">
-                                                            <input type="radio" value="SPECIFIC" id="specificCB" name="whenRadio" onclick="WhenToggle('specificCB')">
+                                                            <input type="radio" value="SPECIFIC" id="specificCB"
+                                                                   name="whenRadio" onclick="WhenToggle('specificCB')">
                                                             <i></i> חייבים להתחתן ביום הולדת!
                                                         </label>
                                                         <div id="chooseSpecific" style="display: none">
                                                             <div class="row text-center">
                                                                 <label class="pinkText">בחרו את התאריך שלכם:</label>
-                                                                <input type="text" class="datepicker pinkText chooseSpecificDate" name="specificDate" data-format="dd/mm/yyyy" style="display: inline; margin-top: 1px !important; position: unset; ">
+                                                                <input type="text"
+                                                                       class="datepicker pinkText chooseSpecificDate"
+                                                                       name="specificDate" data-format="dd/mm/yyyy"
+                                                                       style="display: inline; margin-top: 1px !important; position: unset; ">
                                                             </div>
                                                         </div>
 
@@ -481,7 +575,8 @@
                                                         </div>
                                                         <div class="row text-left">
                                                             <div class="col-12">
-                                                                <button type="submit" class="btn btn-info btn-round btn-lg ">
+                                                                <button type="submit"
+                                                                        class="btn btn-info btn-round btn-lg ">
                                                                     שמור
                                                                 </button>
                                                             </div>
@@ -560,7 +655,9 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12 text-left">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg">שמור</button>
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg">
+                                                                שמור
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -572,28 +669,37 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="row">
-                                                                <img src="../client/html/chandelier.png" onclick="toggleCheck('classic')" class="my-img-hover">
+                                                                <img src="../client/html/chandelier.png"
+                                                                     onclick="toggleCheck('classic')"
+                                                                     class="my-img-hover">
                                                             </div>
                                                             <label class="checkbox text-center">
-                                                                <input type="checkbox" value="CLASSIC" id="classic" name="styleCB">
+                                                                <input type="checkbox" value="CLASSIC" id="classic"
+                                                                       name="styleCB">
                                                                 <i></i> קלאסי
                                                             </label>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="row">
-                                                                <img src="../client/html/graffiti.png" onclick="toggleCheck('urban')" class="my-img-hover">
+                                                                <img src="../client/html/graffiti.png"
+                                                                     onclick="toggleCheck('urban')"
+                                                                     class="my-img-hover">
                                                             </div>
                                                             <label class="checkbox text-center">
-                                                                <input type="checkbox" value="URBAN" id="urban" name="styleCB">
+                                                                <input type="checkbox" value="URBAN" id="urban"
+                                                                       name="styleCB">
                                                                 <i></i> אורבני
                                                             </label>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="row">
-                                                                <img src="../client/html/house.png" onclick="toggleCheck('rural')" class="my-img-hover">
+                                                                <img src="../client/html/house.png"
+                                                                     onclick="toggleCheck('rural')"
+                                                                     class="my-img-hover">
                                                             </div>
                                                             <label class="checkbox text-center">
-                                                                <input type="checkbox" value="RURAL" id="rural" name="styleCB">
+                                                                <input type="checkbox" value="RURAL" id="rural"
+                                                                       name="styleCB">
                                                                 <i></i> כפרי
                                                             </label>
                                                         </div>
@@ -602,7 +708,9 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg">שמור</button>
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg">
+                                                                שמור
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -620,10 +728,12 @@
                                                         <div class="col-md-6">
                                                             <div class="budgetHeight box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
                                                                 <div class="box-icon-title">
-                                                                    <i class="fa fa-users d-none d-sm-block" style="margin-right:-25px"></i>
+                                                                    <i class="fa fa-users d-none d-sm-block"
+                                                                       style="margin-right:-25px"></i>
                                                                     <h2>כמה אנשים אתם תהיו?</h2>
                                                                 </div>
-                                                                <input type="number" min=80 value="<%=howManyInvites%>" name="howManyPeople">
+                                                                <input type="number" min=80 value="<%=howManyInvites%>"
+                                                                       name="howManyPeople">
                                                             </div>
 
                                                         </div>
@@ -631,13 +741,15 @@
                                                         <div class="col-md-6">
                                                             <div class="budgetHeight box-icon box-icon-center box-icon-round box-icon-transparent box-icon-large box-icon-content text-center">
                                                                 <div class="box-icon-title">
-                                                                    <i class="fa fa-dollar d-none d-sm-block" style="margin-right:-25px"></i>
+                                                                    <i class="fa fa-dollar d-none d-sm-block"
+                                                                       style="margin-right:-25px"></i>
                                                                     <h2>
                                                                         מה התקציב לכל למנה?
                                                                     </h2>
                                                                 </div>
                                                                 <select class="selectpicker show-tick" name="price">
-                                                                    <option value="NO_RANGE">עוד לא גיבשנו תקציב</option>
+                                                                    <option value="NO_RANGE">עוד לא גיבשנו תקציב
+                                                                    </option>
                                                                     <option value="ONE_FIFTY">150-200</option>
                                                                     <option value="TWO_HUNDRED">200-250</option>
                                                                     <option value="TWO_FIFTY">250-300</option>
@@ -645,7 +757,7 @@
                                                                     <option value="THREE_FIFTY">350-400</option>
                                                                     <option value="FOUR_HUNDRED">400-450</option>
                                                                     <option value="FOUR_FIFTY">450-500</option>
-                                                                    <option value="FIVE_HUNDRED">יותר מ500</option>
+                                                                    <option value="FIVE_HUNDRED">יותר מ-500</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -653,7 +765,9 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg">שמור</button>
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg">
+                                                                שמור
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -739,28 +853,32 @@
                 <div class="fullwidthbanner" data-height="500" data-navigationStyle="preview2">
                     <ul class="hide">
                         <!-- SLIDE  -->
-                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="">
+                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
+                            data-saveperformance="off" data-title="">
                             <div class="">
                                 <img src="../client/html/GanVradim02.jpg" class="responsive" alt="Nature">
                                 <div class="carousel-caption">
                                     <h3>גן הורדים</h3>
                                     <h4 class="visible-xs-block hidden-xs">ראשון לציון</h4>
                                     <p class="visible-xs-block hidden-xs">
-                                        גן יפייפה בלב הכרך הסואן המשלב בין הטבע הפראי לעיצוב האורבני. בגן ישנו גם אולם מעוצב להפליא ומאובזר בטכנולוגיות המובילות
+                                        גן יפייפה בלב הכרך הסואן המשלב בין הטבע הפראי לעיצוב האורבני. בגן ישנו גם אולם
+                                        מעוצב להפליא ומאובזר בטכנולוגיות המובילות
                                         ביותר בשביל האירוע המוצלח שלכם.
                                     </p>
                                 </div>
                             </div>
                         </li>
 
-                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="">
+                        <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
+                            data-saveperformance="off" data-title="">
                             <div class="">
                                 <img src="../client/html/alenby.jpeg" class="responsive" alt="Nature">
                                 <div class="carousel-caption">
                                     <h3>חוות אלנבי</h3>
                                     <h4 class="visible-xs-block hidden-xs">נצר סירני</h4>
                                     <p class="visible-xs-block hidden-xs">
-                                        חפשים את המקום המושלם לחגוג חתונות קטנות במרכז? אולם אירועים בשפלה חוות אלנבי, מתמחה בהפקת אירועים עד 300 איש, כנסו להתרשמות
+                                        חפשים את המקום המושלם לחגוג חתונות קטנות במרכז? אולם אירועים בשפלה חוות אלנבי,
+                                        מתמחה בהפקת אירועים עד 300 איש, כנסו להתרשמות
                                         ויצירת קשר לאירועים באווירה כפרית.
                                     </p>
                                 </div>

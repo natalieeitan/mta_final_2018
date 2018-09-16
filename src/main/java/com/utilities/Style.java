@@ -32,7 +32,7 @@ public enum Style {
 			}
 		}
 		if(stylesString.endsWith(", ")){
-			stylesString = stylesString.substring(0,stylesString.length() - 1);
+			stylesString = stylesString.substring(0,stylesString.length() - 2);
 		}
 		return stylesString;
 	}

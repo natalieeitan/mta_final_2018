@@ -71,7 +71,7 @@ public enum Month {
             }
         }
         if(monthsString.endsWith(", ")){
-            monthsString = monthsString.substring(0,monthsString.length() - 1);
+            monthsString = monthsString.substring(0,monthsString.length() - 2);
         }
         return monthsString;
     }

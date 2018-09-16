@@ -20,7 +20,7 @@ public enum SchedulingRange{
     }
     public int getBitValue(){return bitValue;}
 
-    public SchedulingRange translateIntToSchedulingRange(int value)
+    public static SchedulingRange convertIntToSchedulingRange(int value)
     {
         SchedulingRange result=null;
 

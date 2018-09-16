@@ -11,7 +11,7 @@ public enum PriceRange {
     THREE_FIFTY("351-400", 32),
     FOUR_HUNDRED("401-450", 64),
     FOUR_FIFTY("451-500", 128),
-    FIVE_HUNDRED("יותר מ500", 256);
+    FIVE_HUNDRED("יותר מ-500", 256);
     private String name;
     private int bitValue;
 

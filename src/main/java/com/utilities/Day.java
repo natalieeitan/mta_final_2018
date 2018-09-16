@@ -66,7 +66,7 @@ public enum Day {
             }
         }
         if(daysString.endsWith(", ")){
-            daysString = daysString.substring(0,daysString.length() - 1);
+            daysString = daysString.substring(0,daysString.length() - 2);
         }
         return daysString;
     }
