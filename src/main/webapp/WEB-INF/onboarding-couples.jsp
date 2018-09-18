@@ -158,7 +158,8 @@
                     <div class="text-center">
                         <div class="box-icon-title">
                             <i class="fa fa-user text-center ico-lg"></i>
-                            <h3>ירדן וקובי</h3>
+                            <%String loggedName = (String) request.getAttribute("loggedName"); %>
+                            <h3><%=loggedName%></h3>
                         </div>
                     </div>
                 </div>

@@ -48,6 +48,8 @@ public class SupplierServlet extends HttpServlet {
 			supplierService.pushSupplierToDB(supplier);
 			ctx.setAttribute("supplier", supplier);
 			ctx.setAttribute("userId", supplierId);
+			request.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
+			ctx.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
 			request.setAttribute("supplier", supplier);
 			potentialCouplesForConnection = supplierService
 					.getAllFitCouplesIDsToSupplierBySupplier(supplier);

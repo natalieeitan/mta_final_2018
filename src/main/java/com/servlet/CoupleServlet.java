@@ -92,6 +92,8 @@ public class CoupleServlet extends HttpServlet {
         }
 
         CoupleService.pushAllCouplesToDB(couple);
+        request.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
+        ctx.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
         ctx.setAttribute("userId", id);
         request.setAttribute("userId", id);
         request.setAttribute("couple", couple);
