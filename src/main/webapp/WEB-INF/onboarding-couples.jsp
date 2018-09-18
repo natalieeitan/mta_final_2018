@@ -542,12 +542,6 @@
                                                                                    name="chooseDaysCB">
                                                                             <i></i> שישי
                                                                         </label>
-                                                                        <label class="checkbox">
-                                                                            <input type="checkbox" value="SATURDAY"
-                                                                                   class="chooseSeasonCB"
-                                                                                   name="chooseDaysCB">
-                                                                            <i></i> שבת
-                                                                        </label>
                                                                     </div>
 
                                                                 </div>

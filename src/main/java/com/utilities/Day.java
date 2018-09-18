@@ -10,7 +10,6 @@ public enum Day {
     WEDNESDAY("רביעי",8),
     THURSDAY("חמישי",16),
     FRIDAY("שישי",32),
-    SATURDAY("שבת",64)
     ;
 
     private String name;
