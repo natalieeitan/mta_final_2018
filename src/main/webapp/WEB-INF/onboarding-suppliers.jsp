@@ -93,6 +93,11 @@
                                     סטטיסטיקות
                                 </a>
                             </li>
+                            <li>
+                                <a data-toggle="modal" data-target="#myModal" style="color: #a9a1a1">
+                                    התנתקות
+                                </a>
+                            </li>
                         </ul>
 
                     </nav>
@@ -100,8 +105,38 @@
             </div>
         </header>
         <!-- /Top Nav -->
-
     </div>
+
+    <!-- log off menu -->
+    <div class="container text-center">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">התנתקות</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>אתם בטוחים שתרצו להתנתק?</p>
+                    </div>
+                    <div class="modal-footer justify-content-around">
+                        <form action="/user" method="post">
+                            <input name="action_logOff" hidden>
+                            <div class="row">
+                                <div class="col-md-6" style="width: 100%">
+                                    <button type="button" class="btn btn-info" data-dismiss="modal">רוצים לחזור
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="sumbit" class="btn btn-outline-secondary">רוצים התנתק</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /log off menu -->
 
     <!-- My Account -->
     <section id="MyAccount" class="" style="margin-top: -70px">
@@ -151,21 +186,21 @@
                                 <table class="table tableCol">
                                     <tbody>
                                     <tr>
-                                        <td>שם האולם:</td>
+                                        <td class="bold">שם האולם:</td>
                                         <td><%=venueName%></td>
-                                        <td>טלפון נוסף:</td>
+                                        <td class="bold">טלפון:</td>
                                         <td><%=phone%></td>
                                     </tr>
                                     <tr>
-                                        <td>תפוסה מקסימלית:</td>
+                                        <td class="bold">תפוסה מקסימלית:</td>
                                         <td><%=maxCapacity%></td>
-                                        <td>מחיר מינימלי למנה</td>
+                                        <td class="bold">מחיר מינימלי למנה:</td>
                                         <td><%=minPrice%></td>
                                     </tr>
                                     <tr>
-                                        <td>אזור בארץ:</td>
+                                        <td class="bold">אזור בארץ:</td>
                                         <td><%=area%></td>
-                                        <td>סגנון המקום:</td>
+                                        <td class="bold">סגנון המקום:</td>
                                         <td><%=style%></td>
                                     </tr>
                                     </tbody>

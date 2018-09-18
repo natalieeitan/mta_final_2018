@@ -136,3 +136,20 @@ header {
     padding-bottom: inherit;
     height: 100%;
 }
+
+.tableCol td:nth-child(2),
+.tableCol td:nth-child(4) {
+    border-left: 1px solid #dee2e6 !important;
+}
+
+.tableCol td:nth-child(odd) {
+    font-weight:bold;
+}
+
+.tableCol td:nth-child(1) {
+    border-right: 1px solid #dee2e6 !important;
+}
+
+.tableCol tr {
+    border-bottom: 1px solid #dee2e6;
+}
