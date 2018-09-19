@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -63,6 +64,13 @@ public class UserServlet extends HttpServlet {
 				request.setAttribute("linkedSuppliers", null);
 				request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
 			}
+		}
+
+		if (request.getParameter("action_logOff") != null)
+		{
+			HttpSession session=request.getSession();
+			session.invalidate();
+            request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
 		}
 
 		if (request.getParameter("action_signin") != null) {
