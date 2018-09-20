@@ -29,6 +29,19 @@ public class CoupleService {
         db.closeConnection();
         return couplesList;
     }
+    public static Couple getCoupleWithNameFromResultSet(ResultSet rs){
+       Couple couple= getCoupleFromResultSet(rs);
+
+        try {
+            String firstName = rs.getString("FirstName");
+            String lastName = rs.getString("LastName");
+            couple.setFirstName(firstName);
+            couple.setLastName(lastName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return couple;
+    }
 
     public static Couple getCoupleFromResultSet(ResultSet rs) {
         String id;
@@ -117,9 +130,8 @@ public class CoupleService {
 
         while (rs!=null && rs.next())
         {
-            Couple couple=getCoupleFromResultSet(rs);
+            Couple couple=getCoupleWithNameFromResultSet(rs);
             coupleList.add(couple);
-
         }
 
         return coupleList;

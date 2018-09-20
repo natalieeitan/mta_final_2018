@@ -49,13 +49,14 @@
 <body class="smoothcircle enable-animation has-video-bg" data-background="../client/html/assets/images/_smarty/backgrounds/default.jpg"
       dir="rtl">
 <div id="wrapper">
-    <%Supplier currSupplier =  (Supplier) request.getAttribute("supplier");
-        String venueName = (currSupplier!=null)?currSupplier.getVenueName() : "";
-        String phone = (currSupplier!=null)?currSupplier.getPhone() : "";
-        int maxCapacity = (currSupplier!=null)?currSupplier.getMaxCapacity() : 0;
-        int minPrice = (currSupplier!=null)?currSupplier.getMinPricePerPerson() : 0;
-        String area = (currSupplier!=null)?currSupplier.getAreaName(currSupplier.getArea()) : "מרכז";
-        String style = (currSupplier!=null)?currSupplier.getStyleName(currSupplier.getStyle()) : "כפרי";
+    <%
+        Supplier currSupplier = (Supplier) request.getAttribute("supplier");
+        String venueName = (currSupplier != null) ? currSupplier.getVenueName() : "";
+        String phone = (currSupplier != null) ? currSupplier.getPhone() : "";
+        int maxCapacity = (currSupplier != null) ? currSupplier.getMaxCapacity() : 0;
+        int minPrice = (currSupplier != null) ? currSupplier.getMinPricePerPerson() : 0;
+        String area = (currSupplier != null) ? currSupplier.getAreaName(currSupplier.getArea()) : "מרכז";
+        String style = (currSupplier != null) ? currSupplier.getStyleName(currSupplier.getStyle()) : "כפרי";
 
     %>
     <div id="header" class="navbar-toggleable-md sticky header-md dark clearfix" style="color:black">
@@ -151,7 +152,8 @@
                         <div class="box-icon-title">
                             <i class="fa fa-user text-center ico-lg"></i>
                             <%String loggedName = (String) request.getAttribute("loggedName"); %>
-                            <h3><%=loggedName%></h3>
+                            <h3><%=loggedName%>
+                            </h3>
                         </div>
                     </div>
                 </div>
@@ -187,21 +189,27 @@
                                     <tbody>
                                     <tr>
                                         <td class="bold">שם האולם:</td>
-                                        <td><%=venueName%></td>
+                                        <td><%=venueName%>
+                                        </td>
                                         <td class="bold">טלפון:</td>
-                                        <td><%=phone%></td>
+                                        <td><%=phone%>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="bold">תפוסה מקסימלית:</td>
-                                        <td><%=maxCapacity%></td>
+                                        <td><%=maxCapacity%>
+                                        </td>
                                         <td class="bold">מחיר מינימלי למנה:</td>
-                                        <td><%=minPrice%></td>
+                                        <td><%=minPrice%>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td class="bold">אזור בארץ:</td>
-                                        <td><%=area%></td>
+                                        <td><%=area%>
+                                        </td>
                                         <td class="bold">סגנון המקום:</td>
-                                        <td><%=style%></td>
+                                        <td><%=style%>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -246,7 +254,8 @@
                                                 <label>תפוסה מקסימלית*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-group"></i>
-                                                    <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required value="<%=maxCapacity%>">
+                                                    <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required
+                                                           value="<%=maxCapacity%>">
                                                     <b class="tooltip tooltip-bottom-right">תפוסה מקסימלית</b>
                                                 </label>
                                             </div>
@@ -255,7 +264,8 @@
                                                 <label>מחיר מנה מינימלי*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-dollar"></i>
-                                                    <input name="minPrice" type="number" min="80" placeholder="80" value="<%=minPrice%>" required>
+                                                    <input name="minPrice" type="number" min="80" placeholder="80" value="<%=minPrice%>"
+                                                           required>
                                                     <b class="tooltip tooltip-bottom-right">מחיר מנה מינימלי</b>
                                                 </label>
                                             </div>
@@ -347,6 +357,7 @@
                                 <th scope="col">מחיר מנה</th>
                                 <th scope="col">חודשים מועדף</th>
                                 <th scope="col">ימים מועדפים</th>
+                                <th scope="col">תאריך ספציפי</th>
                                 <th scope="col">צור קשר עם הזוג</th>
                             </tr>
                             </thead>
@@ -369,6 +380,8 @@
                                 </td>
                                 <td><%= potentialCouples.get(i).getDaysList(potentialCouples.get(i).getDayOfWeek()) %>
                                 </td>
+                                <td><%= potentialCouples.get(i).getDateString(potentialCouples.get(i).getDate()) %>
+                                </td>
                                 <input name="coupleId" type="text" value=" <%=coupleId%>" hidden>
                                 <td>
                                     <button type="submit" class="btn btn-info connect-couple"> שלח
@@ -380,42 +393,6 @@
                                     }
                                 }
                             %>
-                            <tr>
-                                <td>ירדן וקובי</td>
-                                <td>250</td>
-                                <td>350-400</td>
-                                <td>יולי, אוגוסט</td>
-                                <td>חמישי</td>
-                                <td>
-                                    <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
-                                        <span class="glyphicon glyphicon-send"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>נטלי ובר</td>
-                                <td>400-450</td>
-                                <td>לא גובש תקציב</td>
-                                <td>אוגוסט</td>
-                                <td>ראשון, שני, שלישי, רביעי, חמישי, שישי,שבת</td>
-                                <td>
-                                    <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
-                                        <span class="glyphicon glyphicon-send"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>לירון ודליה</td>
-                                <td>300-350</td>
-                                <td>לא גובש תקציב</td>
-                                <td>אין עונה מועדפת</td>
-                                <td>אין יום מועדף</td>
-                                <td>
-                                    <button type="button" class="btn btn-info" onclick="changeText(this)"> שלח
-                                        <span class="glyphicon glyphicon-send"></span>
-                                    </button>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>

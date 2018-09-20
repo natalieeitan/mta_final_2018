@@ -53,8 +53,8 @@ public class UserServlet extends HttpServlet {
 				return;
 				//todo- need to preset message to user about email exist
 			}
-			request.setAttribute("loggedName", firstName+" "+lastName);
-			ctx.setAttribute("loggedName", firstName+" "+lastName);
+			request.setAttribute("loggedName", firstName + " " + lastName);
+			ctx.setAttribute("loggedName", firstName + " " + lastName);
 			if (isSupplier) {
 				SupplierService.insertEmptySupplierToDB(newUser.getId());
 				request.setAttribute("potentialCouples", null);
@@ -66,11 +66,10 @@ public class UserServlet extends HttpServlet {
 			}
 		}
 
-		if (request.getParameter("action_logOff") != null)
-		{
-			HttpSession session=request.getSession();
+		if (request.getParameter("action_logOff") != null) {
+			HttpSession session = request.getSession();
 			session.invalidate();
-            request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
 		}
 
 		if (request.getParameter("action_signin") != null) {
@@ -83,8 +82,10 @@ public class UserServlet extends HttpServlet {
 				//error
 			} else if (user.getType().equals(UserType.SUPPLIER)) {
 				//send to supplier page
-				request.setAttribute("loggedName", user.getFirstName()+" "+user.getLastName());
-				ctx.setAttribute("loggedName", user.getFirstName()+" "+user.getLastName());
+				ctx.setAttribute("user", user);
+				request.setAttribute("user", user);
+				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
+				ctx.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
 				ctx.setAttribute("userId", user.getId());
 				List<Couple> potentialCouplesForConnection = supplierService
 						.getAllFitCouplesIDsToSupplierBySupplierId(user.getId());
@@ -100,8 +101,10 @@ public class UserServlet extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				request.setAttribute("loggedName", user.getFirstName()+" "+user.getLastName());
-				ctx.setAttribute("loggedName", user.getFirstName()+" "+user.getLastName());
+				ctx.setAttribute("user", user);
+				request.setAttribute("user", user);
+				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
+				ctx.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
 				ctx.setAttribute("userId", user.getId());
 				Couple loggedCouple = CoupleService.getCoupleByID(user.getId());
 				ctx.setAttribute("couple", loggedCouple);

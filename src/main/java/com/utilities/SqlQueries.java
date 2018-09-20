@@ -169,7 +169,7 @@ public class SqlQueries {
     }
 
     public static String getFitCouplesToSupplier(Supplier supplier){
-        return "SELECT * FROM "+COUPLE_TABLE_NAME+" WHERE NumberOfInvites < "+ supplier.getMaxCapacity()
+        return "SELECT * FROM "+COUPLE_TABLE_NAME+" join WedAppServer.dbo.Users ON WedAppServer.dbo.Users.ID = Couple.ID WHERE NumberOfInvites <= "+ supplier.getMaxCapacity()
                 + " AND Areas & "+ supplier.getArea() + " != 0"
                 + " AND Styles & "+ supplier.getStyle() + " != 0"
                 + " AND PriceRange >= "+PriceRange.convertIntToPriceRange(supplier.getMinPricePerPerson()).getBitValue()

@@ -91,7 +91,7 @@ public class Couple extends User {
 	}
 
 	public String getName() {
-		return super.getFirstName() + super.getLastName();
+		return super.getFirstName() +" "+ super.getLastName();
 	}
 
 	// public Season getSeasonToMarry(){ return this.seasonToMarry; }
@@ -108,6 +108,9 @@ public class Couple extends User {
 	}
 
 	public String getDateString(Date date) {
+		if(date==null){
+			return "";
+		}
 		Format formatter = new SimpleDateFormat("dd-MM-yyyy");
 		return formatter.format(date);
 	}

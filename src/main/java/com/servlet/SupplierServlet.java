@@ -2,7 +2,6 @@ package com.servlet;
 
 import com.entities.Couple;
 import com.entities.Supplier;
-import com.entities.User;
 import com.services.SupplierService;
 import com.utilities.Area;
 import com.utilities.Style;
@@ -42,9 +41,15 @@ public class SupplierServlet extends HttpServlet {
 
 			//request.setAttribute("potentialCouples", null);
 
-			Supplier supplier = new Supplier((User) ctx.getAttribute("user"), supplierId, venueName, phone, Integer.parseInt(maxCapacity),
-					Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
-
+		//	Supplier supplier = new Supplier((User) ctx.getAttribute("user"), supplierId, venueName, phone, Integer.parseInt(maxCapacity),
+		//			Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
+			Supplier supplier = SupplierService.getSupplierByID(supplierId);
+			supplier.setMaxCapacity(Integer.parseInt(maxCapacity));
+			supplier.setArea(Area.valueOf(area).getBitValue());
+			supplier.setMinPricePerPerson(Integer.parseInt(minPrice));
+			supplier.setStyle(Style.valueOf(style).getBitValue());
+			supplier.setPhone(phone);
+			supplier.setVenueName(venueName);
 			supplierService.pushSupplierToDB(supplier);
 			ctx.setAttribute("supplier", supplier);
 			ctx.setAttribute("userId", supplierId);
