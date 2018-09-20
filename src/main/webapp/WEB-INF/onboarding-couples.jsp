@@ -844,7 +844,7 @@
                         <thead class="thead-light pinkText">
                         <tr>
                             <th scope="col">שם האולם</th>
-                            <th scope="col">כתובת</th>
+                            <th scope="col">איזור</th>
                             <th scope="col">טלפון</th>
 
                         </tr>
@@ -857,7 +857,7 @@
                         <tr>
                             <td><%= linkedSuppliers.get(i).getVenueName() %>
                             </td>
-                            <td><%= linkedSuppliers.get(i).getArea() %>
+                            <td><%= linkedSuppliers.get(i).getAreaName(linkedSuppliers.get(i).getArea()) %>
                             </td>
                             <td><%= linkedSuppliers.get(i).getPhone() %>
                             </td>

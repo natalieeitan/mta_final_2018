@@ -23,7 +23,8 @@ public class SupplierServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8");
 		List<Couple> potentialCouplesForConnection = null;
-		String supplierId = getServletConfig().getServletContext().getAttribute("userId").toString();
+		ServletContext ctx = getServletConfig().getServletContext();
+		String supplierId = ctx.getAttribute("userId").toString();
 		if (request.getParameter("connectSupplierCouple") != null) {
 			String coupleId = request.getParameter("coupleId");
 			supplierService.connectWithCouple(supplierId, coupleId);
@@ -37,12 +38,7 @@ public class SupplierServlet extends HttpServlet {
 			String area = request.getParameter("area");
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
-			ServletContext ctx = getServletConfig().getServletContext();
 
-			//request.setAttribute("potentialCouples", null);
-
-		//	Supplier supplier = new Supplier((User) ctx.getAttribute("user"), supplierId, venueName, phone, Integer.parseInt(maxCapacity),
-		//			Area.valueOf(area).getBitValue(), Integer.parseInt(minPrice), Style.valueOf(style).getBitValue());
 			Supplier supplier = SupplierService.getSupplierByID(supplierId);
 			supplier.setMaxCapacity(Integer.parseInt(maxCapacity));
 			supplier.setArea(Area.valueOf(area).getBitValue());
@@ -53,13 +49,13 @@ public class SupplierServlet extends HttpServlet {
 			supplierService.pushSupplierToDB(supplier);
 			ctx.setAttribute("supplier", supplier);
 			ctx.setAttribute("userId", supplierId);
-			request.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
-			ctx.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
 			request.setAttribute("supplier", supplier);
 			potentialCouplesForConnection = supplierService
 					.getAllFitCouplesIDsToSupplierBySupplier(supplier);
 
 		}
+		request.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
+		ctx.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
 		request.setAttribute("potentialCouples", potentialCouplesForConnection);
 		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 

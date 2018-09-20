@@ -143,7 +143,7 @@ public class SqlQueries {
 
 
     public static String insertIntoCoupleSupplierTable(String supplierId, String coupleId) {
-        return "INSERT INTO WedAppServer.dbo.CoupleSupplier (SupplierID, CoupleID) VALUES ('" + supplierId + "','" + coupleId + "');";
+        return "INSERT INTO WedAppServer.dbo.CoupleSupplier (SupplierID, CoupleID) VALUES ('"+ supplierId +"','"+ coupleId +"');";
     }
 
     public static String insertIntoUserTable(User user) {

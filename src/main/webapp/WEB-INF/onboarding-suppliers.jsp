@@ -382,7 +382,7 @@
                                 </td>
                                 <td><%= potentialCouples.get(i).getDateString(potentialCouples.get(i).getDate()) %>
                                 </td>
-                                <input name="coupleId" type="text" value=" <%=coupleId%>" hidden>
+                                <input name="coupleId" type="text" value="<%=coupleId%>" hidden>
                                 <td>
                                     <button type="submit" class="btn btn-info connect-couple"> שלח
                                         <span class="glyphicon glyphicon-send"></span>
