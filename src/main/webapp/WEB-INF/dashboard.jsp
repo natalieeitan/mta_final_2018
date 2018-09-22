@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>מארגנת החתונות</title>
+    <title>Perfect Match</title>
     <meta name="description" content="" />
     <meta name="Author" content="" />
 
@@ -97,12 +97,13 @@
 
                     <div class="slider-featured-text text-center">
                         <h1 class="text-white wow fadeInUp" data-wow-delay="0.4s">
-                            סירי
+                            Perfect Match
                         </h1>
-                        <h1 class="text-white wow fadeInUp" data-wow-delay="0.4s">
-                            מארגנת החתונות
-                        </h1>
-                        <h2 class="fw-300 text-white wow fadeInUp" data-wow-delay="0.8s">העוזרת הדיגיטלית שתלווה אתכם עד החופה
+                        <!--<h1 class="text-white wow fadeInUp" data-wow-delay="0.4s">-->
+                        <!--מתאימים לכם חתונה-->
+                        <!--</h1>-->
+                        <h2 class="fw-300 text-white wow fadeInUp" data-wow-delay="0.8s" style="font-size: 45px; margin-top: 30px">
+                            שידוך מושלם בין מתחתנים לספקים
                         </h2>
 
 
@@ -167,6 +168,13 @@
                                         <b class="tooltip tooltip-bottom-right">הסיסמה הסודית שלכם</b>
                                     </label>
 
+                                    <p name="CorrectLogin" text=" ">
+                                        <b>
+                                            <%String isCorrectLogin = (String) request.getAttribute("isCorrectLogin"); %>
+                                            <h4 style="color: red"><%=isCorrectLogin%>
+                                            </h4>
+                                        </b>
+                                    </p>
                                 </div>
 
                                 <div class="row">
@@ -286,25 +294,32 @@
                 <hr/>
             </header>
             <div class="container">
-                <div class="row text-center">
-                    <div class="col-md-6 col-sm-5">
+                <div class="justify-content-around row text-center">
+                    <div class="col-md-5 col-sm-5">
                         <div>
                             <i class="et-heart ico-rounded ico-hover-dark ico-lg"></i>
-                            <label>
-                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי קולהע צופעט למרקוח
-                                איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול,
-                                צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט
+                            <h2 class="wow fadeInUp" data-wow-delay="0.1s">מתחתנים?</h2>
+                            <label class="wow fadeInUp" data-wow-delay="0.3s" style="font-size: 20px">קודם כל מזל טוב!
+                                <br>
+                                אם התחלתם בתהליך תכנון החתונה בוודאי כבר גיליתם שעולם החתונות מכיל בתוכו אינסוף אפשרויות וקל מאוד ללכת בו לאיבוד.
+                                <br>בשביל זה אנחנו כאן.
+                                <br>
+                                אנחנו ב- Perfect Match נמצא עבורכם את המקום המושלם לחתונה והכל בהתאמה אישית.
+                                חשוב להדגיש, לא מדובר באתר חיפוש, Perfect Match פונה לאולמות אירועים בשבילכם ומציעה לכם רק הצעות רלוונטיות ואישיות בהתאם לדרישות שלכם כדי לחסוך זמן בדרך לחתונה המושלמת.
                             </label>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-sm-5">
+                    <div class="col-md-5 col-sm-5">
                         <div style="width:95%">
                             <i class="et-wine ico-rounded ico-hover-dark ico-lg"></i>
-                            <label>
-                                לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי קולהע צופעט למרקוח
-                                איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול,
-                                צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט
+                            <h2 class="wow fadeInUp" data-wow-delay="0.1s">ספקים?</h2>
+                            <label class="wow fadeInUp" data-wow-delay="0.3s" style="font-size: 20px">
+                                רוב הזוגות הולכים לבדוק ומקבלים הצעות מכ-4 מקומות לפני שהם סוגרים מקום לחתונה,
+                                כך שגם אם אתם בעלי אולם אירועים איכותי ומרשים הרבה זוגות עלולים לפספס אתכם בזמן החיפוש.
+                                <br>בשביל זה אנחנו כאן.
+                                <br>אנחנו ב- Perfect Match פותחים עבורכם ערוץ נוסף למציאת זוגות לחתונה ומפנים אליכם זוגות רלוונטים שאתם עומדים בדרישות שלהם בהתאם לנתונים שהם הזינו.
+                                כלומר אתם מקבלים הזדמנות להציע שירות ללקוחות שמחפשים בדיוק את מה שאתם מציעים מבלי לבזבז זמן יקר.
                             </label>
                         </div>
                     </div>
