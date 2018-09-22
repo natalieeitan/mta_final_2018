@@ -594,7 +594,7 @@
                                                         <div id="chooseSpecific" style="display: none">
                                                             <div class="row text-center">
                                                                 <label class="pinkText">בחרו את התאריך שלכם:</label>
-                                                                <input type="text"
+                                                                <input type="text" id="specificDateInput" onchange="dateValue()"
                                                                        class="datepicker pinkText chooseSpecificDate"
                                                                        name="specificDate" data-format="dd/mm/yyyy"
                                                                        style="display: inline; margin-top: 1px !important; position: unset; ">
@@ -606,8 +606,8 @@
                                                         </div>
                                                         <div class="row text-left">
                                                             <div class="col-12">
-                                                                <button type="submit"
-                                                                        class="btn btn-info btn-round btn-lg ">
+                                                                <button type="submit" id="submitWhen"
+                                                                        class="btn btn-info btn-round btn-lg" disabled>
                                                                     שמור
                                                                 </button>
                                                             </div>
@@ -620,6 +620,7 @@
                                                                 case 'spontaneousCB':
                                                                     document.getElementById('chooseSeason').style.display = "none";
                                                                     document.getElementById('chooseSpecific').style.display = "none";
+                                                                    document.getElementById('submitWhen').disabled=false;
                                                                     for (var i = 0; i < cbarray.length; i++) {
                                                                         cbarray[i].checked = false;
                                                                     }
@@ -628,16 +629,33 @@
                                                                 case 'seasonCB':
                                                                     document.getElementById('chooseSeason').style.display = "block";
                                                                     document.getElementById('chooseSpecific').style.display = "none";
+                                                                    document.getElementById('submitWhen').disabled=true;
                                                                     $('.chooseSpecificDate').val('').datepicker('update');
                                                                     break;
                                                                 default: //specific
                                                                     document.getElementById('chooseSeason').style.display = "none";
                                                                     document.getElementById('chooseSpecific').style.display = "block";
+                                                                    document.getElementById('submitWhen').disabled=true;
                                                                     for (var i = 0; i < cbarray.length; i++) {
                                                                         cbarray[i].checked = false;
                                                                     }
                                                             }
                                                         }
+
+                                                        function dateValue()
+                                                        {
+                                                            if(document.getElementsByClassName('chooseSpecificDate').valueOf())
+                                                                document.getElementById('submitWhen').disabled=false;
+                                                        }
+                                                    </script>
+
+                                                    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
+                                                    </script>
+                                                    <script>
+                                                        var checkBoxes = $('.chooseSeasonCB');
+                                                        $('.chooseSeasonCB').change(function () {
+                                                            $('#submitWhen').prop('disabled', checkBoxes.filter(':checked').length < 1);
+                                                        });
                                                     </script>
                                                 </form>
                                             </div>
@@ -648,37 +666,37 @@
                                                     <div class="row">
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="GUSH_DAN" name="AreaCB">
+                                                                <input type="checkbox" value="GUSH_DAN" name="AreaCB" class="chooseAreaCB">
                                                                 <i></i> מרכז
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="NORTH" name="AreaCB">
+                                                                <input type="checkbox" value="NORTH" name="AreaCB" class="chooseAreaCB">
                                                                 <i class="btn-pink"></i> צפון
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="SHFELA" name="AreaCB">
+                                                                <input type="checkbox" value="SHFELA" name="AreaCB" class="chooseAreaCB">
                                                                 <i></i> שפלה
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="JERUSALEM" name="AreaCB">
+                                                                <input type="checkbox" value="JERUSALEM" name="AreaCB" class="chooseAreaCB">
                                                                 <i></i> ירושלים
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="SHARON" name="AreaCB">
+                                                                <input type="checkbox" value="SHARON" name="AreaCB" class="chooseAreaCB">
                                                                 <i></i> שרון
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="SOUTH" name="AreaCB">
+                                                                <input type="checkbox" value="SOUTH" name="AreaCB" class="chooseAreaCB">
                                                                 <i></i> דרום
                                                             </label>
                                                         </div>
@@ -686,13 +704,20 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12 text-left">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg">
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg" id="submitArea" disabled>
                                                                 שמור
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
+
+                                            <script>
+                                                var checkBoxesArea = $('.chooseAreaCB');
+                                                $('.chooseAreaCB').change(function () {
+                                                    $('#submitArea').prop('disabled', checkBoxesArea.filter(':checked').length < 1);
+                                                });
+                                            </script>
 
                                             <div id="OurStyle" class="tab-pane">
                                                 <form id="formStyle" action="/couple" method="post">
@@ -706,7 +731,7 @@
                                                             </div>
                                                             <label class="checkbox text-center">
                                                                 <input type="checkbox" value="CLASSIC" id="classic"
-                                                                       name="styleCB">
+                                                                       name="styleCB" class="chooseStyleCB">
                                                                 <i></i> קלאסי
                                                             </label>
                                                         </div>
@@ -718,7 +743,7 @@
                                                             </div>
                                                             <label class="checkbox text-center">
                                                                 <input type="checkbox" value="URBAN" id="urban"
-                                                                       name="styleCB">
+                                                                       name="styleCB" class="chooseStyleCB">
                                                                 <i></i> אורבני
                                                             </label>
                                                         </div>
@@ -730,7 +755,7 @@
                                                             </div>
                                                             <label class="checkbox text-center">
                                                                 <input type="checkbox" value="RURAL" id="rural"
-                                                                       name="styleCB">
+                                                                       name="styleCB" class="chooseStyleCB">
                                                                 <i></i> כפרי
                                                             </label>
                                                         </div>
@@ -739,7 +764,7 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg">
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg" id="submitStyle" disabled>
                                                                 שמור
                                                             </button>
                                                         </div>
@@ -749,6 +774,12 @@
                                                     function toggleCheck(idToToggle) {
                                                         document.getElementById(idToToggle).checked = !document.getElementById(idToToggle).checked;
                                                     }
+                                                </script>
+                                                <script>
+                                                    var checkBoxesStyle = $('.chooseStyleCB');
+                                                    $('.chooseStyleCB').change(function () {
+                                                        $('#submitStyle').prop('disabled', checkBoxesStyle.filter(':checked').length < 1);
+                                                    });
                                                 </script>
                                             </div>
 
@@ -763,8 +794,8 @@
                                                                        style="margin-right:-25px"></i>
                                                                     <h2>כמה אנשים אתם תהיו?</h2>
                                                                 </div>
-                                                                <input type="number" min=80 value="<%=howManyInvites%>"
-                                                                       name="howManyPeople">
+                                                                <input type="number" min=80 value="<%=howManyInvites%>" class="selectAmount"
+                                                                       name="howManyPeople" id="howManyInput" onchange="budgetValues()">
                                                             </div>
 
                                                         </div>
@@ -778,9 +809,9 @@
                                                                         מה התקציב לכל למנה?
                                                                     </h2>
                                                                 </div>
-                                                                <select class="selectpicker show-tick" name="price">
-                                                                    <option value="NO_RANGE">עוד לא גיבשנו תקציב
-                                                                    </option>
+                                                                <select class="selectpicker show-tick selectBudget" name="price" on="budgetValues()" required>
+                                                                    <option value="">מה התקציב שלכם?</option>
+                                                                    <option value="NO_RANGE">עוד לא גיבשנו תקציב</option>
                                                                     <option value="ONE_FIFTY">150-200</option>
                                                                     <option value="TWO_HUNDRED">200-250</option>
                                                                     <option value="TWO_FIFTY">250-300</option>
@@ -796,14 +827,13 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg">
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg" id="submitBudget">
                                                                 שמור
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
