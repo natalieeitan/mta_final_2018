@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "servlet.SupplierServlet", urlPatterns = { "/supplier" })
 public class SupplierServlet extends HttpServlet {
@@ -25,11 +26,14 @@ public class SupplierServlet extends HttpServlet {
 		List<Couple> potentialCouplesForConnection = null;
 		ServletContext ctx = getServletConfig().getServletContext();
 		String supplierId = ctx.getAttribute("userId").toString();
+		Supplier supplier = null;
 		if (request.getParameter("connectSupplierCouple") != null) {
 			String coupleId = request.getParameter("coupleId");
+			supplier = SupplierService.getSupplierByID(supplierId);
+			ctx.setAttribute("supplier", supplier);
+			ctx.setAttribute("userId", supplierId);
+			request.setAttribute("supplier", supplier);
 			supplierService.connectWithCouple(supplierId, coupleId);
-			potentialCouplesForConnection = supplierService
-					.getAllFitCouplesIDsToSupplierBySupplierId(supplierId);
 
 		} else if (request.getParameter("action_onboarding_suppliers") != null) {
 			String venueName = request.getParameter("venueName");
@@ -39,7 +43,7 @@ public class SupplierServlet extends HttpServlet {
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
 
-			Supplier supplier = SupplierService.getSupplierByID(supplierId);
+			supplier = SupplierService.getSupplierByID(supplierId);
 			supplier.setMaxCapacity(Integer.parseInt(maxCapacity));
 			supplier.setArea(Area.valueOf(area).getBitValue());
 			supplier.setMinPricePerPerson(Integer.parseInt(minPrice));
@@ -50,15 +54,22 @@ public class SupplierServlet extends HttpServlet {
 			ctx.setAttribute("supplier", supplier);
 			ctx.setAttribute("userId", supplierId);
 			request.setAttribute("supplier", supplier);
-			potentialCouplesForConnection = supplierService
-					.getAllFitCouplesIDsToSupplierBySupplier(supplier);
-
 		}
+		//collect couples from db to table in jsp
+		potentialCouplesForConnection = supplierService
+				.getAllFitCouplesToSupplierBySupplier(supplier);
+		List<String> couplesConnected = supplierService.getAllCouplesConnectedToSupplierBySupplierId(supplierId);
+		List<Couple> couplesAlreadyConnected = potentialCouplesForConnection.stream().filter(c -> couplesConnected.contains(c.getID())).collect(
+				Collectors.toList());
+		List<Couple> potentialCouples = potentialCouplesForConnection.stream().filter(c -> !couplesConnected.contains(c.getID())).collect(
+				Collectors.toList());
+		request.setAttribute("potentialCouples", potentialCouples);
+		request.setAttribute("couplesAlreadyConnected", couplesAlreadyConnected);
+
 		request.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
 		ctx.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
-		request.setAttribute("potentialCouples", potentialCouplesForConnection);
-		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 
+		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 	}
 
 	@Override

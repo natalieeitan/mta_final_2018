@@ -228,7 +228,7 @@
                                     <div class="row">
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>דוא"ל" *</label>
+                                            <label>דוא"ל *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-envelope"></i>
                                                 <input name="userEmail" required="" type="email">

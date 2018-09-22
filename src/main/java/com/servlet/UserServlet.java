@@ -3,7 +3,6 @@ package com.servlet;
 import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
-import com.exceptions.EmailAlreadyExistException;
 import com.services.CoupleService;
 import com.services.DataBaseServiceImpl;
 import com.services.SupplierService;
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "servlet.UserServlet", urlPatterns = { "/user" })
 public class UserServlet extends HttpServlet {
@@ -41,18 +40,16 @@ public class UserServlet extends HttpServlet {
 				newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
 			else
 				newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
-			try {
-				if (dbService.isEmailAlreadyExist(newUser.getEmail())) {
-					throw new EmailAlreadyExistException();
-				}
-				dbService.insertUserToDb(newUser);
-				//save id on context to use on other servlets
-				ctx.setAttribute("userId", newUser.getId());
-				ctx.setAttribute("user", newUser);
-			} catch (EmailAlreadyExistException e) {
+
+			if (dbService.isEmailAlreadyExist(newUser.getEmail())) {
+				//todo- need to show email exist msg and dispatch to dashboard.jsp
 				return;
-				//todo- need to preset message to user about email exist
 			}
+			dbService.insertUserToDb(newUser);
+			//save id on context to use on other servlets
+			ctx.setAttribute("userId", newUser.getId());
+			ctx.setAttribute("user", newUser);
+
 			request.setAttribute("loggedName", firstName + " " + lastName);
 			ctx.setAttribute("loggedName", firstName + " " + lastName);
 			if (isSupplier) {
@@ -66,41 +63,58 @@ public class UserServlet extends HttpServlet {
 			}
 		}
 
-		if (request.getParameter("action_logOff") != null) {
+		if (request.getParameter("action_logOff") != null)
+
+		{
 			HttpSession session = request.getSession();
 			session.invalidate();
 			request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
 		}
 
-		if (request.getParameter("action_signin") != null) {
+		if (request.getParameter("action_signin") != null)
+
+		{
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			User user = dbService.getUserByEmailAndPassword(email, password);
 
 			if (user == null) {
-				//todo: fill case of error
-				//error
+				request.setAttribute("isCorrectLogin", "שם משתמש או סיסמה לא נכונים!");
+				request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+
 			} else if (user.getType().equals(UserType.SUPPLIER)) {
 				//send to supplier page
+				request.setAttribute("isCorrectLogin", " ");
 				ctx.setAttribute("user", user);
 				request.setAttribute("user", user);
 				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
 				ctx.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
 				ctx.setAttribute("userId", user.getId());
-				List<Couple> potentialCouplesForConnection = supplierService
-						.getAllFitCouplesIDsToSupplierBySupplierId(user.getId());
-				request.setAttribute("potentialCouples", potentialCouplesForConnection);
+				//				List<Couple> potentialCouplesForConnection = supplierService
+				//						.getAllFitCouplesIDsToSupplierBySupplierId(user.getId());
+				//				request.setAttribute("potentialCouples", potentialCouplesForConnection);
 				Supplier loggedSupplier = SupplierService.getSupplierByID(user.getId());
 				ctx.setAttribute("supplier", loggedSupplier);
 				request.setAttribute("supplier", loggedSupplier);
+
+				//collect couples from db to table in jsp
+				List<Couple> potentialCouplesForConnection = supplierService
+						.getAllFitCouplesToSupplierBySupplier(loggedSupplier);
+				List<String> couplesConnected = supplierService.getAllCouplesConnectedToSupplierBySupplierId(loggedSupplier.getID());
+				List<Couple> couplesAlreadyConnected = potentialCouplesForConnection.stream()
+						.filter(c -> couplesConnected.contains(c.getID()))
+						.collect(
+								Collectors.toList());
+				List<Couple> potentialCouples = potentialCouplesForConnection.stream().filter(c -> !couplesConnected.contains(c.getID()))
+						.collect(
+								Collectors.toList());
+				request.setAttribute("potentialCouples", potentialCouples);
+				request.setAttribute("couplesAlreadyConnected", couplesAlreadyConnected);
+
 				request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 			} else {
 				//send to couple page
-				try {
-					request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+				request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
 				ctx.setAttribute("user", user);
 				request.setAttribute("user", user);
 				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
@@ -112,6 +126,7 @@ public class UserServlet extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
 			}
 		}
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -128,7 +128,7 @@
                                     </button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="sumbit" class="btn btn-outline-secondary">רוצים התנתק</button>
+                                    <button type="sumbit" class="btn btn-outline-secondary">רוצים להתנתק</button>
                                 </div>
                             </div>
                         </form>
@@ -349,6 +349,7 @@
                     <div class="table-responsive-sm">
                         <table class="table">
                             <%List<Couple> potentialCouples = (List<Couple>) request.getAttribute("potentialCouples"); %>
+                            <%List<Couple> couplesAlreadyConnected = (List<Couple>) request.getAttribute("couplesAlreadyConnected"); %>
 
                             <thead class="thead-light pinkText">
                             <tr>
@@ -361,8 +362,33 @@
                                 <th scope="col">צור קשר עם הזוג</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody
                             <%
+                                if (couplesAlreadyConnected != null) {
+                                    for (int i = 0; i < couplesAlreadyConnected.size(); ++i) {
+                            %>
+                            <tr>
+                                <td><%= couplesAlreadyConnected.get(i).getName() %>
+                                </td>
+                                <td><%= couplesAlreadyConnected.get(i).getNumOfInvites() %>
+                                </td>
+                                <td><%= couplesAlreadyConnected.get(i).getPriceRangeName(couplesAlreadyConnected.get(i).getPricing()) %>
+                                </td>
+                                <td><%= couplesAlreadyConnected.get(i).getMonthsList(couplesAlreadyConnected.get(i).getPreferredMonths()) %>
+                                </td>
+                                <td><%= couplesAlreadyConnected.get(i).getDaysList(couplesAlreadyConnected.get(i).getDayOfWeek()) %>
+                                </td>
+                                <td><%= couplesAlreadyConnected.get(i).getDateString(couplesAlreadyConnected.get(i).getDate()) %>
+                                </td>
+                                <td>
+                                    <button class="btn btn-info connect-couple" disabled> נשלח
+                                        <span class="glyphicon glyphicon-send"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <%
+                                    }
+                                }
                                 if (potentialCouples != null) {
                                     for (int i = 0; i < potentialCouples.size(); ++i) {
                             %>

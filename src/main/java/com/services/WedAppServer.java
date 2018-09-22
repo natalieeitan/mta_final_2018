@@ -52,7 +52,7 @@ public class WedAppServer {
 		}
 	}
 
-	public ResultSet getDataFromDB(String query) throws SQLException {
+	public ResultSet getDataFromDB(String query){
 		// Create a variable for the connection string.
 		try {
 			// Establish the connection

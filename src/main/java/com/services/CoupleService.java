@@ -121,7 +121,7 @@ public class CoupleService {
     }
 
 
-    public List<Supplier> getSuppliersLinkedByCoupleId(String coupleId) throws SQLException {
+    public List<Supplier> getSuppliersLinkedByCoupleId(String coupleId){
         return dataBaseService.getSuppliersLinkedByCoupleId(coupleId);
     }
 
