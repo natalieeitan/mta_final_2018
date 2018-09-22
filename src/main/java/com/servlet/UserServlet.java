@@ -78,10 +78,12 @@ public class UserServlet extends HttpServlet {
 			User user = dbService.getUserByEmailAndPassword(email, password);
 
 			if (user == null) {
-				//todo: fill case of error
-				//error
+                request.setAttribute("isCorrectLogin","שם משתמש או סיסמה לא נכונים!");
+                request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+
 			} else if (user.getType().equals(UserType.SUPPLIER)) {
 				//send to supplier page
+                request.setAttribute("isCorrectLogin"," ");
 				ctx.setAttribute("user", user);
 				request.setAttribute("user", user);
 				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
@@ -101,6 +103,7 @@ public class UserServlet extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+                request.setAttribute("isCorrectLogin"," ");
 				ctx.setAttribute("user", user);
 				request.setAttribute("user", user);
 				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());

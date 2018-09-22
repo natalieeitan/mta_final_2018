@@ -167,6 +167,13 @@
                                         <b class="tooltip tooltip-bottom-right">הסיסמה הסודית שלכם</b>
                                     </label>
 
+                                    <p name="CorrectLogin" text=" ">
+                                        <b>
+                                            <%String isCorrectLogin = (String) request.getAttribute("isCorrectLogin"); %>
+                                            <h4 style="color: red"><%=isCorrectLogin%>
+                                            </h4>
+                                        </b>
+                                    </p>
                                 </div>
 
                                 <div class="row">
