@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "servlet.UserServlet", urlPatterns = { "/user" })
 public class UserServlet extends HttpServlet {
@@ -89,21 +89,28 @@ public class UserServlet extends HttpServlet {
 				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
 				ctx.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
 				ctx.setAttribute("userId", user.getId());
-				List<Couple> potentialCouplesForConnection = supplierService
-						.getAllFitCouplesIDsToSupplierBySupplierId(user.getId());
-				request.setAttribute("potentialCouples", potentialCouplesForConnection);
+//				List<Couple> potentialCouplesForConnection = supplierService
+//						.getAllFitCouplesIDsToSupplierBySupplierId(user.getId());
+//				request.setAttribute("potentialCouples", potentialCouplesForConnection);
 				Supplier loggedSupplier = SupplierService.getSupplierByID(user.getId());
 				ctx.setAttribute("supplier", loggedSupplier);
 				request.setAttribute("supplier", loggedSupplier);
+
+				//collect couples from db to table in jsp
+				List<Couple> potentialCouplesForConnection = supplierService
+						.getAllFitCouplesToSupplierBySupplier(loggedSupplier);
+				List<String> couplesConnected = supplierService.getAllCouplesConnectedToSupplierBySupplierId(loggedSupplier.getID());
+				List<Couple> couplesAlreadyConnected = potentialCouplesForConnection.stream().filter(c -> couplesConnected.contains(c.getID())).collect(
+						Collectors.toList());
+				List<Couple> potentialCouples = potentialCouplesForConnection.stream().filter(c -> !couplesConnected.contains(c.getID())).collect(
+						Collectors.toList());
+				request.setAttribute("potentialCouples", potentialCouples);
+				request.setAttribute("couplesAlreadyConnected", couplesAlreadyConnected);
+
 				request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 			} else {
 				//send to couple page
-				try {
-					request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-                request.setAttribute("isCorrectLogin"," ");
+				request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
 				ctx.setAttribute("user", user);
 				request.setAttribute("user", user);
 				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());

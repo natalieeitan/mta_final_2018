@@ -142,7 +142,7 @@ public class SupplierService {
 
 		return null;
 	}
-	public List<Couple> getAllFitCouplesIDsToSupplierBySupplier(Supplier supplier) {
+	public List<Couple> getAllFitCouplesToSupplierBySupplier(Supplier supplier) {
 		WedAppServer db = new WedAppServer();
 		String query = SqlQueries.getFitCouplesToSupplier(supplier);
 		List<Couple> coupleList;
@@ -166,6 +166,21 @@ public class SupplierService {
 	//the function checks if area, style, price range, and number of invites fit
 	public List<Couple> getAllFitCouplesIDsToSupplierBySupplierId(String supplierID) {
 		Supplier supplier = getSupplierByID(supplierID);
-		return getAllFitCouplesIDsToSupplierBySupplier(supplier);
+		return getAllFitCouplesToSupplierBySupplier(supplier);
+	}
+
+	public List<String> getAllCouplesConnectedToSupplierBySupplierId(String supplierId){
+		WedAppServer db = new WedAppServer();
+		String query = SqlQueries.getCouplesIdBySupplierIdFromCoupleSupplierTable(supplierId);
+		List<String> couplesIdConnectedToSupplier = new ArrayList<>();
+		ResultSet rs = db.getDataFromDB(query);
+		try {
+			while (rs != null && rs.next()) {
+				couplesIdConnectedToSupplier.add(rs.getString("CoupleID"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return couplesIdConnectedToSupplier;
 	}
 }

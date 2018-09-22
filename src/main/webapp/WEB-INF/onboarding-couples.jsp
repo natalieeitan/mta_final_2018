@@ -158,7 +158,7 @@
                                     </button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="sumbit" class="btn btn-outline-secondary">רוצים התנתק</button>
+                                    <button type="sumbit" class="btn btn-outline-secondary">רוצים להתנתק</button>
                                 </div>
                             </div>
                         </form>

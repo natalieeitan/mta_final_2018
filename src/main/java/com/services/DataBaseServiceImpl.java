@@ -97,7 +97,7 @@ public class DataBaseServiceImpl implements ManagementService {
 	//		wedAppServer.getDataFromDB(SqlQueries.())
 	//	}
 
-	public List<Supplier> getSuppliersLinkedByCoupleId(String coupleId) throws SQLException {
+	public List<Supplier> getSuppliersLinkedByCoupleId(String coupleId)  {
 		ResultSet resultSet = wedAppServer.getDataFromDB(SqlQueries.getSuppliersIdByCoupleIdFromCoupleSupplierTable(coupleId));
 		return SupplierService.getSuppliersListSuppliersIds(resultSet);
 	}
