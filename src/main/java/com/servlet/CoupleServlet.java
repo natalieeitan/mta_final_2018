@@ -94,16 +94,7 @@ public class CoupleServlet extends HttpServlet {
 		ctx.setAttribute("userId", id);
 		request.setAttribute("userId", id);
 		request.setAttribute("couple", couple);
-		//todo: try not to refresh page when moving to JSP
+
 		request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
-	}
-
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
-			ServletException, IOException {
-		//        List<Supplier> allSuppliers = supplierService.getAllSuppliers();
-		//        request.setAttribute("allSuppliers", allSuppliers); // Will be available as ${allSuppliers} in JSP
-		//        request.getRequestDispatcher("/WEB-INF/couples-suggestions.jsp").forward(request, response);
-
 	}
 }

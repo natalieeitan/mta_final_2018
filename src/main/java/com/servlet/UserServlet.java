@@ -128,11 +128,4 @@ public class UserServlet extends HttpServlet {
 		}
 
 	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		if (request.getParameter("action_signin") != null) {
-
-		}
-	}
 }

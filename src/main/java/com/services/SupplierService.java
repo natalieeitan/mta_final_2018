@@ -163,12 +163,6 @@ public class SupplierService {
 		return null;
 	}
 
-	//the function checks if area, style, price range, and number of invites fit
-	public List<Couple> getAllFitCouplesIDsToSupplierBySupplierId(String supplierID) {
-		Supplier supplier = getSupplierByID(supplierID);
-		return getAllFitCouplesToSupplierBySupplier(supplier);
-	}
-
 	public List<String> getAllCouplesConnectedToSupplierBySupplierId(String supplierId){
 		WedAppServer db = new WedAppServer();
 		String query = SqlQueries.getCouplesIdBySupplierIdFromCoupleSupplierTable(supplierId);

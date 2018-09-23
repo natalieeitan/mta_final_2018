@@ -71,13 +71,4 @@ public class SupplierServlet extends HttpServlet {
 
 		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
 	}
-
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
-			ServletException, IOException {
-		List<Couple> potentialCouplesForConnection = supplierService
-				.getAllFitCouplesIDsToSupplierBySupplierId(getServletConfig().getServletContext().getAttribute("userId").toString());
-		request.setAttribute("potentialCouples", potentialCouplesForConnection);
-		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
-	}
 }

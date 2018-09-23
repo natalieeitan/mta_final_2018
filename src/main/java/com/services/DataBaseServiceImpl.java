@@ -93,10 +93,6 @@ public class DataBaseServiceImpl implements ManagementService {
 		return wedAppServer.getUserByEmailAndPassword(email,password);
 	}
 
-	//	public List<Couple> getCouplesOptionalConnections(String supplierId) {
-	//		wedAppServer.getDataFromDB(SqlQueries.())
-	//	}
-
 	public List<Supplier> getSuppliersLinkedByCoupleId(String coupleId)  {
 		ResultSet resultSet = wedAppServer.getDataFromDB(SqlQueries.getSuppliersIdByCoupleIdFromCoupleSupplierTable(coupleId));
 		return SupplierService.getSuppliersListSuppliersIds(resultSet);
