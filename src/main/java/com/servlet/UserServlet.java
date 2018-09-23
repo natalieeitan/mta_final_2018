@@ -68,6 +68,7 @@ public class UserServlet extends HttpServlet {
 		{
 			HttpSession session = request.getSession();
 			session.invalidate();
+			request.setAttribute("isCorrectLogin"," ");
 			request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
 		}
 
@@ -84,7 +85,6 @@ public class UserServlet extends HttpServlet {
 
 			} else if (user.getType().equals(UserType.SUPPLIER)) {
 				//send to supplier page
-				request.setAttribute("isCorrectLogin", " ");
 				ctx.setAttribute("user", user);
 				request.setAttribute("user", user);
 				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
