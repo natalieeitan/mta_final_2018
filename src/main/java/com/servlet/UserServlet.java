@@ -42,6 +42,7 @@ public class UserServlet extends HttpServlet {
                 request.setAttribute("isDuplicateMail","ה-Email כבר קיים במערכת!");
 				request.setAttribute("isCorrectLogin"," ");
                 request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+                return;
             }
 			if (isSupplier)
 				newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
