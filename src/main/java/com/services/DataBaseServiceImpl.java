@@ -38,8 +38,11 @@ public class DataBaseServiceImpl implements ManagementService {
 
 	@Override
 	public boolean isEmailAlreadyExist(String email) {
-		//todo - complete this
-		wedAppServer.executeQuery(SqlQueries.isEmailAlreadyExistsOnUserTable(email));
+		int result=wedAppServer.checkIfEmailExistInUsersTable(email);
+
+		if(result==1)
+			return true;
+
 		return false;
 	}
 
@@ -76,7 +79,6 @@ public class DataBaseServiceImpl implements ManagementService {
 	}
 
 	public void insertUserToDb(User user) {
-		//todo- check if email already exist, if yes then raise exception EmailAlreadyExistException and catch him on servlet and show message to user
 		wedAppServer.executeQuery(SqlQueries.insertIntoUserTable(user));
 	}
 

@@ -36,15 +36,18 @@ public class UserServlet extends HttpServlet {
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
 			boolean isSupplier = Boolean.valueOf(request.getParameter("isSupplier"));
+            //check if email is already exist in db
+			if (dbService.isEmailAlreadyExist(email)) {
+
+                request.setAttribute("isDuplicateMail","ה-Email כבר קיים במערכת!");
+				request.setAttribute("isCorrectLogin"," ");
+                request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+            }
 			if (isSupplier)
 				newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
 			else
 				newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
 
-			if (dbService.isEmailAlreadyExist(newUser.getEmail())) {
-				//todo- need to show email exist msg and dispatch to dashboard.jsp
-				return;
-			}
 			dbService.insertUserToDb(newUser);
 			//save id on context to use on other servlets
 			ctx.setAttribute("userId", newUser.getId());
@@ -69,6 +72,7 @@ public class UserServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.invalidate();
 			request.setAttribute("isCorrectLogin"," ");
+			request.setAttribute("isDuplicateMail"," ");
 			request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
 		}
 
@@ -81,6 +85,7 @@ public class UserServlet extends HttpServlet {
 
 			if (user == null) {
 				request.setAttribute("isCorrectLogin", "שם משתמש או סיסמה לא נכונים!");
+				request.setAttribute("isDuplicateMail"," ");
 				request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
 
 			} else if (user.getType().equals(UserType.SUPPLIER)) {

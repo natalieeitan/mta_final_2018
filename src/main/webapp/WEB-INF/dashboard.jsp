@@ -247,6 +247,15 @@
                                         </div>
 
                                     </div>
+                                    <div>
+                                        <p name="duplicateMail" text=" ">
+                                            <b>
+                                                <%String isDuplicateMail = (String) request.getAttribute("isDuplicateMail"); %>
+                                                <h4 style="color: red"><%=isDuplicateMail%>
+                                                </h4>
+                                            </b>
+                                        </p>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <label class="radio-btn">
