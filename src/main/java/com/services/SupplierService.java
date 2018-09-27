@@ -58,7 +58,9 @@ public class SupplierService {
 		try {
 			while (rs != null && rs.next()) {
 				Supplier supplier = getSupplierFromSupplierId(rs);
-				suppliersList.add(supplier);
+				if(supplier != null) {
+					suppliersList.add(supplier);
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
