@@ -86,6 +86,11 @@
                                     מי אנחנו
                                 </a>
                             </li>
+                            <li>
+                                <a href="#testimonial" class="pinkText">
+                                    זוגות מספרים
+                                </a>
+                            </li>
                         </ul>
 
                     </nav>
@@ -119,7 +124,7 @@
                         <!--מתאימים לכם חתונה-->
                         <!--</h1>-->
                         <h2 class="fw-300 text-white wow fadeInUp" data-wow-delay="0.8s"
-                            style="font-size: 45px; margin-top: 30px">
+                            style="font-size: 35px; margin-top: 30px">
                             שידוך מושלם בין מתחתנים לספקים
                         </h2>
 
@@ -324,7 +329,7 @@
                         <div>
                             <i class="et-heart ico-rounded ico-hover-dark ico-lg"></i>
                             <h2 class="wow fadeInUp" data-wow-delay="0.1s">מתחתנים?</h2>
-                            <label class="wow fadeInUp" data-wow-delay="0.3s" style="font-size: 20px">קודם כל מזל טוב!
+                            <label class="wow fadeInUp" data-wow-delay="0.3s" style="font-size: 18px">קודם כל מזל טוב!
                                 <br>
                                 אם התחלתם בתהליך תכנון החתונה בוודאי כבר גיליתם שעולם החתונות מכיל בתוכו אינסוף אפשרויות
                                 וקל מאוד ללכת בו לאיבוד.
@@ -341,7 +346,7 @@
                         <div style="width:95%">
                             <i class="et-wine ico-rounded ico-hover-dark ico-lg"></i>
                             <h2 class="wow fadeInUp" data-wow-delay="0.1s">ספקים?</h2>
-                            <label class="wow fadeInUp" data-wow-delay="0.3s" style="font-size: 20px">
+                            <label class="wow fadeInUp" data-wow-delay="0.3s" style="font-size: 18px">
                                 רוב הזוגות הולכים לבדוק ומקבלים הצעות מכ-8 מקומות לפני שהם סוגרים מקום לחתונה,
                                 כך שגם אם אתם בעלי אולם אירועים איכותי ומרשים הרבה זוגות עלולים לפספס אתכם בזמן החיפוש.
                                 <br>בשביל זה אנחנו כאן.
@@ -358,6 +363,83 @@
         </div>
     </section>
     <!-- /ABOUT -->
+
+    <!--testimonial-->
+    <section id="testimonial" class="bgImage aboutSectionDesktop">
+        <div class="container">
+            <header class="text-center mb-60">
+                <h2 class="pinkText">זוגות מספרים</h2>
+                <hr/>
+            </header>
+            <div class="row">
+                <div class="owl-carousel text-center owl-mini-testimonial m-0"
+                     data-plugin-options='{"singleItem": true, "autoPlay": 4000, "navigation": false, "pagination": true, "transitionStyle":"fade"}'>
+
+                    <div class="testimonial">
+                        <div class="justify-content-around row">
+                            <div class="col-md-10" >
+                                <div class="card bg-light">
+                                    <div class="card-header">
+                                        <i class="ico-transparent ico-md et-quote"></i>
+                                        <label class="bold" style="font-size: 20px;">קובי וירדן
+                                        </label>
+                                        <label dir="rtl">התחתנו ב21/7/2016
+                                            <br>
+                                            אחרי הרבה פגישות מיותרות,<br>
+                                            הגענו לאתר ממש במקרה ובזכותם קיבלנו הצעה מנצחת.
+                                            <br>
+                                            תודה!
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="justify-content-around row">
+                            <div class="col-md-10" >
+                                <div class="card bg-light">
+                                    <div class="card-header">
+                                        <i class="ico-transparent ico-md et-quote"></i>
+                                        <label class="bold" style="font-size: 20px;">נטלי ובר
+                                        </label>
+                                        <label dir="rtl">התחתנו ב26/8/2018
+                                            <br>
+                                            תודה לPerfect Match!
+                                            <br>
+                                            בזכותכם חסכנו המון זמן בבחירת המקום המושלם להתחתן בו!
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="justify-content-around row">
+                            <div class="col-md-10" >
+                                <div class="card bg-light">
+                                    <div class="card-header">
+                                        <i class="ico-transparent ico-md et-quote"></i>
+                                        <label class="bold" style="font-size: 20px;" >לירון ודליה
+                                        </label>
+                                        <label dir="rtl">
+                                            אנחנו במהלך הכנות לחתונה,
+                                            <br>
+                                            גילינו שהתהליך ארוך ומייגע,
+                                            <br>
+                                            למזלנו גילינו את Perfect Match שקיצרו לנו תהליכים
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/testimonial-->
 
     <!-- SCROLL TO TOP -->
     <a href="#" id="toTop"></a>

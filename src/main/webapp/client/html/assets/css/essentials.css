@@ -3972,7 +3972,7 @@ section.dark h2.owl-featured {
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
-	background: #869791;
+	background: #F89FA1 ;
 }
 
 .owl-theme .owl-controls .owl-page.active span,
@@ -3997,7 +3997,7 @@ section.dark h2.owl-featured {
 
 @media only screen and (max-width: 600px) {
 	.owl-pagination {
-		display:none;
+		display:block;
 	}
 }
 
@@ -12031,11 +12031,11 @@ div.owl-carousel.owl-mini-testimonial .testimonial p {
 	margin:0;
 }
 div.owl-carousel.owl-mini-testimonial .owl-controls {
-	text-align:right;
+	text-align:center !important;
 }
 div.owl-carousel.owl-mini-testimonial .owl-controls .owl-page span {
-	width:6px;
-	height:6px;
+	width:50px;
+	height:10px;
 	margin:5px 4px;
 }
 

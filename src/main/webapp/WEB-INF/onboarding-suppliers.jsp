@@ -141,7 +141,7 @@
 
     <!-- My Account -->
     <section id="MyAccount" class="" style="margin-top: -70px">
-        <div class="container">
+        <div class="container" style="margin-top: 3%; margin-bottom: 10%;">
             <header class="text-center mb-60">
                 <h2 class="turText">החשבון שלנו</h2>
                 <hr/>
