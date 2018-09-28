@@ -65,9 +65,7 @@ public class CoupleService {
             numOfInvites=rs.getInt("NumberOfInvites");
             pricing=rs.getInt("PriceRange");
 
-            Couple couple=new Couple(id,schedulingRange,date,daysToMarry,preferredMonths,areas,styles,numOfInvites,pricing);
-
-            return couple;
+            return new Couple(id,schedulingRange,date,daysToMarry,preferredMonths,areas,styles,numOfInvites,pricing, false);
 
         } catch (SQLException e) {
             e.printStackTrace();

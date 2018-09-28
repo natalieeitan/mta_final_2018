@@ -65,6 +65,7 @@ public class SqlQueries {
 	//COUPLE Table UPDATE Queries
 	public static String updateCoupleInTable(Couple couple) {
 		String query = SqlQueries.UPDATE_COUPLE_SCHEDULING_RANGE + couple.getSchedulingRange();
+
 		if (couple.getDate() == null)
 			query = query + ", SpecificDate = NULL";
 		else {
@@ -79,6 +80,7 @@ public class SqlQueries {
 				+ ", Styles = " + couple.getStyle()
 				+ ", NumberOfInvites = " + couple.getNumOfInvites()
 				+ ", PriceRange = " + couple.getPricing()
+				+ ", GotMarried = " + (couple.isCoupleMarried()?"1":"0")
 				+ " WHERE ID = '" + couple.getID() + "'";
 	}
 
@@ -87,7 +89,7 @@ public class SqlQueries {
 
 	public static final String insertEmptyCoupleToTable(String id) {
 		return "INSERT INTO WedAppServer.dbo.Couple (ID, SchedulingRange, SpecificDate, DaysToMarry, PreferredMonths, Areas, Styles, " +
-				"NumberOfInvites , PriceRange) VALUES ('"
+				"NumberOfInvites , PriceRange, GotMarried) VALUES ('"
 				+ id + "', "
 				+ NULL + ", "
 				+ NULL + ", "
@@ -96,7 +98,8 @@ public class SqlQueries {
 				+ NULL + ", "
 				+ NULL + ", "
 				+ NULL + ", "
-				+ NULL + ");";
+				+ NULL +", "
+				+ 0 + ");";
 	}
 
 	public static String getUserByEmailString(String email) {
@@ -172,7 +175,8 @@ public class SqlQueries {
         return "SELECT * FROM "+COUPLE_TABLE_NAME+" join WedAppServer.dbo.Users ON WedAppServer.dbo.Users.ID = Couple.ID WHERE NumberOfInvites <= "+ supplier.getMaxCapacity()
 				+ " AND Areas & " + supplier.getArea() + " != 0"
 				+ " AND Styles & " + supplier.getStyle() + " != 0"
-                + " AND PriceRange >= "+PriceRange.convertIntToPriceRange(supplier.getMinPricePerPerson()).getBitValue()+";";
+                + " AND PriceRange >= "+PriceRange.convertIntToPriceRange(supplier.getMinPricePerPerson()).getBitValue()
+				+ " AND GotMarried != 1;";
                // + " AND NOT EXISTS (SELECT * FROM WedAppServer.dbo.CoupleSupplier WHERE(CoupleID = WedAppServer.dbo.Couple.ID AND SupplierID = '"+supplier.getID()+"'));";
 	}
 

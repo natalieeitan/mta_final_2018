@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @WebServlet(name = "servlet.SupplierServlet", urlPatterns = { "/supplier" })
 public class SupplierServlet extends HttpServlet {
 	private SupplierService supplierService = new SupplierService();
+	private static final String WEB_INF_SUPPLIERS_JSP = "/WEB-INF/onboarding-suppliers.jsp";
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -69,6 +70,6 @@ public class SupplierServlet extends HttpServlet {
 		request.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
 		ctx.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
 
-		request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
+		request.getRequestDispatcher(WEB_INF_SUPPLIERS_JSP).forward(request, response);
 	}
 }

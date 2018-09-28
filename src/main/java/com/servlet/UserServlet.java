@@ -21,6 +21,9 @@ import java.util.stream.Collectors;
 
 @WebServlet(name = "servlet.UserServlet", urlPatterns = { "/user" })
 public class UserServlet extends HttpServlet {
+	private static final String WEB_INF_DASHBOARD_JSP = "/WEB-INF/dashboard.jsp";
+	private static final String WEB_INF_SUPPLIERS_JSP = "/WEB-INF/onboarding-suppliers.jsp";
+	private static final String WEB_INF_COUPLES_JSP = "/WEB-INF/onboarding-couples.jsp";
 	private DataBaseServiceImpl dbService = new DataBaseServiceImpl();
 	private SupplierService supplierService = new SupplierService();
 	private CoupleService coupleService = new CoupleService();
@@ -41,7 +44,7 @@ public class UserServlet extends HttpServlet {
 
                 request.setAttribute("isDuplicateMail","ה-Email כבר קיים במערכת!");
 				request.setAttribute("isCorrectLogin"," ");
-                request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+                request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
                 return;
             }
 			if (isSupplier)
@@ -59,11 +62,11 @@ public class UserServlet extends HttpServlet {
 			if (isSupplier) {
 				SupplierService.insertEmptySupplierToDB(newUser.getId());
 				request.setAttribute("potentialCouples", null);
-				request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
+				request.getRequestDispatcher(WEB_INF_SUPPLIERS_JSP).forward(request, response);
 			} else {
 				CoupleService.insertEmptyCoupleToDB(newUser.getId());
 				request.setAttribute("linkedSuppliers", null);
-				request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
+				request.getRequestDispatcher(WEB_INF_COUPLES_JSP).forward(request, response);
 			}
 		}
 
@@ -74,7 +77,7 @@ public class UserServlet extends HttpServlet {
 			session.invalidate();
 			request.setAttribute("isCorrectLogin"," ");
 			request.setAttribute("isDuplicateMail"," ");
-			request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+			request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
 		}
 
 		if (request.getParameter("action_signin") != null)
@@ -87,7 +90,7 @@ public class UserServlet extends HttpServlet {
 			if (user == null) {
 				request.setAttribute("isCorrectLogin", "שם משתמש או סיסמה לא נכונים!");
 				request.setAttribute("isDuplicateMail"," ");
-				request.getRequestDispatcher("/WEB-INF/dashboard.jsp").forward(request, response);
+				request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
 
 			} else if (user.getType().equals(UserType.SUPPLIER)) {
 				//send to supplier page
@@ -117,7 +120,7 @@ public class UserServlet extends HttpServlet {
 				request.setAttribute("potentialCouples", potentialCouples);
 				request.setAttribute("couplesAlreadyConnected", couplesAlreadyConnected);
 
-				request.getRequestDispatcher("/WEB-INF/onboarding-suppliers.jsp").forward(request, response);
+				request.getRequestDispatcher(WEB_INF_SUPPLIERS_JSP).forward(request, response);
 			} else {
 				//send to couple page
 				request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
@@ -129,7 +132,7 @@ public class UserServlet extends HttpServlet {
 				Couple loggedCouple = CoupleService.getCoupleByID(user.getId());
 				ctx.setAttribute("couple", loggedCouple);
 				request.setAttribute("couple", loggedCouple);
-				request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
+				request.getRequestDispatcher(WEB_INF_COUPLES_JSP).forward(request, response);
 			}
 		}
 

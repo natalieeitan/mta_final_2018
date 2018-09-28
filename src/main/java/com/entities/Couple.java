@@ -20,8 +20,10 @@ public class Couple extends User {
 	private int numOfInvites;
 	private int pricing;
 
+	private boolean coupleMarried;
+
 	public Couple(User user, String userId, int schedulingRange, Date date, int daysToMarry,
-			int preferredMonths, int areas, int styles, int numOfInvites, int pricing) {
+			int preferredMonths, int areas, int styles, int numOfInvites, int pricing, boolean coupleMarried) {
 		super(user);
 		this.ID = userId;
 		this.schedulingRange = schedulingRange;
@@ -33,6 +35,7 @@ public class Couple extends User {
 		this.styles = styles;
 		this.numOfInvites = numOfInvites;
 		this.pricing = pricing;
+		this.coupleMarried = coupleMarried;
 	}
 
 	public Couple(String id) {
@@ -40,7 +43,7 @@ public class Couple extends User {
 	}
 
 	public Couple(String userId, int schedulingRange, Date date, int daysToMarry,
-			int preferredMonths, int areas, int styles, int numOfInvites, int pricing) {
+			int preferredMonths, int areas, int styles, int numOfInvites, int pricing, boolean coupleMarried) {
 		super();
 		this.ID = userId;
 		this.schedulingRange = schedulingRange;
@@ -52,6 +55,7 @@ public class Couple extends User {
 		this.styles = styles;
 		this.numOfInvites = numOfInvites;
 		this.pricing = pricing;
+		this.coupleMarried = coupleMarried;
 	}
 
 	public void setSchedulingRange(int schedulingRange) {
@@ -157,5 +161,13 @@ public class Couple extends User {
 
 	public String getPriceRangeName(int priceRange) {
 		return PriceRange.getPrinceRangeByInt(priceRange).getName();
+	}
+
+	public void setCoupleMarried(boolean coupleMarried) {
+		this.coupleMarried = coupleMarried;
+	}
+
+	public boolean isCoupleMarried() {
+		return coupleMarried;
 	}
 }

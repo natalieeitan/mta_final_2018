@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 @WebServlet(name = "servlet.CoupleServlet", urlPatterns = { "/couple" })
 public class CoupleServlet extends HttpServlet {
 	private CoupleService coupleService = new CoupleService();
+	private static final String WEB_INF_COUPLES_JSP = "/WEB-INF/onboarding-couples.jsp";
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -28,64 +29,69 @@ public class CoupleServlet extends HttpServlet {
 		Couple couple = CoupleService.getCoupleByID(id);
 
 		request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(id));
+		if (request.getParameter("action_gotMarried") != null){
+			couple.setCoupleMarried(true);
+		}
 
 		//when
-		if (request.getParameter("action_When") != null) {
-			SchedulingRange whenType = SchedulingRange.valueOf(request.getParameter("whenRadio"));
-			couple.setSchedulingRange(whenType.getBitValue());
-			couple.setDate(null);
-			couple.setPreferredMonths(0);
-			couple.setDaysToMarry(0);
-			switch (whenType) {
-			case SEASON: {
-				String[] monthValues = request.getParameterValues("chooseSeasonCB");
-				if (monthValues != null)
-					couple.setPreferredMonths(Month.convertStringArrayMonthToBits(monthValues));
-				String[] daysValues = request.getParameterValues("chooseDaysCB");
-				if (daysValues != null)
-					couple.setDaysToMarry(Day.convertStringArrayDaysToBits(daysValues));
-				break;
-			}
-			case SPECIFIC: {
-				String dateStr = request.getParameter("specificDate");
-				DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-				try {
-					java.util.Date date = df.parse(dateStr);
-					couple.setDate(date);
-				} catch (java.text.ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+		else {
+			if (request.getParameter("action_When") != null) {
+				SchedulingRange whenType = SchedulingRange.valueOf(request.getParameter("whenRadio"));
+				couple.setSchedulingRange(whenType.getBitValue());
+				couple.setDate(null);
+				couple.setPreferredMonths(0);
+				couple.setDaysToMarry(0);
+				switch (whenType) {
+				case SEASON: {
+					String[] monthValues = request.getParameterValues("chooseSeasonCB");
+					if (monthValues != null)
+						couple.setPreferredMonths(Month.convertStringArrayMonthToBits(monthValues));
+					String[] daysValues = request.getParameterValues("chooseDaysCB");
+					if (daysValues != null)
+						couple.setDaysToMarry(Day.convertStringArrayDaysToBits(daysValues));
+					break;
 				}
-				break;
+				case SPECIFIC: {
+					String dateStr = request.getParameter("specificDate");
+					DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+					try {
+						java.util.Date date = df.parse(dateStr);
+						couple.setDate(date);
+					} catch (java.text.ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				}
+				}
 			}
+
+			//where
+			if (request.getParameter("action_Where") != null) {
+				String[] areaValues = request.getParameterValues("AreaCB");
+				if (areaValues != null)
+					couple.setArea(Area.convertStringArrayAreasToBits(areaValues));
 			}
-		}
 
-		//where
-		if (request.getParameter("action_Where") != null) {
-			String[] areaValues = request.getParameterValues("AreaCB");
-			if (areaValues != null)
-				couple.setArea(Area.convertStringArrayAreasToBits(areaValues));
-		}
+			//style
+			if (request.getParameter("action_Style") != null) {
+				String[] styleValues = request.getParameterValues("styleCB");
+				if (styleValues != null)
+					couple.setStyles(Style.convertStringArrayStyleToBits(styleValues));
+			}
 
-		//style
-		if (request.getParameter("action_Style") != null) {
-			String[] styleValues = request.getParameterValues("styleCB");
-			if (styleValues != null)
-				couple.setStyles(Style.convertStringArrayStyleToBits(styleValues));
-		}
+			//budget
+			if (request.getParameter("action_Budget") != null) {
+				String peopleNumValue = request.getParameter("howManyPeople");
+				if (peopleNumValue != null)
+					couple.setNumOfInvites(Integer.parseInt(peopleNumValue));
 
-		//budget
-		if (request.getParameter("action_Budget") != null) {
-			String peopleNumValue = request.getParameter("howManyPeople");
-			if (peopleNumValue != null)
-				couple.setNumOfInvites(Integer.parseInt(peopleNumValue));
-
-			PriceRange price = null;
-			String budgetValue = request.getParameter("price");
-			if (budgetValue != null)
-				price = PriceRange.valueOf(budgetValue);
-			couple.setPricing(price.getBitValue());
+				PriceRange price = null;
+				String budgetValue = request.getParameter("price");
+				if (budgetValue != null)
+					price = PriceRange.valueOf(budgetValue);
+				couple.setPricing(price.getBitValue());
+			}
 		}
 
 		CoupleService.pushAllCouplesToDB(couple);
@@ -95,6 +101,6 @@ public class CoupleServlet extends HttpServlet {
 		request.setAttribute("userId", id);
 		request.setAttribute("couple", couple);
 
-		request.getRequestDispatcher("/WEB-INF/onboarding-couples.jsp").forward(request, response);
+		request.getRequestDispatcher(WEB_INF_COUPLES_JSP).forward(request, response);
 	}
 }
