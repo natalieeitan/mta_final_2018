@@ -169,6 +169,61 @@
     </div>
     <!-- /log off menu -->
 
+
+    <!--got married-->
+    <div class="container text-center">
+        <div class="modal fade" id="gotMarried" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <form class="sky-form" action="/couple" method="post">
+                        <div class="modal-header text-center pinkText">
+                            <h4 class="modal-title">מזל טוב!</h4>
+                        </div>
+                        <div class="modal-body text-center ">
+                            <div class="container">
+                                <div class="row">
+                                <label class="pinkText">תספרו לנו על החתונה שלכם!</label>
+                                </div>
+                                <div class="container">
+                                    <input name="action_gotMarried" hidden>
+                                    <div class="row">
+                                        <label>מתי אתם מתחתנים?</label>
+                                        <label class="input mb-10">
+                                            <input type="date" name="dateMarried" style="font-weight: normal">
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <label>איפה אתם מתחתנים?</label>
+                                        <label class="input mb-10">
+                                            <input type="text" name="whereMarried" style="font-weight: normal">
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <label>ספרו לנו על החתונה שלכם</label>
+                                        <label class="input mb-10">
+                                            <input type="text" name="whereMarried" style="font-weight: normal">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-around">
+                            <div class="container text-center">
+                                <p style="color: red; font-weight: normal">*בלחיצה על אישור, אתם מאשרים שלא תקבלו הצעות נוספות מאיתנו</p>
+
+                                <div class="col-md-12">
+                                    <button type="sumbit" class="btn btn-info">אישור</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/got married-->
+
+
     <!-- My Account -->
     <section id="MyAccount" class="">
         <div class="container" style="margin-top: 3%; margin-bottom: 10%;">
@@ -220,7 +275,15 @@
                             </button>
                         </h5>
                     </div>
-
+                    <div id="headingThree" class="col-md-5">
+                        <h5 class="mb-0">
+                            <button class="btn btn-info" data-toggle="modal" data-target="#gotMarried"
+                                    style="width:175px">
+                                <span class="ico-hover et-gears" style="margin-left:10px"></span>
+                                סגרתם חתונה?
+                            </button>
+                        </h5>
+                    </div>
                 </div>
                 <div>
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
@@ -594,7 +657,8 @@
                                                         <div id="chooseSpecific" style="display: none">
                                                             <div class="row text-center">
                                                                 <label class="pinkText">בחרו את התאריך שלכם:</label>
-                                                                <input type="text" id="specificDateInput" onchange="dateValue()"
+                                                                <input type="text" id="specificDateInput"
+                                                                       onchange="dateValue()"
                                                                        class="datepicker pinkText chooseSpecificDate"
                                                                        name="specificDate" data-format="dd/mm/yyyy"
                                                                        style="display: inline; margin-top: 1px !important; position: unset; ">
@@ -620,7 +684,7 @@
                                                                 case 'spontaneousCB':
                                                                     document.getElementById('chooseSeason').style.display = "none";
                                                                     document.getElementById('chooseSpecific').style.display = "none";
-                                                                    document.getElementById('submitWhen').disabled=false;
+                                                                    document.getElementById('submitWhen').disabled = false;
                                                                     for (var i = 0; i < cbarray.length; i++) {
                                                                         cbarray[i].checked = false;
                                                                     }
@@ -629,23 +693,22 @@
                                                                 case 'seasonCB':
                                                                     document.getElementById('chooseSeason').style.display = "block";
                                                                     document.getElementById('chooseSpecific').style.display = "none";
-                                                                    document.getElementById('submitWhen').disabled=true;
+                                                                    document.getElementById('submitWhen').disabled = true;
                                                                     $('.chooseSpecificDate').val('').datepicker('update');
                                                                     break;
                                                                 default: //specific
                                                                     document.getElementById('chooseSeason').style.display = "none";
                                                                     document.getElementById('chooseSpecific').style.display = "block";
-                                                                    document.getElementById('submitWhen').disabled=true;
+                                                                    document.getElementById('submitWhen').disabled = true;
                                                                     for (var i = 0; i < cbarray.length; i++) {
                                                                         cbarray[i].checked = false;
                                                                     }
                                                             }
                                                         }
 
-                                                        function dateValue()
-                                                        {
-                                                            if(document.getElementsByClassName('chooseSpecificDate').valueOf())
-                                                                document.getElementById('submitWhen').disabled=false;
+                                                        function dateValue() {
+                                                            if (document.getElementsByClassName('chooseSpecificDate').valueOf())
+                                                                document.getElementById('submitWhen').disabled = false;
                                                         }
                                                     </script>
 
@@ -666,37 +729,43 @@
                                                     <div class="row">
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="GUSH_DAN" name="AreaCB" class="chooseAreaCB">
+                                                                <input type="checkbox" value="GUSH_DAN" name="AreaCB"
+                                                                       class="chooseAreaCB">
                                                                 <i></i> מרכז
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="NORTH" name="AreaCB" class="chooseAreaCB">
+                                                                <input type="checkbox" value="NORTH" name="AreaCB"
+                                                                       class="chooseAreaCB">
                                                                 <i class="btn-pink"></i> צפון
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="SHFELA" name="AreaCB" class="chooseAreaCB">
+                                                                <input type="checkbox" value="SHFELA" name="AreaCB"
+                                                                       class="chooseAreaCB">
                                                                 <i></i> שפלה
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="JERUSALEM" name="AreaCB" class="chooseAreaCB">
+                                                                <input type="checkbox" value="JERUSALEM" name="AreaCB"
+                                                                       class="chooseAreaCB">
                                                                 <i></i> ירושלים
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="SHARON" name="AreaCB" class="chooseAreaCB">
+                                                                <input type="checkbox" value="SHARON" name="AreaCB"
+                                                                       class="chooseAreaCB">
                                                                 <i></i> שרון
                                                             </label>
                                                         </div>
                                                         <div class="col-4">
                                                             <label class="checkbox">
-                                                                <input type="checkbox" value="SOUTH" name="AreaCB" class="chooseAreaCB">
+                                                                <input type="checkbox" value="SOUTH" name="AreaCB"
+                                                                       class="chooseAreaCB">
                                                                 <i></i> דרום
                                                             </label>
                                                         </div>
@@ -704,7 +773,8 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12 text-left">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg" id="submitArea" disabled>
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg"
+                                                                    id="submitArea" disabled>
                                                                 שמור
                                                             </button>
                                                         </div>
@@ -764,7 +834,8 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg" id="submitStyle" disabled>
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg"
+                                                                    id="submitStyle" disabled>
                                                                 שמור
                                                             </button>
                                                         </div>
@@ -794,8 +865,10 @@
                                                                        style="margin-right:-25px"></i>
                                                                     <h2>כמה אנשים אתם תהיו?</h2>
                                                                 </div>
-                                                                <input type="number" min=80 value="<%=howManyInvites%>" class="selectAmount"
-                                                                       name="howManyPeople" id="howManyInput" onchange="budgetValues()">
+                                                                <input type="number" min=80 value="<%=howManyInvites%>"
+                                                                       class="selectAmount"
+                                                                       name="howManyPeople" id="howManyInput"
+                                                                       onchange="budgetValues()">
                                                             </div>
 
                                                         </div>
@@ -809,9 +882,11 @@
                                                                         מה התקציב לכל למנה?
                                                                     </h2>
                                                                 </div>
-                                                                <select class="selectpicker show-tick selectBudget" name="price" on="budgetValues()" required>
+                                                                <select class="selectpicker show-tick selectBudget"
+                                                                        name="price" on="budgetValues()" required>
                                                                     <option value="">מה התקציב שלכם?</option>
-                                                                    <option value="NO_RANGE">עוד לא גיבשנו תקציב</option>
+                                                                    <option value="NO_RANGE">עוד לא גיבשנו תקציב
+                                                                    </option>
                                                                     <option value="ONE_FIFTY">150-200</option>
                                                                     <option value="TWO_HUNDRED">200-250</option>
                                                                     <option value="TWO_FIFTY">250-300</option>
@@ -827,7 +902,8 @@
                                                     <!--save-->
                                                     <div class="row text-left">
                                                         <div class="col-12">
-                                                            <button type="submit" class="btn btn-info btn-round btn-lg" id="submitBudget">
+                                                            <button type="submit" class="btn btn-info btn-round btn-lg"
+                                                                    id="submitBudget">
                                                                 שמור
                                                             </button>
                                                         </div>
