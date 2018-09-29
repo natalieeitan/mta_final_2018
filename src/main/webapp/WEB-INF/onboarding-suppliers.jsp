@@ -386,7 +386,8 @@
                                 <td><%= couplesAlreadyConnected.get(i).getDateString(couplesAlreadyConnected.get(i).getDate()) %>
                                 </td>
                                 <td>
-                                    <button class="btn btn-info connect-couple" disabled> נשלח
+                                    <button class="btn btn-info connect-couple" style="width: 72px;" disabled>
+                                        נשלח
                                     </button>
                                 </td>
                             </tr>
