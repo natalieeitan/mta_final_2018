@@ -177,42 +177,66 @@
                 <div class="modal-content">
                     <form class="sky-form" action="/couple" method="post">
                         <div class="modal-header text-center pinkText">
-                            <h4 class="modal-title">מזל טוב!</h4>
+                            <h2 class="modal-title pinkText">מזל טוב!</h2>
                         </div>
                         <div class="modal-body text-center ">
                             <div class="container">
                                 <div class="row">
-                                <label class="pinkText">תספרו לנו על החתונה שלכם!</label>
+                                    <label class="pinkText">ספרו לנו על החתונה שלכם</label>
                                 </div>
                                 <div class="container">
                                     <input name="action_gotMarried" hidden>
-                                    <div class="row">
-                                        <label>מתי אתם מתחתנים?</label>
+                                    <div class="row justify-content-around text-right">
+                                        <div class="row text-right">
+                                            <label class="col-md-8 text-right">התחתנו דרך Perfect Match</label>
+                                            <div class="col-md-2">
+                                                <label class="radio-btn">
+                                                    <input type="radio" name="byPerfectMatch" value="true" required="">
+                                                    <i></i>כן</label>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="radio-btn">
+                                                    <input type="radio" name="byPerfectMatch" value="false" required="">
+                                                    <i></i>לא</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-around text-right">
+                                        <label class="col-md-5">מתי אתם מתחתנים?</label>
                                         <label class="input mb-10">
-                                            <input type="date" name="dateMarried" style="font-weight: normal">
+                                            <input type="text" class="datepicker chooseSpecificDate"
+                                                   name="specificDate" data-format="dd/mm/yyyy"
+                                                   style="display: inline; margin-top: 1px !important; position: unset; "
+                                                   name="dateMarried">
                                         </label>
                                     </div>
-                                    <div class="row">
-                                        <label>איפה אתם מתחתנים?</label>
+                                    <div class="row justify-content-around text-right">
+                                        <label class="col-md-5 ">איפה אתם מתחתנים?</label>
                                         <label class="input mb-10">
                                             <input type="text" name="whereMarried" style="font-weight: normal">
                                         </label>
                                     </div>
-                                    <div class="row">
-                                        <label>ספרו לנו על החתונה שלכם</label>
-                                        <label class="input mb-10">
-                                            <input type="text" name="whereMarried" style="font-weight: normal">
+                                    <div class="row justify-content-around text-right">
+                                        <label class="col-md-5">ספרו לנו על החתונה שלכם</label>
+                                        <label class="textarea mb-10">
+                                            <textarea type="text" name="whereMarried" style="font-weight: normal">
+                                            </textarea>
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-around">
-                            <div class="container text-center">
-                                <p style="color: red; font-weight: normal">*בלחיצה על אישור, אתם מאשרים שלא תקבלו הצעות נוספות מאיתנו</p>
+                            <div class="row container text-center">
+                                <p style="color: red; font-weight: normal">*בלחיצה על אישור, אתם מאשרים שלא תקבלו הצעות
+                                    נוספות מאיתנו</p>
 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <button type="sumbit" class="btn btn-info">אישור</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-info" data-dismiss="modal">ביטול</button>
                                 </div>
                             </div>
                         </div>
@@ -257,7 +281,7 @@
             </div>
             <div id="accordion">
                 <div class="justify-content-around row text-center">
-                    <div id="headingOne" class="col-md-5">
+                    <div id="headingOne" class="col-md-3">
                         <h5 class="mb-0">
                             <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne" style="width:175px">
@@ -266,7 +290,7 @@
                             </button>
                         </h5>
                     </div>
-                    <div id="headingTwo" class="col-md-5">
+                    <div id="headingTwo" class="col-md-3">
                         <h5 class="mb-0">
                             <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="false" aria-controls="collapseTwo" style="width:175px">
@@ -275,11 +299,11 @@
                             </button>
                         </h5>
                     </div>
-                    <div id="headingThree" class="col-md-5">
+                    <div id="headingThree" class="col-md-3">
                         <h5 class="mb-0">
                             <button class="btn btn-info" data-toggle="modal" data-target="#gotMarried"
                                     style="width:175px">
-                                <span class="ico-hover et-gears" style="margin-left:10px"></span>
+                                <span class="ico-hover fa fa-heart-o" style="margin-left:10px"></span>
                                 סגרתם חתונה?
                             </button>
                         </h5>
