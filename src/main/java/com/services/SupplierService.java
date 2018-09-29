@@ -2,6 +2,7 @@ package com.services;
 
 import com.entities.Couple;
 import com.entities.Supplier;
+import com.entities.User;
 import com.utilities.SqlQueries;
 
 import java.sql.ResultSet;
@@ -70,7 +71,14 @@ public class SupplierService {
 
 	private static Supplier getSupplierFromSupplierId(ResultSet rs) throws SQLException {
 		String supplierId = rs.getString("SupplierID");
-		return getSupplierByID(supplierId);
+		Supplier supplier= getSupplierByID(supplierId);
+		User user = UserService.getUserByID(supplierId);
+		if(user == null){
+			return supplier;
+		}
+		supplier.setFirstName(user.getFirstName());
+		supplier.setLastName(user.getLastName());
+		return supplier;
 	}
 
 	public static Supplier getSupplierFromResultSet(ResultSet rs) {

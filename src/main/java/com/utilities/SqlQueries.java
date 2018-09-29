@@ -20,18 +20,9 @@ public class SqlQueries {
 	public static final String COUPLE_MARRIED_WEDDING_TABLE_NAME = "WedAppServer.dbo.CouplesWedding";
 	public static final String NULL = "NULL";
 
-//	//USERS Table UPDATE Queries
-//	public static String updateUserInTable(User user) {
-//		return SqlQueries.UPDATE_USER_FIRST_NAME + user.getFirstName()
-//				+ "', LastName = '" + user.getLastName()
-//				+ "', Email = '" + user.getEmail()
-//				+ "', Password = '" + user.getPassword()
-//				+ "', Type = '" + user.getType()
-//				+ " WHERE ID = '" + user.getId() + "'";
-//	}
 	//SUPPLIER Table UPDATE Queries
 	public static String updateSupplierInTable(Supplier supplier) {
-		return SqlQueries.UPDATE_SUPPLIER_VENUE_NAME + supplier.getVenueName()
+		return UPDATE_SUPPLIER_VENUE_NAME + supplier.getVenueName()
 				+ "', PhoneNumber = '" + supplier.getPhone()
 				+ "', MaxCapacity = " + supplier.getMaxCapacity()
 				+ ", Area = " + supplier.getArea()
@@ -43,7 +34,7 @@ public class SqlQueries {
 
 	//COUPLE Table UPDATE Queries
 	public static String updateCoupleInTable(Couple couple) {
-		String query = SqlQueries.UPDATE_COUPLE_SCHEDULING_RANGE + couple.getSchedulingRange();
+		String query = UPDATE_COUPLE_SCHEDULING_RANGE + couple.getSchedulingRange();
 
 		if (couple.getDate() == null)
 			query = query + ", SpecificDate = NULL";
@@ -63,7 +54,6 @@ public class SqlQueries {
 				+ " WHERE ID = '" + couple.getID() + "'";
 	}
 
-	public static final String UPDATE_COUPLE_ID = "UPDATE WedAppServer.dbo.Couple SET ID = '";
 	public static final String UPDATE_COUPLE_SCHEDULING_RANGE = "UPDATE WedAppServer.dbo.Couple SET SchedulingRange = ";
 
 	public static final String insertEmptyCoupleToTable(String id) {
@@ -82,15 +72,19 @@ public class SqlQueries {
 	}
 
 	public static String getUserByEmailString(String email) {
-		return "SELECT * FROM WedAppServer.dbo.Users WHERE Email = '" + email + "'";
+		return "SELECT * FROM "+ USER_TABLE_NAME +" WHERE Email = '" + email + "'";
+	}
+
+	public static String getUserByID(String id) {
+		return "SELECT * FROM "+ USER_TABLE_NAME +" WHERE ID = '" + id + "'";
 	}
 
 	public static String getCoupleByIDString(String id) {
-		return "SELECT * FROM " + SqlQueries.COUPLE_TABLE_NAME + " WHERE ID = '" + id + "'";
+		return "SELECT * FROM " + COUPLE_TABLE_NAME + " WHERE ID = '" + id + "'";
 	}
 
 	public static String getSupplierByIDString(String id) {
-		return "SELECT * FROM " + SqlQueries.SUPPLIER_TABLE_NAME + " WHERE ID = '" + id + "'";
+		return "SELECT * FROM " + SUPPLIER_TABLE_NAME + " WHERE ID = '" + id + "'";
 	}
 
 	public static String insertEmptySupplierToTable(String id) {
@@ -106,7 +100,7 @@ public class SqlQueries {
 	}
 
 	public static String insertIntoCoupleTable(Couple couple) {
-		return "INSERT INTO WedAppServer.dbo.Couple (ID, SchedulingRange, SpecificDate, DaysToMarry, PreferredMonths, Areas, Styles, " +
+		return "INSERT INTO "+ COUPLE_TABLE_NAME+" (ID, SchedulingRange, SpecificDate, DaysToMarry, PreferredMonths, Areas, Styles, " +
 				"NumberOfInvites , PriceRange) VALUES ('"
 				+ couple.getID() + "',"
 				+ couple.getSchedulingRange() + ", '"
@@ -120,11 +114,11 @@ public class SqlQueries {
 	}
 
 	public static String insertIntoCoupleSupplierTable(String supplierId, String coupleId) {
-		return "INSERT INTO WedAppServer.dbo.CoupleSupplier (SupplierID, CoupleID) VALUES ('" + supplierId + "','" + coupleId + "');";
+		return "INSERT INTO "+COUPLE_SUPPLIER_TABLE_NAME+" (SupplierID, CoupleID) VALUES ('" + supplierId + "','" + coupleId + "');";
 	}
 
 	public static String insertIntoUserTable(User user) {
-		return "INSERT INTO WedAppServer.dbo.Users (ID, FirstName, LastName, Email, Password, Type) VALUES ('"
+		return "INSERT INTO "+ USER_TABLE_NAME +" (ID, FirstName, LastName, Email, Password, Type) VALUES ('"
 				+ user.getId() + "','"
 				+ user.getFirstName() + "','"
 				+ user.getLastName() + "','"
@@ -147,7 +141,7 @@ public class SqlQueries {
 
 	public static String getFitCouplesToSupplier(Supplier supplier) {
 		return "SELECT * FROM " + COUPLE_TABLE_NAME
-				+ " join WedAppServer.dbo.Users ON WedAppServer.dbo.Users.ID = Couple.ID WHERE NumberOfInvites <= " + supplier
+				+ " join "+USER_TABLE_NAME+" ON WedAppServer.dbo.Users.ID = Couple.ID WHERE NumberOfInvites <= " + supplier
 				.getMaxCapacity()
 				+ " AND Areas & " + supplier.getArea() + " != 0"
 				+ " AND Styles & " + supplier.getStyle() + " != 0"

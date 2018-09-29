@@ -70,4 +70,21 @@ public class UserService {
 
 		return null;
 	}
+
+	public static User getUserByID(String id){
+		WedAppServer db = new WedAppServer();
+		try {
+			ResultSet rs = db.getDataFromDB(SqlQueries.getUserByID(id));
+			rs.next();
+			User user = UserService.getUserFromResultSet(rs);
+			db.closeConnection();
+
+			return user;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }
