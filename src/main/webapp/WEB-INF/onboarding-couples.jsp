@@ -1048,7 +1048,8 @@
                         <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
                             data-saveperformance="off" data-title="">
                             <div class="">
-                                <img src="../client/html/GanVradim02.jpg" class="responsive" alt="Nature">
+                                <img src="../client/html/GanVradim02.jpg" class="img-fluid hidden-md-up" alt="Nature" style="max-width: 100% !important;">
+                                <img src="../client/html/GanVradim02.jpg" class="img-fluid hidden-sm-down" alt="Nature">
                                 <div class="carousel-caption">
                                     <h3>גן הורדים</h3>
                                     <h4 class="visible-xs-block hidden-xs">ראשון לציון</h4>
@@ -1064,7 +1065,8 @@
                         <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
                             data-saveperformance="off" data-title="">
                             <div class="">
-                                <img src="../client/html/alenby.jpeg" class="responsive" alt="Nature">
+                                <img src="../client/html/alenby.jpeg" class="img-fluid hidden-md-up" alt="Nature" style="max-width: 100% !important;">
+                                <img src="../client/html/alenby.jpeg" class="img-fluid hidden-sm-down" alt="Nature">
                                 <div class="carousel-caption">
                                     <h3>חוות אלנבי</h3>
                                     <h4 class="visible-xs-block hidden-xs">נצר סירני</h4>
