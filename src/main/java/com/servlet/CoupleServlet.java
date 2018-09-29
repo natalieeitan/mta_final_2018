@@ -29,8 +29,14 @@ public class CoupleServlet extends HttpServlet {
 		Couple couple = CoupleService.getCoupleByID(id);
 
 		request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(id));
-		if (request.getParameter("action_gotMarried") != null){
+		if (request.getParameter("action_gotMarried") != null) {
 			couple.setCoupleMarried(true);
+			String dateStr = request.getParameter("dateMarried");
+			String weddingPlace = request.getParameter("whereMarried");
+			String weddingDetails = request.getParameter("detailsMarried");
+			String byPerfectMatch = request.getParameter("byPerfectMatch");
+			int usedPerfectMatch = byPerfectMatch.equals("true")?1:0;
+			coupleService.insertWeddingDetails(id, dateStr, weddingPlace, weddingDetails,usedPerfectMatch);
 		}
 
 		//when

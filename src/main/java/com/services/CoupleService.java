@@ -134,4 +134,9 @@ public class CoupleService {
 
         return coupleList;
     }
+
+    public void insertWeddingDetails(String id, String weddingDate, String weddingPlace, String weddingDetails, int usedPerfectMatch) {
+        String query = SqlQueries.insertCoupleWeddingDetailsToCoupleWeddingTable(id, weddingDate, weddingPlace, weddingDetails, usedPerfectMatch);
+        dataBaseService.executeQuery(query);
+    }
 }

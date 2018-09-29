@@ -8,40 +8,27 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class SqlQueries {
-	public static String INSERT_COUPLE_SUPPLIER_LINK = "INSERT INTO WedAppServer.dbo.CoupleSupplier VALUES (";
 	public static final String GET_ALL_COUPLES = "Select * From WedAppServer.dbo.Couple";
 	public static final String GET_ALL_SUPPLIERS = "Select * From WedAppServer.dbo.Supplier";
 	public static final String GET_ALL_USERS = "Select * From WedAppServer.dbo.Users";
-	//	public static final String GET_NUM_OF_COUPLES_ON_THURSDAY = "Select  From Supplier";
-	//SELECT Count(CustomerName) FROM Customers
-	//	Where City = "Berlin";
 
 	//General Expressions
-	public static final String WHERE_ID = "' WHERE ID = ";
-	public static final String COMMA_AND_APOSTROPHES = "', '";
 	public static final String SUPPLIER_TABLE_NAME = "WedAppServer.dbo.Supplier";
 	public static final String USER_TABLE_NAME = "WedAppServer.dbo.Users";
 	public static final String COUPLE_TABLE_NAME = "WedAppServer.dbo.Couple";
 	public static final String COUPLE_SUPPLIER_TABLE_NAME = "WedAppServer.dbo.CoupleSupplier";
+	public static final String COUPLE_MARRIED_WEDDING_TABLE_NAME = "WedAppServer.dbo.CouplesWedding";
 	public static final String NULL = "NULL";
 
-	//USERS Table UPDATE Queries
-	public static String updateUserInTable(User user) {
-		return SqlQueries.UPDATE_USER_FIRST_NAME + user.getFirstName()
-				+ "', LastName = '" + user.getLastName()
-				+ "', Email = '" + user.getEmail()
-				+ "', Password = '" + user.getPassword()
-				+ "', Type = '" + user.getType()
-				+ " WHERE ID = '" + user.getId() + "'";
-	}
-
-	public static final String UPDATE_USER_FIRST_NAME = "UPDATE WedAppServer.dbo.Users SET FirstName = '";
-	public static final String UPDATE_USER_LAST_NAME = "UPDATE WedAppServer.dbo.Users SET LastName = '";
-	public static final String UPDATE_USER_EMAIL = "UPDATE WedAppServer.dbo.Users SET Email = '";
-	public static final String UPDATE_USER_PASSWORD = "UPDATE WedAppServer.dbo.Users SET Password = '";
-	public static final String UPDATE_USER_EMAIL_VERIFIED = "UPDATE WedAppServer.dbo.Users SET EmailVerified = ";
-	public static final String UPDATE_USER_TYPE = "UPDATE WedAppServer.dbo.Users SET Type = ";
-
+//	//USERS Table UPDATE Queries
+//	public static String updateUserInTable(User user) {
+//		return SqlQueries.UPDATE_USER_FIRST_NAME + user.getFirstName()
+//				+ "', LastName = '" + user.getLastName()
+//				+ "', Email = '" + user.getEmail()
+//				+ "', Password = '" + user.getPassword()
+//				+ "', Type = '" + user.getType()
+//				+ " WHERE ID = '" + user.getId() + "'";
+//	}
 	//SUPPLIER Table UPDATE Queries
 	public static String updateSupplierInTable(Supplier supplier) {
 		return SqlQueries.UPDATE_SUPPLIER_VENUE_NAME + supplier.getVenueName()
@@ -52,15 +39,7 @@ public class SqlQueries {
 				+ ", Style = " + supplier.getStyle()
 				+ " WHERE ID = '" + supplier.getID() + "'";
 	}
-
-	public static final String UPDATE_SUPPLIER_ID = "UPDATE WedAppServer.dbo.Supplier SET ID = '";
 	public static final String UPDATE_SUPPLIER_VENUE_NAME = "UPDATE WedAppServer.dbo.Supplier SET VenueName = '";
-	public static final String UPDATE_SUPPLIER_MAX_CAPACITY = "UPDATE WedAppServer.dbo.Supplier SET MaxCapacity = '";
-	public static final String UPDATE_SUPPLIER_PHONE = "UPDATE WedAppServer.dbo.Supplier SET PhoneNumber = '";
-	public static final String UPDATE_SUPPLIER_IS_GARDEN = "UPDATE WedAppServer.dbo.Supplier SET IsGarden = '";
-	public static final String UPDATE_SUPPLIER_AREA = "UPDATE WedAppServer.dbo.Supplier SET Area = ";
-	public static final String UPDATE_SUPPLIER_MIN_PRICE_PER_PERSON = "UPDATE WedAppServer.dbo.Supplier SET MinPricePerPerson = ";
-	public static final String UPDATE_SUPPLIER_STYLE = "UPDATE WedAppServer.dbo.Supplier SET Style = ";
 
 	//COUPLE Table UPDATE Queries
 	public static String updateCoupleInTable(Couple couple) {
@@ -80,7 +59,7 @@ public class SqlQueries {
 				+ ", Styles = " + couple.getStyle()
 				+ ", NumberOfInvites = " + couple.getNumOfInvites()
 				+ ", PriceRange = " + couple.getPricing()
-				+ ", GotMarried = " + (couple.isCoupleMarried()?"1":"0")
+				+ ", GotMarried = " + (couple.isCoupleMarried() ? "1" : "0")
 				+ " WHERE ID = '" + couple.getID() + "'";
 	}
 
@@ -98,16 +77,12 @@ public class SqlQueries {
 				+ NULL + ", "
 				+ NULL + ", "
 				+ NULL + ", "
-				+ NULL +", "
+				+ NULL + ", "
 				+ 0 + ");";
 	}
 
 	public static String getUserByEmailString(String email) {
 		return "SELECT * FROM WedAppServer.dbo.Users WHERE Email = '" + email + "'";
-	}
-
-	public static String getUserByIDString(String id) {
-		return "SELECT * FROM " + SqlQueries.USER_TABLE_NAME + " WHERE ID = '" + id + "'";
 	}
 
 	public static String getCoupleByIDString(String id) {
@@ -144,7 +119,6 @@ public class SqlQueries {
 				+ couple.getPricing() + ");";
 	}
 
-
 	public static String insertIntoCoupleSupplierTable(String supplierId, String coupleId) {
 		return "INSERT INTO WedAppServer.dbo.CoupleSupplier (SupplierID, CoupleID) VALUES ('" + supplierId + "','" + coupleId + "');";
 	}
@@ -172,31 +146,15 @@ public class SqlQueries {
 	}
 
 	public static String getFitCouplesToSupplier(Supplier supplier) {
-        return "SELECT * FROM "+COUPLE_TABLE_NAME+" join WedAppServer.dbo.Users ON WedAppServer.dbo.Users.ID = Couple.ID WHERE NumberOfInvites <= "+ supplier.getMaxCapacity()
+		return "SELECT * FROM " + COUPLE_TABLE_NAME
+				+ " join WedAppServer.dbo.Users ON WedAppServer.dbo.Users.ID = Couple.ID WHERE NumberOfInvites <= " + supplier
+				.getMaxCapacity()
 				+ " AND Areas & " + supplier.getArea() + " != 0"
 				+ " AND Styles & " + supplier.getStyle() + " != 0"
-                + " AND PriceRange >= "+PriceRange.convertIntToPriceRange(supplier.getMinPricePerPerson()).getBitValue()
+				+ " AND PriceRange >= " + PriceRange.convertIntToPriceRange(supplier.getMinPricePerPerson()).getBitValue()
 				+ " AND GotMarried != 1;";
-               // + " AND NOT EXISTS (SELECT * FROM WedAppServer.dbo.CoupleSupplier WHERE(CoupleID = WedAppServer.dbo.Couple.ID AND SupplierID = '"+supplier.getID()+"'));";
-	}
+		}
 
-	public static String insertToCoupleSupplierTableBeginString() {
-		return "INSERT INTO " + COUPLE_SUPPLIER_TABLE_NAME
-				+ " (CoupleID, SupplierID) VALUES ";
-	}
-
-	public static String insertToCoupleSupplierTableValuesString(String coupleID, String supplierID) {
-		return "('"
-				+ coupleID + "', '"
-				+ supplierID + "'), ";
-	}
-
-	public static String isEmailAlreadyExistsOnUserTable(String email) {
-		return "SELECT * FROM " + USER_TABLE_NAME + " WHERE Email='" + email + "';";
-	}
-	//	public static String getCouplesOptinalConnectionsBySupplierId(String supplierId){
-	//		return "INSERT INTO WedAppServer.dbo.CoupleSupplier (SupplierId, CoupleId) VALUES ("+supplierId+","+coupleId+");";
-	//	}
 
 	public static String getSuppliersIdByCoupleIdFromCoupleSupplierTable(String coupleId) {
 		return "SELECT SupplierID FROM " + COUPLE_SUPPLIER_TABLE_NAME + " WHERE CoupleID='" + coupleId + "';";
@@ -204,5 +162,10 @@ public class SqlQueries {
 
 	public static String getCouplesIdBySupplierIdFromCoupleSupplierTable(String supplierId) {
 		return "SELECT CoupleID FROM " + COUPLE_SUPPLIER_TABLE_NAME + " WHERE SupplierID='" + supplierId + "';";
+	}
+
+	public static String insertCoupleWeddingDetailsToCoupleWeddingTable(String id, String weddingDate, String weddingPlace, String details,
+			int usedPerfectMatch) {
+		return "INSERT INTO "+ COUPLE_MARRIED_WEDDING_TABLE_NAME+ " (ID, WeddingDate, WeddingPlace, Details, UsedPerfectMatch) VALUES ('"+id+"','"+weddingDate+"','" + weddingPlace+"','"+ details+"',"+ usedPerfectMatch+");";
 	}
 }

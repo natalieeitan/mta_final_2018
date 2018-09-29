@@ -27,7 +27,7 @@ public interface ManagementService {
 
 	int getCouplesNumberByDayOfWeek(DayOfWeek dayOfWeek);
 
-	Couple getCoupleById(String id);
+	Couple getCoupleById(String id) throws SQLException;
 
 	Supplier getSupplierById(String id);
 

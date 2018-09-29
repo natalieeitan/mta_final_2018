@@ -206,7 +206,7 @@
                                         <label class="col-md-5">מתי אתם מתחתנים?</label>
                                         <label class="input mb-10">
                                             <input type="text" class="datepicker chooseSpecificDate"
-                                                   name="specificDate" data-format="dd/mm/yyyy"
+                                                   data-format="dd/mm/yyyy"
                                                    style="display: inline; margin-top: 1px !important; position: unset; "
                                                    name="dateMarried">
                                         </label>
@@ -220,7 +220,7 @@
                                     <div class="row justify-content-around text-right">
                                         <label class="col-md-5">ספרו לנו על החתונה שלכם</label>
                                         <label class="textarea mb-10">
-                                            <textarea type="text" name="whereMarried" style="font-weight: normal">
+                                            <textarea type="text" name="detailsMarried" style="font-weight: normal">
                                             </textarea>
                                         </label>
                                     </div>
