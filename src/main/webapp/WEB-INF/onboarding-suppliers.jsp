@@ -46,7 +46,8 @@
 
 </head>
 
-<body class="smoothcircle enable-animation has-video-bg" data-background="../client/html/assets/images/_smarty/backgrounds/default.jpg"
+<body class="smoothcircle enable-animation has-video-bg"
+      data-background="../client/html/assets/images/_smarty/backgrounds/default.jpg"
       dir="rtl">
 <div id="wrapper">
     <%
@@ -162,7 +163,8 @@
                 <div class="justify-content-around row text-center">
                     <div id="headingOne" class="col-md-5">
                         <h5 class="mb-0">
-                            <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true"
                                     aria-controls="collapseOne" style="width:175px">
                                 <span class="ico-hover et-gears" style="margin-left:10px"></span>
                                 צפו בהגדרות שלכם
@@ -171,7 +173,8 @@
                     </div>
                     <div id="headingTwo" class="col-md-5">
                         <h5 class="mb-0">
-                            <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                            <button class="btn btn-info s" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false"
                                     aria-controls="collapseTwo" style="width:175px">
                                 <span class="ico-hover et-tools-2" style="margin-left:10px"></span>
                                 ערכו את ההגדרות
@@ -254,7 +257,8 @@
                                                 <label>תפוסה מקסימלית*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-group"></i>
-                                                    <input name="maxCapacity" type="number" min="80" max="1200" placeholder="80" required
+                                                    <input name="maxCapacity" type="number" min="80" max="1200"
+                                                           placeholder="80" required
                                                            value="<%=maxCapacity%>">
                                                     <b class="tooltip tooltip-bottom-right">תפוסה מקסימלית</b>
                                                 </label>
@@ -264,7 +268,8 @@
                                                 <label>מחיר מנה מינימלי*</label>
                                                 <label class="input mb-10">
                                                     <i class="ico-append fa fa-dollar"></i>
-                                                    <input name="minPrice" type="number" min="80" placeholder="80" value="<%=minPrice%>"
+                                                    <input name="minPrice" type="number" min="80" placeholder="80"
+                                                           value="<%=minPrice%>"
                                                            required>
                                                     <b class="tooltip tooltip-bottom-right">מחיר מנה מינימלי</b>
                                                 </label>
@@ -382,7 +387,6 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-info connect-couple" disabled> נשלח
-                                        <span class="glyphicon glyphicon-send"></span>
                                     </button>
                                 </td>
                             </tr>

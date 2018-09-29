@@ -49,22 +49,35 @@
       dir="rtl">
 <div id="wrapper">
     <%
+        String alert = "מלאו את העדפותיכם כדי לקבל הצעות!";
         String spon = "ספונטנים";
         String days = "";
         String months = "";
         String dateSelected = "";
         String styles = "";
+        String priceRange="";
         int howManyInvites = 0;
         String areas = "";
-        String priceRange = PriceRange.NO_RANGE.getName();
         SchedulingRange schedRange = null;
+        String alertWhen ="";
+        String alertStyle="";
+        String alertWhere="";
+        String alertBudget = "";
 
         Couple currCouple = (Couple) request.getAttribute("couple");
         if (currCouple != null) {
             howManyInvites = currCouple.getNumOfInvites();
+            if (howManyInvites == 0)
+                alertBudget = alert;
             styles = currCouple.getStylesList(currCouple.getStyle());
+            if (styles == "")
+                alertStyle = alert;
             areas = currCouple.getAreasList(currCouple.getArea());
+            if (areas == "")
+                alertWhere = alert;
             priceRange = (currCouple.getPricing() != 0) ? currCouple.getPriceRangeName(currCouple.getPricing()) : PriceRange.NO_RANGE.getName();
+            if (priceRange == "")
+                alertBudget = alert;
             schedRange = convertIntToSchedulingRange(currCouple.getSchedulingRange());
 
             if (schedRange != null) {
@@ -87,6 +100,8 @@
                     default:
                         break;
                 }
+            } else {
+                alertWhen = alert;
             }
         }
     %>
@@ -320,6 +335,9 @@
                                             <div class="box-static box-border-top MyP30">
                                                 <div>
                                                     <h2 class="fs-20  text-center">מתי</h2>
+                                                    <p style="color: red;" class="text-center">
+                                                        <%=alertWhen%>
+                                                    </p>
                                                 </div>
                                                 <table class="table">
                                                     <tbody>
@@ -347,6 +365,9 @@
                                             <div class="box-static box-border-top p-30r">
                                                 <div>
                                                     <h2 class="fs-20  text-center">איפה</h2>
+                                                    <p style="color: red;" class="text-center">
+                                                        <%=alertWhere%>
+                                                    </p>
                                                 </div>
                                                 <table class="table">
                                                     <tbody>
@@ -368,6 +389,9 @@
                                             <div class="box-static box-border-top p-30">
                                                 <div>
                                                     <h2 class="fs-20 text-center">סגנון</h2>
+                                                    <p style="color: red;" class="text-center">
+                                                        <%=alertStyle%>
+                                                    </p>
                                                 </div>
                                                 <table class="table">
                                                     <tbody>
@@ -385,6 +409,9 @@
                                             <div class="box-static box-border-top p-30 text-center">
                                                 <div>
                                                     <h2 class="fs-20">תקציב</h2>
+                                                    <p style="color: red;" class="text-center">
+                                                        <%=alertBudget%>
+                                                    </p>
                                                 </div>
                                                 <table class="table">
                                                     <tbody>
@@ -975,6 +1002,7 @@
                         <tr>
                             <th scope="col">שם האולם</th>
                             <th scope="col">איזור</th>
+                            <th scope="col">איש קשר</th>
                             <th scope="col">טלפון</th>
 
                         </tr>
@@ -989,8 +1017,11 @@
                             </td>
                             <td><%= linkedSuppliers.get(i).getAreaName(linkedSuppliers.get(i).getArea()) %>
                             </td>
+                            <td><%= linkedSuppliers.get(i).getName() %>
+                            </td>
                             <td><%= linkedSuppliers.get(i).getPhone() %>
                             </td>
+
                         </tr>
                         <%
                                 }

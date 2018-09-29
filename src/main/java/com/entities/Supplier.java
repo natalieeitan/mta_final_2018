@@ -111,4 +111,8 @@ public class Supplier extends User {
 	public String getPhone() {
 		return phone;
 	}
+
+	public String getName() {
+		return super.getFirstName() +" "+ super.getLastName();
+	}
 }
