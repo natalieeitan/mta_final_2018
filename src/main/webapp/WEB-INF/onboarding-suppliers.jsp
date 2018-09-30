@@ -13,7 +13,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>מארגנת החתונות - החשבון שלי</title>
+    <title>Perfect Match - החשבון שלי</title>
     <meta name="description" content=""/>
     <meta name="Author" content=""/>
 
