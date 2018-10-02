@@ -142,7 +142,7 @@
 
     <!-- My Account -->
     <section id="MyAccount" class="" style="margin-top: -70px">
-        <div class="container" style="margin-top: 3%; margin-bottom: 10%;">
+        <div class="container" style="margin-top: 3%; margin-bottom: 7%;">
             <header class="text-center mb-60">
                 <h2 class="turText">החשבון שלנו</h2>
                 <hr/>
@@ -152,15 +152,24 @@
                     <div class="text-center">
                         <div class="box-icon-title">
                             <i class="fa fa-user text-center ico-lg"></i>
-                            <%String loggedName = (String) request.getAttribute("loggedName"); %>
-                            <h3><%=loggedName%>
+                            <%
+                                String fullVanue = "";
+                                String loggedName = (String) request.getAttribute("loggedName");
+                                if (venueName != "")
+                                    fullVanue = "מאולם האירועים " + venueName;
+                            %>
+                            <h3>
+                                <%=loggedName%>
+                            </h3>
+                            <h3>
+                                <%=fullVanue%>
                             </h3>
                         </div>
                     </div>
                 </div>
             </div>
             <div id="accordion">
-                <div class="justify-content-around row text-center">
+                <div class="justify-content-around row text-center" style="padding-top: 55px;">
                     <div id="headingOne" class="col-md-5">
                         <h5 class="mb-0">
                             <button class="btn btn-info first" data-toggle="collapse" data-target="#collapseOne"
@@ -442,12 +451,12 @@
     <!-- /MyOffers -->
 
     <!-- Statistics -->
-    <section id="Statistics">
+    <section id="Statistics" style="padding-bottom: 15%;">
         <h1 class="turText text-center" style="margin-top: -30px">סטטיסטיקות</h1>
         <div class="container">
-            <div class="callout alert alert-border mt-100">
+            <div class="callout alert alert-border mt-100" style="padding-top: 5%;">
                 <div class="row countTo-sm text-center">
-                    <div class="col-5 col-sm-3 col-5">
+                    <div class="col-md-3">
                         <i class="ico-lg ico-transparent glyphicon glyphicon-sunglasses"></i>
                         <div class="block fs-50" style="color: #17a2b8;">
                             <strong class="countTo fs-50" data-speed="3000">50</strong>%
@@ -455,30 +464,30 @@
                         <h3 class="mt-10 mb-0">מהזוגות רוצים להתחתן בקיץ</h3>
                     </div>
 
-                    <div class="col-5 col-sm-3 col-5">
-                        <i class="ico-lg ico-transparent glyphicon glyphicon-cloud"></i>
+                    <div class="col-md-3">
+                        <i class="ico-lg ico-transparent fa fa-users"></i>
                         <div class="block fs-50" style="color: #17a2b8;">
-                            <strong class="countTo fs-50" data-speed="3000">10</strong>%
+                            <strong class="countTo fs-50" data-speed="3000">350</strong>
                         </div>
-                        <h3 class="mt-10 mb-0">מהזוגות רוצים להתחתן בחורף</h3>
+                        <h3 class="mt-10 mb-0">מספר האורחים הממוצע לחתונה </h3>
                     </div>
 
-                    <div class="col-5 col-sm-3 col-5">
-                        <i class="ico-lg ico-transparent fa fa-glass"></i>
+                    <div class="col-md-3">
+                        <i class="ico-lg ico-transparent fa fa-money"></i>
+                        <div class="block fs-50" style="color: #17a2b8;">
+                            <strong class="countTo fs-50" data-speed="3000">290</strong>
+                        </div>
+                        <h3 class="mt-10 mb-0">מחיר המנה הממוצע לחתונה</h3>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <i class="ico-lg ico-transparent et-target"></i>
                         <div class="block fs-50" style="color: #17a2b8;">
                             <strong class="countTo fs-50" data-speed="3000">60</strong>%
                         </div>
-                        <h3 class="mt-10 mb-0">מהזוגות רוצים להתחתן בסוף השבוע</h3>
+                        <h3 class="mt-10 mb-0">מהזוגות רוצים להתחתן במרכז</h3>
                     </div>
-
-                    <div class="col-5 col-sm-3 col-5">
-                        <i class="ico-lg ico-transparent fa fa-calendar"></i>
-                        <div class="block fs-50" style="color: #17a2b8;">
-                            <strong class="countTo fs-50" data-speed="3000">40</strong>%
-                        </div>
-                        <h3 class="mt-10 mb-0">מהזוגות רוצים להתחתן באמצע השבוע</h3>
-                    </div>
-
                 </div>
             </div>
         </div>
