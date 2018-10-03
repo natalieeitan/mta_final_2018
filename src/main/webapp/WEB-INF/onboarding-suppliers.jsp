@@ -425,7 +425,7 @@
                                 <input id="couple" name="coupleId" type="text" hidden>
                                 <td>
                                     <button type="submit" class="btn btn-info connect-couple" id="<%=coupleId%>"
-                                            onClick="reply_click(this.id)">
+                                            onClick="reply_click(this.id)">שלח
                                         <span class="glyphicon glyphicon-send"></span>
                                     </button>
                                 </td>
