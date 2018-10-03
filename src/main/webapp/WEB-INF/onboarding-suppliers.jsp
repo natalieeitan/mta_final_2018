@@ -422,9 +422,10 @@
                                 </td>
                                 <td><%= potentialCouples.get(i).getDateString(potentialCouples.get(i).getDate()) %>
                                 </td>
-                                <input name="coupleId" type="text" value="<%=coupleId%>" hidden>
+                                <input id="couple" name="coupleId" type="text" hidden>
                                 <td>
-                                    <button type="submit" class="btn btn-info connect-couple"> שלח
+                                    <button type="submit" class="btn btn-info connect-couple" id="<%=coupleId%>"
+                                            onClick="reply_click(this.id)">
                                         <span class="glyphicon glyphicon-send"></span>
                                     </button>
                                 </td>
@@ -439,7 +440,13 @@
                 </form>
             </div>
         </div>
+        <script type="text/javascript">
+            function reply_click(clicked_id) {
 
+                document.getElementById("couple").value = clicked_id;
+
+            }
+        </script>
         <script>
             function changeText(element) {
                 element.innerText = "נשלח";

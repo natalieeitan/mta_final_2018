@@ -72,6 +72,9 @@ public class SupplierService {
 	private static Supplier getSupplierFromSupplierId(ResultSet rs) throws SQLException {
 		String supplierId = rs.getString("SupplierID");
 		Supplier supplier= getSupplierByID(supplierId);
+		if(supplier == null){
+			return null;
+		}
 		User user = UserService.getUserByID(supplierId);
 		if(user == null){
 			return supplier;

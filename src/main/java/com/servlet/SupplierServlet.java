@@ -30,7 +30,7 @@ public class SupplierServlet extends HttpServlet {
 		Supplier supplier = null;
 		if (request.getParameter("connectSupplierCouple") != null) {
 			String coupleId = request.getParameter("coupleId");
-			supplier = SupplierService.getSupplierByID(supplierId);
+			supplier = (Supplier) ctx.getAttribute("supplier");
 			ctx.setAttribute("supplier", supplier);
 			ctx.setAttribute("userId", supplierId);
 			request.setAttribute("supplier", supplier);
