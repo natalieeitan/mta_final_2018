@@ -95,7 +95,7 @@ public class Couple extends User {
 	}
 
 	public String getName() {
-		return super.getFirstName() +" "+ super.getLastName();
+		return super.getFirstName() +" ו"+ super.getLastName();
 	}
 
 	// public Season getSeasonToMarry(){ return this.seasonToMarry; }

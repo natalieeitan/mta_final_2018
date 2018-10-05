@@ -47,11 +47,17 @@ public class UserServlet extends HttpServlet {
                 request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
                 return;
             }
-			if (isSupplier)
+			if (isSupplier) {
 				newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
-			else
-				newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
+				request.setAttribute("loggedName", firstName + " " + lastName);
+				ctx.setAttribute("loggedName", firstName + " " + lastName);
 
+			}
+				else {
+				newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
+				request.setAttribute("loggedName", firstName + " ו" + lastName);
+				ctx.setAttribute("loggedName", firstName + " ו" + lastName);
+			}
 			dbService.insertUserToDb(newUser);
 			//save id on context to use on other servlets
 			ctx.setAttribute("userId", newUser.getId());
@@ -126,8 +132,8 @@ public class UserServlet extends HttpServlet {
 				request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
 				ctx.setAttribute("user", user);
 				request.setAttribute("user", user);
-				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
-				ctx.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
+				request.setAttribute("loggedName", user.getFirstName() + " ו" + user.getLastName());
+				ctx.setAttribute("loggedName", user.getFirstName() + " ו" + user.getLastName());
 				ctx.setAttribute("userId", user.getId());
 				Couple loggedCouple = CoupleService.getCoupleByID(user.getId());
 				ctx.setAttribute("couple", loggedCouple);
