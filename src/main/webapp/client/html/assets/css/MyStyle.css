@@ -154,3 +154,7 @@ header {
     border-bottom: 1px solid #dee2e6;
 }
 
+.table-responsive .table {
+    max-width: none;
+    background-color: white;
+}

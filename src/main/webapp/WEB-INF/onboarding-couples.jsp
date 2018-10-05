@@ -994,7 +994,7 @@
         <h1 class="pinkText text-center">ההצעות שלכם</h1>
         <div class="container">
             <div class="col-sm-12 text-center">
-                <div class="table-responsive-sm">
+                <div class="table-responsive">
                     <table class="table">
                         <%List<Supplier> linkedSuppliers = (List<Supplier>) request.getAttribute("linkedSuppliers"); %>
 
