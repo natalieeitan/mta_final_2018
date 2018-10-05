@@ -360,7 +360,7 @@
             <div class="col-sm-12 text-center">
                 <form action="/supplier" method="post">
                     <input name="connectSupplierCouple" hidden>
-                    <div class="table-responsive-sm">
+                    <div class="table-responsive">
                         <table class="table">
                             <%List<Couple> potentialCouples = (List<Couple>) request.getAttribute("potentialCouples"); %>
                             <%List<Couple> couplesAlreadyConnected = (List<Couple>) request.getAttribute("couplesAlreadyConnected"); %>
