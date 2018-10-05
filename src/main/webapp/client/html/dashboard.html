@@ -27,8 +27,6 @@
     <link href="assets/css/essentials.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/MyStyle.css" rel="stylesheet"/>
     <link href="assets/css/layout-RTL.css" rel="stylesheet"/>
-
-
 </head>
 
 <body class="smoothcircle enable-animation has-video-bg" data-background="assets/images/_smarty/backgrounds/default.jpg"
@@ -161,7 +159,7 @@
                                 <div class="clearfix">
 
                                     <!-- Email -->
-                                    <label>דוא"ל</label>
+                                    <label>אימייל *</label>
                                     <label class="input mb-10">
                                         <i class="ico-append et-envelope"></i>
                                         <input required="" type="email" name="email">
@@ -169,7 +167,7 @@
                                     </label>
 
                                     <!-- Password -->
-                                    <label>סיסמה</label>
+                                    <label>סיסמה *</label>
                                     <label class="input mb-10">
                                         <i class="ico-append et-key"></i>
                                         <input required="" type="password" name="password">
@@ -203,7 +201,7 @@
                                     <div class="row">
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>שם פרטי *</label>
+                                            <label id="firstName">שם פרטי *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-profile-male"></i>
                                                 <input name="firstName" required="" type="text">
@@ -212,7 +210,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>שם משפחה *</label>
+                                            <label id="lastName">שם משפחה *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-profile-male"></i>
                                                 <input name="lastName" required="" type="text">
@@ -225,7 +223,7 @@
                                     <div class="row">
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>דוא"ל *</label>
+                                            <label>אימייל *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-envelope"></i>
                                                 <input name="userEmail" required="" type="email">
@@ -234,7 +232,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>סיסמה*</label>
+                                            <label>סיסמה *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-pencil"></i>
                                                 <input name="userPass" required="" type="text">
@@ -251,15 +249,13 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <label class="radio-btn">
-                                                <input type="radio" name="isSupplier" value="false" id="couples"
-                                                       required>
+                                                <input type="radio" name="isSupplier" value="false" id="couples" onchange="isSupplierDataChange()" required >
                                                 <i></i> מתחתנים *
                                             </label>
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <label class="radio-btn">
-                                                <input type="radio" name="isSupplier" value="true" id="suppliers"
-                                                       required>
+                                                <input type="radio" name="isSupplier" value="true" id="suppliers" onchange="isSupplierDataChange()" required>
                                                 <i></i> ספקים *
                                             </label>
                                         </div>
@@ -288,6 +284,20 @@
             </div>
 
         </div>
+        <script>
+            function isSupplierDataChange() {
+                var suppVal=(document.getElementsByName("isSupplier").values());
+                if(suppVal ==false)
+                {
+                    document.getElementById('firstName').innerText="שם בן/בת הזוג *";
+                    document.getElementById('lastName').innerText="שם בן/בת הזוג *";
+                }
+                else {
+                    document.getElementById('firstName').innerText="שם פרטי *";
+                    document.getElementById('lastName').innerText="שם משפחה *";
+                }
+            }
+        </script>
     </section>
     <!-- /login -->
     <!--about-->
@@ -333,7 +343,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
     <!--/about-->
@@ -428,6 +437,21 @@
 <!-- JAVASCRIPT FILES -->
 <script>var plugin_path = 'assets/plugins/';</script>
 <script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('input[type=radio][name=isSupplier]').change(function() {
+            if (this.value == 'false') {
+                $('[id=firstName]').text("שם בן/בת זוג *");
+                $('[id=lastName]').text("שם בן/בת זוג *");
+            }
+            else if (this.value == 'true') {
+                $('[id=firstName]').text("שם פרטי *");
+                $('[id=lastName]').text("שם משפחה *");
+            }
+        });
+    });
+</script>
 
 <script src="assets/js/scripts.js"></script>
 

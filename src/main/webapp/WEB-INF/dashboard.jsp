@@ -178,7 +178,7 @@
                                 <div class="clearfix">
 
                                     <!-- Email -->
-                                    <label>דוא"ל</label>
+                                    <label>אימייל *</label>
                                     <label class="input mb-10">
                                         <i class="ico-append et-envelope"></i>
                                         <input required="" type="email" name="email" id="emailInputLogin">
@@ -186,7 +186,7 @@
                                     </label>
 
                                     <!-- Password -->
-                                    <label>סיסמה</label>
+                                    <label>סיסמה *</label>
                                     <label class="input mb-10">
                                         <i class="ico-append et-key"></i>
                                         <input required="" type="password" name="password" id="passInputLogin">
@@ -245,7 +245,7 @@
                                     <div class="row">
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>דוא"ל *</label>
+                                            <label>אימייל *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-envelope"></i>
                                                 <input name="userEmail" required="" type="email">
@@ -254,7 +254,7 @@
                                         </div>
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>סיסמה*</label>
+                                            <label>סיסמה *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-pencil"></i>
                                                 <input name="userPass" required="" type="text">
@@ -276,15 +276,13 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <label class="radio-btn">
-                                                <input type="radio" name="isSupplier" value="false" id="couples"
-                                                       required>
+                                                <input type="radio" name="isSupplier" value="false" id="couples" onchange="isSupplierDataChange()" required>
                                                 <i></i> מתחתנים *
                                             </label>
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <label class="radio-btn">
-                                                <input type="radio" name="isSupplier" value="true" id="suppliers"
-                                                       required>
+                                                <input type="radio" name="isSupplier" value="true" id="suppliers" onchange="isSupplierDataChange()" required>
                                                 <i></i> ספקים *
                                             </label>
                                         </div>
@@ -313,6 +311,21 @@
             </div>
 
         </div>
+
+        <script>
+            $(document).ready(function() {
+                $('input[type=radio][name=isSupplier]').change(function() {
+                    if (this.value == 'false') {
+                        $('[id=firstName]').text("שם בן/בת זוג *");
+                        $('[id=lastName]').text("שם בן/בת זוג *");
+                    }
+                    else if (this.value == 'true') {
+                        $('[id=firstName]').text("שם פרטי *");
+                        $('[id=lastName]').text("שם משפחה *");
+                    }
+                });
+            });
+        </script>
     </section>
     <!-- /LOGIN -->
 
