@@ -223,16 +223,16 @@
                                     <div class="row">
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>שם פרטי *</label>
+                                            <label id="firstName">שם פרטי *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-profile-male"></i>
-                                                <input name="firstName" required="" type="text">
+                                                <input name="firstName" required="" type="text" >
                                                 <b class="tooltip tooltip-bottom-right">הקלד/י את השם הפרטי שלך</b>
                                             </label>
                                         </div>
 
                                         <div class="col-md-6 col-sm-6">
-                                            <label>שם משפחה *</label>
+                                            <label id="lastName">שם משפחה *</label>
                                             <label class="input mb-10">
                                                 <i class="ico-append et-profile-male"></i>
                                                 <input name="lastName" required="" type="text">
@@ -276,13 +276,13 @@
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
                                             <label class="radio-btn">
-                                                <input type="radio" name="isSupplier" value="false" id="couples" onchange="isSupplierDataChange()" required>
+                                                <input type="radio" name="isSupplier" value="false" id="couples" required>
                                                 <i></i> מתחתנים *
                                             </label>
                                         </div>
                                         <div class="col-md-6 col-sm-6">
                                             <label class="radio-btn">
-                                                <input type="radio" name="isSupplier" value="true" id="suppliers" onchange="isSupplierDataChange()" required>
+                                                <input type="radio" name="isSupplier" value="true" id="suppliers" required>
                                                 <i></i> ספקים *
                                             </label>
                                         </div>
@@ -311,21 +311,6 @@
             </div>
 
         </div>
-
-        <script>
-            $(document).ready(function() {
-                $('input[type=radio][name=isSupplier]').change(function() {
-                    if (this.value == 'false') {
-                        $('[id=firstName]').text("שם בן/בת זוג *");
-                        $('[id=lastName]').text("שם בן/בת זוג *");
-                    }
-                    else if (this.value == 'true') {
-                        $('[id=firstName]').text("שם פרטי *");
-                        $('[id=lastName]').text("שם משפחה *");
-                    }
-                });
-            });
-        </script>
     </section>
     <!-- /LOGIN -->
 
@@ -469,6 +454,20 @@
 <!-- JAVASCRIPT FILES -->
 <script>var plugin_path = '../client/html/assets/plugins/';</script>
 <script src="../client/html/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('input[type=radio][name=isSupplier]').change(function() {
+            if (this.value == 'false') {
+                $("#firstName").text("שם בן/בת זוג *");
+                $("#lastName").text("שם בן/בת זוג *");
+            }
+            else if (this.value == 'true') {
+                $("#firstName").text("שם פרטי *");
+                $("#lastName").text("שם משפחה *");
+            }
+        });
+    });
+</script>
 
 <script src="../client/html/assets/js/scripts.js"></script>
 
