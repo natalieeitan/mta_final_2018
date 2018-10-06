@@ -168,11 +168,11 @@
                         <form action="/user" method="post">
                             <input name="action_logOff" hidden>
                             <div class="row">
-                                <div class="col-md-6" style="width: 100%">
+                                <div class="col-6" style="width: 100%">
                                     <button type="button" class="btn btn-info" data-dismiss="modal">רוצים לחזור
                                     </button>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-6">
                                     <button type="sumbit" class="btn btn-outline-secondary">רוצים להתנתק</button>
                                 </div>
                             </div>

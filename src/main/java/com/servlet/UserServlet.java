@@ -42,7 +42,7 @@ public class UserServlet extends HttpServlet {
             //check if email is already exist in db
 			if (dbService.isEmailAlreadyExist(email)) {
 
-                request.setAttribute("isDuplicateMail","ה-Email כבר קיים במערכת!");
+                request.setAttribute("isDuplicateMail","כתובת האימייל כבר קיימת במערכת!");
 				request.setAttribute("isCorrectLogin"," ");
                 request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
                 return;

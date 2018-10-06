@@ -265,13 +265,11 @@
 
                                     </div>
                                     <div>
-                                        <p name="duplicateMail" text=" ">
-                                            <b>
-                                                <%String isDuplicateMail = (String) request.getAttribute("isDuplicateMail"); %>
-                                                <h4 style="color: red"><%=isDuplicateMail%>
-                                                </h4>
-                                            </b>
-                                        </p>
+                                        <div name="duplicateMail" text=" ">
+                                            <%String isDuplicateMail = (String) request.getAttribute("isDuplicateMail"); %>
+                                            <p style="color: red;font-weight: bold;"><%=isDuplicateMail%>
+                                            </p>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 col-sm-6">
