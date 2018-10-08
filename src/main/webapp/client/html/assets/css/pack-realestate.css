@@ -1,11 +1,4 @@
-/**	PACKAGE: 	REAL ESTATE
 
-	USED BY:	pack-realestate-*.html
- **************************************************************** **/
-
-/** CUSTOM : SLIDER
-	acting as a cover
- *************************** **/
 #slider {
  	background-position: center;
 }

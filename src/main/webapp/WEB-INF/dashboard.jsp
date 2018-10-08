@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"/>
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <!-- WEB FONTS : use %7C instead of | (pipe) -->
+    <!-- WEB FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700"
           rel="stylesheet" type="text/css"/>
 
@@ -91,6 +91,11 @@
                                     זוגות מספרים
                                 </a>
                             </li>
+                            <li>
+                                <a data-toggle="modal" data-target="#myModal" class="pinkText">
+                                    צור קשר
+                                </a>
+                            </li>
                         </ul>
 
                     </nav>
@@ -99,9 +104,80 @@
             </div>
         </header>
         <!-- /Top Nav -->
-
     </div>
 
+    <!--contact us-->
+    <div class="container text-center">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <form class="sky-form" action="/couple" method="post">
+                        <div class="modal-header text-center pinkText">
+                            <h2 class="modal-title pinkText">צור קשר</h2>
+                        </div>
+                        <div class="modal-body text-center ">
+                            <div class="container">
+                                <div class="container">
+                                    <input name="action_contactUs" hidden>
+                                    <div class="row justify-content-around text-right">
+                                        <div class="row text-right">
+                                            <div>
+                                                <label class="radio-btn col-md-6">
+                                                    <input type="radio" name="byPerfectMatch" value="true" required="">
+                                                    <i></i>אנחנו זוג</label>
+                                            </div>
+                                            <div>
+                                                <label class="radio-btn col-md-6">
+                                                    <input type="radio" name="byPerfectMatch" value="false" required="">
+                                                    אני ספק</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-around text-right">
+                                        <label class="col-md-5 ">שם פרטי ומשפחה</label>
+                                        <label class="input mb-10">
+                                            <input type="text" name="contactName" style="font-weight: normal">
+                                        </label>
+                                    </div>
+                                    <div class="row justify-content-around text-right">
+                                        <label class="col-md-5 ">טלפון</label>
+                                        <label class="input mb-10">
+                                            <input type="text" name="contactPhone" style="font-weight: normal">
+                                        </label>
+                                    </div>
+                                    <div class="row justify-content-around text-right">
+                                        <label class="col-md-5 ">אימייל</label>
+                                        <label class="input mb-10">
+                                            <input type="text" name="contactEmail" style="font-weight: normal">
+                                        </label>
+                                    </div>
+                                    <div class="row justify-content-around text-right">
+                                        <label class="col-md-5">מה תרצו להגיד לנו?</label>
+                                        <label class="textarea mb-10">
+                                            <textarea type="text" name="contactMessage" style="font-weight: normal">
+                                            </textarea>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-around">
+                            <div class="row container text-center">
+                                <div class="col-md-6">
+                                    <button class="btn btn-info" data-dismiss="modal">ביטול</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="sumbit" class="btn btn-info">שלח</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/contact us-->
 
     <!-- SLIDER -->
     <section id="slider" class="fullheight transparent">
@@ -127,7 +203,6 @@
                             style="font-size: 35px; margin-top: 30px">
                             שידוך מושלם בין מתחתנים לספקים
                         </h2>
-
 
                     </div>
                     <div class="row">

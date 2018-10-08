@@ -1,11 +1,4 @@
-/**	PACKAGE: 	PHOTOGRAPHY
 
-	USED BY:	pack-photography-home-2.html
- **************************************************************** **/
-
-
-/** CUSTOM HEADER
- *************************** **/
 body.custom-pack-style #header.fixed,
 body.custom-pack-style #header:not(.transparent),
 body.custom-pack-style #header:not(.transparent) #topMain { /* force header color */

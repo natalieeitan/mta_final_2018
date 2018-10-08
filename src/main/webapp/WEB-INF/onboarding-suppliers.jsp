@@ -1,12 +1,6 @@
 <%@ page import="com.entities.Couple" %>
 <%@ page import="com.entities.Supplier" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: natalieeitan
-  Date: 01/09/2018
-  Time: 10:50
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">

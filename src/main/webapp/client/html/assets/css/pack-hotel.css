@@ -1,18 +1,4 @@
-/**	PACKAGE: 	HOTEL
 
-	USED BY:	pack-hotel-*.html
-				pack-hotel-v2-*.html
-
-	COLOR: 		#534635  [replace to change the color]
- **************************************************************** **/
-
-
-
-
-
-/** CUSTOM HEADER
-	pack-hotel-v2-*.html
- *************************** **/
 #header.transparent:not(.fixed) { /* bordered header */
 	border-bottom: rgba(255,255,255,0.3) 1px solid !important;
 }

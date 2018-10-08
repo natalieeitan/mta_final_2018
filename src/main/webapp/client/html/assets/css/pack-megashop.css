@@ -1,11 +1,4 @@
-/**	PACKAGE: 	MEGA SHOP
 
-	USED BY:	pack-megashop-*.html
- **************************************************************** **/
-
-
-/** PLACEHOLDER
- *************************** **/
 ::-webkit-input-placeholder { 	/* WebKit browsers */
 	color: #999 !important;
 }
@@ -820,16 +813,6 @@ button.product-color-dd>.tag {
 }
 
 
-
-
-
-
-
-
-
-/** MISC
-    : rewrite elements;
- *************************************************** **/
 hr {
     background: transparent;
     box-sizing: content-box;

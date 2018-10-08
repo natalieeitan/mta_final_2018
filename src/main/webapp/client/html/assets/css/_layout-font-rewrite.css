@@ -1,22 +1,4 @@
-/**
-	DO NOT USE IT IF YOU DON'T NEED IT!
 
-	This file is not used - you can use it on your custom.css 
-	if you want to rewrite the fonts.
-	
-	
-	Three google fonts are used on Smarty:
-	- Open Sans (default font)
-	- Raleway (used for numbers)
-	- Lato (used to highlight the text using font-weight:300)
-	
-	* Please note: all files starting with "_" (underscore), are not used by default!
- ** ***************************** **/
-
-
-
-/** essentials.css 
- *********************** **/
 .countTo-sm,
 .countTo-md,
 .countTo-lg,

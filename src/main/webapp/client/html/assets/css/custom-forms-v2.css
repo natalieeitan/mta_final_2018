@@ -1,13 +1,4 @@
-/**	CUSTOM FORM ELEMENTS [OPTIONAL]
 
-	This CSS file must be included after all other CSS's.
-	Nothing special - will only rewrite the form elements (input, textarea, select2, buttons)
-	to look more clean, professional.
- **************************************************************** **/
-
-
- /** CUSTOM : FORM ELEMENTS
- *************************** **/
 .btn:not(.btn-sm):not(.btn-sm):not(.btn-md):not(.btn-lg):not(.btn-xlg):not(.btn-reveal):not(.btn-3d):not(.btn-social):not(.btn-v1) {
 	height:auto;
 	padding: 14px 20px;
@@ -114,7 +105,7 @@ section.dark textarea::placeholder {
   	section.dark select.form-control:not([size]):not([multiple]) {
   		background: #272e33 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAMAAADNLv/0AAAANlBMVEUAAAD///+ZmZmfoqiaoKydo6ueo6ucpKqdo6qdoqqeoqqdo6qdoqqdo6qco6mdo6qcoqmdo6rJSltEAAAAEHRSTlMAAQVSU5Wmrbe+1NXf5f7+fUgvXAAAAC5JREFUeNodxkkCABAMBMEhiDX4/2fJ9KULLYHlhW5C3YIwvikgThOK3kcddPU9JQ4BFWtk/ScAAAAASUVORK5CYII=) 15px center no-repeat;
   		background-position: center right 20px;
-  		color:#	c9c9c9;
+  		color:#c9c9c9;
   	}
 
 

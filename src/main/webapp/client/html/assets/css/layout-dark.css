@@ -1,11 +1,4 @@
-/*	
-	REWRITE
-	essentials.css 
-	layout.css
-	
-	Dark section: 			#212121
-	Dark section alternate: #151515
-*/
+
 .btn {
 	color:#fff;
 }
@@ -127,7 +120,7 @@ section .display-table p {
 		body.grain-grey #header.fixed,
 		body.grain-green #header.fixed,
 		body.grain-orange #header.fixed,
-		body.grain-yellow #header..fixed{
+		body.grain-yellow #header.fixed{
 			background-color:#333;
 		}
 

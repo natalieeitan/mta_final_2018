@@ -1,13 +1,3 @@
-/**	DEMO BLUE HEADER + DROPDOWN MENU
-	Used by shortcode-material-design.html
-
-	This file shows how can you customize the dropdown menu background
-	NOTE: this CSS file should be included the last one.
-
-	Color used: 3072e0  [blue]
- **************************************************************** **/
-
-/* slidetop [optional, if used] - darker blue for a good contrast */
 #slidetop {
 	color: #e6ffeb;
 	background-color: #2e6ab5;
