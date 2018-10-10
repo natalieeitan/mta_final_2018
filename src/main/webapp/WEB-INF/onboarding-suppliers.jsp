@@ -217,6 +217,18 @@
                                         <td><%=style%>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            אתר האינטרנט:
+                                        </td>
+                                        <td>
+                                            <a href="http://www.alenby-events.co.il" target="_blank">
+                                                <div style="height:100%;width:100%">
+                                                    www.alenby-events.co.il
+                                                </div>
+                                            </a>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -305,6 +317,18 @@
                                                         <option value="URBAN">אורבני</option>
                                                     </select>
                                                 </label>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-10 col-sm-4">
+
+                                                <div class="input-group">
+
+                                                    <input id="msg" type="text" class="form-control" name="msg"
+                                                           placeholder="הכניסו את כתובת האתר שלכם">
+                                                    <span class="input-group-addon">//:http</span>
+                                                </div>
+
                                             </div>
                                         </div>
 

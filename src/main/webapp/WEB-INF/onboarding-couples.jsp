@@ -1004,6 +1004,7 @@
                             <th scope="col">איזור</th>
                             <th scope="col">איש קשר</th>
                             <th scope="col">טלפון</th>
+                            <th scope="col">אתר אינטרנט</th>
 
                         </tr>
                         </thead>
@@ -1018,6 +1019,8 @@
                             <td><%= linkedSuppliers.get(i).getAreaName(linkedSuppliers.get(i).getArea()) %>
                             </td>
                             <td><%= linkedSuppliers.get(i).getName() %>
+                            </td>
+                            <td><%= linkedSuppliers.get(i).getPhone() %>
                             </td>
                             <td><%= linkedSuppliers.get(i).getPhone() %>
                             </td>
