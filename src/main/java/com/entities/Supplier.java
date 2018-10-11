@@ -104,6 +104,21 @@ public class Supplier extends User {
 	}
 
 	public String getName() {
-		return super.getFirstName() +" "+ super.getLastName();
+		return super.getFirstName() + " " + super.getLastName();
+	}
+
+	public String getWebsite() {
+		if (website == null) {
+			return "";
+		}
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		if (website == null) {
+			this.website = "";
+		} else {
+			this.website = website;
+		}
 	}
 }

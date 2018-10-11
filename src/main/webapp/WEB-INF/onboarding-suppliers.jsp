@@ -52,6 +52,7 @@
         int minPrice = (currSupplier != null) ? currSupplier.getMinPricePerPerson() : 0;
         String area = (currSupplier != null) ? currSupplier.getAreaName(currSupplier.getArea()) : "מרכז";
         String style = (currSupplier != null) ? currSupplier.getStyleName(currSupplier.getStyle()) : "כפרי";
+        String website = (currSupplier != null) ? currSupplier.getWebsite() : "";
 
     %>
     <div id="header" class="navbar-toggleable-md sticky header-md dark clearfix" style="color:black">
@@ -224,7 +225,7 @@
                                         <td>
                                             <a href="http://www.alenby-events.co.il" target="_blank">
                                                 <div style="height:100%;width:100%">
-                                                    www.alenby-events.co.il
+                                                    <%=website%>
                                                 </div>
                                             </a>
                                         </td>
@@ -324,8 +325,8 @@
 
                                                 <div class="input-group">
 
-                                                    <input id="msg" type="text" class="form-control" name="msg"
-                                                           placeholder="הכניסו את כתובת האתר שלכם">
+                                                    <input id="msg" type="text" class="form-control" name="website"
+                                                           placeholder=<%=website%>>
                                                     <span class="input-group-addon">//:http</span>
                                                 </div>
 

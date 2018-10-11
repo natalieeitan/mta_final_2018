@@ -43,6 +43,7 @@ public class SupplierServlet extends HttpServlet {
 			String area = request.getParameter("area");
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
+			String webSite = request.getParameter("website");
 
 			supplier = SupplierService.getSupplierByID(supplierId);
 			supplier.setMaxCapacity(Integer.parseInt(maxCapacity));
@@ -51,6 +52,7 @@ public class SupplierServlet extends HttpServlet {
 			supplier.setStyle(Style.valueOf(style).getBitValue());
 			supplier.setPhone(phone);
 			supplier.setVenueName(venueName);
+			supplier.setWebsite(webSite);
 			supplierService.pushSupplierToDB(supplier);
 			ctx.setAttribute("supplier", supplier);
 			ctx.setAttribute("userId", supplierId);

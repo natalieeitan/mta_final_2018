@@ -28,7 +28,8 @@ public class SqlQueries {
 				+ ", Area = " + supplier.getArea()
 				+ ", MinPricePerPerson = " + supplier.getMinPricePerPerson()
 				+ ", Style = " + supplier.getStyle()
-				+ " WHERE ID = '" + supplier.getID() + "'";
+				+ ", Website = '" + supplier.getWebsite()
+				+ "' WHERE ID = '" + supplier.getID() + "'";
 	}
 
 	public static final String UPDATE_SUPPLIER_VENUE_NAME = "UPDATE WedAppServer.dbo.Supplier SET VenueName = '";
@@ -90,8 +91,9 @@ public class SqlQueries {
 
 	public static String insertEmptySupplierToTable(String id) {
 		return "INSERT INTO " + SUPPLIER_TABLE_NAME
-				+ " (ID, VenueName, PhoneNumber, MaxCapacity, Area, MinPricePerPerson, Style) VALUES ('"
+				+ " (ID, VenueName, PhoneNumber, MaxCapacity, Area, MinPricePerPerson, Style, Website) VALUES ('"
 				+ id + "', "
+				+ NULL + ", "
 				+ NULL + ", "
 				+ NULL + ", "
 				+ NULL + ", "
