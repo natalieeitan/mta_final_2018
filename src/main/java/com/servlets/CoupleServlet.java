@@ -1,4 +1,4 @@
-package com.servlet;
+package com.servlets;
 
 import com.entities.Couple;
 import com.services.CoupleService;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-@WebServlet(name = "servlet.CoupleServlet", urlPatterns = { "/couple" })
+@WebServlet(name = "servlets.CoupleServlet", urlPatterns = { "/couple" })
 public class CoupleServlet extends HttpServlet {
 	private CoupleService coupleService = new CoupleService();
 	private static final String WEB_INF_COUPLES_JSP = "/WEB-INF/onboarding-couples.jsp";

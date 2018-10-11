@@ -15,6 +15,7 @@ public class SqlQueries {
 	public static final String SUPPLIER_TABLE_NAME = "WedAppServer.dbo.Supplier";
 	public static final String USER_TABLE_NAME = "WedAppServer.dbo.Users";
 	public static final String COUPLE_TABLE_NAME = "WedAppServer.dbo.Couple";
+	public static final String CONTACT_US_TABLE_NAME = "WedAppServer.dbo.ContactUs";
 	public static final String COUPLE_SUPPLIER_TABLE_NAME = "WedAppServer.dbo.CoupleSupplier";
 	public static final String COUPLE_MARRIED_WEDDING_TABLE_NAME = "WedAppServer.dbo.CouplesWedding";
 	public static final String NULL = "NULL";
@@ -29,6 +30,7 @@ public class SqlQueries {
 				+ ", Style = " + supplier.getStyle()
 				+ " WHERE ID = '" + supplier.getID() + "'";
 	}
+
 	public static final String UPDATE_SUPPLIER_VENUE_NAME = "UPDATE WedAppServer.dbo.Supplier SET VenueName = '";
 
 	//COUPLE Table UPDATE Queries
@@ -71,11 +73,11 @@ public class SqlQueries {
 	}
 
 	public static String getUserByEmailString(String email) {
-		return "SELECT * FROM "+ USER_TABLE_NAME +" WHERE Email = '" + email + "'";
+		return "SELECT * FROM " + USER_TABLE_NAME + " WHERE Email = '" + email + "'";
 	}
 
 	public static String getUserByID(String id) {
-		return "SELECT * FROM "+ USER_TABLE_NAME +" WHERE ID = '" + id + "'";
+		return "SELECT * FROM " + USER_TABLE_NAME + " WHERE ID = '" + id + "'";
 	}
 
 	public static String getCoupleByIDString(String id) {
@@ -99,7 +101,7 @@ public class SqlQueries {
 	}
 
 	public static String insertIntoCoupleTable(Couple couple) {
-		return "INSERT INTO "+ COUPLE_TABLE_NAME+" (ID, SchedulingRange, SpecificDate, DaysToMarry, PreferredMonths, Areas, Styles, " +
+		return "INSERT INTO " + COUPLE_TABLE_NAME + " (ID, SchedulingRange, SpecificDate, DaysToMarry, PreferredMonths, Areas, Styles, " +
 				"NumberOfInvites , PriceRange) VALUES ('"
 				+ couple.getID() + "',"
 				+ couple.getSchedulingRange() + ", '"
@@ -113,11 +115,11 @@ public class SqlQueries {
 	}
 
 	public static String insertIntoCoupleSupplierTable(String supplierId, String coupleId) {
-		return "INSERT INTO "+COUPLE_SUPPLIER_TABLE_NAME+" (SupplierID, CoupleID) VALUES ('" + supplierId + "','" + coupleId + "');";
+		return "INSERT INTO " + COUPLE_SUPPLIER_TABLE_NAME + " (SupplierID, CoupleID) VALUES ('" + supplierId + "','" + coupleId + "');";
 	}
 
 	public static String insertIntoUserTable(User user) {
-		return "INSERT INTO "+ USER_TABLE_NAME +" (ID, FirstName, LastName, Email, Password, Type) VALUES ('"
+		return "INSERT INTO " + USER_TABLE_NAME + " (ID, FirstName, LastName, Email, Password, Type) VALUES ('"
 				+ user.getId() + "','"
 				+ user.getFirstName() + "','"
 				+ user.getLastName() + "','"
@@ -140,14 +142,13 @@ public class SqlQueries {
 
 	public static String getFitCouplesToSupplier(Supplier supplier) {
 		return "SELECT * FROM " + COUPLE_TABLE_NAME
-				+ " join "+USER_TABLE_NAME+" ON WedAppServer.dbo.Users.ID = Couple.ID WHERE NumberOfInvites <= " + supplier
+				+ " join " + USER_TABLE_NAME + " ON WedAppServer.dbo.Users.ID = Couple.ID WHERE NumberOfInvites <= " + supplier
 				.getMaxCapacity()
 				+ " AND Areas & " + supplier.getArea() + " != 0"
 				+ " AND Styles & " + supplier.getStyle() + " != 0"
 				+ " AND PriceRange >= " + PriceRange.convertIntToPriceRange(supplier.getMinPricePerPerson()).getBitValue()
 				+ " AND GotMarried != 1;";
-		}
-
+	}
 
 	public static String getSuppliersIdByCoupleIdFromCoupleSupplierTable(String coupleId) {
 		return "SELECT SupplierID FROM " + COUPLE_SUPPLIER_TABLE_NAME + " WHERE CoupleID='" + coupleId + "';";
@@ -159,6 +160,17 @@ public class SqlQueries {
 
 	public static String insertCoupleWeddingDetailsToCoupleWeddingTable(String id, String weddingDate, String weddingPlace, String details,
 			int usedPerfectMatch) {
-		return "INSERT INTO "+ COUPLE_MARRIED_WEDDING_TABLE_NAME+ " (ID, WeddingDate, WeddingPlace, Details, UsedPerfectMatch) VALUES ('"+id+"','"+weddingDate+"','" + weddingPlace+"','"+ details+"',"+ usedPerfectMatch+");";
+		return "INSERT INTO " + COUPLE_MARRIED_WEDDING_TABLE_NAME + " (ID, WeddingDate, WeddingPlace, Details, UsedPerfectMatch) VALUES ('"
+				+ id + "','" + weddingDate + "','" + weddingPlace + "','" + details + "'," + usedPerfectMatch + ");";
+	}
+
+	public static String insertIntoContactUsTable(String fullName, String phone, String email, String details, int isCouple) {
+		return "INSERT INTO " + CONTACT_US_TABLE_NAME + " (FullName, Phone, Email, Details, IsCouple) VALUES ('"
+				+ fullName + "' ,'"
+				+ phone +"', '"
+				+ email + "', '"
+				+ details + "', "
+				+ isCouple +
+				");";
 	}
 }

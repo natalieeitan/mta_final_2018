@@ -1,4 +1,4 @@
-package com.servlet;
+package com.servlets;
 
 import com.entities.Couple;
 import com.entities.Supplier;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "servlet.SupplierServlet", urlPatterns = { "/supplier" })
+@WebServlet(name = "servlets.SupplierServlet", urlPatterns = { "/supplier" })
 public class SupplierServlet extends HttpServlet {
 	private SupplierService supplierService = new SupplierService();
 	private static final String WEB_INF_SUPPLIERS_JSP = "/WEB-INF/onboarding-suppliers.jsp";

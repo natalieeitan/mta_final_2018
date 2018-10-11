@@ -10,7 +10,6 @@ public class User {
 	protected String lastName;
 	protected String email;
 	protected String password;
-	protected boolean emailVerified;
 	protected UserType type;
 
 	public User(String ID, String firstName, String lastName, String email, String password) {
@@ -19,7 +18,6 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
-		emailVerified = true;
 	}
 
 	public User(String firstName, String lastName, String email, String password, UserType type) {
@@ -27,7 +25,6 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
-		emailVerified = true;
 		this.type=type;
 		this.id = generateDb();
 	}
@@ -37,7 +34,6 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
-		emailVerified = true;
 		this.type=type;
 		this.id = ID;
 	}
@@ -60,7 +56,6 @@ public class User {
 		this.password = "";
 		this.id = "";
 		this.type = null;
-		this.emailVerified = false;
 
 	}
 
@@ -71,10 +66,6 @@ public class User {
 
 	public String getId() {
 		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -97,34 +88,12 @@ public class User {
 		return this.email;
 	}
 
-	public void setEmail(String Email) {
-		this.email = Email;
-	}
-
 	public String getPassword() {
 		return password;
-	}
-
-	public void setPassword(String Password) {
-		this.password = Password;
-	}
-
-	public Integer getEmailVerified() {
-		return (emailVerified ? 1 : 0);
-	}
-
-	public void setEmailVerified(Integer isVerified) {
-		if (isVerified == 1) {
-			this.emailVerified = true;
-		} else
-			this.emailVerified = false;
 	}
 
 	public UserType getType() {
 		return type;
 	}
 
-	public void setType(UserType type) {
-		this.type = type;
-	}
 }

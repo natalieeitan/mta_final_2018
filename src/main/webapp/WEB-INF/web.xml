@@ -1,21 +1,10 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
 
-  <!--<servlet>-->
-    <!--<servlet-name>user</servlet-name>-->
-    <!--<servlet-class>com.servlet.UserServlet</servlet-class>-->
-  <!--</servlet>-->
-
-  <!--<servlet-mapping>-->
-    <!--<servlet-name>user</servlet-name>-->
-    <!--<url-pattern>/../servlet/com.servlet.UserServlet</url-pattern>-->
-    <!--&lt;!&ndash;<url-pattern>/servlet/com.servlet.UserServlet</url-pattern>&ndash;&gt;-->
-  <!--</servlet-mapping>-->
-
-  <welcome-file-list>
-    <welcome-file>/client/html/index.html</welcome-file>
-  </welcome-file-list>
+    <welcome-file-list>
+        <welcome-file>/client/html/index.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>

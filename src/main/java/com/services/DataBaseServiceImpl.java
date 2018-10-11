@@ -99,4 +99,12 @@ public class DataBaseServiceImpl implements ManagementService {
 		ResultSet resultSet = wedAppServer.getDataFromDB(SqlQueries.getSuppliersIdByCoupleIdFromCoupleSupplierTable(coupleId));
 		return SupplierService.getSuppliersListSuppliersIds(resultSet);
 	}
+
+	public void insertContactUsDetails(String fullName, String phone, String email, String details, boolean isCouple) {
+		try {
+			wedAppServer.insertToDB(SqlQueries.insertIntoContactUsTable(fullName, phone, email, details, isCouple?0:1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

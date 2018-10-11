@@ -111,7 +111,8 @@
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
-                    <form class="sky-form" action="/couple" method="post">
+                    <form class="sky-form" action="/contactUs" method="post">
+                        <input name="action_contact" hidden>
                         <div class="modal-header text-center pinkText">
                             <h2 class="modal-title pinkText">צור קשר</h2>
                         </div>
@@ -123,12 +124,12 @@
                                         <div class="row text-right">
                                             <div>
                                                 <label class="radio-btn col-md-6">
-                                                    <input type="radio" name="byPerfectMatch" value="true" required="">
+                                                    <input type="radio" name="weAreCouple" value="true" required="">
                                                     <i></i>אנחנו זוג</label>
                                             </div>
                                             <div>
                                                 <label class="radio-btn col-md-6">
-                                                    <input type="radio" name="byPerfectMatch" value="false" required="">
+                                                    <input type="radio" name="weAreSupplier" value="false" required="">
                                                     אני ספק</label>
                                             </div>
 

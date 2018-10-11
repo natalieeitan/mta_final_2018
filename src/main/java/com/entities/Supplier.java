@@ -11,6 +11,7 @@ public class Supplier extends User {
 	private int area;
 	private int minPricePerPerson;
 	private int style;
+	private String website;
 
 	public Supplier(User user, String userId, String venueName, String phone, int maxCapacity, int area,
 			int minPricePerPerson,

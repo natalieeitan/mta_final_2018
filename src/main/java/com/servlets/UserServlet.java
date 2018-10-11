@@ -1,4 +1,4 @@
-package com.servlet;
+package com.servlets;
 
 import com.entities.Couple;
 import com.entities.Supplier;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "servlet.UserServlet", urlPatterns = { "/user" })
+@WebServlet(name = "servlets.UserServlet", urlPatterns = { "/user" })
 public class UserServlet extends HttpServlet {
 	private static final String WEB_INF_DASHBOARD_JSP = "/WEB-INF/dashboard.jsp";
 	private static final String WEB_INF_SUPPLIERS_JSP = "/WEB-INF/onboarding-suppliers.jsp";
@@ -39,21 +39,20 @@ public class UserServlet extends HttpServlet {
 			String password = request.getParameter("userPass");
 			String email = request.getParameter("userEmail");
 			boolean isSupplier = Boolean.valueOf(request.getParameter("isSupplier"));
-            //check if email is already exist in db
+			//check if email is already exist in db
 			if (dbService.isEmailAlreadyExist(email)) {
 
-                request.setAttribute("isDuplicateMail","כתובת האימייל כבר קיימת במערכת!");
-				request.setAttribute("isCorrectLogin"," ");
-                request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
-                return;
-            }
+				request.setAttribute("isDuplicateMail", "כתובת האימייל כבר קיימת במערכת!");
+				request.setAttribute("isCorrectLogin", " ");
+				request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
+				return;
+			}
 			if (isSupplier) {
 				newUser = new User(firstName, lastName, email, password, UserType.SUPPLIER);
 				request.setAttribute("loggedName", firstName + " " + lastName);
 				ctx.setAttribute("loggedName", firstName + " " + lastName);
 
-			}
-				else {
+			} else {
 				newUser = new User(firstName, lastName, email, password, UserType.COUPLE);
 				request.setAttribute("loggedName", firstName + " ו" + lastName);
 				ctx.setAttribute("loggedName", firstName + " ו" + lastName);
@@ -81,8 +80,8 @@ public class UserServlet extends HttpServlet {
 		{
 			HttpSession session = request.getSession();
 			session.invalidate();
-			request.setAttribute("isCorrectLogin"," ");
-			request.setAttribute("isDuplicateMail"," ");
+			request.setAttribute("isCorrectLogin", " ");
+			request.setAttribute("isDuplicateMail", " ");
 			request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
 		}
 
@@ -95,7 +94,7 @@ public class UserServlet extends HttpServlet {
 
 			if (user == null) {
 				request.setAttribute("isCorrectLogin", "שם משתמש או סיסמה לא נכונים!");
-				request.setAttribute("isDuplicateMail"," ");
+				request.setAttribute("isDuplicateMail", " ");
 				request.getRequestDispatcher(WEB_INF_DASHBOARD_JSP).forward(request, response);
 
 			} else if (user.getType().equals(UserType.SUPPLIER)) {
@@ -105,9 +104,6 @@ public class UserServlet extends HttpServlet {
 				request.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
 				ctx.setAttribute("loggedName", user.getFirstName() + " " + user.getLastName());
 				ctx.setAttribute("userId", user.getId());
-				//				List<Couple> potentialCouplesForConnection = supplierService
-				//						.getAllFitCouplesIDsToSupplierBySupplierId(user.getId());
-				//				request.setAttribute("potentialCouples", potentialCouplesForConnection);
 				Supplier loggedSupplier = SupplierService.getSupplierByID(user.getId());
 				ctx.setAttribute("supplier", loggedSupplier);
 				request.setAttribute("supplier", loggedSupplier);
