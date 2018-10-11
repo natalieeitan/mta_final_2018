@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 public class SqlQueries {
 	public static final String GET_ALL_COUPLES = "Select * From WedAppServer.dbo.Couple";
 	public static final String GET_ALL_SUPPLIERS = "Select * From WedAppServer.dbo.Supplier";
-	public static final String GET_ALL_USERS = "Select * From WedAppServer.dbo.Users";
 
 	//General Expressions
 	public static final String SUPPLIER_TABLE_NAME = "WedAppServer.dbo.Supplier";

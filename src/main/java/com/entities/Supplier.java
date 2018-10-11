@@ -8,15 +8,9 @@ public class Supplier extends User {
 	private String venueName;
 	private String phone;
 	private int maxCapacity;
-	//    private Cities city;
 	private int area;
 	private int minPricePerPerson;
 	private int style;
-	//
-	//	public Supplier(User user) {
-	//		super(user.firstName, user.lastName, user.email, user.password);
-	//		this.setId(super.generateDb());
-	//	}
 
 	public Supplier(User user, String userId, String venueName, String phone, int maxCapacity, int area,
 			int minPricePerPerson,
@@ -63,10 +57,6 @@ public class Supplier extends User {
 	public void setMaxCapacity(int maxCapacity) {
 		this.maxCapacity = maxCapacity;
 	}
-
-	//    public void setCity(Cities city) {
-	//        this.city = city;
-	//    }
 
 	public void setArea(int area) {
 		this.area = area;

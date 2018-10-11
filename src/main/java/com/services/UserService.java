@@ -6,27 +6,8 @@ import com.utilities.UserType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserService {
-
-	public static List<User> getAllUsers() {
-		List<User> usersList = new ArrayList<User>();
-		WedAppServer db = new WedAppServer();
-
-		try {
-			ResultSet rs = db.getDataFromDB(SqlQueries.GET_ALL_USERS);
-			while (rs.next()) {
-				User user = getUserFromResultSet(rs);
-				usersList.add(user);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		db.closeConnection();
-		return usersList;
-	}
 
 	public static User getUserFromResultSet(ResultSet rs) {
 		String id;

@@ -4,9 +4,6 @@ import org.apache.catalina.startup.Tomcat;
 
 import java.util.Optional;
 
-/**
- * Created by natalieeitan on 09/04/2018.
- */
 public class Main {
 	public static final Optional<String> PORT = Optional.ofNullable(System.getenv("PORT"));
 	public static final Optional<String> HOSTNAME = Optional.ofNullable(System.getenv("HOSTNAME"));
