@@ -11,7 +11,6 @@ public class Couple extends User {
 	private int schedulingRange;
 
 	private Date date; //specific Date
-	//private Season seasonToMarry; //season to marry
 	private int daysToMarry; //preferred days to marry
 	private int preferredMonths;
 	private int areas;  //areas to marry
@@ -49,7 +48,6 @@ public class Couple extends User {
 		this.schedulingRange = schedulingRange;
 		this.daysToMarry = daysToMarry;
 		this.date = date;
-		//this.seasonToMarry = seasonToMarry;
 		this.preferredMonths = preferredMonths;
 		this.areas = areas;
 		this.styles = styles;
@@ -69,10 +67,6 @@ public class Couple extends User {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
-	//public void setSeasonToMarry(Season seasonToMarry) {
-	//    this.seasonToMarry = seasonToMarry;
-	//}
 
 	public void setArea(int areas) {
 		this.areas = areas;
@@ -98,7 +92,6 @@ public class Couple extends User {
 		return super.getFirstName() +" ו"+ super.getLastName();
 	}
 
-	// public Season getSeasonToMarry(){ return this.seasonToMarry; }
 	public int getDayOfWeek() {
 		return this.daysToMarry;
 	}

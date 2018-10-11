@@ -21,9 +21,7 @@ public class CoupleServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
 		request.setCharacterEncoding("UTF-8");
-		//get couple
 		ServletContext ctx = getServletConfig().getServletContext();
 		String id = getServletConfig().getServletContext().getAttribute("userId").toString();
 		Couple couple = CoupleService.getCoupleByID(id);

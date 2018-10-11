@@ -25,8 +25,6 @@ public class WedAppServer {
 
 	private void connect() throws SQLException {
 		try {
-			//Class.forName("org.sqlite.JDBC");
-			//Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver");
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 		} catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
 			e.printStackTrace();
@@ -52,7 +50,7 @@ public class WedAppServer {
 		}
 	}
 
-	public ResultSet getDataFromDB(String query){
+	public ResultSet getDataFromDB(String query) {
 		// Create a variable for the connection string.
 		try {
 			// Establish the connection
@@ -112,10 +110,6 @@ public class WedAppServer {
 		return checkIfAttributeExistInTable(tableName, "ID", id);
 	}
 
-	public int checkIfIDExistInUsersTable(String id) {
-		return checkIfIDExistInTable("Users", id);
-	}
-
 	public int checkIfEmailExistInUsersTable(String email) {
 		return checkIfAttributeExistInTable("Users", "Email", email);
 	}
@@ -123,7 +117,7 @@ public class WedAppServer {
 	//return userTypeBitValue if exists, 0 else
 	public User getUserByEmailAndPassword(String email, String password) {
 		User user = UserService.getUserByEmail(email);
-		if(user==null || !(user.getPassword().equals(password))){ //email not exist or password incorrect
+		if (user == null || !(user.getPassword().equals(password))) { //email not exist or password incorrect
 			return null;
 		}
 		return user;
