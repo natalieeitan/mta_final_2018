@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SupplierService {
-	DataBaseServiceImpl dataBaseService;
+	DataBaseService dataBaseService;
 
 	public SupplierService() {
-		dataBaseService = new DataBaseServiceImpl();
+		dataBaseService = new DataBaseService();
 	}
 
 	public void connectWithCouple(String supplierId, String coupleId) {
@@ -128,7 +128,7 @@ public class SupplierService {
 		try {
 			ResultSet rs = db.getDataFromDB(SqlQueries.getSupplierByIDString(id));
 			rs.next();
-			Supplier supplier = SupplierService.getSupplierFromResultSet(rs);
+			Supplier supplier = getSupplierFromResultSet(rs);
 			db.closeConnection();
 
 			return supplier;

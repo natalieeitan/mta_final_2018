@@ -40,7 +40,7 @@ public class UserService {
 		try {
 			ResultSet rs = db.getDataFromDB(SqlQueries.getUserByEmailString(email));
 			rs.next();
-			User user = UserService.getUserFromResultSet(rs);
+			User user = getUserFromResultSet(rs);
 			db.closeConnection();
 
 			return user;
@@ -57,7 +57,7 @@ public class UserService {
 		try {
 			ResultSet rs = db.getDataFromDB(SqlQueries.getUserByID(id));
 			rs.next();
-			User user = UserService.getUserFromResultSet(rs);
+			User user = getUserFromResultSet(rs);
 			db.closeConnection();
 
 			return user;

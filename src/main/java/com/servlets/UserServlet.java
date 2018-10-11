@@ -4,7 +4,7 @@ import com.entities.Couple;
 import com.entities.Supplier;
 import com.entities.User;
 import com.services.CoupleService;
-import com.services.DataBaseServiceImpl;
+import com.services.DataBaseService;
 import com.services.SupplierService;
 import com.utilities.UserType;
 
@@ -24,7 +24,7 @@ public class UserServlet extends HttpServlet {
 	private static final String WEB_INF_DASHBOARD_JSP = "/WEB-INF/dashboard.jsp";
 	private static final String WEB_INF_SUPPLIERS_JSP = "/WEB-INF/onboarding-suppliers.jsp";
 	private static final String WEB_INF_COUPLES_JSP = "/WEB-INF/onboarding-couples.jsp";
-	private DataBaseServiceImpl dbService = new DataBaseServiceImpl();
+	private DataBaseService dbService = new DataBaseService();
 	private SupplierService supplierService = new SupplierService();
 	private CoupleService coupleService = new CoupleService();
 

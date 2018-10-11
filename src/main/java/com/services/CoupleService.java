@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 public class CoupleService {
-    DataBaseServiceImpl dataBaseService = new DataBaseServiceImpl();
+    DataBaseService dataBaseService = new DataBaseService();
 
     public static List<Couple> getAllCouples() throws SQLException {
         List<Couple> couplesList = new ArrayList<Couple>();
@@ -106,7 +106,7 @@ public class CoupleService {
         try {
             ResultSet rs = db.getDataFromDB(SqlQueries.getCoupleByIDString(id));
             rs.next();
-            Couple couple=CoupleService.getCoupleFromResultSet(rs);
+            Couple couple = getCoupleFromResultSet(rs);
             db.closeConnection();
 
             return couple;
