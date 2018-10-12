@@ -223,7 +223,7 @@
                                             אתר האינטרנט:
                                         </td>
                                         <td>
-                                            <a href="http://www.alenby-events.co.il" target="_blank">
+                                            <a href="<%=website%>" target="_blank">
                                                 <div style="height:100%;width:100%">
                                                     <%=website%>
                                                 </div>

@@ -1010,8 +1010,11 @@
                         </thead>
                         <tbody>
                         <%
+                            String clickTpWeb="לאתר";
                             if (linkedSuppliers != null) {
                                 for (int i = 0; i < linkedSuppliers.size(); ++i) {
+                                    if(linkedSuppliers.get(i).getWebsite()=="")
+                                        clickTpWeb="";
                         %>
                         <tr>
                             <td><%= linkedSuppliers.get(i).getVenueName() %>
@@ -1022,7 +1025,12 @@
                             </td>
                             <td><%= linkedSuppliers.get(i).getPhone() %>
                             </td>
-                            <td><%= linkedSuppliers.get(i).getPhone() %>
+                            <td>
+                                <a href="<%= linkedSuppliers.get(i).getWebsite() %>" target="_blank">
+                                    <div style="height:100%;width:100%">
+                                        <%=clickTpWeb%>
+                                    </div>
+                                </a>
                             </td>
 
                         </tr>
