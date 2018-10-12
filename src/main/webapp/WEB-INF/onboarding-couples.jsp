@@ -1,10 +1,9 @@
 <%@ page import="com.entities.Couple" %>
 <%@ page import="com.entities.Supplier" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.utilities.PriceRange" %>
 <%@ page import="com.utilities.SchedulingRange" %>
+<%@ page import="java.util.List" %>
 <%@ page import="static com.utilities.SchedulingRange.*" %>
-<%@ page import="org.apache.commons.lang.ObjectUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -55,13 +54,13 @@
         String months = "";
         String dateSelected = "";
         String styles = "";
-        String priceRange="";
+        String priceRange = "";
         int howManyInvites = 0;
         String areas = "";
         SchedulingRange schedRange = null;
-        String alertWhen ="";
-        String alertStyle="";
-        String alertWhere="";
+        String alertWhen = "";
+        String alertStyle = "";
+        String alertWhere = "";
         String alertBudget = "";
 
         Couple currCouple = (Couple) request.getAttribute("couple");
@@ -75,30 +74,34 @@
             areas = currCouple.getAreasList(currCouple.getArea());
             if (areas == "")
                 alertWhere = alert;
-            priceRange = (currCouple.getPricing() != 0) ? currCouple.getPriceRangeName(currCouple.getPricing()) : PriceRange.NO_RANGE.getName();
+            priceRange = (currCouple.getPricing() != 0) ?
+                    currCouple.getPriceRangeName(currCouple.getPricing()) :
+                    PriceRange.NO_RANGE.getName();
             if (priceRange == "")
                 alertBudget = alert;
             schedRange = convertIntToSchedulingRange(currCouple.getSchedulingRange());
 
             if (schedRange != null) {
                 switch (schedRange) {
-                    case ANYTIME: {
-                        days = spon;
-                        months = spon;
-                        dateSelected = spon;
-                        break;
-                    }
-                    case SEASON: {
-                        days = (currCouple != null) ? currCouple.getDaysList(currCouple.getDayOfWeek()) : "";
-                        months = (currCouple != null) ? currCouple.getMonthsList(currCouple.getPreferredMonths()) : "";
-                        break;
-                    }
-                    case SPECIFIC: {
-                        dateSelected = (currCouple != null && currCouple.getDate() != null) ? currCouple.getDateString(currCouple.getDate()) : "";
-                        break;
-                    }
-                    default:
-                        break;
+                case ANYTIME: {
+                    days = spon;
+                    months = spon;
+                    dateSelected = spon;
+                    break;
+                }
+                case SEASON: {
+                    days = (currCouple != null) ? currCouple.getDaysList(currCouple.getDayOfWeek()) : "";
+                    months = (currCouple != null) ? currCouple.getMonthsList(currCouple.getPreferredMonths()) : "";
+                    break;
+                }
+                case SPECIFIC: {
+                    dateSelected = (currCouple != null && currCouple.getDate() != null) ?
+                            currCouple.getDateString(currCouple.getDate()) :
+                            "";
+                    break;
+                }
+                default:
+                    break;
                 }
             } else {
                 alertWhen = alert;
@@ -1051,11 +1054,11 @@
                         </thead>
                         <tbody>
                         <%
-                            String clickTpWeb="לאתר";
                             if (linkedSuppliers != null) {
                                 for (int i = 0; i < linkedSuppliers.size(); ++i) {
-                                    if(linkedSuppliers.get(i).getWebsite()=="")
-                                        clickTpWeb="";
+                                    String clickTpWeb = "לאתר";
+                                    if (linkedSuppliers.get(i).getWebsite() == "")
+                                        clickTpWeb = "";
                         %>
                         <tr>
                             <td><%= linkedSuppliers.get(i).getVenueName() %>
@@ -1100,7 +1103,8 @@
                         <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
                             data-saveperformance="off" data-title="">
                             <div class="">
-                                <img src="../client/html/GanVradim02.jpg" class="img-fluid hidden-md-up" alt="Nature" style="max-width: 100% !important;">
+                                <img src="../client/html/GanVradim02.jpg" class="img-fluid hidden-md-up" alt="Nature"
+                                     style="max-width: 100% !important;">
                                 <img src="../client/html/GanVradim02.jpg" class="img-fluid hidden-sm-down" alt="Nature">
                                 <div class="carousel-caption">
                                     <h3>גן הורדים</h3>
@@ -1117,7 +1121,8 @@
                         <li data-transition="fade" data-slotamount="1" data-masterspeed="1000"
                             data-saveperformance="off" data-title="">
                             <div class="">
-                                <img src="../client/html/alenby.jpeg" class="img-fluid hidden-md-up" alt="Nature" style="max-width: 100% !important;">
+                                <img src="../client/html/alenby.jpeg" class="img-fluid hidden-md-up" alt="Nature"
+                                     style="max-width: 100% !important;">
                                 <img src="../client/html/alenby.jpeg" class="img-fluid hidden-sm-down" alt="Nature">
                                 <div class="carousel-caption">
                                     <h3>חוות אלנבי</h3>

@@ -32,7 +32,7 @@ public class Supplier extends User {
 
 	public Supplier(String userId, String venueName, String phone, int maxCapacity, int area,
 			int minPricePerPerson,
-			int style) {
+			int style, String website) {
 		super();
 		this.userId = userId;
 		this.venueName = venueName;
@@ -41,6 +41,7 @@ public class Supplier extends User {
 		this.area = area;
 		this.minPricePerPerson = minPricePerPerson;
 		this.style = style;
+		this.website = website;
 	}
 
 	public String getID() {

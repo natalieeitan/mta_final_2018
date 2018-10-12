@@ -76,6 +76,7 @@ public class SupplierService {
 		int area;
 		int minPrice;
 		int style;
+		String website;
 
 		try {
 			id = rs.getString("ID");
@@ -85,8 +86,9 @@ public class SupplierService {
 			area = rs.getInt("Area");
 			minPrice = rs.getInt("MinPricePerPerson");
 			style = rs.getInt("Style");
+			website = rs.getString("Website");
 
-			return new Supplier(id, venueName, phone, maxCapacity, area, minPrice, style);
+			return new Supplier(id, venueName, phone, maxCapacity, area, minPrice, style, website);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
