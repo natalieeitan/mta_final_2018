@@ -91,6 +91,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a data-toggle="modal" data-target="#ContactModal" class="turText">
+                                    צור קשר
+                                </a>
+                            </li>
+                            <li>
                                 <a data-toggle="modal" data-target="#myModal" style="color: #a9a1a1">
                                     התנתקות
                                 </a>
@@ -103,6 +108,47 @@
         </header>
         <!-- /Top Nav -->
     </div>
+
+    <!-- contact us-->
+    <div class="container text-center">
+        <div class="modal fade" id="ContactModal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <form class="sky-form" action="/contactUs" method="post" dir="rtl">
+                        <input name="action_contactUsSuppliers" hidden>
+                        <div class="modal-header text-center turText">
+                            <h2 class="modal-title turText">צור קשר</h2>
+                        </div>
+                        <div class="modal-body text-center ">
+                            <div class="container">
+                                <div class="container">
+                                    <div class="row justify-content-around text-right">
+                                        <label class="col-md-5">מה תרצו להגיד לנו?*</label>
+                                        <label class="textarea mb-10">
+                                            <textarea type="text" name="contactMessage" style="font-weight: normal" required ></textarea>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-around">
+                            <div class="row container text-center">
+                                <div class="col-md-6">
+                                    <button class="btn btn-info" data-dismiss="modal">ביטול</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="sumbit" class="btn btn-info">שלח
+                                        <span class="glyphicon glyphicon-send"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/contact us-->
 
     <!-- log off menu -->
     <div class="container text-center">

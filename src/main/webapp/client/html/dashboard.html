@@ -104,35 +104,34 @@
                                             </div>
                                             <div>
                                                 <label class="radio-btn col-md-6">
-                                                    <input type="radio" name="weAreSupplier" value="false" required="">
+                                                    <input type="radio" name="weAreCouple" value="false">
                                                     אני ספק</label>
                                             </div>
 
                                         </div>
                                     </div>
                                     <div class="row justify-content-around text-right">
-                                        <label class="col-md-5 ">שם פרטי ומשפחה</label>
+                                        <label class="col-md-5 ">שם פרטי ומשפחה*</label>
                                         <label class="input mb-10">
-                                            <input type="text" name="contactName" style="font-weight: normal">
+                                            <input type="text" name="contactName" style="font-weight: normal" required>
                                         </label>
                                     </div>
                                     <div class="row justify-content-around text-right">
-                                        <label class="col-md-5 ">טלפון</label>
+                                        <label class="col-md-5 ">טלפון*</label>
                                         <label class="input mb-10">
-                                            <input type="text" name="contactPhone" style="font-weight: normal">
+                                            <input type="text" name="contactPhone" style="font-weight: normal" required>
                                         </label>
                                     </div>
                                     <div class="row justify-content-around text-right">
-                                        <label class="col-md-5 ">אימייל</label>
+                                        <label class="col-md-5 ">אימייל*</label>
                                         <label class="input mb-10">
-                                            <input type="text" name="contactEmail" style="font-weight: normal">
+                                            <input type="text" name="contactEmail" style="font-weight: normal" required>
                                         </label>
                                     </div>
                                     <div class="row justify-content-around text-right">
-                                        <label class="col-md-5">מה תרצו להגיד לנו?</label>
+                                        <label class="col-md-5">מה תרצו להגיד לנו?*</label>
                                         <label class="textarea mb-10">
-                                            <textarea type="text" name="contactMessage" style="font-weight: normal">
-                                            </textarea>
+                                            <textarea type="text" name="contactMessage" style="font-weight: normal" required></textarea>
                                         </label>
                                     </div>
                                 </div>
@@ -144,7 +143,9 @@
                                     <button class="btn btn-info" data-dismiss="modal">ביטול</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="sumbit" class="btn btn-info">שלח</button>
+                                    <button type="sumbit" class="btn btn-info">שלח
+                                        <span class="glyphicon glyphicon-send"></span>
+                                    </button>
                                 </div>
                             </div>
                         </div>

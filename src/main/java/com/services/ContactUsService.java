@@ -7,7 +7,7 @@ public class ContactUsService {
 		dataBaseService = new DataBaseService();
 	}
 
-	public void insertContactUsDetails(String fullName, String phone, String email, String details, boolean isSupplier) {
-		dataBaseService.insertContactUsDetails(fullName, phone, email, details, isSupplier);
+	public void insertContactUsDetails(String fullName, String phone, String email, String details, boolean isCouple) {
+		dataBaseService.insertContactUsDetails(fullName, phone, email, details, isCouple);
 	}
 }
