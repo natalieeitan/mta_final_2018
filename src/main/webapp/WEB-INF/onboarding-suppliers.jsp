@@ -372,7 +372,7 @@
                                                 <div class="input-group">
 
                                                     <input id="msg" type="text" class="form-control" name="website"
-                                                           value=<%=website%>>
+                                                           placeholder=<%=website%>>
                                                     <span class="input-group-addon">//:http</span>
                                                 </div>
 

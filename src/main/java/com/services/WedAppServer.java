@@ -75,13 +75,16 @@ public class WedAppServer {
 		return rs;
 	}
 
+	/**
+	 * @param query - any sql query to be excuted
+	 */
 	public void executeQuery(String query) {
 		try {
 			// Establish the connection
 			connect();
 			// Create and execute an SQL statement that returns some data.
 			stmt = con.createStatement();
-			stmt.executeQuery(query);
+			stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
