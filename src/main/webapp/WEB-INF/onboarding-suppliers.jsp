@@ -125,7 +125,8 @@
                                     <div class="row justify-content-around text-right">
                                         <label class="col-md-5">מה תרצו להגיד לנו?*</label>
                                         <label class="textarea mb-10">
-                                            <textarea type="text" name="contactMessage" style="font-weight: normal" required ></textarea>
+                                            <textarea type="text" name="contactMessage" style="font-weight: normal"
+                                                      required></textarea>
                                         </label>
                                     </div>
                                 </div>
@@ -238,46 +239,43 @@
                         <div class="card-body">
                             <hr/>
                             <div class="box-static box-border-top p-30" style="border-top-color:black">
-                                <table class="table tableCol">
-                                    <tbody>
-                                    <tr>
-                                        <td class="bold">שם האולם:</td>
-                                        <td><%=venueName%>
-                                        </td>
-                                        <td class="bold">טלפון:</td>
-                                        <td><%=phone%>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="bold">תפוסה מקסימלית:</td>
-                                        <td><%=maxCapacity%>
-                                        </td>
-                                        <td class="bold">מחיר מינימלי למנה:</td>
-                                        <td><%=minPrice%>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="bold">אזור בארץ:</td>
-                                        <td><%=area%>
-                                        </td>
-                                        <td class="bold">סגנון המקום:</td>
-                                        <td><%=style%>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            אתר האינטרנט:
-                                        </td>
-                                        <td>
-                                            <a href="<%="http://"+website%>" target="_blank">
-                                                <div style="height:100%;width:100%;text-decoration: underline;">
-                                                       <%=website%>
+                                <div class="">
+                                    <div class="row pb-10">
+                                        <div class="col-md-3 bold">שם האולם:</div>
+                                        <div class="col-md-3"><%=venueName%>
+                                        </div>
+                                        <div class="col-md-3 bold">טלפון:</div>
+                                        <div class="col-md-3"><%=phone%>
+                                        </div>
+                                    </div>
+                                    <div class="row pb-10">
+                                        <div class="col-md-3 bold">תפוסה מקסימלית:</div>
+                                        <div class="col-md-3"><%=maxCapacity%>
+                                        </div>
+                                        <div class="col-md-3 bold">מחיר מינימלי למנה:</div>
+                                        <div class="col-md-3"><%=minPrice%>
+                                        </div>
+                                    </div>
+                                    <div class="row pb-10">
+                                        <div class="col-md-3 bold">מחיר מינימלי למנה:</div>
+                                        <div class="col-md-3"><%=area%>
+                                        </div>
+                                        <div class="col-md-3 bold">סגנון המקום:</div>
+                                        <div class="col-md-3"><%=style%>
+                                        </div>
+                                    </div>
+                                    <div class="row pb-10">
+                                        <div class="col-md-3 bold">אתר האינטרנט:</div>
+                                        <div class="col-md-3">
+                                            <a href="<%=website%>" target="_blank">
+                                                <div class="turText"
+                                                     style="height:100%;width:100%;text-decoration: underline;">
+                                                    <%=website%>
                                                 </div>
                                             </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
