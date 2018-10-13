@@ -109,17 +109,10 @@ public class Supplier extends User {
 	}
 
 	public String getWebsite() {
-		if (website == null) {
-			return "";
-		}
 		return website;
 	}
 
 	public void setWebsite(String website) {
-		if (website == null) {
-			this.website = "";
-		} else {
-			this.website = website;
-		}
+		this.website = website;
 	}
 }

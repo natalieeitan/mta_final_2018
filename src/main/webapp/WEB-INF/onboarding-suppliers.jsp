@@ -269,9 +269,9 @@
                                             אתר האינטרנט:
                                         </td>
                                         <td>
-                                            <a href="<%=website%>" target="_blank">
+                                            <a href="<%="http://"+website%>" target="_blank">
                                                 <div style="height:100%;width:100%;text-decoration: underline;">
-                                                    <%=website%>
+                                                       <%=website%>
                                                 </div>
                                             </a>
                                         </td>
@@ -372,7 +372,7 @@
                                                 <div class="input-group">
 
                                                     <input id="msg" type="text" class="form-control" name="website"
-                                                           placeholder=<%=website%>>
+                                                           value=<%=website%>>
                                                     <span class="input-group-addon">//:http</span>
                                                 </div>
 
