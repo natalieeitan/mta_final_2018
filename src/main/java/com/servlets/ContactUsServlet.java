@@ -59,6 +59,7 @@ public class ContactUsServlet extends HttpServlet {
                 String id = getServletConfig().getServletContext().getAttribute("userId").toString();
                 Couple couple = (Couple) ctx.getAttribute("couple");
                 ctx.setAttribute("userId", id);
+                ctx.setAttribute("couple", couple);
                 request.setAttribute("userId", id);
                 request.setAttribute("couple", couple);
                 request.setAttribute("linkedSuppliers", coupleService.getSuppliersLinkedByCoupleId(user.getId()));
