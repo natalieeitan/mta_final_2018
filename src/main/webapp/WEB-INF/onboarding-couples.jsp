@@ -1057,7 +1057,7 @@
                             if (linkedSuppliers != null) {
                                 for (int i = 0; i < linkedSuppliers.size(); ++i) {
                                     String clickTpWeb = "לאתר";
-                                    if (linkedSuppliers.get(i).getWebsite() == "")
+                                    if (linkedSuppliers.get(i).getWebsite() == "" ||linkedSuppliers.get(i).getWebsite() == null)
                                         clickTpWeb = "";
                         %>
                         <tr>

@@ -44,7 +44,9 @@ public class SupplierServlet extends HttpServlet {
 			String minPrice = request.getParameter("minPrice");
 			String style = request.getParameter("style");
 			String webSite = request.getParameter("website");
-
+			if(!webSite.contains("http://") || !webSite.contains("https://")){
+				webSite = "http://"+webSite;
+			}
 			supplier = SupplierService.getSupplierByID(supplierId);
 			supplier.setMaxCapacity(Integer.parseInt(maxCapacity));
 			supplier.setArea(Area.valueOf(area).getBitValue());
