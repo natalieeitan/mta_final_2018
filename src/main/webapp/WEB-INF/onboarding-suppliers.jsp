@@ -270,7 +270,7 @@
                                         </td>
                                         <td>
                                             <a href="<%=website%>" target="_blank">
-                                                <div style="height:100%;width:100%">
+                                                <div style="height:100%;width:100%;text-decoration: underline;">
                                                     <%=website%>
                                                 </div>
                                             </a>
@@ -368,7 +368,7 @@
                                         </div>
                                         <div class="row justify-content-center">
                                             <div class="col-md-10 col-sm-4">
-
+                                                <label>אתר אינטרנט (מומלץ)</label>
                                                 <div class="input-group">
 
                                                     <input id="msg" type="text" class="form-control" name="website"
