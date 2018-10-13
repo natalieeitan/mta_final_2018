@@ -31,11 +31,11 @@ public class ContactUsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
-        ServletContext ctx = getServletConfig().getServletContext();
-        String name = null;
-        String phone = null;
-        String email = null;
-        String message = null;
+        ServletContext ctx;
+        String name;
+        String phone;
+        String email;
+        String message;
         if (request.getParameter("action_contact") != null) {
             boolean isCouple = Boolean.valueOf(request.getParameter("weAreCouple"));
             name = request.getParameter("contactName");
@@ -57,7 +57,7 @@ public class ContactUsServlet extends HttpServlet {
                 request.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
                 ctx.setAttribute("loggedName", getServletConfig().getServletContext().getAttribute("loggedName"));
                 String id = getServletConfig().getServletContext().getAttribute("userId").toString();
-                Couple couple = (Couple) ctx.getAttribute("couple;");
+                Couple couple = (Couple) ctx.getAttribute("couple");
                 ctx.setAttribute("userId", id);
                 request.setAttribute("userId", id);
                 request.setAttribute("couple", couple);
@@ -69,7 +69,9 @@ public class ContactUsServlet extends HttpServlet {
             if (request.getParameter("action_contactUsSuppliers") != null) {
                 Supplier supplier = (Supplier) ctx.getAttribute("supplier");
                 phone = supplier.getPhone();
-
+                ctx.setAttribute("supplier", supplier);
+                ctx.setAttribute("userId", supplier.getId());
+                request.setAttribute("supplier", supplier);
                 String supplierId = ctx.getAttribute("userId").toString();
                 List<Couple> potentialCouplesForConnection = null;
                 potentialCouplesForConnection = supplierService

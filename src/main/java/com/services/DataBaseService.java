@@ -48,7 +48,7 @@ public class DataBaseService {
 
 	public void insertContactUsDetails(String fullName, String phone, String email, String details, boolean isCouple) {
 		try {
-			wedAppServer.insertToDB(SqlQueries.insertIntoContactUsTable(fullName, phone, email, details, isCouple ? 0 : 1));
+			wedAppServer.insertToDB(SqlQueries.insertIntoContactUsTable(fullName, phone, email, details, isCouple ? 1 : 0));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
