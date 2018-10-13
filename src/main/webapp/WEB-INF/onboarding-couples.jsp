@@ -1071,7 +1071,7 @@
                             </td>
                             <td>
                                 <a href="<%= linkedSuppliers.get(i).getWebsite() %>" target="_blank">
-                                    <div class="pinkText" style="height:100%;width:100%;text-decoration: underline;">
+                                    <div class="pinkText bold" style="height:100%;width:100%;text-decoration: underline;">
                                         <%=clickTpWeb%>
                                     </div>
                                 </a>
